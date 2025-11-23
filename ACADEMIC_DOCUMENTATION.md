@@ -62,7 +62,7 @@ The ForexRegime system is a **multi-tier Big Data platform** designed for real-t
 *   **Trend Following:** Momentum, Institutional flow, etc.
 *   **Mean Reversion:** Contrarian, Extreme sentiment, etc.
 
-            **↓**
+  **↓**
 
 **MACHINE LEARNING LAYER**
 
@@ -70,7 +70,7 @@ The ForexRegime system is a **multi-tier Big Data platform** designed for real-t
 *   Binary classification: TF (Trend Following) vs MR
 *   Features: 22 theory scores + sentiment metrics
 
-            **↓**
+  **↓**
 
 **OPTIMIZATION LAYER**
 
@@ -78,7 +78,7 @@ The ForexRegime system is a **multi-tier Big Data platform** designed for real-t
 *   20-parameter weight optimization (10 TF + 10 MR)
 *   100 iterations, acceptance rate tracking
 
-            **↓**
+  **↓**
 
 **PUBLICATION LAYER**
 
@@ -539,6 +539,7 @@ The system positions me as a candidate with theoretical knowledge, practical ski
 ═══════════════════════════════════════════════════════════════
 END OF ACADEMIC DOCUMENTATION
 ═══════════════════════════════════════════════════════════════
+
 
 
 
