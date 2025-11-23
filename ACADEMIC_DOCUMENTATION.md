@@ -1,6 +1,6 @@
 # FOREX TRADING SYSTEM - BIG DATA ANALYTICS PLATFORM
 ## Ultra-Exhaustive Technical Documentation
-### Master of Science (MSc) Program in Big Data Technology
+### For application to Master of Science (MSc) Program in Big Data Technology
 
 **Author**: Timothy Lokotar  
 **Date**: November 22, 2025  
@@ -537,3 +537,4 @@ The system positions me as a candidate with theoretical knowledge, practical ski
 ═══════════════════════════════════════════════════════════════
 END OF ACADEMIC DOCUMENTATION
 ═══════════════════════════════════════════════════════════════
+
