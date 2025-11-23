@@ -46,6 +46,49 @@ This document presents a comprehensive, production-grade **Forex Trading System*
 
 The ForexRegime system is a **multi-tier Big Data platform** designed for real-time market analysis:
 
+### Project Architecture Overview
+
+**DATA INGESTION LAYER**
+
+*   **8 Sources:** IG, Dukascopy, Myfxbook, CFTC, SSI, etc.
+*   Playwright-based scrapers (headless browsers)
+*   ~50-60 seconds per cycle, 57 data points extracted
+
+**↓**
+
+**THEORY CALCULATION LAYER**
+
+*   **22 Financial Theories** (19 methods + 5 hypotheses)
+*   **Trend Following:** Momentum, Institutional flow, etc.
+*   **Mean Reversion:** Contrarian, Extreme sentiment, etc.
+
+**↓**
+
+**MACHINE LEARNING LAYER**
+
+*   Random Forest Classifier (sklearn)
+*   Binary classification: TF (Trend Following) vs MR
+*   Features: 22 theory scores + sentiment metrics
+
+**↓**
+
+**OPTIMIZATION LAYER**
+
+*   MCMC Metropolis-Hastings Algorithm
+*   20-parameter weight optimization (10 TF + 10 MR)
+*   100 iterations, acceptance rate tracking
+
+**↓**
+
+**PUBLICATION LAYER**
+
+*   HTML Report Generation (10 sections)
+*   IIS Web Server (Windows Server 2022)
+*   Automated hourly updates via Scheduled Tasks
+*   Public URL: [https://moneyprod.com](https://moneyprod.com)
+*   LIVE Indicator: Real-time countdown + LinkedIn profile
+
+
 \\\
 ┌─────────────────────────────────────────────────────────────┐
 │                    DATA INGESTION LAYER                     │
@@ -536,6 +579,7 @@ The system positions me as a candidate with theoretical knowledge, practical ski
 ═══════════════════════════════════════════════════════════════
 END OF ACADEMIC DOCUMENTATION
 ═══════════════════════════════════════════════════════════════
+
 
 
 
