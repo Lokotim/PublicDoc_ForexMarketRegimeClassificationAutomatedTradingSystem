@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 350" width="900" height="350">
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', Arial, sans-serif; }
+      .title { font-size: 18px; font-weight: bold; fill: #ffffff; letter-spacing: 2px; }
+      .box-label { font-size: 11px; font-weight: bold; fill: #ffffff; }
+      .box-sub { font-size: 9px; fill: #ffffff; opacity: 0.8; }
+      .stage-num { font-size: 9px; font-weight: bold; fill: rgba(255,255,255,0.6); }
+      .subtitle { font-size: 10px; fill: #b0bec5; font-style: italic; }
+    </style>
+    <marker id="arrowGold" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#FFC107"/>
+    </marker>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="350" fill="#0f1923" rx="8"/>
+
+  <!-- Title -->
+  <text x="450" y="38" text-anchor="middle" class="title">THE VALIDATION GAUNTLET</text>
+  <line x1="280" y1="48" x2="620" y2="48" stroke="#FFC107" stroke-width="1" opacity="0.5"/>
+
+  <!-- === ROW 1: S1 through S5 === -->
+  <!-- S1 CLEAR DATABANKS -->
+  <rect x="30" y="75" width="140" height="52" rx="8" fill="#2a9d8f" opacity="0.9"/>
+  <text x="100" y="96" text-anchor="middle" class="stage-num">S1</text>
+  <text x="100" y="112" text-anchor="middle" class="box-label">CLEAR DATABANKS</text>
+  <text x="100" y="142" text-anchor="middle" class="subtitle">Purge</text>
+
+  <!-- Arrow S1 -> S2 -->
+  <line x1="170" y1="101" x2="196" y2="101" stroke="#FFC107" stroke-width="2" marker-end="url(#arrowGold)"/>
+
+  <!-- S2 BUILD STRATEGIES -->
+  <rect x="200" y="75" width="140" height="52" rx="8" fill="#2196F3" opacity="0.9"/>
+  <text x="270" y="96" text-anchor="middle" class="stage-num">S2</text>
+  <text x="270" y="112" text-anchor="middle" class="box-label">BUILD STRATEGIES</text>
+  <text x="270" y="142" text-anchor="middle" class="subtitle">GA x5 Isl</text>
+
+  <!-- Arrow S2 -> S3 -->
+  <line x1="340" y1="101" x2="366" y2="101" stroke="#FFC107" stroke-width="2" marker-end="url(#arrowGold)"/>
+
+  <!-- S3 MONTE CARLO -->
+  <rect x="370" y="75" width="140" height="52" rx="8" fill="#00BCD4" opacity="0.9"/>
+  <text x="440" y="96" text-anchor="middle" class="stage-num">S3</text>
+  <text x="440" y="112" text-anchor="middle" class="box-label">MONTE CARLO</text>
+  <text x="440" y="142" text-anchor="middle" class="subtitle">1K Sims</text>
+
+  <!-- Arrow S3 -> S4 -->
+  <line x1="510" y1="101" x2="536" y2="101" stroke="#FFC107" stroke-width="2" marker-end="url(#arrowGold)"/>
+
+  <!-- S4 WALK-FWD MATRIX -->
+  <rect x="540" y="75" width="140" height="52" rx="8" fill="#1a8a7d" opacity="0.9"/>
+  <text x="610" y="96" text-anchor="middle" class="stage-num">S4</text>
+  <text x="610" y="112" text-anchor="middle" class="box-label">WALK-FWD MATRIX</text>
+  <text x="610" y="142" text-anchor="middle" class="subtitle">10K Tests</text>
+
+  <!-- Arrow S4 -> S5 -->
+  <line x1="680" y1="101" x2="706" y2="101" stroke="#FFC107" stroke-width="2" marker-end="url(#arrowGold)"/>
+
+  <!-- S5 LOOP CONTROL -->
+  <rect x="710" y="75" width="140" height="52" rx="8" fill="#1a8a7d" opacity="0.9"/>
+  <text x="780" y="96" text-anchor="middle" class="stage-num">S5</text>
+  <text x="780" y="112" text-anchor="middle" class="box-label">LOOP CONTROL</text>
+  <text x="780" y="142" text-anchor="middle" class="subtitle">x10 Cycles</text>
+
+  <!-- Curved arrow from S5 down to S6 -->
+  <path d="M 780 127 L 780 175 Q 780 195 760 195 L 200 195 Q 180 195 180 215 L 180 220"
+        fill="none" stroke="#FFC107" stroke-width="2" marker-end="url(#arrowGold)"/>
+
+  <!-- === ROW 2: S6 through S9 === -->
+  <!-- S6 PARAM PERMUT. -->
+  <rect x="30" y="225" width="140" height="52" rx="8" fill="#4CAF50" opacity="0.9"/>
+  <text x="100" y="246" text-anchor="middle" class="stage-num">S6</text>
+  <text x="100" y="262" text-anchor="middle" class="box-label">PARAM PERMUT.</text>
+  <text x="100" y="292" text-anchor="middle" class="subtitle">3K Tests</text>
+
+  <!-- Arrow S6 -> S7 -->
+  <line x1="170" y1="251" x2="196" y2="251" stroke="#FFC107" stroke-width="2" marker-end="url(#arrowGold)"/>
+
+  <!-- S7 MULTI MARKET -->
+  <rect x="200" y="225" width="140" height="52" rx="8" fill="#388E3C" opacity="0.9"/>
+  <text x="270" y="246" text-anchor="middle" class="stage-num">S7</text>
+  <text x="270" y="262" text-anchor="middle" class="box-label">MULTI MARKET</text>
+  <text x="270" y="292" text-anchor="middle" class="subtitle">6 Pairs</text>
+
+  <!-- Arrow S7 -> S8 -->
+  <line x1="340" y1="251" x2="366" y2="251" stroke="#FFC107" stroke-width="2" marker-end="url(#arrowGold)"/>
+
+  <!-- S8 SLIPPAGE TEST -->
+  <rect x="370" y="225" width="140" height="52" rx="8" fill="#FF9800" opacity="0.9"/>
+  <text x="440" y="246" text-anchor="middle" class="stage-num">S8</text>
+  <text x="440" y="262" text-anchor="middle" class="box-label">SLIPPAGE TEST</text>
+  <text x="440" y="292" text-anchor="middle" class="subtitle">0.3 pips</text>
+
+  <!-- Arrow S8 -> S9 -->
+  <line x1="510" y1="251" x2="536" y2="251" stroke="#FFC107" stroke-width="2" marker-end="url(#arrowGold)"/>
+
+  <!-- S9 FINAL VERDICT -->
+  <rect x="540" y="225" width="140" height="52" rx="8" fill="#F44336" opacity="0.9"/>
+  <text x="610" y="246" text-anchor="middle" class="stage-num">S9</text>
+  <text x="610" y="262" text-anchor="middle" class="box-label">FINAL VERDICT</text>
+  <text x="610" y="292" text-anchor="middle" class="subtitle">Champ.</text>
+
+  <!-- Trophy icon next to final verdict -->
+  <text x="700" y="260" font-size="28" fill="#FFC107" opacity="0.7">&#9733;</text>
+
+  <!-- Decorative bottom border -->
+  <line x1="30" y1="325" x2="870" y2="325" stroke="#FFC107" stroke-width="0.5" opacity="0.3"/>
+</svg>

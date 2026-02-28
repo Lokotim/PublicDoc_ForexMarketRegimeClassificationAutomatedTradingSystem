@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="ebBgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1923"/>
+      <stop offset="100%" stop-color="#0a1219"/>
+    </linearGradient>
+    <filter id="ebGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="ebArrowR" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#ff9100"/>
+    </marker>
+    <marker id="ebArrowL" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+      <path d="M8,0 L0,3 L8,6" fill="#00e5ff"/>
+    </marker>
+    <marker id="ebArrowGray" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#94A3B8"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="400" fill="url(#ebBgGrad)"/>
+
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" font-family="monospace" font-size="18" font-weight="bold" fill="#FFD54F" filter="url(#ebGlow)">EXECUTION BRIDGE ARCHITECTURE</text>
+  <line x1="200" y1="42" x2="700" y2="42" stroke="#FFD54F" stroke-opacity="0.3" stroke-width="1"/>
+
+  <!-- PRIMARY PATH (top) -->
+  <text x="450" y="68" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#ff9100">PRIMARY PATH: GlobalVariable.dll (Shared Memory)</text>
+
+  <!-- Python Pipeline -->
+  <rect x="25" y="82" width="155" height="75" rx="10" fill="#4ADE80" fill-opacity="0.08" stroke="#4ADE80" stroke-width="1.2"/>
+  <text x="102" y="105" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#4ADE80">Python</text>
+  <text x="102" y="120" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#4ADE80">Pipeline</text>
+  <text x="102" y="140" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Signal + Sizing</text>
+  <text x="102" y="150" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Meta-Resolver out</text>
+
+  <!-- GlobalVariable.dll -->
+  <rect x="225" y="82" width="165" height="75" rx="10" fill="#FFD54F" fill-opacity="0.08" stroke="#FFD54F" stroke-width="1.2"/>
+  <text x="307" y="102" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#FFD54F">GlobalVariable</text>
+  <text x="307" y="116" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#FFD54F">.dll</text>
+  <text x="307" y="138" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Shared memory</text>
+  <text x="307" y="150" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">bridge layer</text>
+
+  <!-- MultiCharts -->
+  <rect x="435" y="82" width="165" height="75" rx="10" fill="#00e5ff" fill-opacity="0.08" stroke="#00e5ff" stroke-width="1.2"/>
+  <text x="517" y="105" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#00e5ff">MultiCharts</text>
+  <text x="517" y="125" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">32 strategies</text>
+  <text x="517" y="140" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">PowerLanguage</text>
+  <text x="517" y="150" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">order management</text>
+
+  <!-- TWS API -->
+  <rect x="645" y="82" width="110" height="75" rx="10" fill="#ff9100" fill-opacity="0.08" stroke="#ff9100" stroke-width="1.2"/>
+  <text x="700" y="105" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#ff9100">TWS API</text>
+  <text x="700" y="125" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">Order routing</text>
+  <text x="700" y="140" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">position query</text>
+
+  <!-- IBKR -->
+  <rect x="798" y="72" width="90" height="95" rx="10" fill="#ff9100" fill-opacity="0.12" stroke="#ff9100" stroke-width="1.5"/>
+  <text x="843" y="95" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#ff9100">IBKR</text>
+  <rect x="808" y="105" width="70" height="20" rx="4" fill="#0f1923" stroke="#ff9100" stroke-width="0.5"/>
+  <text x="843" y="119" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">Port 7496</text>
+  <rect x="808" y="132" width="70" height="20" rx="4" fill="#0f1923" stroke="#ff9100" stroke-width="0.5"/>
+  <text x="843" y="146" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">Port 7497</text>
+  <text x="843" y="162" text-anchor="middle" font-family="monospace" font-size="6" fill="#94A3B8">2 TWS instances</text>
+
+  <!-- Forward arrows (auth/qty going right) -->
+  <line x1="182" y1="108" x2="223" y2="108" stroke="#ff9100" stroke-width="2" marker-end="url(#ebArrowR)"/>
+  <line x1="392" y1="108" x2="433" y2="108" stroke="#ff9100" stroke-width="2" marker-end="url(#ebArrowR)"/>
+  <line x1="602" y1="108" x2="643" y2="108" stroke="#ff9100" stroke-width="2" marker-end="url(#ebArrowR)"/>
+  <line x1="757" y1="108" x2="796" y2="108" stroke="#ff9100" stroke-width="2" marker-end="url(#ebArrowR)"/>
+
+  <!-- Labels on forward arrows -->
+  <text x="202" y="100" text-anchor="middle" font-family="monospace" font-size="6" fill="#ff9100">auth+qty</text>
+  <text x="413" y="100" text-anchor="middle" font-family="monospace" font-size="6" fill="#ff9100">signals</text>
+  <text x="623" y="100" text-anchor="middle" font-family="monospace" font-size="6" fill="#ff9100">orders</text>
+  <text x="777" y="100" text-anchor="middle" font-family="monospace" font-size="6" fill="#ff9100">execute</text>
+
+  <!-- Backward arrows (heartbeats/positions going left) -->
+  <line x1="223" y1="140" x2="182" y2="140" stroke="#00e5ff" stroke-width="1.5" marker-end="url(#ebArrowL)" stroke-dasharray="4,2"/>
+  <line x1="433" y1="140" x2="392" y2="140" stroke="#00e5ff" stroke-width="1.5" marker-end="url(#ebArrowL)" stroke-dasharray="4,2"/>
+  <line x1="643" y1="140" x2="602" y2="140" stroke="#00e5ff" stroke-width="1.5" marker-end="url(#ebArrowL)" stroke-dasharray="4,2"/>
+  <line x1="796" y1="140" x2="757" y2="140" stroke="#00e5ff" stroke-width="1.5" marker-end="url(#ebArrowL)" stroke-dasharray="4,2"/>
+
+  <!-- Labels on backward arrows -->
+  <text x="202" y="155" text-anchor="middle" font-family="monospace" font-size="6" fill="#00e5ff">heartbeat</text>
+  <text x="413" y="155" text-anchor="middle" font-family="monospace" font-size="6" fill="#00e5ff">status</text>
+  <text x="623" y="155" text-anchor="middle" font-family="monospace" font-size="6" fill="#00e5ff">fills</text>
+  <text x="777" y="155" text-anchor="middle" font-family="monospace" font-size="6" fill="#00e5ff">positions</text>
+
+  <!-- SECONDARY PATH: CSV -->
+  <text x="450" y="200" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#4ADE80">SECONDARY PATH: CSV File Exchange</text>
+
+  <rect x="25" y="215" width="155" height="60" rx="10" fill="#4ADE80" fill-opacity="0.06" stroke="#4ADE80" stroke-width="0.8"/>
+  <text x="102" y="240" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#4ADE80">Python Pipeline</text>
+  <text x="102" y="255" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">CSV writer</text>
+
+  <!-- CSV Files -->
+  <rect x="230" y="210" width="160" height="70" rx="8" fill="#FFD54F" fill-opacity="0.06" stroke="#FFD54F" stroke-width="0.8"/>
+  <text x="310" y="232" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#FFD54F">CSV Files</text>
+  <g font-family="monospace" font-size="7" fill="#94A3B8">
+    <text x="310" y="247">signals.csv</text>
+    <text x="310" y="259">positions.csv</text>
+    <text x="310" y="271">heartbeat.csv</text>
+  </g>
+
+  <!-- MC reads -->
+  <rect x="440" y="215" width="160" height="60" rx="10" fill="#00e5ff" fill-opacity="0.06" stroke="#00e5ff" stroke-width="0.8"/>
+  <text x="520" y="238" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#00e5ff">MultiCharts</text>
+  <text x="520" y="255" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">CSV reader (backup)</text>
+
+  <!-- CSV arrows -->
+  <line x1="182" y1="245" x2="228" y2="245" stroke="#FFD54F" stroke-width="1.5" marker-end="url(#ebArrowGray)" stroke-dasharray="4,2"/>
+  <text x="205" y="238" text-anchor="middle" font-family="monospace" font-size="6" fill="#FFD54F">write</text>
+
+  <line x1="392" y1="245" x2="438" y2="245" stroke="#FFD54F" stroke-width="1.5" marker-end="url(#ebArrowGray)" stroke-dasharray="4,2"/>
+  <text x="415" y="238" text-anchor="middle" font-family="monospace" font-size="6" fill="#FFD54F">read</text>
+
+  <!-- Data flow summary -->
+  <rect x="50" y="300" width="800" height="90" rx="10" fill="#0f1923" stroke="#94A3B8" stroke-width="0.8" stroke-opacity="0.4"/>
+  <text x="450" y="322" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#E2E8F0">BIDIRECTIONAL DATA FLOW SUMMARY</text>
+
+  <!-- Right-going data -->
+  <rect x="70" y="335" width="350" height="45" rx="6" fill="#ff9100" fill-opacity="0.06" stroke="#ff9100" stroke-width="0.6"/>
+  <text x="245" y="352" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#ff9100">→ OUTBOUND (to broker)</text>
+  <g font-family="monospace" font-size="7" fill="#94A3B8">
+    <text x="100" y="370">auth_direction</text>
+    <text x="200" y="370">qty_base</text>
+    <text x="300" y="370">signal_conf</text>
+    <text x="375" y="370">pair_id</text>
+  </g>
+
+  <!-- Left-going data -->
+  <rect x="480" y="335" width="350" height="45" rx="6" fill="#00e5ff" fill-opacity="0.06" stroke="#00e5ff" stroke-width="0.6"/>
+  <text x="655" y="352" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#00e5ff">← INBOUND (from broker)</text>
+  <g font-family="monospace" font-size="7" fill="#94A3B8">
+    <text x="510" y="370">heartbeat_ts</text>
+    <text x="610" y="370">position_qty</text>
+    <text x="720" y="370">fill_status</text>
+  </g>
+</svg>

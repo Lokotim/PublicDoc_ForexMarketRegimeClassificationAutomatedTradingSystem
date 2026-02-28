@@ -1,0 +1,216 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 680" font-family="'Segoe UI', system-ui, sans-serif">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#071225"/>
+    </linearGradient>
+    <linearGradient id="hubGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a3356"/>
+      <stop offset="100%" stop-color="#112240"/>
+    </linearGradient>
+    <filter id="glw2">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="sh2">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arr2" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 6 2.5, 0 5" fill="#8892b0" opacity="0.6"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="850" height="680" fill="url(#bg2)" rx="8"/>
+
+  <!-- Title -->
+  <text x="425" y="38" text-anchor="middle" fill="#ccd6f6" font-size="18" font-weight="700">The Oracle Network: 15 Data Sources</text>
+  <line x1="260" y1="48" x2="590" y2="48" stroke="#F7B32B" stroke-width="2" opacity="0.5"/>
+
+  <!-- Central Hub -->
+  <circle cx="425" cy="360" r="60" fill="url(#hubGrad)" stroke="#64ffda" stroke-width="2.5" filter="url(#sh2)"/>
+  <circle cx="425" cy="360" r="55" fill="none" stroke="#64ffda" stroke-width="0.5" opacity="0.3"/>
+  <text x="425" y="354" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="700">Pipeline</text>
+  <text x="425" y="372" text-anchor="middle" fill="#8892b0" font-size="10">Central Hub</text>
+
+  <!-- ==================== GROUP 1: Retail Sentiment (top-left) ==================== -->
+  <text x="110" y="82" text-anchor="middle" fill="#F7B32B" font-size="12" font-weight="700">Retail Sentiment</text>
+  <text x="110" y="96" text-anchor="middle" fill="#8892b0" font-size="10">(4 sources)</text>
+
+  <!-- FXSSI -->
+  <rect x="15" y="108" width="190" height="48" rx="5" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#sh2)"/>
+  <circle cx="34" cy="132" r="8" fill="#1a3356" stroke="#F7B32B" stroke-width="1"/>
+  <text x="34" y="136" text-anchor="middle" fill="#F7B32B" font-size="8" font-weight="700">1</text>
+  <text x="50" y="127" fill="#ccd6f6" font-size="11" font-weight="600">FXSSI</text>
+  <text x="50" y="142" fill="#8892b0" font-size="9">Playwright | 8 pairs</text>
+  <rect x="155" y="121" width="42" height="16" rx="8" fill="#233554"/>
+  <text x="176" y="132" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="600">HTTP</text>
+  <line x1="205" y1="132" x2="370" y2="320" stroke="#8892b0" stroke-width="0.8" opacity="0.3" marker-end="url(#arr2)"/>
+
+  <!-- IG.com -->
+  <rect x="15" y="164" width="190" height="48" rx="5" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#sh2)"/>
+  <circle cx="34" cy="188" r="8" fill="#1a3356" stroke="#F7B32B" stroke-width="1"/>
+  <text x="34" y="192" text-anchor="middle" fill="#F7B32B" font-size="8" font-weight="700">2</text>
+  <text x="50" y="183" fill="#ccd6f6" font-size="11" font-weight="600">IG.com</text>
+  <text x="50" y="198" fill="#8892b0" font-size="9">Playwright | 8 pairs</text>
+  <rect x="140" y="177" width="57" height="16" rx="8" fill="#233554"/>
+  <text x="168" y="188" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="600">Playwright</text>
+  <line x1="205" y1="188" x2="375" y2="330" stroke="#8892b0" stroke-width="0.8" opacity="0.3" marker-end="url(#arr2)"/>
+
+  <!-- Dukascopy -->
+  <rect x="15" y="220" width="190" height="48" rx="5" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#sh2)"/>
+  <circle cx="34" cy="244" r="8" fill="#1a3356" stroke="#F7B32B" stroke-width="1"/>
+  <text x="34" y="248" text-anchor="middle" fill="#F7B32B" font-size="8" font-weight="700">3</text>
+  <text x="50" y="239" fill="#ccd6f6" font-size="11" font-weight="600">Dukascopy</text>
+  <text x="50" y="254" fill="#8892b0" font-size="9">Playwright | 8 pairs</text>
+  <rect x="140" y="233" width="57" height="16" rx="8" fill="#233554"/>
+  <text x="168" y="244" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="600">Playwright</text>
+  <line x1="205" y1="244" x2="378" y2="340" stroke="#8892b0" stroke-width="0.8" opacity="0.3" marker-end="url(#arr2)"/>
+
+  <!-- MyFxBook -->
+  <rect x="15" y="276" width="190" height="48" rx="5" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#sh2)"/>
+  <circle cx="34" cy="300" r="8" fill="#1a3356" stroke="#F7B32B" stroke-width="1"/>
+  <text x="34" y="304" text-anchor="middle" fill="#F7B32B" font-size="8" font-weight="700">4</text>
+  <text x="50" y="295" fill="#ccd6f6" font-size="11" font-weight="600">MyFxBook</text>
+  <text x="50" y="310" fill="#8892b0" font-size="9">Playwright | 8 pairs</text>
+  <rect x="140" y="289" width="57" height="16" rx="8" fill="#233554"/>
+  <text x="168" y="300" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="600">Playwright</text>
+  <line x1="205" y1="300" x2="380" y2="348" stroke="#8892b0" stroke-width="0.8" opacity="0.3" marker-end="url(#arr2)"/>
+
+  <!-- ==================== GROUP 2: Institutional (top-right) ==================== -->
+  <text x="740" y="82" text-anchor="middle" fill="#4ADE80" font-size="12" font-weight="700">Institutional</text>
+  <text x="740" y="96" text-anchor="middle" fill="#8892b0" font-size="10">(2 sources)</text>
+
+  <!-- CFTC COT -->
+  <rect x="645" y="108" width="190" height="48" rx="5" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#sh2)"/>
+  <circle cx="664" cy="132" r="8" fill="#1a3356" stroke="#4ADE80" stroke-width="1"/>
+  <text x="664" y="136" text-anchor="middle" fill="#4ADE80" font-size="8" font-weight="700">5</text>
+  <text x="680" y="127" fill="#ccd6f6" font-size="11" font-weight="600">CFTC COT</text>
+  <text x="680" y="142" fill="#8892b0" font-size="9">HTTP | Weekly</text>
+  <rect x="785" y="121" width="42" height="16" rx="8" fill="#233554"/>
+  <text x="806" y="132" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="600">HTTP</text>
+  <line x1="645" y1="132" x2="480" y2="320" stroke="#8892b0" stroke-width="0.8" opacity="0.3" marker-end="url(#arr2)"/>
+
+  <!-- Finviz -->
+  <rect x="645" y="164" width="190" height="48" rx="5" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#sh2)"/>
+  <circle cx="664" cy="188" r="8" fill="#1a3356" stroke="#4ADE80" stroke-width="1"/>
+  <text x="664" y="192" text-anchor="middle" fill="#4ADE80" font-size="8" font-weight="700">6</text>
+  <text x="680" y="183" fill="#ccd6f6" font-size="11" font-weight="600">Finviz</text>
+  <text x="680" y="198" fill="#8892b0" font-size="9">Playwright | Futures</text>
+  <rect x="775" y="177" width="57" height="16" rx="8" fill="#233554"/>
+  <text x="803" y="188" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="600">Playwright</text>
+  <line x1="645" y1="188" x2="476" y2="330" stroke="#8892b0" stroke-width="0.8" opacity="0.3" marker-end="url(#arr2)"/>
+
+  <!-- ==================== GROUP 3: Calendar & Volatility (right) ==================== -->
+  <text x="740" y="240" text-anchor="middle" fill="#64ffda" font-size="12" font-weight="700">Calendar / Volatility</text>
+  <text x="740" y="254" text-anchor="middle" fill="#8892b0" font-size="10">(2 sources)</text>
+
+  <!-- ForexFactory -->
+  <rect x="645" y="264" width="190" height="48" rx="5" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#sh2)"/>
+  <circle cx="664" cy="288" r="8" fill="#1a3356" stroke="#64ffda" stroke-width="1"/>
+  <text x="664" y="292" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="700">7</text>
+  <text x="680" y="283" fill="#ccd6f6" font-size="11" font-weight="600">ForexFactory</text>
+  <text x="680" y="298" fill="#8892b0" font-size="9">Playwright | Events</text>
+  <rect x="775" y="277" width="57" height="16" rx="8" fill="#233554"/>
+  <text x="803" y="288" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="600">Playwright</text>
+  <line x1="645" y1="288" x2="480" y2="345" stroke="#8892b0" stroke-width="0.8" opacity="0.3" marker-end="url(#arr2)"/>
+
+  <!-- CME FX Options -->
+  <rect x="645" y="320" width="190" height="48" rx="5" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#sh2)"/>
+  <circle cx="664" cy="344" r="8" fill="#1a3356" stroke="#64ffda" stroke-width="1"/>
+  <text x="664" y="348" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="700">8</text>
+  <text x="680" y="339" fill="#ccd6f6" font-size="11" font-weight="600">CME FX Options</text>
+  <text x="680" y="354" fill="#8892b0" font-size="9">TWS API | IV Data</text>
+  <rect x="775" y="333" width="57" height="16" rx="8" fill="#233554"/>
+  <text x="803" y="344" text-anchor="middle" fill="#F7B32B" font-size="8" font-weight="600">TWS API</text>
+  <line x1="645" y1="344" x2="482" y2="358" stroke="#8892b0" stroke-width="0.8" opacity="0.3" marker-end="url(#arr2)"/>
+
+  <!-- ==================== GROUP 4: Markets (bottom-right) ==================== -->
+  <text x="740" y="400" text-anchor="middle" fill="#ff6b6b" font-size="12" font-weight="700">Prediction Markets</text>
+  <text x="740" y="414" text-anchor="middle" fill="#8892b0" font-size="10">(2 sources)</text>
+
+  <!-- Kalshi -->
+  <rect x="645" y="424" width="190" height="48" rx="5" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#sh2)"/>
+  <circle cx="664" cy="448" r="8" fill="#1a3356" stroke="#ff6b6b" stroke-width="1"/>
+  <text x="664" y="452" text-anchor="middle" fill="#ff6b6b" font-size="8" font-weight="700">9</text>
+  <text x="680" y="443" fill="#ccd6f6" font-size="11" font-weight="600">Kalshi</text>
+  <text x="680" y="458" fill="#8892b0" font-size="9">API | Events</text>
+  <rect x="785" y="437" width="42" height="16" rx="8" fill="#233554"/>
+  <text x="806" y="448" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="600">API</text>
+  <line x1="645" y1="448" x2="478" y2="380" stroke="#8892b0" stroke-width="0.8" opacity="0.3" marker-end="url(#arr2)"/>
+
+  <!-- Polymarket -->
+  <rect x="645" y="480" width="190" height="48" rx="5" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#sh2)"/>
+  <circle cx="664" cy="504" r="8" fill="#1a3356" stroke="#ff6b6b" stroke-width="1"/>
+  <text x="664" y="508" text-anchor="middle" fill="#ff6b6b" font-size="8" font-weight="700">10</text>
+  <text x="680" y="499" fill="#ccd6f6" font-size="11" font-weight="600">Polymarket</text>
+  <text x="680" y="514" fill="#8892b0" font-size="9">API | Contracts</text>
+  <rect x="785" y="493" width="42" height="16" rx="8" fill="#233554"/>
+  <text x="806" y="504" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="600">API</text>
+  <line x1="645" y1="504" x2="472" y2="390" stroke="#8892b0" stroke-width="0.8" opacity="0.3" marker-end="url(#arr2)"/>
+
+  <!-- ==================== GROUP 5: News (bottom-left) ==================== -->
+  <text x="110" y="400" text-anchor="middle" fill="#ccd6f6" font-size="12" font-weight="700">News &amp; NLP</text>
+  <text x="110" y="414" text-anchor="middle" fill="#8892b0" font-size="10">(3 sources)</text>
+
+  <!-- GDELT -->
+  <rect x="15" y="424" width="190" height="48" rx="5" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#sh2)"/>
+  <circle cx="34" cy="448" r="8" fill="#1a3356" stroke="#ccd6f6" stroke-width="1"/>
+  <text x="34" y="452" text-anchor="middle" fill="#ccd6f6" font-size="8" font-weight="700">11</text>
+  <text x="50" y="443" fill="#ccd6f6" font-size="11" font-weight="600">GDELT</text>
+  <text x="50" y="458" fill="#8892b0" font-size="9">API | Geopolitics</text>
+  <rect x="155" y="437" width="42" height="16" rx="8" fill="#233554"/>
+  <text x="176" y="448" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="600">API</text>
+  <line x1="205" y1="448" x2="378" y2="380" stroke="#8892b0" stroke-width="0.8" opacity="0.3" marker-end="url(#arr2)"/>
+
+  <!-- GNews -->
+  <rect x="15" y="480" width="190" height="48" rx="5" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#sh2)"/>
+  <circle cx="34" cy="504" r="8" fill="#1a3356" stroke="#ccd6f6" stroke-width="1"/>
+  <text x="34" y="508" text-anchor="middle" fill="#ccd6f6" font-size="8" font-weight="700">12</text>
+  <text x="50" y="499" fill="#ccd6f6" font-size="11" font-weight="600">GNews</text>
+  <text x="50" y="514" fill="#8892b0" font-size="9">API | Headlines</text>
+  <rect x="155" y="493" width="42" height="16" rx="8" fill="#233554"/>
+  <text x="176" y="504" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="600">API</text>
+  <line x1="205" y1="504" x2="375" y2="388" stroke="#8892b0" stroke-width="0.8" opacity="0.3" marker-end="url(#arr2)"/>
+
+  <!-- Finnhub -->
+  <rect x="15" y="536" width="190" height="48" rx="5" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#sh2)"/>
+  <circle cx="34" cy="560" r="8" fill="#1a3356" stroke="#ccd6f6" stroke-width="1"/>
+  <text x="34" y="564" text-anchor="middle" fill="#ccd6f6" font-size="8" font-weight="700">13</text>
+  <text x="50" y="555" fill="#ccd6f6" font-size="11" font-weight="600">Finnhub</text>
+  <text x="50" y="570" fill="#8892b0" font-size="9">API | Sentiment</text>
+  <rect x="155" y="549" width="42" height="16" rx="8" fill="#233554"/>
+  <text x="176" y="560" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="600">API</text>
+  <line x1="205" y1="560" x2="380" y2="395" stroke="#8892b0" stroke-width="0.8" opacity="0.3" marker-end="url(#arr2)"/>
+
+  <!-- ==================== GROUP 6: Technical (bottom-center) ==================== -->
+  <text x="425" y="530" text-anchor="middle" fill="#F7B32B" font-size="12" font-weight="700">Technical Data</text>
+  <text x="425" y="544" text-anchor="middle" fill="#8892b0" font-size="10">(2 sources)</text>
+
+  <!-- IBKR OHLC -->
+  <rect x="282" y="556" width="140" height="48" rx="5" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#sh2)"/>
+  <circle cx="301" cy="580" r="8" fill="#1a3356" stroke="#F7B32B" stroke-width="1"/>
+  <text x="301" y="584" text-anchor="middle" fill="#F7B32B" font-size="8" font-weight="700">14</text>
+  <text x="317" y="575" fill="#ccd6f6" font-size="11" font-weight="600">IBKR OHLC</text>
+  <text x="317" y="590" fill="#8892b0" font-size="9">TWS API | 8 pairs</text>
+  <line x1="352" y1="556" x2="410" y2="415" stroke="#8892b0" stroke-width="0.8" opacity="0.3" marker-end="url(#arr2)"/>
+
+  <!-- MarketBulls -->
+  <rect x="428" y="556" width="140" height="48" rx="5" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#sh2)"/>
+  <circle cx="447" cy="580" r="8" fill="#1a3356" stroke="#F7B32B" stroke-width="1"/>
+  <text x="447" y="584" text-anchor="middle" fill="#F7B32B" font-size="8" font-weight="700">15</text>
+  <text x="463" y="575" fill="#ccd6f6" font-size="11" font-weight="600">MarketBulls</text>
+  <text x="463" y="590" fill="#8892b0" font-size="9">Playwright | TA</text>
+  <line x1="498" y1="556" x2="440" y2="415" stroke="#8892b0" stroke-width="0.8" opacity="0.3" marker-end="url(#arr2)"/>
+
+  <!-- Method legend -->
+  <rect x="240" y="638" width="370" height="30" rx="5" fill="#112240" stroke="#233554" stroke-width="1"/>
+  <circle cx="268" cy="653" r="4" fill="#64ffda"/>
+  <text x="278" y="657" fill="#8892b0" font-size="9">HTTP/API</text>
+  <circle cx="338" cy="653" r="4" fill="#F7B32B"/>
+  <text x="348" y="657" fill="#8892b0" font-size="9">TWS API</text>
+  <circle cx="410" cy="653" r="4" fill="#ccd6f6"/>
+  <text x="420" y="657" fill="#8892b0" font-size="9">Playwright</text>
+  <text x="500" y="657" fill="#8892b0" font-size="9">|</text>
+  <text x="515" y="657" fill="#64ffda" font-size="9" font-weight="600">15 sources total</text>
+</svg>

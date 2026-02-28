@@ -1,0 +1,280 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <!-- Glow filters -->
+    <filter id="glowGold" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-color="#FFD54F" flood-opacity="0.3"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#00e5ff" flood-opacity="0.35"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-color="#4ADE80" flood-opacity="0.3"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowRed" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-color="#ef5350" flood-opacity="0.3"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowOrange" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#ff9100" flood-opacity="0.35"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1923"/>
+      <stop offset="100%" stop-color="#0a1219"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4ADE80" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#4ADE80" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ef5350" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ef5350" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#00e5ff" stop-opacity="0.06"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff9100" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ff9100" stop-opacity="0.06"/>
+    </linearGradient>
+    <linearGradient id="featureGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFD54F" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#FFD54F" stop-opacity="0.05"/>
+    </linearGradient>
+    <!-- Arrow marker -->
+    <marker id="arrowGold" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#FFD54F" opacity="0.5"/>
+    </marker>
+    <marker id="arrowCyan" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#00e5ff" opacity="0.6"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#ff9100" opacity="0.7"/>
+    </marker>
+    <marker id="arrowHighlight" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7" fill="#00e5ff" opacity="0.9"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" fill="url(#bgGrad)"/>
+  <!-- Subtle grid -->
+  <g opacity="0.03" stroke="#E2E8F0">
+    <line x1="0" y1="100" x2="900" y2="100"/>
+    <line x1="0" y1="200" x2="900" y2="200"/>
+    <line x1="0" y1="300" x2="900" y2="300"/>
+    <line x1="0" y1="400" x2="900" y2="400"/>
+    <line x1="150" y1="0" x2="150" y2="500"/>
+    <line x1="300" y1="0" x2="300" y2="500"/>
+    <line x1="450" y1="0" x2="450" y2="500"/>
+    <line x1="600" y1="0" x2="600" y2="500"/>
+    <line x1="750" y1="0" x2="750" y2="500"/>
+  </g>
+
+  <!-- ==================== TITLE ==================== -->
+  <text x="450" y="28" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFD54F" filter="url(#glowGold)">5-Model Mixture of Experts (MoE) Architecture</text>
+
+  <!-- ==================== INPUT LAYER ==================== -->
+  <!-- Feature box -->
+  <rect x="115" y="42" width="670" height="58" rx="6" fill="url(#featureGrad)" stroke="#FFD54F" stroke-width="1.2" stroke-opacity="0.5"/>
+  <text x="450" y="60" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#FFD54F">134 Features per Pair</text>
+
+  <!-- Feature category pills -->
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="500">
+    <!-- Sentiment -->
+    <rect x="135" y="68" width="72" height="20" rx="10" fill="#FFD54F" fill-opacity="0.1" stroke="#FFD54F" stroke-width="0.7" stroke-opacity="0.4"/>
+    <text x="171" y="82" text-anchor="middle" fill="#FFD54F" opacity="0.9">Sentiment</text>
+    <!-- Fundamentals -->
+    <rect x="217" y="68" width="82" height="20" rx="10" fill="#FFD54F" fill-opacity="0.1" stroke="#FFD54F" stroke-width="0.7" stroke-opacity="0.4"/>
+    <text x="258" y="82" text-anchor="middle" fill="#FFD54F" opacity="0.9">Fundamentals</text>
+    <!-- Theories -->
+    <rect x="309" y="68" width="66" height="20" rx="10" fill="#FFD54F" fill-opacity="0.1" stroke="#FFD54F" stroke-width="0.7" stroke-opacity="0.4"/>
+    <text x="342" y="82" text-anchor="middle" fill="#FFD54F" opacity="0.9">Theories</text>
+    <!-- Technical -->
+    <rect x="385" y="68" width="68" height="20" rx="10" fill="#FFD54F" fill-opacity="0.1" stroke="#FFD54F" stroke-width="0.7" stroke-opacity="0.4"/>
+    <text x="419" y="82" text-anchor="middle" fill="#FFD54F" opacity="0.9">Technical</text>
+    <!-- Regime -->
+    <rect x="463" y="68" width="60" height="20" rx="10" fill="#FFD54F" fill-opacity="0.1" stroke="#FFD54F" stroke-width="0.7" stroke-opacity="0.4"/>
+    <text x="493" y="82" text-anchor="middle" fill="#FFD54F" opacity="0.9">Regime</text>
+    <!-- News -->
+    <rect x="533" y="68" width="50" height="20" rx="10" fill="#FFD54F" fill-opacity="0.1" stroke="#FFD54F" stroke-width="0.7" stroke-opacity="0.4"/>
+    <text x="558" y="82" text-anchor="middle" fill="#FFD54F" opacity="0.9">News</text>
+    <!-- Market State -->
+    <rect x="593" y="68" width="78" height="20" rx="10" fill="#00e5ff" fill-opacity="0.1" stroke="#00e5ff" stroke-width="0.7" stroke-opacity="0.4"/>
+    <text x="632" y="82" text-anchor="middle" fill="#00e5ff" opacity="0.9">Market State</text>
+  </g>
+
+  <!-- ==================== ARROWS: Features to Specialists ==================== -->
+  <g stroke="#FFD54F" stroke-opacity="0.25" stroke-width="1" fill="none" marker-end="url(#arrowGold)">
+    <path d="M225,100 L185,155"/>
+    <path d="M350,100 L350,155"/>
+    <path d="M450,100 L520,155"/>
+    <path d="M550,100 L670,155"/>
+  </g>
+  <!-- Market state arrow to meta-classifier (bypassing specialists) -->
+  <path d="M632,100 L632,120 Q632,130 660,130 L810,130 Q830,130 830,150 L830,310" stroke="#00e5ff" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4,3" fill="none" marker-end="url(#arrowCyan)"/>
+  <text x="835" y="220" font-family="Segoe UI, Arial, sans-serif" font-size="7" fill="#00e5ff" opacity="0.5" transform="rotate(90,835,220)">market state</text>
+
+  <!-- ==================== 4 SPECIALIST MODELS ==================== -->
+  <!-- Specialist 1: L_TF (Long Trend Following) - Green -->
+  <g>
+    <rect x="100" y="155" width="160" height="105" rx="6" fill="url(#greenGrad)" stroke="#4ADE80" stroke-width="1.2" stroke-opacity="0.6" filter="url(#glowGreen)"/>
+    <!-- Header bar -->
+    <rect x="100" y="155" width="160" height="24" rx="6" fill="#4ADE80" fill-opacity="0.15"/>
+    <rect x="100" y="173" width="160" height="6" fill="url(#greenGrad)"/>
+    <circle cx="115" cy="167" r="4" fill="#4ADE80" opacity="0.7"/>
+    <text x="180" y="171" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="#4ADE80">L_TF</text>
+    <!-- Body -->
+    <text x="180" y="196" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#E2E8F0" opacity="0.8">Long Trend Following</text>
+    <text x="180" y="212" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#E2E8F0" opacity="0.5">XGBoost Classifier</text>
+    <!-- Probability output -->
+    <rect x="138" y="226" width="84" height="22" rx="4" fill="#4ADE80" fill-opacity="0.08" stroke="#4ADE80" stroke-width="0.6" stroke-opacity="0.3"/>
+    <text x="180" y="240" text-anchor="middle" font-family="Consolas, monospace" font-size="10" font-weight="600" fill="#4ADE80">P = 0.73</text>
+  </g>
+
+  <!-- Specialist 2: S_TF (Short Trend Following) - Red -->
+  <g>
+    <rect x="285" y="155" width="160" height="105" rx="6" fill="url(#redGrad)" stroke="#ef5350" stroke-width="1.2" stroke-opacity="0.6" filter="url(#glowRed)"/>
+    <rect x="285" y="155" width="160" height="24" rx="6" fill="#ef5350" fill-opacity="0.15"/>
+    <rect x="285" y="173" width="160" height="6" fill="url(#redGrad)"/>
+    <circle cx="300" cy="167" r="4" fill="#ef5350" opacity="0.7"/>
+    <text x="365" y="171" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="#ef5350">S_TF</text>
+    <text x="365" y="196" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#E2E8F0" opacity="0.8">Short Trend Following</text>
+    <text x="365" y="212" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#E2E8F0" opacity="0.5">XGBoost Classifier</text>
+    <rect x="323" y="226" width="84" height="22" rx="4" fill="#ef5350" fill-opacity="0.08" stroke="#ef5350" stroke-width="0.6" stroke-opacity="0.3"/>
+    <text x="365" y="240" text-anchor="middle" font-family="Consolas, monospace" font-size="10" font-weight="600" fill="#ef5350">P = 0.41</text>
+  </g>
+
+  <!-- Specialist 3: L_MR (Long Mean Reversion) - Green -->
+  <g>
+    <rect x="470" y="155" width="160" height="105" rx="6" fill="url(#greenGrad)" stroke="#4ADE80" stroke-width="1.2" stroke-opacity="0.6" filter="url(#glowGreen)"/>
+    <rect x="470" y="155" width="160" height="24" rx="6" fill="#4ADE80" fill-opacity="0.15"/>
+    <rect x="470" y="173" width="160" height="6" fill="url(#greenGrad)"/>
+    <circle cx="485" cy="167" r="4" fill="#4ADE80" opacity="0.7"/>
+    <text x="550" y="171" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="#4ADE80">L_MR</text>
+    <text x="550" y="196" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#E2E8F0" opacity="0.8">Long Mean Reversion</text>
+    <text x="550" y="212" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#E2E8F0" opacity="0.5">XGBoost Classifier</text>
+    <rect x="508" y="226" width="84" height="22" rx="4" fill="#4ADE80" fill-opacity="0.08" stroke="#4ADE80" stroke-width="0.6" stroke-opacity="0.3"/>
+    <text x="550" y="240" text-anchor="middle" font-family="Consolas, monospace" font-size="10" font-weight="600" fill="#4ADE80">P = 0.58</text>
+  </g>
+
+  <!-- Specialist 4: S_MR (Short Mean Reversion) - Red -->
+  <g>
+    <rect x="655" y="155" width="160" height="105" rx="6" fill="url(#redGrad)" stroke="#ef5350" stroke-width="1.2" stroke-opacity="0.6" filter="url(#glowRed)"/>
+    <rect x="655" y="155" width="160" height="24" rx="6" fill="#ef5350" fill-opacity="0.15"/>
+    <rect x="655" y="173" width="160" height="6" fill="url(#redGrad)"/>
+    <circle cx="670" cy="167" r="4" fill="#ef5350" opacity="0.7"/>
+    <text x="735" y="171" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="#ef5350">S_MR</text>
+    <text x="735" y="196" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#E2E8F0" opacity="0.8">Short Mean Reversion</text>
+    <text x="735" y="212" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#E2E8F0" opacity="0.5">XGBoost Classifier</text>
+    <rect x="693" y="226" width="84" height="22" rx="4" fill="#ef5350" fill-opacity="0.08" stroke="#ef5350" stroke-width="0.6" stroke-opacity="0.3"/>
+    <text x="735" y="240" text-anchor="middle" font-family="Consolas, monospace" font-size="10" font-weight="600" fill="#ef5350">P = 0.29</text>
+  </g>
+
+  <!-- ==================== ARROWS: Specialists to Meta-Classifier ==================== -->
+  <!-- Highlighted arrow from L_TF (winner) -->
+  <path d="M180,260 L180,280 Q180,290 220,295 L380,315" stroke="#00e5ff" stroke-width="2" stroke-opacity="0.8" fill="none" marker-end="url(#arrowHighlight)"/>
+  <!-- Normal arrows -->
+  <path d="M365,260 L365,280 Q365,290 380,295 L400,310" stroke="#00e5ff" stroke-opacity="0.3" stroke-width="1" fill="none" marker-end="url(#arrowCyan)"/>
+  <path d="M550,260 L550,280 Q550,290 530,295 L490,310" stroke="#00e5ff" stroke-opacity="0.3" stroke-width="1" fill="none" marker-end="url(#arrowCyan)"/>
+  <path d="M735,260 L735,280 Q735,290 680,295 L530,315" stroke="#00e5ff" stroke-opacity="0.3" stroke-width="1" fill="none" marker-end="url(#arrowCyan)"/>
+
+  <!-- Winner highlight badge on L_TF -->
+  <rect x="146" y="250" width="68" height="14" rx="7" fill="#00e5ff" fill-opacity="0.15" stroke="#00e5ff" stroke-width="0.8" stroke-opacity="0.6"/>
+  <text x="180" y="260" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="7" font-weight="700" fill="#00e5ff">SELECTED</text>
+
+  <!-- ==================== META-CLASSIFIER ==================== -->
+  <g>
+    <rect x="340" y="310" width="220" height="72" rx="8" fill="url(#cyanGrad)" stroke="#00e5ff" stroke-width="1.5" stroke-opacity="0.6" filter="url(#glowCyan)"/>
+    <!-- Header -->
+    <rect x="340" y="310" width="220" height="26" rx="8" fill="#00e5ff" fill-opacity="0.12"/>
+    <rect x="340" y="330" width="220" height="6" fill="url(#cyanGrad)"/>
+    <text x="450" y="328" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" fill="#00e5ff">Meta-Classifier</text>
+    <!-- Subtitle -->
+    <text x="450" y="350" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#E2E8F0" opacity="0.7">Gating Network (5th Model)</text>
+    <!-- Detail -->
+    <text x="450" y="365" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#E2E8F0" opacity="0.5">4 specialist scores + market state features</text>
+    <!-- Gating selection indicator -->
+    <text x="450" y="378" text-anchor="middle" font-family="Consolas, monospace" font-size="8" fill="#00e5ff" opacity="0.8">argmax(gate) = L_TF</text>
+  </g>
+
+  <!-- ==================== ARROW: Meta to Output ==================== -->
+  <path d="M450,382 L450,404" stroke="#ff9100" stroke-width="1.5" stroke-opacity="0.6" fill="none" marker-end="url(#arrowOrange)"/>
+
+  <!-- ==================== OUTPUT LAYER ==================== -->
+  <g>
+    <rect x="295" y="408" width="310" height="56" rx="8" fill="url(#orangeGrad)" stroke="#ff9100" stroke-width="1.5" stroke-opacity="0.5" filter="url(#glowOrange)"/>
+    <rect x="295" y="408" width="310" height="22" rx="8" fill="#ff9100" fill-opacity="0.1"/>
+    <rect x="295" y="424" width="310" height="6" fill="url(#orangeGrad)"/>
+    <text x="450" y="424" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="#ff9100">Final Classification Output</text>
+
+    <!-- Output details in pills -->
+    <rect x="310" y="438" width="64" height="18" rx="9" fill="#ff9100" fill-opacity="0.1" stroke="#ff9100" stroke-width="0.6" stroke-opacity="0.4"/>
+    <text x="342" y="450" text-anchor="middle" font-family="Consolas, monospace" font-size="8" font-weight="600" fill="#ff9100">Regime: TF</text>
+
+    <rect x="383" y="438" width="54" height="18" rx="9" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-width="0.6" stroke-opacity="0.4"/>
+    <text x="410" y="450" text-anchor="middle" font-family="Consolas, monospace" font-size="8" font-weight="600" fill="#4ADE80">Dir: L</text>
+
+    <rect x="446" y="438" width="72" height="18" rx="9" fill="#ff9100" fill-opacity="0.1" stroke="#ff9100" stroke-width="0.6" stroke-opacity="0.4"/>
+    <text x="482" y="450" text-anchor="middle" font-family="Consolas, monospace" font-size="8" font-weight="600" fill="#ff9100">Conf: 73%</text>
+
+    <rect x="527" y="438" width="64" height="18" rx="9" fill="#E2E8F0" fill-opacity="0.05" stroke="#E2E8F0" stroke-width="0.6" stroke-opacity="0.3"/>
+    <text x="559" y="450" text-anchor="middle" font-family="Consolas, monospace" font-size="8" font-weight="500" fill="#E2E8F0" opacity="0.7">Specialist</text>
+  </g>
+
+  <!-- ==================== VALIDATION LABELS ==================== -->
+  <!-- Walk-Forward Validation badge (left side) -->
+  <g>
+    <rect x="14" y="310" width="128" height="46" rx="6" fill="#0f1923" stroke="#E2E8F0" stroke-width="0.8" stroke-opacity="0.15"/>
+    <rect x="14" y="310" width="128" height="16" rx="6" fill="#E2E8F0" fill-opacity="0.04"/>
+    <rect x="14" y="320" width="128" height="6" fill="#0f1923"/>
+    <text x="78" y="323" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="7" font-weight="700" fill="#E2E8F0" opacity="0.6">VALIDATION</text>
+    <text x="78" y="339" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="8" font-weight="600" fill="#FFD54F" opacity="0.8">Walk-Forward</text>
+    <text x="78" y="351" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="7" fill="#E2E8F0" opacity="0.5">Expanding Window</text>
+  </g>
+
+  <!-- Non-Circular Labels badge (left side) -->
+  <g>
+    <rect x="14" y="366" width="128" height="50" rx="6" fill="#0f1923" stroke="#E2E8F0" stroke-width="0.8" stroke-opacity="0.15"/>
+    <rect x="14" y="366" width="128" height="16" rx="6" fill="#E2E8F0" fill-opacity="0.04"/>
+    <rect x="14" y="376" width="128" height="6" fill="#0f1923"/>
+    <text x="78" y="379" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="7" font-weight="700" fill="#E2E8F0" opacity="0.6">LABELS</text>
+    <text x="78" y="395" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="8" font-weight="600" fill="#FFD54F" opacity="0.8">Non-Circular</text>
+    <text x="78" y="407" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="7" fill="#E2E8F0" opacity="0.5">Realized Price</text>
+    <text x="78" y="415" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="7" fill="#E2E8F0" opacity="0.5">Returns Only</text>
+  </g>
+
+  <!-- ==================== FLOW LABELS ==================== -->
+  <text x="88" y="140" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#E2E8F0" opacity="0.35" font-weight="600" letter-spacing="1">SPECIALIST LAYER</text>
+  <text x="88" y="302" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#E2E8F0" opacity="0.35" font-weight="600" letter-spacing="1">GATING LAYER</text>
+  <text x="88" y="403" font-family="Segoe UI, Arial, sans-serif" font-size="8" fill="#E2E8F0" opacity="0.35" font-weight="600" letter-spacing="1">OUTPUT</text>
+
+  <!-- ==================== DECORATIVE ELEMENTS ==================== -->
+  <!-- Corner accent lines -->
+  <line x1="10" y1="10" x2="40" y2="10" stroke="#FFD54F" stroke-width="1" stroke-opacity="0.3"/>
+  <line x1="10" y1="10" x2="10" y2="40" stroke="#FFD54F" stroke-width="1" stroke-opacity="0.3"/>
+  <line x1="890" y1="10" x2="860" y2="10" stroke="#FFD54F" stroke-width="1" stroke-opacity="0.3"/>
+  <line x1="890" y1="10" x2="890" y2="40" stroke="#FFD54F" stroke-width="1" stroke-opacity="0.3"/>
+  <line x1="10" y1="490" x2="40" y2="490" stroke="#FFD54F" stroke-width="1" stroke-opacity="0.3"/>
+  <line x1="10" y1="490" x2="10" y2="460" stroke="#FFD54F" stroke-width="1" stroke-opacity="0.3"/>
+  <line x1="890" y1="490" x2="860" y2="490" stroke="#FFD54F" stroke-width="1" stroke-opacity="0.3"/>
+  <line x1="890" y1="490" x2="890" y2="460" stroke="#FFD54F" stroke-width="1" stroke-opacity="0.3"/>
+
+  <!-- Bottom watermark -->
+  <text x="880" y="488" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="7" fill="#E2E8F0" opacity="0.15">ForexRegime MoE v1.0</text>
+</svg>

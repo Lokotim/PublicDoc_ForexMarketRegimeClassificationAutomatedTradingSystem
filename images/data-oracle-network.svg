@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="oracleBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1117"/>
+      <stop offset="100%" style="stop-color:#1A1A2E"/>
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#00D4FF;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#00D4FF;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="oShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="centerGlowF">
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#00D4FF" flood-opacity="0.3"/>
+    </filter>
+    <marker id="oArrow" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <path d="M 0 0 L 6 2.5 L 0 5 Z" fill="#00D4FF" opacity="0.5"/>
+    </marker>
+    <pattern id="oGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.4" fill="#fff" opacity="0.03"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#oracleBg)" rx="12"/>
+  <rect width="800" height="450" fill="url(#oGrid)" rx="12"/>
+
+  <!-- Title -->
+  <text x="400" y="28" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="16" font-weight="700" fill="#00D4FF" letter-spacing="2">DATA ORACLE NETWORK</text>
+  <text x="400" y="44" text-anchor="middle" font-family="monospace" font-size="9" fill="#94A3B8">15 data sources converging to unified feature engine</text>
+
+  <!-- Center glow -->
+  <circle cx="400" cy="240" r="120" fill="url(#centerGlow)"/>
+
+  <!-- Center node -->
+  <g filter="url(#centerGlowF)">
+    <rect x="310" y="208" width="180" height="64" rx="12" fill="#0A1628" stroke="#00D4FF" stroke-opacity="0.6" stroke-width="1.5"/>
+    <text x="400" y="230" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" fill="#00D4FF" font-weight="800">Feature Engine</text>
+    <text x="400" y="248" text-anchor="middle" font-family="monospace" font-size="9" fill="#E2E8F0" opacity="0.9">134 features / pair</text>
+    <text x="400" y="263" text-anchor="middle" font-family="monospace" font-size="7" fill="#7B68EE" opacity="0.7">8 pairs = 1,072 total</text>
+  </g>
+
+  <!-- Connection lines (drawn first, under nodes) -->
+  <g stroke-width="1.2" fill="none" marker-end="url(#oArrow)">
+    <!-- Top-left: Retail Sentiment -->
+    <line x1="148" y1="115" x2="310" y2="218" stroke="#FF6B35" opacity="0.35"/>
+    <!-- Top-right: Institutional -->
+    <line x1="652" y1="115" x2="490" y2="218" stroke="#7B68EE" opacity="0.35"/>
+    <!-- Bottom-left: Volatility -->
+    <line x1="148" y1="365" x2="310" y2="262" stroke="#F87171" opacity="0.35"/>
+    <!-- Bottom-right: Macro -->
+    <line x1="652" y1="365" x2="490" y2="262" stroke="#4ADE80" opacity="0.35"/>
+
+    <!-- Top: Prediction Markets -->
+    <line x1="300" y1="86" x2="370" y2="208" stroke="#FBBF24" opacity="0.35"/>
+    <!-- Top-right: News NLP -->
+    <line x1="540" y1="86" x2="440" y2="208" stroke="#F472B6" opacity="0.35"/>
+
+    <!-- Left: Currency Strength -->
+    <line x1="80" y1="240" x2="310" y2="240" stroke="#00D4FF" opacity="0.3"/>
+    <!-- Right: ATR -->
+    <line x1="720" y1="240" x2="490" y2="240" stroke="#FF6B35" opacity="0.3"/>
+
+    <!-- Bottom: Extra sources -->
+    <line x1="250" y1="410" x2="360" y2="272" stroke="#7B68EE" opacity="0.25"/>
+    <line x1="400" y1="420" x2="400" y2="272" stroke="#00D4FF" opacity="0.25"/>
+    <line x1="550" y1="410" x2="440" y2="272" stroke="#4ADE80" opacity="0.25"/>
+  </g>
+
+  <!-- Source Nodes -->
+  <!-- Top-left: Retail Sentiment (4 brokers) -->
+  <g filter="url(#oShadow)">
+    <rect x="52" y="78" width="192" height="50" rx="8" fill="#16213E" stroke="#FF6B35" stroke-opacity="0.4" stroke-width="0.8"/>
+    <circle cx="72" cy="103" r="10" fill="#FF6B35" fill-opacity="0.15" stroke="#FF6B35" stroke-opacity="0.4" stroke-width="0.8"/>
+    <text x="72" y="107" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#FF6B35">R</text>
+    <text x="148" y="98" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="700">Retail Sentiment</text>
+    <text x="148" y="114" text-anchor="middle" font-family="monospace" font-size="7" fill="#FF6B35" opacity="0.8">FXSSI + IG + Oanda + Myfxbook</text>
+  </g>
+
+  <!-- Top-right: Institutional -->
+  <g filter="url(#oShadow)">
+    <rect x="556" y="78" width="192" height="50" rx="8" fill="#16213E" stroke="#7B68EE" stroke-opacity="0.4" stroke-width="0.8"/>
+    <circle cx="576" cy="103" r="10" fill="#7B68EE" fill-opacity="0.15" stroke="#7B68EE" stroke-opacity="0.4" stroke-width="0.8"/>
+    <text x="576" y="107" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#7B68EE">I</text>
+    <text x="652" y="98" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="700">Institutional Flow</text>
+    <text x="652" y="114" text-anchor="middle" font-family="monospace" font-size="7" fill="#7B68EE" opacity="0.8">CFTC COT + Commitment</text>
+  </g>
+
+  <!-- Top-center-left: Prediction Markets -->
+  <g filter="url(#oShadow)">
+    <rect x="210" y="58" width="160" height="44" rx="8" fill="#16213E" stroke="#FBBF24" stroke-opacity="0.4" stroke-width="0.8"/>
+    <circle cx="228" cy="80" r="9" fill="#FBBF24" fill-opacity="0.15" stroke="#FBBF24" stroke-opacity="0.4" stroke-width="0.8"/>
+    <text x="228" y="84" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#FBBF24">P</text>
+    <text x="302" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="700">Prediction Mkts</text>
+    <text x="302" y="92" text-anchor="middle" font-family="monospace" font-size="7" fill="#FBBF24" opacity="0.8">Kalshi + Polymarket</text>
+  </g>
+
+  <!-- Top-center-right: News NLP -->
+  <g filter="url(#oShadow)">
+    <rect x="448" y="58" width="160" height="44" rx="8" fill="#16213E" stroke="#F472B6" stroke-opacity="0.4" stroke-width="0.8"/>
+    <circle cx="466" cy="80" r="9" fill="#F472B6" fill-opacity="0.15" stroke="#F472B6" stroke-opacity="0.4" stroke-width="0.8"/>
+    <text x="466" y="84" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#F472B6">N</text>
+    <text x="540" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="700">News NLP</text>
+    <text x="540" y="92" text-anchor="middle" font-family="monospace" font-size="7" fill="#F472B6" opacity="0.8">FinBERT sentiment</text>
+  </g>
+
+  <!-- Left: Currency Strength -->
+  <g filter="url(#oShadow)">
+    <rect x="20" y="218" width="156" height="44" rx="8" fill="#16213E" stroke="#00D4FF" stroke-opacity="0.4" stroke-width="0.8"/>
+    <circle cx="38" cy="240" r="9" fill="#00D4FF" fill-opacity="0.15" stroke="#00D4FF" stroke-opacity="0.4" stroke-width="0.8"/>
+    <text x="38" y="244" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#00D4FF">C</text>
+    <text x="108" y="236" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="700">Currency Strength</text>
+    <text x="108" y="252" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" opacity="0.8">8 currencies indexed</text>
+  </g>
+
+  <!-- Right: ATR -->
+  <g filter="url(#oShadow)">
+    <rect x="624" y="218" width="156" height="44" rx="8" fill="#16213E" stroke="#FF6B35" stroke-opacity="0.4" stroke-width="0.8"/>
+    <circle cx="762" cy="240" r="9" fill="#FF6B35" fill-opacity="0.15" stroke="#FF6B35" stroke-opacity="0.4" stroke-width="0.8"/>
+    <text x="762" y="244" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#FF6B35">A</text>
+    <text x="700" y="236" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="700">ATR Volatility</text>
+    <text x="700" y="252" text-anchor="middle" font-family="monospace" font-size="7" fill="#FF6B35" opacity="0.8">14-period ranges</text>
+  </g>
+
+  <!-- Bottom-left: Volatility (CME Options) -->
+  <g filter="url(#oShadow)">
+    <rect x="52" y="340" width="192" height="50" rx="8" fill="#16213E" stroke="#F87171" stroke-opacity="0.4" stroke-width="0.8"/>
+    <circle cx="72" cy="365" r="10" fill="#F87171" fill-opacity="0.15" stroke="#F87171" stroke-opacity="0.4" stroke-width="0.8"/>
+    <text x="72" y="369" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#F87171">V</text>
+    <text x="148" y="360" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="700">Volatility Surface</text>
+    <text x="148" y="376" text-anchor="middle" font-family="monospace" font-size="7" fill="#F87171" opacity="0.8">CME FX Options + IV + VRP</text>
+  </g>
+
+  <!-- Bottom-right: Macro -->
+  <g filter="url(#oShadow)">
+    <rect x="556" y="340" width="192" height="50" rx="8" fill="#16213E" stroke="#4ADE80" stroke-opacity="0.4" stroke-width="0.8"/>
+    <circle cx="576" cy="365" r="10" fill="#4ADE80" fill-opacity="0.15" stroke="#4ADE80" stroke-opacity="0.4" stroke-width="0.8"/>
+    <text x="576" y="369" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#4ADE80">M</text>
+    <text x="652" y="360" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="700">Macro Calendar</text>
+    <text x="652" y="376" text-anchor="middle" font-family="monospace" font-size="7" fill="#4ADE80" opacity="0.8">Events + Seasonal + Holidays</text>
+  </g>
+
+  <!-- Bottom center sources -->
+  <g filter="url(#oShadow)">
+    <rect x="170" y="395" width="130" height="38" rx="7" fill="#16213E" stroke="#7B68EE" stroke-opacity="0.3" stroke-width="0.8"/>
+    <text x="235" y="413" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">GV Health Check</text>
+    <text x="235" y="426" text-anchor="middle" font-family="monospace" font-size="7" fill="#7B68EE" opacity="0.7">system integrity</text>
+  </g>
+  <g filter="url(#oShadow)">
+    <rect x="320" y="400" width="160" height="38" rx="7" fill="#16213E" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.8"/>
+    <text x="400" y="418" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">IBKR Gateway (TWS)</text>
+    <text x="400" y="431" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" opacity="0.7">positions + executions</text>
+  </g>
+  <g filter="url(#oShadow)">
+    <rect x="500" y="395" width="130" height="38" rx="7" fill="#16213E" stroke="#4ADE80" stroke-opacity="0.3" stroke-width="0.8"/>
+    <text x="565" y="413" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">Cross-Validation</text>
+    <text x="565" y="426" text-anchor="middle" font-family="monospace" font-size="7" fill="#4ADE80" opacity="0.7">coherence scores</text>
+  </g>
+
+  <!-- Source count badge -->
+  <rect x="345" y="290" width="110" height="22" rx="11" fill="#16213E" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.5"/>
+  <text x="400" y="305" text-anchor="middle" font-family="monospace" font-size="8" fill="#00D4FF">15 Live Sources</text>
+
+  <!-- Border -->
+</svg>

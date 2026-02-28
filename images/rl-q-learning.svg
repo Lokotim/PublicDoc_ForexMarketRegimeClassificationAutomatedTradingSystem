@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="rlBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1117"/>
+      <stop offset="100%" style="stop-color:#1A1A2E"/>
+    </linearGradient>
+    <filter id="rlShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="rlGlow">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#4ADE80" flood-opacity="0.3"/>
+    </filter>
+    <marker id="rlArrow" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <path d="M 0 0 L 7 2.5 L 0 5 Z" fill="#4ADE80" opacity="0.6"/>
+    </marker>
+    <marker id="rlArrowG" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <path d="M 0 0 L 7 2.5 L 0 5 Z" fill="#475569"/>
+    </marker>
+    <pattern id="rlGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.3" fill="#fff" opacity="0.03"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="400" fill="url(#rlBg)" rx="12"/>
+  <rect width="800" height="400" fill="url(#rlGrid)" rx="12"/>
+
+  <!-- Title -->
+  <text x="400" y="28" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="16" font-weight="700" fill="#4ADE80" letter-spacing="2">REINFORCEMENT LEARNING AGENT (Q-LEARNING)</text>
+  <text x="400" y="44" text-anchor="middle" font-family="monospace" font-size="9" fill="#94A3B8">Tabular Q-learning with experience replay and progressive trust scaling</text>
+
+  <!-- ===== STATE SPACE (top-left) ===== -->
+  <g filter="url(#rlShadow)">
+    <rect x="30" y="58" width="220" height="120" rx="10" fill="#16213E" stroke="#00D4FF" stroke-opacity="0.4" stroke-width="1"/>
+    <rect x="30" y="58" width="220" height="26" rx="10" fill="#00D4FF" fill-opacity="0.08"/>
+    <text x="140" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#00D4FF" font-weight="700">State Space</text>
+    <line x1="40" y1="84" x2="240" y2="84" stroke="#00D4FF" stroke-opacity="0.15" stroke-width="0.5"/>
+
+    <text x="50" y="102" font-family="monospace" font-size="8" fill="#E2E8F0">pair:       </text>
+    <text x="155" y="102" font-family="monospace" font-size="8" fill="#00D4FF">8 FX pairs</text>
+
+    <text x="50" y="118" font-family="monospace" font-size="8" fill="#E2E8F0">regime:     </text>
+    <text x="155" y="118" font-family="monospace" font-size="8" fill="#00D4FF">TF | MR</text>
+
+    <text x="50" y="134" font-family="monospace" font-size="8" fill="#E2E8F0">confidence: </text>
+    <text x="155" y="134" font-family="monospace" font-size="8" fill="#00D4FF">LOW | MED | HIGH</text>
+
+    <rect x="50" y="146" width="182" height="20" rx="4" fill="#00D4FF" fill-opacity="0.06"/>
+    <text x="141" y="160" text-anchor="middle" font-family="monospace" font-size="8" fill="#00D4FF" opacity="0.8">= 27 discrete states</text>
+  </g>
+
+  <!-- ===== ACTION SPACE (top-right) ===== -->
+  <g filter="url(#rlShadow)">
+    <rect x="280" y="58" width="200" height="120" rx="10" fill="#16213E" stroke="#FF6B35" stroke-opacity="0.4" stroke-width="1"/>
+    <rect x="280" y="58" width="200" height="26" rx="10" fill="#FF6B35" fill-opacity="0.08"/>
+    <text x="380" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#FF6B35" font-weight="700">Action Space</text>
+    <line x1="290" y1="84" x2="470" y2="84" stroke="#FF6B35" stroke-opacity="0.15" stroke-width="0.5"/>
+
+    <rect x="300" y="92" width="65" height="28" rx="5" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-opacity="0.3" stroke-width="0.5"/>
+    <text x="332" y="110" text-anchor="middle" font-family="monospace" font-size="8" fill="#4ADE80" font-weight="600">TF_L</text>
+
+    <rect x="373" y="92" width="65" height="28" rx="5" fill="#F87171" fill-opacity="0.1" stroke="#F87171" stroke-opacity="0.3" stroke-width="0.5"/>
+    <text x="405" y="110" text-anchor="middle" font-family="monospace" font-size="8" fill="#F87171" font-weight="600">TF_S</text>
+
+    <rect x="300" y="126" width="65" height="28" rx="5" fill="#00D4FF" fill-opacity="0.1" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.5"/>
+    <text x="332" y="144" text-anchor="middle" font-family="monospace" font-size="8" fill="#00D4FF" font-weight="600">MR_L</text>
+
+    <rect x="373" y="126" width="65" height="28" rx="5" fill="#FF6B35" fill-opacity="0.1" stroke="#FF6B35" stroke-opacity="0.3" stroke-width="0.5"/>
+    <text x="405" y="144" text-anchor="middle" font-family="monospace" font-size="8" fill="#FF6B35" font-weight="600">MR_S</text>
+
+    <text x="380" y="168" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">4 discrete actions</text>
+  </g>
+
+  <!-- ===== Q-TABLE (top-far-right) ===== -->
+  <g filter="url(#rlShadow)">
+    <rect x="510" y="58" width="265" height="120" rx="10" fill="#16213E" stroke="#7B68EE" stroke-opacity="0.4" stroke-width="1"/>
+    <rect x="510" y="58" width="265" height="26" rx="10" fill="#7B68EE" fill-opacity="0.08"/>
+    <text x="642" y="76" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#7B68EE" font-weight="700">Q-Table (27 x 4)</text>
+    <line x1="520" y1="84" x2="765" y2="84" stroke="#7B68EE" stroke-opacity="0.15" stroke-width="0.5"/>
+
+    <!-- Mini table -->
+    <text x="545" y="100" font-family="monospace" font-size="6" fill="#94A3B8">State</text>
+    <text x="610" y="100" text-anchor="middle" font-family="monospace" font-size="6" fill="#4ADE80">TF_L</text>
+    <text x="650" y="100" text-anchor="middle" font-family="monospace" font-size="6" fill="#F87171">TF_S</text>
+    <text x="690" y="100" text-anchor="middle" font-family="monospace" font-size="6" fill="#00D4FF">MR_L</text>
+    <text x="730" y="100" text-anchor="middle" font-family="monospace" font-size="6" fill="#FF6B35">MR_S</text>
+    <line x1="530" y1="104" x2="755" y2="104" stroke="#475569" stroke-opacity="0.3" stroke-width="0.3"/>
+
+    <text x="545" y="116" font-family="monospace" font-size="6" fill="#E2E8F0">EUR,TF,H</text>
+    <text x="610" y="116" text-anchor="middle" font-family="monospace" font-size="7" fill="#4ADE80" font-weight="700">0.82</text>
+    <text x="650" y="116" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">0.31</text>
+    <text x="690" y="116" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">0.15</text>
+    <text x="730" y="116" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">0.08</text>
+
+    <text x="545" y="130" font-family="monospace" font-size="6" fill="#E2E8F0">JPY,MR,M</text>
+    <text x="610" y="130" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">0.12</text>
+    <text x="650" y="130" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">0.25</text>
+    <text x="690" y="130" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" font-weight="700">0.71</text>
+    <text x="730" y="130" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">0.44</text>
+
+    <text x="545" y="144" font-family="monospace" font-size="6" fill="#E2E8F0">GBP,TF,L</text>
+    <text x="610" y="144" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">0.45</text>
+    <text x="650" y="144" text-anchor="middle" font-family="monospace" font-size="7" fill="#F87171" font-weight="700">0.63</text>
+    <text x="690" y="144" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">0.22</text>
+    <text x="730" y="144" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">0.18</text>
+
+    <text x="545" y="158" font-family="monospace" font-size="6" fill="#94A3B8">...</text>
+    <text x="642" y="170" text-anchor="middle" font-family="monospace" font-size="7" fill="#7B68EE" opacity="0.7">27 state rows total</text>
+  </g>
+
+  <!-- ===== ARROWS connecting top row ===== -->
+  <line x1="250" y1="118" x2="280" y2="118" stroke="#475569" stroke-width="0.8" marker-end="url(#rlArrowG)" opacity="0.4"/>
+  <line x1="480" y1="118" x2="510" y2="118" stroke="#475569" stroke-width="0.8" marker-end="url(#rlArrowG)" opacity="0.4"/>
+
+  <!-- ===== REWARD SIGNAL (middle-left) ===== -->
+  <g filter="url(#rlShadow)">
+    <rect x="30" y="200" width="300" height="80" rx="10" fill="#16213E" stroke="#FBBF24" stroke-opacity="0.4" stroke-width="1"/>
+    <rect x="30" y="200" width="300" height="26" rx="10" fill="#FBBF24" fill-opacity="0.08"/>
+    <text x="180" y="218" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#FBBF24" font-weight="700">Reward Signal</text>
+    <line x1="40" y1="226" x2="320" y2="226" stroke="#FBBF24" stroke-opacity="0.15" stroke-width="0.5"/>
+
+    <text x="50" y="244" font-family="monospace" font-size="8" fill="#E2E8F0">Hard reward: closed trade P/L</text>
+    <text x="50" y="260" font-family="monospace" font-size="8" fill="#E2E8F0">Soft reward: unrealized P/L</text>
+    <text x="240" y="260" font-family="monospace" font-size="8" fill="#FBBF24">x 0.6</text>
+    <text x="50" y="274" font-family="monospace" font-size="7" fill="#94A3B8">R = hard + 0.6 * soft (blended signal)</text>
+  </g>
+
+  <!-- ===== EXPERIENCE REPLAY (middle-right) ===== -->
+  <g filter="url(#rlShadow)">
+    <rect x="360" y="200" width="415" height="80" rx="10" fill="#16213E" stroke="#4ADE80" stroke-opacity="0.4" stroke-width="1"/>
+    <rect x="360" y="200" width="415" height="26" rx="10" fill="#4ADE80" fill-opacity="0.08"/>
+    <text x="567" y="218" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#4ADE80" font-weight="700">Experience Replay</text>
+    <line x1="370" y1="226" x2="765" y2="226" stroke="#4ADE80" stroke-opacity="0.15" stroke-width="0.5"/>
+
+    <text x="380" y="244" font-family="monospace" font-size="8" fill="#E2E8F0">Buffer size:</text>
+    <text x="470" y="244" font-family="monospace" font-size="8" fill="#4ADE80" font-weight="600">6,832 experiences</text>
+
+    <text x="380" y="260" font-family="monospace" font-size="8" fill="#E2E8F0">Training:</text>
+    <text x="470" y="260" font-family="monospace" font-size="8" fill="#4ADE80" font-weight="600">5 iterations x 32 batch</text>
+
+    <text x="620" y="244" font-family="monospace" font-size="8" fill="#E2E8F0">alpha:</text>
+    <text x="670" y="244" font-family="monospace" font-size="8" fill="#4ADE80">0.1</text>
+    <text x="700" y="244" font-family="monospace" font-size="8" fill="#E2E8F0">gamma:</text>
+    <text x="755" y="244" font-family="monospace" font-size="8" fill="#4ADE80">0.95</text>
+    <text x="620" y="260" font-family="monospace" font-size="8" fill="#E2E8F0">epsilon:</text>
+    <text x="690" y="260" font-family="monospace" font-size="8" fill="#4ADE80">0.1 (explore)</text>
+
+    <text x="567" y="274" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">(s, a, r, s') tuples sampled uniformly</text>
+  </g>
+
+  <!-- ===== PROGRESSIVE TRUST (bottom) ===== -->
+  <g filter="url(#rlGlow)">
+    <rect x="100" y="305" width="600" height="70" rx="10" fill="#0A1628" stroke="#4ADE80" stroke-opacity="0.5" stroke-width="1.5"/>
+    <text x="400" y="327" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#4ADE80" font-weight="700">Progressive Trust Scaling</text>
+
+    <!-- Trust bar -->
+    <rect x="140" y="338" width="520" height="14" rx="7" fill="#1E293B"/>
+    <!-- Scale from 16% to 33% -->
+    <rect x="140" y="338" width="260" height="14" rx="7" fill="#4ADE80" fill-opacity="0.3"/>
+    <rect x="140" y="338" width="83" height="14" rx="7" fill="#4ADE80" fill-opacity="0.6"/>
+
+    <!-- Labels -->
+    <text x="140" y="365" font-family="monospace" font-size="7" fill="#4ADE80">16%</text>
+    <text x="180" y="365" font-family="monospace" font-size="6" fill="#94A3B8">(cold start)</text>
+    <text x="390" y="365" text-anchor="middle" font-family="monospace" font-size="7" fill="#4ADE80">33%</text>
+    <text x="430" y="365" font-family="monospace" font-size="6" fill="#94A3B8">(mature)</text>
+    <text x="580" y="365" font-family="monospace" font-size="7" fill="#94A3B8">Weight scales with data volume</text>
+
+    <!-- Tick marks -->
+    <line x1="222" y1="352" x2="222" y2="358" stroke="#4ADE80" stroke-opacity="0.4" stroke-width="0.5"/>
+    <text x="222" y="366" text-anchor="middle" font-family="monospace" font-size="6" fill="#94A3B8">current</text>
+  </g>
+
+  <!-- Border -->
+</svg>

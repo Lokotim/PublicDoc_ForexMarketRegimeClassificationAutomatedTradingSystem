@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 85" style="max-width:100%">
+  <defs>
+    <linearGradient id="gG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD54F"/>
+      <stop offset="50%" style="stop-color:#F7B32B"/>
+      <stop offset="100%" style="stop-color:#D4A012"/>
+    </linearGradient>
+    <linearGradient id="cG" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0F172A"/>
+      <stop offset="100%" style="stop-color:#1E293B"/>
+    </linearGradient>
+    <linearGradient id="pG" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ADE80"/>
+      <stop offset="100%" style="stop-color:#22C55E"/>
+    </linearGradient>
+    <filter id="gl">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g transform="translate(5,4) scale(0.82)">
+    <path d="M15,75 L15,45 L45,25 L75,45 L75,75 L45,95 Z" fill="url(#cG)" stroke="#334155" stroke-width="0.5"/>
+    <rect x="22" y="65" width="8" height="20" rx="1" fill="url(#pG)" opacity="0.85"/>
+    <rect x="34" y="55" width="8" height="30" rx="1" fill="url(#pG)"/>
+    <rect x="46" y="42" width="8" height="43" rx="1" fill="url(#gG)" filter="url(#gl)"/>
+    <rect x="58" y="30" width="8" height="55" rx="1" fill="url(#gG)" filter="url(#gl)"/>
+    <path d="M22,80 Q40,55 68,28" stroke="#FFD54F" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#gl)"/>
+    <polygon points="68,22 75,32 64,32" fill="#FFD54F"/>
+  </g>
+  <text x="78" y="46" font-family="'JetBrains Mono',monospace" font-size="40" font-weight="700" fill="url(#gG)" letter-spacing="-2">Money</text>
+  <text x="200" y="46" font-family="'JetBrains Mono',monospace" font-size="40" font-weight="300" fill="#E2E8F0" letter-spacing="-2">Prod</text>
+  <text x="78" y="66" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="500" fill="#94A3B8" letter-spacing="3">ALGORITHMIC TRADING SYSTEM</text>
+  <rect x="78" y="72" width="230" height="1.5" rx="0.75" fill="url(#gG)" opacity="0.4"/>
+</svg>

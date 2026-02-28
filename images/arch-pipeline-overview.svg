@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 520" font-family="'Segoe UI', system-ui, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#071225"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F7B32B"/>
+      <stop offset="100%" stop-color="#FFD54F"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#64ffda"/>
+      <stop offset="100%" stop-color="#4ADE80"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrowHead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#8892b0"/>
+    </marker>
+    <marker id="arrowGold" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#F7B32B"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="850" height="520" fill="url(#bgGrad)" rx="8"/>
+
+  <!-- Title -->
+  <text x="425" y="38" text-anchor="middle" fill="#ccd6f6" font-size="18" font-weight="700" letter-spacing="0.5">8-Stage Pipeline Architecture</text>
+  <line x1="280" y1="48" x2="570" y2="48" stroke="url(#goldGrad)" stroke-width="2" opacity="0.6"/>
+
+  <!-- Row 1: Stages 1-4 -->
+  <!-- Stage 1 -->
+  <rect x="20" y="75" width="185" height="140" rx="6" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="20" y="75" width="185" height="30" rx="6" fill="#1a3356"/>
+  <rect x="20" y="95" width="185" height="10" fill="#1a3356"/>
+  <circle cx="38" cy="90" r="10" fill="#233554" stroke="#64ffda" stroke-width="1.5"/>
+  <text x="38" y="94" text-anchor="middle" fill="#64ffda" font-size="11" font-weight="700">1</text>
+  <text x="120" y="94" text-anchor="middle" fill="#ccd6f6" font-size="12" font-weight="600">Data Collection</text>
+  <text x="112" y="130" text-anchor="middle" fill="#8892b0" font-size="11">Wall-clock time</text>
+  <text x="112" y="150" text-anchor="middle" fill="#64ffda" font-size="20" font-weight="700">61s</text>
+  <text x="112" y="175" text-anchor="middle" fill="#8892b0" font-size="11">Parallel phases</text>
+  <text x="112" y="195" text-anchor="middle" fill="#ccd6f6" font-size="16" font-weight="600">9 phases</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="205" y1="145" x2="225" y2="145" stroke="#8892b0" stroke-width="1.5" marker-end="url(#arrowHead)"/>
+
+  <!-- Stage 2 -->
+  <rect x="228" y="75" width="185" height="140" rx="6" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="228" y="75" width="185" height="30" rx="6" fill="#1a3356"/>
+  <rect x="228" y="95" width="185" height="10" fill="#1a3356"/>
+  <circle cx="246" cy="90" r="10" fill="#233554" stroke="#64ffda" stroke-width="1.5"/>
+  <text x="246" y="94" text-anchor="middle" fill="#64ffda" font-size="11" font-weight="700">2</text>
+  <text x="328" y="94" text-anchor="middle" fill="#ccd6f6" font-size="12" font-weight="600">IBKR + Theories</text>
+  <text x="320" y="130" text-anchor="middle" fill="#8892b0" font-size="11">Wall-clock time</text>
+  <text x="320" y="150" text-anchor="middle" fill="#64ffda" font-size="20" font-weight="700">22s</text>
+  <text x="320" y="175" text-anchor="middle" fill="#8892b0" font-size="11">Parallel phases</text>
+  <text x="320" y="195" text-anchor="middle" fill="#ccd6f6" font-size="16" font-weight="600">3 phases</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="413" y1="145" x2="433" y2="145" stroke="#F7B32B" stroke-width="2" marker-end="url(#arrowGold)"/>
+
+  <!-- Stage 3 - BOTTLENECK (gold highlight) -->
+  <rect x="436" y="75" width="185" height="140" rx="6" fill="#112240" stroke="#F7B32B" stroke-width="2.5" filter="url(#shadow)"/>
+  <rect x="436" y="75" width="185" height="30" rx="6" fill="#2a1f10"/>
+  <rect x="436" y="95" width="185" height="10" fill="#2a1f10"/>
+  <circle cx="454" cy="90" r="10" fill="#3a2a10" stroke="#F7B32B" stroke-width="1.5"/>
+  <text x="454" y="94" text-anchor="middle" fill="#F7B32B" font-size="11" font-weight="700">3</text>
+  <text x="536" y="94" text-anchor="middle" fill="#FFD54F" font-size="12" font-weight="600">ML Ensemble</text>
+  <text x="528" y="130" text-anchor="middle" fill="#8892b0" font-size="11">Wall-clock time</text>
+  <text x="528" y="150" text-anchor="middle" fill="#F7B32B" font-size="20" font-weight="700">98s</text>
+  <text x="528" y="175" text-anchor="middle" fill="#8892b0" font-size="11">Parallel phases</text>
+  <text x="528" y="195" text-anchor="middle" fill="#ccd6f6" font-size="16" font-weight="600">5 phases</text>
+  <!-- Bottleneck badge -->
+  <rect x="474" y="62" width="108" height="20" rx="10" fill="#F7B32B"/>
+  <text x="528" y="76" text-anchor="middle" fill="#0a192f" font-size="10" font-weight="700">BOTTLENECK</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="621" y1="145" x2="641" y2="145" stroke="#8892b0" stroke-width="1.5" marker-end="url(#arrowHead)"/>
+
+  <!-- Stage 4 -->
+  <rect x="644" y="75" width="185" height="140" rx="6" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="644" y="75" width="185" height="30" rx="6" fill="#1a3356"/>
+  <rect x="644" y="95" width="185" height="10" fill="#1a3356"/>
+  <circle cx="662" cy="90" r="10" fill="#233554" stroke="#64ffda" stroke-width="1.5"/>
+  <text x="662" y="94" text-anchor="middle" fill="#64ffda" font-size="11" font-weight="700">4</text>
+  <text x="744" y="94" text-anchor="middle" fill="#ccd6f6" font-size="12" font-weight="600">Post-ML</text>
+  <text x="736" y="130" text-anchor="middle" fill="#8892b0" font-size="11">Wall-clock time</text>
+  <text x="736" y="150" text-anchor="middle" fill="#64ffda" font-size="20" font-weight="700">4s</text>
+  <text x="736" y="175" text-anchor="middle" fill="#8892b0" font-size="11">Parallel phases</text>
+  <text x="736" y="195" text-anchor="middle" fill="#ccd6f6" font-size="16" font-weight="600">3 phases</text>
+
+  <!-- Connecting arrow Row1→Row2 (from stage 4 down to stage 5) -->
+  <path d="M 736 215 L 736 260 L 170 260 L 170 290" stroke="#8892b0" stroke-width="1.5" fill="none" marker-end="url(#arrowHead)"/>
+
+  <!-- Row 2: Stages 5-8 -->
+  <!-- Stage 5 -->
+  <rect x="20" y="293" width="185" height="140" rx="6" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="20" y="293" width="185" height="30" rx="6" fill="#1a3356"/>
+  <rect x="20" y="313" width="185" height="10" fill="#1a3356"/>
+  <circle cx="38" cy="308" r="10" fill="#233554" stroke="#64ffda" stroke-width="1.5"/>
+  <text x="38" y="312" text-anchor="middle" fill="#64ffda" font-size="11" font-weight="700">5</text>
+  <text x="120" y="312" text-anchor="middle" fill="#ccd6f6" font-size="12" font-weight="600">RL + CB</text>
+  <text x="112" y="348" text-anchor="middle" fill="#8892b0" font-size="11">Wall-clock time</text>
+  <text x="112" y="368" text-anchor="middle" fill="#64ffda" font-size="20" font-weight="700">2s</text>
+  <text x="112" y="393" text-anchor="middle" fill="#8892b0" font-size="11">Parallel phases</text>
+  <text x="112" y="413" text-anchor="middle" fill="#ccd6f6" font-size="16" font-weight="600">2 phases</text>
+
+  <!-- Arrow 5→6 -->
+  <line x1="205" y1="363" x2="225" y2="363" stroke="#8892b0" stroke-width="1.5" marker-end="url(#arrowHead)"/>
+
+  <!-- Stage 6 -->
+  <rect x="228" y="293" width="185" height="140" rx="6" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="228" y="293" width="185" height="30" rx="6" fill="#1a3356"/>
+  <rect x="228" y="313" width="185" height="10" fill="#1a3356"/>
+  <circle cx="246" cy="308" r="10" fill="#233554" stroke="#64ffda" stroke-width="1.5"/>
+  <text x="246" y="312" text-anchor="middle" fill="#64ffda" font-size="11" font-weight="700">6</text>
+  <text x="328" y="312" text-anchor="middle" fill="#ccd6f6" font-size="12" font-weight="600">Meta-Signal</text>
+  <text x="320" y="348" text-anchor="middle" fill="#8892b0" font-size="11">Wall-clock time</text>
+  <text x="320" y="368" text-anchor="middle" fill="#64ffda" font-size="20" font-weight="700">&lt;1s</text>
+  <text x="320" y="393" text-anchor="middle" fill="#8892b0" font-size="11">Parallel phases</text>
+  <text x="320" y="413" text-anchor="middle" fill="#ccd6f6" font-size="16" font-weight="600">1 phase</text>
+
+  <!-- Arrow 6→7 -->
+  <line x1="413" y1="363" x2="433" y2="363" stroke="#8892b0" stroke-width="1.5" marker-end="url(#arrowHead)"/>
+
+  <!-- Stage 7 - CSV DELIVERED -->
+  <rect x="436" y="293" width="185" height="140" rx="6" fill="#112240" stroke="#4ADE80" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="436" y="293" width="185" height="30" rx="6" fill="#0f2a1a"/>
+  <rect x="436" y="313" width="185" height="10" fill="#0f2a1a"/>
+  <circle cx="454" cy="308" r="10" fill="#1a3520" stroke="#4ADE80" stroke-width="1.5"/>
+  <text x="454" y="312" text-anchor="middle" fill="#4ADE80" font-size="11" font-weight="700">7</text>
+  <text x="536" y="312" text-anchor="middle" fill="#4ADE80" font-size="12" font-weight="600">CSV Generation</text>
+  <text x="528" y="348" text-anchor="middle" fill="#8892b0" font-size="11">Wall-clock time</text>
+  <text x="528" y="368" text-anchor="middle" fill="#64ffda" font-size="20" font-weight="700">1s</text>
+  <text x="528" y="393" text-anchor="middle" fill="#8892b0" font-size="11">Parallel phases</text>
+  <text x="528" y="413" text-anchor="middle" fill="#ccd6f6" font-size="16" font-weight="600">1 phase</text>
+  <!-- CSV DELIVERED badge -->
+  <rect x="468" y="280" width="120" height="20" rx="10" fill="#4ADE80"/>
+  <text x="528" y="294" text-anchor="middle" fill="#0a192f" font-size="10" font-weight="700">CSV DELIVERED</text>
+
+  <!-- Arrow 7→8 -->
+  <line x1="621" y1="363" x2="641" y2="363" stroke="#8892b0" stroke-width="1.5" marker-end="url(#arrowHead)" opacity="0.5"/>
+
+  <!-- Stage 8 - Dimmer -->
+  <rect x="644" y="293" width="185" height="140" rx="6" fill="#0d1b30" stroke="#1a2a44" stroke-width="1.5" filter="url(#shadow)" opacity="0.7"/>
+  <rect x="644" y="293" width="185" height="30" rx="6" fill="#112240" opacity="0.5"/>
+  <rect x="644" y="313" width="185" height="10" fill="#112240" opacity="0.5"/>
+  <circle cx="662" cy="308" r="10" fill="#1a2a44" stroke="#8892b0" stroke-width="1" opacity="0.6"/>
+  <text x="662" y="312" text-anchor="middle" fill="#8892b0" font-size="11" font-weight="700" opacity="0.7">8</text>
+  <text x="744" y="312" text-anchor="middle" fill="#8892b0" font-size="12" font-weight="600" opacity="0.7">Post-CSV</text>
+  <text x="736" y="348" text-anchor="middle" fill="#667794" font-size="11">Wall-clock time</text>
+  <text x="736" y="368" text-anchor="middle" fill="#8892b0" font-size="20" font-weight="700" opacity="0.7">13s</text>
+  <text x="736" y="393" text-anchor="middle" fill="#667794" font-size="11">Parallel phases</text>
+  <text x="736" y="413" text-anchor="middle" fill="#8892b0" font-size="16" font-weight="600" opacity="0.7">7 phases</text>
+
+  <!-- Total bar -->
+  <rect x="20" y="460" width="810" height="44" rx="6" fill="#112240" stroke="#233554" stroke-width="1.5"/>
+  <text x="310" y="487" text-anchor="end" fill="#8892b0" font-size="14" font-weight="500">Total Pipeline Runtime</text>
+  <text x="320" y="487" text-anchor="start" fill="#64ffda" font-size="14" font-weight="700" filter="url(#glow)">201 seconds</text>
+  <text x="540" y="487" text-anchor="start" fill="#8892b0" font-size="12">(3 min 21s end-to-end)</text>
+
+  <!-- Progress bar visualization -->
+  <rect x="30" y="448" width="810" height="3" rx="1.5" fill="#233554" opacity="0.5"/>
+  <!-- Proportional segments: 61+22+98+4+2+1+1+13 = 202, scale to 790px -->
+  <rect x="30" y="448" width="238" height="3" rx="1.5" fill="#64ffda" opacity="0.6"/>
+  <rect x="268" y="448" width="86" height="3" rx="0" fill="#64ffda" opacity="0.5"/>
+  <rect x="354" y="448" width="383" height="3" rx="0" fill="#F7B32B" opacity="0.7"/>
+  <rect x="737" y="448" width="16" height="3" rx="0" fill="#64ffda" opacity="0.4"/>
+  <rect x="753" y="448" width="8" height="3" rx="0" fill="#64ffda" opacity="0.4"/>
+  <rect x="761" y="448" width="4" height="3" rx="0" fill="#64ffda" opacity="0.4"/>
+  <rect x="765" y="448" width="4" height="3" rx="0" fill="#4ADE80" opacity="0.5"/>
+  <rect x="769" y="448" width="51" height="3" rx="1.5" fill="#8892b0" opacity="0.3"/>
+</svg>

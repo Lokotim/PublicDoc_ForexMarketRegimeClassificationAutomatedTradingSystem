@@ -1,23 +1,26 @@
-# MoneyProd Strategies
+<p align="center">
+  <img src="images/moneyprod-logo.svg" alt="MoneyProd — Algorithmic Trading System" width="450">
+</p>
 
-**Forging Alpha: A Multi-Stage Evolutionary Pipeline for Statistically Robust FX Trading Strategies**
+<h3 align="center"><em>Forging Alpha</em></h3>
+<h4 align="center">A Multi-Stage Evolutionary Pipeline for Statistically Robust FX Trading Strategies</h4>
+
+<p align="center">
+  <strong>Author:</strong> <a href="https://linkedin.com/in/timothy-lokotar/">Timothy Lokotar</a> · <a href="https://www.moneyprod.com/">MoneyProd</a>
+</p>
+
+> *This document presents the complete methodology behind MoneyProd's 9-stage evolutionary pipeline — a systematic approach to generating and validating algorithmic FX trading strategies, designed with a single overarching objective: the total elimination of curve-fitting artifacts.*
 
 | Metric | Value |
 |---|---|
-| Candidate Strategies Generated | ~10,000,000 |
-| Validation Stages | 9 |
-| Evolutionary Cycles | 10 |
-| Surviving Strategies | 32 |
-| Survival Rate | 0.00032% |
-| Monte Carlo Simulations | 4,000,000+ |
-| Walk-Forward Tests | 10,000 / strategy |
-| Out-of-Sample Coverage | 33% |
-
-**Author:** Timothy Lokotar
-- [LinkedIn](https://linkedin.com/in/timothy-lokotar/)
-- [MoneyProd](https://www.moneyprod.com/)
-
-> Research Paper | Strategy Design Methodology | February 2026
+| **Candidate Strategies Generated** | ~10,000,000 |
+| **Validation Stages** | 9 |
+| **Evolutionary Cycles** | 10 |
+| **Surviving Strategies** | 32 |
+| **Survival Rate** | 0.00032% |
+| **Monte Carlo Simulations** | 4,000,000+ |
+| **Walk-Forward Tests** | 10,000 / strategy |
+| **Out-of-Sample Coverage** | 33% |
 
 ---
 
@@ -121,41 +124,7 @@ The pipeline uses **walk-forward analysis** (time-series cross-validation) and *
 
 The pipeline is organized as a sequential validation chain where each stage independently eliminates strategies that fail a specific robustness test. The stages are:
 
-```
-┌──────────────────────────────────────────────────────────────────────────────┐
-│                        THE VALIDATION GAUNTLET                               │
-├──────────────────────────────────────────────────────────────────────────────┤
-│                                                                              │
-│   ┌──────────────┐     ┌──────────────┐     ┌──────────────┐                │
-│   │ 1. CLEAR     │────>│ 2. BUILD     │────>│ 3. MONTE     │                │
-│   │   DATABANKS  │     │   STRATEGIES │     │   CARLO      │                │
-│   └──────────────┘     └──────────────┘     └──────────────┘                │
-│         |                    |                    |                          │
-│         |              Genetic Algorithm    1000 Simulations                 │
-│         |              5 Islands x 50       4 Perturbation Types            │
-│         |              10 Generations       80-100% Confidence              │
-│         v                    v                    v                          │
-│   ┌──────────────┐     ┌──────────────┐     ┌──────────────┐                │
-│   │ 6. PARAM     │<────│ 5. LOOP      │<────│ 4. WALK-FWD  │                │
-│   │   PERMUTATION│     │   CONTROL    │     │   MATRIX     │                │
-│   └──────────────┘     └──────────────┘     └──────────────┘                │
-│         |              (Loop x 10 cycles)   10,000 WF Tests                 │
-│   3000 Opt Tests                            4x4 Area >= 80%                 │
-│   70%+ Profitable                                                           │
-│         v                                                                   │
-│   ┌──────────────┐     ┌──────────────┐     ┌──────────────┐                │
-│   │ 7. MULTI-    │────>│ 8. SLIPPAGE  │────>│ 9. FINAL     │                │
-│   │   MARKET     │     │   TEST       │     │   VERDICT    │                │
-│   └──────────────┘     └──────────────┘     └──────────────┘                │
-│   6 Additional Pairs   0.3 pips Spread      Championship Filters            │
-│   Ret/DD > 1           Execution Costs      PF>1.2, 70% OOS                │
-│                                                   |                         │
-│                                                   v                         │
-│                                           ╔══════════════╗                  │
-│                                           ║ 32 SURVIVORS ║                  │
-│                                           ╚══════════════╝                  │
-└──────────────────────────────────────────────────────────────────────────────┘
-```
+![The Validation Gauntlet](images/validation-gauntlet.svg)
 
 ### Multi-Dimensional Robustness
 
@@ -171,37 +140,7 @@ Each stage tests a different, independent dimension of robustness:
 
 ### Elimination Funnel
 
-```
-Stage 2 (Build):           ~10,000,000 candidates
-                                |
-                           [99.5% eliminated]
-                                |
-Stage 3 (Monte Carlo):     ~50,000 candidates
-                                |
-                           [90.0% eliminated]
-                                |
-Stage 4 (Walk-Forward):    ~5,000 candidates
-                                |
-                           [90.0% eliminated]
-                                |
-Stage 6 (Permutation):    ~500 candidates
-                                |
-                           [70.0% eliminated]
-                                |
-Stage 7 (Multi-Market):   ~150 candidates
-                                |
-                           [46.7% eliminated]
-                                |
-Stage 8 (Slippage):       ~80 candidates
-                                |
-                           [37.5% eliminated]
-                                |
-Stage 9 (Final Verdict):  ~50 candidates
-                                |
-                           [36.0% eliminated]
-                                |
-                            32 SURVIVORS
-```
+![Elimination Funnel](images/elimination-funnel.svg)
 
 ---
 
@@ -357,35 +296,7 @@ A strategy that only works on the exact historical price path is worthless. Real
 
 The pipeline applies four independent types of randomization simultaneously across 1,000 simulations:
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│               MONTE CARLO PERTURBATION LAYERS                │
-├──────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Layer 1: TICK-LEVEL PRICE RANDOMIZATION                     │
-│  ├── Probability Up/Down: 50%/50%                            │
-│  ├── Max Change: 50%                                         │
-│  └── Catches: Intra-bar sequence dependency                  │
-│                                                              │
-│  Layer 2: OHLC DATA PERTURBATION                             │
-│  ├── Probability Up: 70% / Down: 80%                         │
-│  ├── Max Change: 7% of ATR(14)                               │
-│  ├── Keep Connected: YES (no price gaps)                     │
-│  └── Catches: Exact price-level dependency                   │
-│                                                              │
-│  Layer 3: SLIPPAGE RANDOMIZATION                             │
-│  ├── Range: 0-5 pips                                         │
-│  └── Catches: Razor-thin edges that disappear under          │
-│       real execution conditions                              │
-│                                                              │
-│  Layer 4: PARAMETER RANDOMIZATION                            │
-│  ├── Probability: 30%                                        │
-│  ├── Max Change: +/- 30%                                     │
-│  ├── Symmetric: YES                                          │
-│  └── Catches: Parameter-specific optimization artifacts      │
-│                                                              │
-└──────────────────────────────────────────────────────────────┘
-```
+![Monte Carlo Perturbation Layers](images/monte-carlo-layers.svg)
 
 ### Layer-by-Layer Explanation
 
@@ -399,25 +310,7 @@ The pipeline applies four independent types of randomization simultaneously acro
 
 ### Confidence Level Filters
 
-```
-                   MONTE CARLO FILTER LOGIC
-    ┌────────────────────────────────────────────────────┐
-    │                                                    │
-    │  Net Profit at 80% confidence >= 50% of original   │
-    │  ├── 800 of 1,000 sims must retain half the profit │
-    │  └── Allows for degradation, rejects collapse      │
-    │                                                    │
-    │  Max Drawdown at 80% conf <= 200% of original      │
-    │  ├── Worst-case DD in 800 sims <= 2x original      │
-    │  └── Prevents tail-risk exposure                   │
-    │                                                    │
-    │  Return/DD Ratio at 100% confidence >= 50%         │
-    │  ├── EVERY simulation must maintain 50% of Ret/DD  │
-    │  ├── One failure out of 1,000 = ELIMINATION        │
-    │  └── Ensures UNCONDITIONAL robustness              │
-    │                                                    │
-    └────────────────────────────────────────────────────┘
-```
+![Confidence Level Filters](images/confidence-filters.svg)
 
 The 100% confidence requirement on Return/DD ratio is deliberately extreme. It means a single failed simulation out of 1,000 eliminates the strategy. This is the quantitative equivalent of demanding that a bridge design survives every possible wind pattern, not just 80% of them.
 
@@ -501,37 +394,7 @@ Curve-fit strategy: Erratic or declining OOS performance
 
 A single walk-forward test uses fixed parameters (e.g., 5 runs, 25% OOS). Different parameter choices can produce different results. The **Walk-Forward Matrix** tests **all** reasonable combinations to ensure robustness is not an artifact of one specific configuration.
 
-```
-                 Walk-Forward Matrix
-              OOS %:  20%    25%    30%
-            ┌──────┬──────┬──────┐
-     Runs   │      │      │      │
-       3    │  75% │  82% │  85% │     Each cell = Robustness Score
-            ├──────┼──────┼──────┤
-       5    │  80% │  88% │  90% │     Robustness = (WF_Profit / Backtest_Profit) x 100
-            ├──────┼──────┼──────┤
-       7    │  83% │  91% │  87% │     100% = WF matches backtest exactly
-            ├──────┼──────┼──────┤     >100% = Better in forward testing
-       9    │  78% │  85% │  84% │     <100% = Worse (some degradation expected)
-            └──────┴──────┴──────┘
-```
-
-### Area Requirement
-
-The strategy must find a **contiguous 4x4 area** in the matrix where **at least 9 cells** achieve **>= 80% robustness**. This requirement ensures consistent robustness across a wide range of WF configurations, not just a lucky single combination.
-
-```
-PASSING Matrix:                    FAILING Matrix:
-┌──────┬──────┬──────┐            ┌──────┬──────┬──────┐
-│  75% │  82% │  85% │            │  92% │  45% │  78% │
-├──────┼──────┼──────┤            ├──────┼──────┼──────┤
-│  80% │  88% │  90% │  9 cells   │  38% │  85% │  52% │  Scattered
-├──────┼──────┼──────┤  >= 80%    ├──────┼──────┼──────┤  No contiguous
-│  83% │  91% │  87% │  PASS      │  81% │  29% │  88% │  area >= 80%
-├──────┼──────┼──────┤            ├──────┼──────┼──────┤  FAIL
-│  78% │  85% │  84% │            │  55% │  76% │  41% │
-└──────┴──────┴──────┘            └──────┴──────┴──────┘
-```
+![Walk-Forward Robustness Matrix](images/walk-forward-matrix.svg)
 
 ### Configuration
 
@@ -596,20 +459,7 @@ After 10 cycles complete, survivors proceed to the intensive validation stages (
 
 In optimization, a **sharp peak** means that the optimal solution is surrounded by poor solutions. Small changes in parameters lead to dramatic performance collapse. A **broad plateau** means the solution is robust -- nearby parameter values produce similar results.
 
-```
-FRAGILE (Sharp Peak)                ROBUST (Broad Plateau)
-
-Profit |      ^                     Profit |    ████████████
-       |     ███                           |   ██████████████
-       |    █████                          |  ████████████████
-       |   ███████                         | ██████████████████
-       |  █████████                        |████████████████████
-       └────────────── Param              └────────────────── Param
-           ^                                    ^
-      Discovered                           Discovered
-
-Tiny change = collapse              Wide range = stability
-```
+![Sharp Peak vs Broad Plateau](images/sharp-peak-plateau.svg)
 
 ### Configuration
 
@@ -826,19 +676,7 @@ Out-of-Sample periods are **strategically placed** across distinct market regime
 
 ### The Seven Crucibles
 
-```
-Timeline: 2007 ═══════════════════════════════════════════ 2025
-
-  OOS1 ░░░░░░░░░░ Pre-GFC Stress         (2007.08 - 2008.07)  4%
-       OOS2 ░░░░░░░░░░ Global Financial Crisis (2008.09 - 2009.08)  4%
-                 OOS3 ░░░░░░░░░░ European Debt Crisis (2011.08 - 2012.07)  4%
-                           OOS4 ░░░░░░░░░░ Fed + Brexit    (2015.08 - 2016.07)  4%
-                                     OOS5 ░░░░░░░░░░ Trade War      (2018.01 - 2018.12)  4%
-                                           OOS6 ░░░░░░░░░░ COVID-19       (2020.02 - 2021.01)  4%
-                                                     OOS7 ░░░░░░░░░░░░░░░░░░ Inflation  (2022.01 - 2023.12)  9%
-
-  Total OOS: 33% of data reserved for validation
-```
+![OOS Timeline - The Seven Crucibles](images/oos-timeline.svg)
 
 ### Period Details
 
@@ -923,21 +761,7 @@ Timeline: 2007 ═════════════════════�
 
 ### Distribution by Instrument
 
-```
-AUDJPY  ████  4 strategies     USDCAD  ████  4 strategies
-AUDUSD  ████  4 strategies     USDCHF  ████  4 strategies
-EURJPY  ████  4 strategies     USDJPY  ████  4 strategies
-EURUSD  ████  4 strategies     ──────────────────────────
-GBPUSD  ████  4 strategies     TOTAL:  32 Survivors
-```
-
-### Distribution by Direction and Type
-
-```
-Direction:            Type:
-  Long:   16 (50%)      Trend-Following (TF): 16 (50%)
-  Short:  16 (50%)      Mean-Reversion (MR):  16 (50%)
-```
+![Distribution by Instrument](images/instrument-distribution.svg)
 
 The perfectly balanced distribution (4 per pair, 50/50 long/short, 50/50 TF/MR) reflects the pipeline's design: each instrument is given equal opportunity, and both directional and stylistic approaches are independently validated.
 
@@ -961,31 +785,7 @@ The 32 surviving strategies are not traded directly from the validation pipeline
 
 ### Deployment Architecture
 
-```
-┌──────────────────────────────────────────────────────────────────────┐
-│                    DEPLOYMENT PIPELINE                                │
-│                                                                      │
-│  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐  │
-│  │ STRATEGY         │    │ ML PIPELINE      │    │ AUTHORIZATION   │  │
-│  │ VALIDATION       │    │ (Hourly)         │    │ CSV             │  │
-│  │                  │    │                  │    │                  │  │
-│  │ 32 Survivors     │───>│ 5-Model MoE      │───>│ Per-strategy    │  │
-│  │ from 9-Stage     │    │ Bayesian Optim   │    │ GO / NO-GO     │  │
-│  │ Gauntlet         │    │ RL Agent         │    │ decision        │  │
-│  └─────────────────┘    │ Risk Framework   │    └────────┬────────┘  │
-│                         └─────────────────┘             │            │
-│                                                          v            │
-│  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐  │
-│  │ CHARTING         │    │ IB GATEWAY       │    │ BROKER          │  │
-│  │ PLATFORM (MCPT)  │    │ (Dual Instance)  │    │ ACCOUNTS        │  │
-│  │                  │    │                  │    │                  │  │
-│  │ Reads CSV        │───>│ Order routing    │───>│ Account 1-8     │  │
-│  │ Enables/disables │    │ Position mgmt    │    │ 4 strategies    │  │
-│  │ strategies       │    │ Fill reporting   │    │ each             │  │
-│  └─────────────────┘    └─────────────────┘    └─────────────────┘  │
-│                                                                      │
-└──────────────────────────────────────────────────────────────────────┘
-```
+![Deployment Pipeline](images/deployment-pipeline.svg)
 
 ### CSV Authorization File
 

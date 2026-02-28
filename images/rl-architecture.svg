@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" width="900" height="450">
+  <defs>
+    <filter id="rl-glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="rl-shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <linearGradient id="rl-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1923"/>
+      <stop offset="100%" stop-color="#0a1119"/>
+    </linearGradient>
+    <linearGradient id="rl-env" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a3a5c"/>
+      <stop offset="100%" stop-color="#112840"/>
+    </linearGradient>
+    <linearGradient id="rl-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffd740"/>
+      <stop offset="100%" stop-color="#ffab00"/>
+    </linearGradient>
+    <linearGradient id="rl-green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1b5e20"/>
+      <stop offset="100%" stop-color="#0d3310"/>
+    </linearGradient>
+    <linearGradient id="rl-reward" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff5252"/>
+      <stop offset="100%" stop-color="#ff1744"/>
+    </linearGradient>
+    <marker id="rl-arrow-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00e5ff"/>
+    </marker>
+    <marker id="rl-arrow-gold" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ffd740"/>
+    </marker>
+    <marker id="rl-arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00e676"/>
+    </marker>
+    <marker id="rl-arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ff5252"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="450" fill="url(#rl-bg)"/>
+
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" fill="#ffffff" font-family="'Segoe UI', Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="2">THE LEARNING AGENT</text>
+  <text x="450" y="48" text-anchor="middle" fill="#5a7a8a" font-family="'Segoe UI', Arial, sans-serif" font-size="11" letter-spacing="1.5">REINFORCEMENT LEARNING</text>
+
+  <!-- ==================== MAIN RL LOOP ==================== -->
+
+  <!-- ENVIRONMENT box (top center) -->
+  <rect x="180" y="68" width="310" height="70" rx="8" fill="url(#rl-env)" stroke="#448aff" stroke-width="1.5" filter="url(#rl-shadow)"/>
+  <text x="335" y="89" text-anchor="middle" fill="#448aff" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1">ENVIRONMENT</text>
+  <text x="335" y="107" text-anchor="middle" fill="#8ab0d0" font-family="'Segoe UI', Arial, sans-serif" font-size="10">FX Markets: 8 pairs, 6 live positions</text>
+  <text x="335" y="125" text-anchor="middle" fill="#5a7a8a" font-family="'Segoe UI', Arial, sans-serif" font-size="9">Real-time price feeds + broker data</text>
+
+  <!-- Arrow: State (Environment -> Q-Table) -->
+  <path d="M 490 103 L 540 103" stroke="#00e5ff" stroke-width="2" fill="none" marker-end="url(#rl-arrow-cyan)"/>
+  <text x="515" y="95" text-anchor="middle" fill="#00e5ff" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="600">State</text>
+
+  <!-- Q-TABLE hexagon (right) -->
+  <polygon points="640,68 720,68 750,108 720,148 640,148 610,108" fill="#1a1500" stroke="#ffd740" stroke-width="1.5" filter="url(#rl-shadow)"/>
+  <text x="680" y="100" text-anchor="middle" fill="#ffd740" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">Q-TABLE</text>
+  <text x="680" y="117" text-anchor="middle" fill="#bfa640" font-family="'Segoe UI', Arial, sans-serif" font-size="9">18 states</text>
+  <text x="680" y="132" text-anchor="middle" fill="#bfa640" font-family="'Segoe UI', Arial, sans-serif" font-size="9">10+ outcomes</text>
+
+  <!-- Arrow: Action (Q-Table -> Trading Decision) -->
+  <path d="M 680 148 L 680 190" stroke="#00e676" stroke-width="2" fill="none" marker-end="url(#rl-arrow-green)"/>
+  <text x="695" y="175" fill="#00e676" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="600">Action</text>
+
+  <!-- TRADING DECISION box (bottom right) -->
+  <rect x="570" y="200" width="220" height="75" rx="8" fill="#0a1f0a" stroke="#00e676" stroke-width="1.5" filter="url(#rl-shadow)"/>
+  <text x="680" y="222" text-anchor="middle" fill="#00e676" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">TRADING DECISION</text>
+  <text x="680" y="242" text-anchor="middle" fill="#66bb6a" font-family="'Segoe UI', Arial, sans-serif" font-size="10">L_TF | S_TF | L_MR | S_MR</text>
+  <text x="680" y="260" text-anchor="middle" fill="#4a8a4a" font-family="'Segoe UI', Arial, sans-serif" font-size="9">Long/Short x TrendFollow/MeanRevert</text>
+
+  <!-- Arrow: Reward (Trading Decision -> Environment) looping back left and up -->
+  <path d="M 570 237 L 180 237 L 180 138" stroke="#ff5252" stroke-width="2" fill="none" marker-end="url(#rl-arrow-red)" stroke-dasharray="6,3"/>
+  <text x="375" y="230" text-anchor="middle" fill="#ff5252" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="600">Reward</text>
+  <text x="375" y="250" text-anchor="middle" fill="#cc4040" font-family="'Segoe UI', Arial, sans-serif" font-size="9">PnL feedback (real IBKR data)</text>
+
+  <!-- ==================== SIDE BOX: Training Sources ==================== -->
+  <rect x="40" y="290" width="260" height="140" rx="8" fill="#111d28" stroke="#5a7a8a" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="170" y="312" text-anchor="middle" fill="#ffffff" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="0.5">TRAINING SOURCES</text>
+  <line x1="60" y1="320" x2="280" y2="320" stroke="#2a3a4a" stroke-width="0.8"/>
+
+  <!-- Source 1 -->
+  <circle cx="65" cy="340" r="3" fill="#00e676"/>
+  <text x="80" y="344" fill="#a0b8c0" font-family="'Segoe UI', Arial, sans-serif" font-size="10">Hard outcomes (real trades)</text>
+
+  <!-- Source 2 -->
+  <circle cx="65" cy="365" r="3" fill="#ffd740"/>
+  <text x="80" y="369" fill="#a0b8c0" font-family="'Segoe UI', Arial, sans-serif" font-size="10">Soft outcomes (unrealized PnL)</text>
+  <text x="80" y="383" fill="#7a8a90" font-family="'Segoe UI', Arial, sans-serif" font-size="9">weight = 0.6</text>
+
+  <!-- Source 3 -->
+  <circle cx="65" cy="405" r="3" fill="#00e5ff"/>
+  <text x="80" y="409" fill="#a0b8c0" font-family="'Segoe UI', Arial, sans-serif" font-size="10">
+    <tspan fill="#00e5ff" font-weight="700">6,427</tspan> experiences accumulated
+  </text>
+
+  <!-- Dotted line from Training Sources to Q-Table -->
+  <path d="M 300 360 L 450 270 L 580 180 L 610 108" stroke="#5a7a8a" stroke-width="1" fill="none" stroke-dasharray="3,3" opacity="0.5"/>
+
+  <!-- ==================== BOTTOM NOTE ==================== -->
+  <rect x="350" y="315" width="510" height="55" rx="6" fill="#111d28" stroke="#1e3040" stroke-width="0.8"/>
+  <!-- Clock icon -->
+  <circle cx="380" cy="342" r="12" fill="none" stroke="#00e5ff" stroke-width="1.2"/>
+  <line x1="380" y1="335" x2="380" y2="342" stroke="#00e5ff" stroke-width="1.2"/>
+  <line x1="380" y1="342" x2="386" y2="345" stroke="#00e5ff" stroke-width="1.2"/>
+  <text x="400" y="338" fill="#ffffff" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="600">Continuous Learning</text>
+  <text x="400" y="355" fill="#7a8a9a" font-family="'Segoe UI', Arial, sans-serif" font-size="9">Trains every pipeline cycle (hourly) | Epsilon-greedy exploration</text>
+
+  <!-- Decorative RL formula -->
+  <text x="680" y="400" text-anchor="middle" fill="#2a3a4a" font-family="'Courier New', monospace" font-size="10">Q(s,a) = Q(s,a) + alpha * [r + gamma * max Q(s',a') - Q(s,a)]</text>
+
+  <!-- Subtle grid -->
+  <g stroke="#1a2a38" stroke-width="0.3" opacity="0.3">
+    <line x1="0" y1="60" x2="900" y2="60"/>
+    <line x1="0" y1="290" x2="900" y2="290"/>
+  </g>
+</svg>

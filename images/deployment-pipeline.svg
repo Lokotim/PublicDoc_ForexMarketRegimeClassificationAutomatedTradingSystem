@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 220" width="950" height="220">
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', Arial, sans-serif; }
+      .title { font-size: 16px; font-weight: bold; fill: #ffffff; letter-spacing: 2px; }
+      .box-label { font-size: 10.5px; font-weight: bold; fill: #ffffff; text-anchor: middle; }
+      .box-sublabel { font-size: 9px; fill: rgba(255,255,255,0.7); text-anchor: middle; }
+      .summary { font-size: 9.5px; fill: #b0bec5; text-anchor: middle; }
+      .summary-highlight { font-size: 9.5px; fill: #FFC107; text-anchor: middle; }
+    </style>
+    <marker id="arrowG" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#FFC107"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="950" height="220" fill="#0f1923" rx="8"/>
+
+  <!-- Title -->
+  <text x="475" y="30" text-anchor="middle" class="title">END-TO-END DEPLOYMENT FLOW</text>
+  <line x1="310" y1="40" x2="640" y2="40" stroke="#FFC107" stroke-width="1" opacity="0.4"/>
+
+  <!-- Box dimensions: 120w x 50h, spacing ~30px between boxes -->
+  <!-- Total width: 6 boxes * 120 + 5 gaps * 30 = 870. Start at x=40 -->
+
+  <!-- Box 1: 32 VALIDATED STRATEGIES -->
+  <rect x="40" y="65" width="120" height="55" rx="7" fill="#4CAF50" opacity="0.9"/>
+  <text x="100" y="87" class="box-label">32 VALIDATED</text>
+  <text x="100" y="102" class="box-label">STRATEGIES</text>
+
+  <!-- Arrow 1->2 -->
+  <line x1="160" y1="92" x2="186" y2="92" stroke="#FFC107" stroke-width="2" marker-end="url(#arrowG)"/>
+
+  <!-- Box 2: ML PIPELINE (Hourly) -->
+  <rect x="190" y="65" width="120" height="55" rx="7" fill="#2196F3" opacity="0.9"/>
+  <text x="250" y="87" class="box-label">ML PIPELINE</text>
+  <text x="250" y="102" class="box-sublabel">(Hourly)</text>
+
+  <!-- Arrow 2->3 -->
+  <line x1="310" y1="92" x2="336" y2="92" stroke="#FFC107" stroke-width="2" marker-end="url(#arrowG)"/>
+
+  <!-- Box 3: AUTHORIZATION CSV -->
+  <rect x="340" y="65" width="120" height="55" rx="7" fill="#2a9d8f" opacity="0.9"/>
+  <text x="400" y="87" class="box-label">AUTHORIZATION</text>
+  <text x="400" y="102" class="box-label">CSV</text>
+
+  <!-- Arrow 3->4 -->
+  <line x1="460" y1="92" x2="486" y2="92" stroke="#FFC107" stroke-width="2" marker-end="url(#arrowG)"/>
+
+  <!-- Box 4: CHARTING PLATFORM -->
+  <rect x="490" y="65" width="120" height="55" rx="7" fill="#00BCD4" opacity="0.9"/>
+  <text x="550" y="87" class="box-label">CHARTING</text>
+  <text x="550" y="102" class="box-label">PLATFORM</text>
+
+  <!-- Arrow 4->5 -->
+  <line x1="610" y1="92" x2="636" y2="92" stroke="#FFC107" stroke-width="2" marker-end="url(#arrowG)"/>
+
+  <!-- Box 5: IB GATEWAY (Dual) -->
+  <rect x="640" y="65" width="120" height="55" rx="7" fill="#9C27B0" opacity="0.9"/>
+  <text x="700" y="87" class="box-label">IB GATEWAY</text>
+  <text x="700" y="102" class="box-sublabel">(Dual)</text>
+
+  <!-- Arrow 5->6 -->
+  <line x1="760" y1="92" x2="786" y2="92" stroke="#FFC107" stroke-width="2" marker-end="url(#arrowG)"/>
+
+  <!-- Box 6: ACCOUNTS 1-8 -->
+  <rect x="790" y="65" width="120" height="55" rx="7" fill="#FF6B6B" opacity="0.9"/>
+  <text x="850" y="87" class="box-label">ACCOUNTS</text>
+  <text x="850" y="102" class="box-label">1-8</text>
+
+  <!-- Decorative connection dots below boxes -->
+  <circle cx="100" cy="135" r="2" fill="#4CAF50" opacity="0.5"/>
+  <circle cx="250" cy="135" r="2" fill="#2196F3" opacity="0.5"/>
+  <circle cx="400" cy="135" r="2" fill="#2a9d8f" opacity="0.5"/>
+  <circle cx="550" cy="135" r="2" fill="#00BCD4" opacity="0.5"/>
+  <circle cx="700" cy="135" r="2" fill="#9C27B0" opacity="0.5"/>
+  <circle cx="850" cy="135" r="2" fill="#FF6B6B" opacity="0.5"/>
+
+  <!-- Horizontal connector line through dots -->
+  <line x1="100" y1="135" x2="850" y2="135" stroke="#ffffff" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- Summary line below -->
+  <line x1="40" y1="155" x2="910" y2="155" stroke="#FFC107" stroke-width="0.5" opacity="0.25"/>
+
+  <text x="475" y="175" text-anchor="middle" font-size="10.5" fill="#b0bec5" font-family="'Segoe UI', Arial, sans-serif">
+    <tspan fill="#4CAF50">9-Stage Gauntlet</tspan>
+    <tspan fill="#546E7A"> &#8594; </tspan>
+    <tspan fill="#2196F3">Real-Time ML Signals</tspan>
+    <tspan fill="#546E7A"> &#8594; </tspan>
+    <tspan fill="#2a9d8f">CSV GO/NO-GO</tspan>
+    <tspan fill="#546E7A"> &#8594; </tspan>
+    <tspan fill="#00BCD4">MCPT Execution</tspan>
+    <tspan fill="#546E7A"> &#8594; </tspan>
+    <tspan fill="#9C27B0">Broker</tspan>
+    <tspan fill="#546E7A"> &#8594; </tspan>
+    <tspan fill="#FF6B6B">8 Live Accounts</tspan>
+  </text>
+
+  <!-- Bottom border accent -->
+  <line x1="40" y1="200" x2="910" y2="200" stroke="#FFC107" stroke-width="0.5" opacity="0.2"/>
+</svg>

@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 500" width="1100" height="500">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glowStrong">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="blur" in2="blur" operator="over"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1923"/>
+      <stop offset="100%" stop-color="#0a1219"/>
+    </linearGradient>
+    <linearGradient id="timelineGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00BCD4"/>
+      <stop offset="14%" stop-color="#2196F3"/>
+      <stop offset="28%" stop-color="#4CAF50"/>
+      <stop offset="42%" stop-color="#9C27B0"/>
+      <stop offset="57%" stop-color="#FF9800"/>
+      <stop offset="71%" stop-color="#F44336"/>
+      <stop offset="85%" stop-color="#009688"/>
+      <stop offset="100%" stop-color="#FFC107"/>
+    </linearGradient>
+    <marker id="arrowCyan" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00BCD4" opacity="0.7"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2196F3" opacity="0.7"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50" opacity="0.7"/>
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#9C27B0" opacity="0.7"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#FF9800" opacity="0.7"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#F44336" opacity="0.7"/>
+    </marker>
+    <marker id="arrowTeal" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#009688" opacity="0.7"/>
+    </marker>
+    <marker id="arrowGold" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#FFC107" opacity="0.7"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="500" fill="url(#bgGrad)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.04" stroke="#fff">
+    <line x1="0" y1="50" x2="1100" y2="50"/>
+    <line x1="0" y1="100" x2="1100" y2="100"/>
+    <line x1="0" y1="150" x2="1100" y2="150"/>
+    <line x1="0" y1="200" x2="1100" y2="200"/>
+    <line x1="0" y1="250" x2="1100" y2="250"/>
+    <line x1="0" y1="300" x2="1100" y2="300"/>
+    <line x1="0" y1="350" x2="1100" y2="350"/>
+    <line x1="0" y1="400" x2="1100" y2="400"/>
+    <line x1="0" y1="450" x2="1100" y2="450"/>
+  </g>
+
+  <!-- Title -->
+  <text x="550" y="35" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="3">THE MONEYPROD PIPELINE</text>
+  <text x="550" y="55" text-anchor="middle" fill="#607D8B" font-family="Segoe UI, Arial, sans-serif" font-size="11" letter-spacing="2">8 STAGES, 196 SECONDS</text>
+  <line x1="350" y1="42" x2="430" y2="42" stroke="#607D8B" stroke-width="0.5"/>
+  <line x1="670" y1="42" x2="750" y2="42" stroke="#607D8B" stroke-width="0.5"/>
+
+  <!-- S-CURVE ROW 1: Stages 1-4 (left to right, y=120) -->
+  <!-- Stage 1: DATA COLLECTION -->
+  <g filter="url(#shadow)">
+    <rect x="30" y="85" width="120" height="70" rx="6" fill="#0f1923" stroke="#00BCD4" stroke-width="1.5"/>
+    <rect x="30" y="85" width="120" height="4" rx="2" fill="#00BCD4"/>
+    <text x="90" y="105" text-anchor="middle" fill="#00BCD4" font-family="Segoe UI, Arial, sans-serif" font-size="7" font-weight="700" letter-spacing="1">STAGE 1</text>
+    <text x="90" y="120" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">DATA COLLECTION</text>
+    <text x="90" y="137" text-anchor="middle" fill="#00BCD4" font-family="Segoe UI, Arial, sans-serif" font-size="7" opacity="0.8">9 phases parallel, 58s</text>
+  </g>
+
+  <!-- Arrow 1→2 -->
+  <line x1="150" y1="120" x2="188" y2="120" stroke="#00BCD4" stroke-width="1.2" marker-end="url(#arrowCyan)" opacity="0.6"/>
+
+  <!-- Stage 2: IBKR + THEORIES -->
+  <g filter="url(#shadow)">
+    <rect x="195" y="85" width="120" height="70" rx="6" fill="#0f1923" stroke="#2196F3" stroke-width="1.5"/>
+    <rect x="195" y="85" width="120" height="4" rx="2" fill="#2196F3"/>
+    <text x="255" y="105" text-anchor="middle" fill="#2196F3" font-family="Segoe UI, Arial, sans-serif" font-size="7" font-weight="700" letter-spacing="1">STAGE 2</text>
+    <text x="255" y="120" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">IBKR + THEORIES</text>
+    <text x="255" y="137" text-anchor="middle" fill="#2196F3" font-family="Segoe UI, Arial, sans-serif" font-size="7" opacity="0.8">3 phases, 30 theories</text>
+  </g>
+
+  <!-- Arrow 2→3 -->
+  <line x1="315" y1="120" x2="353" y2="120" stroke="#2196F3" stroke-width="1.2" marker-end="url(#arrowBlue)" opacity="0.6"/>
+
+  <!-- Stage 3: ML ENSEMBLE -->
+  <g filter="url(#shadow)">
+    <rect x="360" y="85" width="120" height="70" rx="6" fill="#0f1923" stroke="#4CAF50" stroke-width="1.5"/>
+    <rect x="360" y="85" width="120" height="4" rx="2" fill="#4CAF50"/>
+    <text x="420" y="105" text-anchor="middle" fill="#4CAF50" font-family="Segoe UI, Arial, sans-serif" font-size="7" font-weight="700" letter-spacing="1">STAGE 3</text>
+    <text x="420" y="120" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">ML ENSEMBLE</text>
+    <text x="420" y="137" text-anchor="middle" fill="#4CAF50" font-family="Segoe UI, Arial, sans-serif" font-size="7" opacity="0.8">5-Model MoE, 1072 feat.</text>
+  </g>
+
+  <!-- Arrow 3→4 -->
+  <line x1="480" y1="120" x2="518" y2="120" stroke="#4CAF50" stroke-width="1.2" marker-end="url(#arrowGreen)" opacity="0.6"/>
+
+  <!-- Stage 4: POST-ML -->
+  <g filter="url(#shadow)">
+    <rect x="525" y="85" width="120" height="70" rx="6" fill="#0f1923" stroke="#9C27B0" stroke-width="1.5"/>
+    <rect x="525" y="85" width="120" height="4" rx="2" fill="#9C27B0"/>
+    <text x="585" y="105" text-anchor="middle" fill="#9C27B0" font-family="Segoe UI, Arial, sans-serif" font-size="7" font-weight="700" letter-spacing="1">STAGE 4</text>
+    <text x="585" y="120" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">POST-ML</text>
+    <text x="585" y="137" text-anchor="middle" fill="#9C27B0" font-family="Segoe UI, Arial, sans-serif" font-size="7" opacity="0.8">Bayesian + Forecast</text>
+  </g>
+
+  <!-- S-curve connector: Stage 4 down to row 2 -->
+  <path d="M 585 155 C 585 190, 585 190, 585 210" stroke="#9C27B0" stroke-width="1.2" fill="none" opacity="0.5" stroke-dasharray="4 3"/>
+  <path d="M 585 210 C 585 230, 525 230, 525 250" stroke="#FF9800" stroke-width="1.2" fill="none" opacity="0.5" stroke-dasharray="4 3" marker-end="url(#arrowOrange)"/>
+
+  <!-- S-CURVE ROW 2: Stages 5-8 (right to left, y=250) -->
+  <!-- Stage 5: RL AGENT -->
+  <g filter="url(#shadow)">
+    <rect x="460" y="245" width="120" height="70" rx="6" fill="#0f1923" stroke="#FF9800" stroke-width="1.5"/>
+    <rect x="460" y="245" width="120" height="4" rx="2" fill="#FF9800"/>
+    <text x="520" y="265" text-anchor="middle" fill="#FF9800" font-family="Segoe UI, Arial, sans-serif" font-size="7" font-weight="700" letter-spacing="1">STAGE 5</text>
+    <text x="520" y="280" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">RL AGENT</text>
+    <text x="520" y="297" text-anchor="middle" fill="#FF9800" font-family="Segoe UI, Arial, sans-serif" font-size="7" opacity="0.8">Q-Learning + Circuit Brk</text>
+  </g>
+
+  <!-- Arrow 5→6 (going right, since we reversed) -->
+  <line x1="580" y1="280" x2="618" y2="280" stroke="#FF9800" stroke-width="1.2" marker-end="url(#arrowOrange)" opacity="0.6"/>
+
+  <!-- Stage 6: META-SIGNAL -->
+  <g filter="url(#shadow)">
+    <rect x="625" y="245" width="120" height="70" rx="6" fill="#0f1923" stroke="#F44336" stroke-width="1.5"/>
+    <rect x="625" y="245" width="120" height="4" rx="2" fill="#F44336"/>
+    <text x="685" y="265" text-anchor="middle" fill="#F44336" font-family="Segoe UI, Arial, sans-serif" font-size="7" font-weight="700" letter-spacing="1">STAGE 6</text>
+    <text x="685" y="280" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">META-SIGNAL</text>
+    <text x="685" y="297" text-anchor="middle" fill="#F44336" font-family="Segoe UI, Arial, sans-serif" font-size="7" opacity="0.8">Conflict Arbitration</text>
+  </g>
+
+  <!-- Arrow 6→7 -->
+  <line x1="745" y1="280" x2="783" y2="280" stroke="#F44336" stroke-width="1.2" marker-end="url(#arrowRed)" opacity="0.6"/>
+
+  <!-- Stage 7: POSITION SIZING -->
+  <g filter="url(#shadow)">
+    <rect x="790" y="245" width="120" height="70" rx="6" fill="#0f1923" stroke="#009688" stroke-width="1.5"/>
+    <rect x="790" y="245" width="120" height="4" rx="2" fill="#009688"/>
+    <text x="850" y="265" text-anchor="middle" fill="#009688" font-family="Segoe UI, Arial, sans-serif" font-size="7" font-weight="700" letter-spacing="1">STAGE 7</text>
+    <text x="850" y="280" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">POSITION SIZING</text>
+    <text x="850" y="297" text-anchor="middle" fill="#009688" font-family="Segoe UI, Arial, sans-serif" font-size="7" opacity="0.8">Kelly + IV + ATR</text>
+  </g>
+
+  <!-- Arrow 7→8 -->
+  <line x1="910" y1="280" x2="948" y2="280" stroke="#009688" stroke-width="1.2" marker-end="url(#arrowTeal)" opacity="0.6"/>
+
+  <!-- Stage 8: POST-CSV -->
+  <g filter="url(#shadow)">
+    <rect x="955" y="245" width="110" height="70" rx="6" fill="#FFC107" stroke="#FFC107" stroke-width="1.5"/>
+    <text x="1010" y="265" text-anchor="middle" fill="#1a1a1a" font-family="Segoe UI, Arial, sans-serif" font-size="7" font-weight="700" letter-spacing="1">STAGE 8</text>
+    <text x="1010" y="280" text-anchor="middle" fill="#1a1a1a" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">POST-CSV</text>
+    <text x="1010" y="297" text-anchor="middle" fill="#1a1a1a" font-family="Segoe UI, Arial, sans-serif" font-size="7" opacity="0.9">7 deferred phases</text>
+  </g>
+
+  <!-- CSV → LIVE TRADING box with glow -->
+  <g filter="url(#glowStrong)">
+    <rect x="935" y="340" width="145" height="45" rx="8" fill="#0f1923" stroke="#00E676" stroke-width="2"/>
+    <text x="1007" y="360" text-anchor="middle" fill="#00E676" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1">CSV</text>
+    <text x="1007" y="360" text-anchor="middle" fill="#00E676" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1" opacity="0.4">CSV</text>
+    <text x="1007" y="375" text-anchor="middle" fill="#00E676" font-family="Segoe UI, Arial, sans-serif" font-size="8" letter-spacing="1.5">LIVE TRADING</text>
+    <!-- Animated pulse ring -->
+    <rect x="935" y="340" width="145" height="45" rx="8" fill="none" stroke="#00E676" stroke-width="1" opacity="0.3">
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="2s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  <line x1="1010" y1="315" x2="1010" y2="338" stroke="#00E676" stroke-width="1.2" opacity="0.6" stroke-dasharray="3 2"/>
+
+  <!-- Timeline Bar -->
+  <rect x="40" y="425" width="1020" height="6" rx="3" fill="#1a2a36"/>
+  <rect x="40" y="425" width="1020" height="6" rx="3" fill="url(#timelineGrad)" opacity="0.7"/>
+
+  <!-- Timeline markers -->
+  <g fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="8" opacity="0.7">
+    <line x1="40" y1="420" x2="40" y2="436" stroke="#ffffff" stroke-width="0.5" opacity="0.4"/>
+    <text x="40" y="450" text-anchor="middle">0s</text>
+
+    <line x1="182" y1="420" x2="182" y2="436" stroke="#ffffff" stroke-width="0.5" opacity="0.4"/>
+    <text x="182" y="450" text-anchor="middle">58s</text>
+
+    <line x1="323" y1="420" x2="323" y2="436" stroke="#ffffff" stroke-width="0.5" opacity="0.4"/>
+    <text x="323" y="450" text-anchor="middle">80s</text>
+
+    <line x1="605" y1="420" x2="605" y2="436" stroke="#ffffff" stroke-width="0.5" opacity="0.4"/>
+    <text x="605" y="450" text-anchor="middle">179s</text>
+
+    <line x1="680" y1="420" x2="680" y2="436" stroke="#ffffff" stroke-width="0.5" opacity="0.4"/>
+    <text x="680" y="450" text-anchor="middle">182s</text>
+
+    <line x1="755" y1="420" x2="755" y2="436" stroke="#ffffff" stroke-width="0.5" opacity="0.4"/>
+    <text x="755" y="450" text-anchor="middle">183s</text>
+
+    <line x1="900" y1="418" x2="900" y2="438" stroke="#FFC107" stroke-width="1" opacity="0.8"/>
+    <text x="900" y="450" text-anchor="middle" fill="#FFC107" font-weight="600">184s</text>
+    <text x="900" y="462" text-anchor="middle" fill="#FFC107" font-size="6">(CSV)</text>
+
+    <line x1="1060" y1="418" x2="1060" y2="438" stroke="#00E676" stroke-width="1" opacity="0.8"/>
+    <text x="1060" y="450" text-anchor="middle" fill="#00E676" font-weight="600">196s</text>
+    <text x="1060" y="462" text-anchor="middle" fill="#00E676" font-size="6">(COMPLETE)</text>
+  </g>
+
+  <!-- Decorative corner accents -->
+  <path d="M 5 5 L 25 5 L 25 7 L 7 7 L 7 25 L 5 25 Z" fill="#607D8B" opacity="0.3"/>
+  <path d="M 1095 5 L 1075 5 L 1075 7 L 1093 7 L 1093 25 L 1095 25 Z" fill="#607D8B" opacity="0.3"/>
+  <path d="M 5 495 L 25 495 L 25 493 L 7 493 L 7 475 L 5 475 Z" fill="#607D8B" opacity="0.3"/>
+  <path d="M 1095 495 L 1075 495 L 1075 493 L 1093 493 L 1093 475 L 1095 475 Z" fill="#607D8B" opacity="0.3"/>
+</svg>

@@ -1,0 +1,1 @@
+This folder just contains image assets for the documentation.

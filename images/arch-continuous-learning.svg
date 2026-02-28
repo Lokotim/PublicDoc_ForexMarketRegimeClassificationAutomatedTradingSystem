@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="clBgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1923"/>
+      <stop offset="100%" stop-color="#0a1219"/>
+    </linearGradient>
+    <filter id="clGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="clArrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#94A3B8"/>
+    </marker>
+    <marker id="clArrowCyan" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#00e5ff"/>
+    </marker>
+    <marker id="clArrowGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#4ADE80"/>
+    </marker>
+    <marker id="clArrowGold" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#FFD54F"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="400" fill="url(#clBgGrad)"/>
+
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" font-family="monospace" font-size="18" font-weight="bold" fill="#FFD54F" filter="url(#clGlow)">CONTINUOUS LEARNING LOOP</text>
+  <line x1="225" y1="42" x2="675" y2="42" stroke="#FFD54F" stroke-opacity="0.3" stroke-width="1"/>
+
+  <!-- Circular layout -->
+  <!-- Large circular feedback path -->
+  <ellipse cx="350" cy="220" rx="290" ry="140" fill="none" stroke="#94A3B8" stroke-width="0.8" stroke-opacity="0.15" stroke-dasharray="8,4"/>
+
+  <!-- 1. Trade Outcomes (top-left) -->
+  <rect x="30" y="70" width="195" height="80" rx="10" fill="#ff9100" fill-opacity="0.08" stroke="#ff9100" stroke-width="1.2"/>
+  <text x="127" y="95" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#ff9100">TRADE OUTCOMES</text>
+  <text x="127" y="115" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">Closed PnL, Win/Loss</text>
+  <text x="127" y="130" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">Holding periods, Slippage</text>
+  <text x="127" y="143" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Per-pair, per-strategy</text>
+
+  <!-- Arrow 1→2 -->
+  <path d="M227,110 Q275,95 290,105" fill="none" stroke="#ff9100" stroke-width="1.5" marker-end="url(#clArrow)"/>
+
+  <!-- 2. Metric Computation (top-right) -->
+  <rect x="295" y="60" width="260" height="100" rx="10" fill="#00e5ff" fill-opacity="0.08" stroke="#00e5ff" stroke-width="1.2"/>
+  <text x="425" y="82" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#00e5ff">METRIC COMPUTATION</text>
+
+  <g font-family="monospace" font-size="8">
+    <rect x="310" y="92" width="105" height="22" rx="4" fill="#0f1923" stroke="#00e5ff" stroke-width="0.5"/>
+    <text x="362" y="107" text-anchor="middle" fill="#E2E8F0">Sortino Ratio</text>
+
+    <rect x="425" y="92" width="115" height="22" rx="4" fill="#0f1923" stroke="#00e5ff" stroke-width="0.5"/>
+    <text x="482" y="107" text-anchor="middle" fill="#E2E8F0">Sharpe Ratio</text>
+
+    <rect x="310" y="122" width="105" height="22" rx="4" fill="#0f1923" stroke="#00e5ff" stroke-width="0.5"/>
+    <text x="362" y="137" text-anchor="middle" fill="#E2E8F0">Kelly Fraction</text>
+
+    <rect x="425" y="122" width="115" height="22" rx="4" fill="#0f1923" stroke="#00e5ff" stroke-width="0.5"/>
+    <text x="482" y="137" text-anchor="middle" fill="#E2E8F0">EWMA Decay</text>
+  </g>
+
+  <!-- Arrow 2→3 -->
+  <path d="M557,120 Q580,130 580,155" fill="none" stroke="#00e5ff" stroke-width="1.5" marker-end="url(#clArrowCyan)"/>
+
+  <!-- 3. Retrain Triggers (right) -->
+  <rect x="570" y="160" width="310" height="100" rx="10" fill="#ef5350" fill-opacity="0.08" stroke="#ef5350" stroke-width="1.2"/>
+  <text x="725" y="182" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#ef5350">RETRAIN TRIGGERS</text>
+
+  <g font-family="monospace" font-size="9">
+    <rect x="590" y="192" width="130" height="22" rx="4" fill="#ef5350" fill-opacity="0.1" stroke="#ef5350" stroke-width="0.6"/>
+    <text x="655" y="207" text-anchor="middle" fill="#ef5350">Sortino &lt; -0.3</text>
+
+    <rect x="590" y="222" width="130" height="22" rx="4" fill="#ef5350" fill-opacity="0.1" stroke="#ef5350" stroke-width="0.6"/>
+    <text x="655" y="237" text-anchor="middle" fill="#ef5350">Sharpe &lt; -0.5</text>
+
+    <rect x="735" y="192" width="130" height="22" rx="4" fill="#ef5350" fill-opacity="0.1" stroke="#ef5350" stroke-width="0.6"/>
+    <text x="800" y="207" text-anchor="middle" fill="#ef5350">WinRate &lt; 40%</text>
+
+    <rect x="735" y="222" width="130" height="22" rx="4" fill="#ff9100" fill-opacity="0.1" stroke="#ff9100" stroke-width="0.6"/>
+    <text x="800" y="237" text-anchor="middle" fill="#ff9100">Scheduled (weekly)</text>
+  </g>
+
+  <!-- Arrow 3→4 -->
+  <path d="M725,262 Q725,280 680,290" fill="none" stroke="#ef5350" stroke-width="1.5" marker-end="url(#clArrow)"/>
+
+  <!-- 4. Model Versioning (bottom-right) -->
+  <rect x="530" y="290" width="195" height="80" rx="10" fill="#FFD54F" fill-opacity="0.08" stroke="#FFD54F" stroke-width="1.2"/>
+  <text x="627" y="312" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#FFD54F">MODEL VERSIONING</text>
+  <text x="627" y="332" text-anchor="middle" font-family="monospace" font-size="16" font-weight="bold" fill="#E2E8F0">v17.0</text>
+  <text x="627" y="350" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">Snapshot + rollback capable</text>
+  <text x="627" y="362" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Bayesian weight persistence</text>
+
+  <!-- Arrow 4→5 -->
+  <path d="M528,335 Q500,340 475,335" fill="none" stroke="#FFD54F" stroke-width="1.5" marker-end="url(#clArrowGold)"/>
+
+  <!-- 5. A/B Testing (bottom-center) -->
+  <rect x="280" y="290" width="195" height="80" rx="10" fill="#4ADE80" fill-opacity="0.08" stroke="#4ADE80" stroke-width="1.2"/>
+  <text x="377" y="312" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#4ADE80">A/B TESTING</text>
+
+  <g font-family="monospace" font-size="8">
+    <rect x="300" y="322" width="70" height="22" rx="4" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-width="0.6"/>
+    <text x="335" y="337" text-anchor="middle" fill="#4ADE80">Cohort A</text>
+
+    <text x="382" y="337" text-anchor="middle" fill="#94A3B8">vs</text>
+
+    <rect x="395" y="322" width="70" height="22" rx="4" fill="#ff9100" fill-opacity="0.1" stroke="#ff9100" stroke-width="0.6"/>
+    <text x="430" y="337" text-anchor="middle" fill="#ff9100">Cohort B</text>
+  </g>
+  <text x="377" y="362" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Crowding penalty variants</text>
+
+  <!-- Arrow 5→6 -->
+  <path d="M278,335 Q245,340 215,325" fill="none" stroke="#4ADE80" stroke-width="1.5" marker-end="url(#clArrowGreen)"/>
+
+  <!-- 6. ML Ensemble (bottom-left, completing loop) -->
+  <rect x="30" y="270" width="185" height="100" rx="10" fill="#00e5ff" fill-opacity="0.1" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="122" y="295" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#00e5ff">ML ENSEMBLE</text>
+  <text x="122" y="315" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">Retrained models</text>
+  <text x="122" y="330" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">Updated weights</text>
+  <text x="122" y="345" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">Fresh Q-table</text>
+  <text x="122" y="360" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Walk-forward validation</text>
+
+  <!-- Arrow 6→1 (completing the loop back to Trade Outcomes) -->
+  <path d="M122,268 Q115,210 120,155" fill="none" stroke="#00e5ff" stroke-width="2" marker-end="url(#clArrowCyan)" stroke-dasharray="6,3"/>
+  <text x="95" y="215" font-family="monospace" font-size="7" fill="#00e5ff" transform="rotate(-90, 95, 215)">feedback</text>
+
+  <!-- Large circular arrow hint -->
+  <path d="M190,65 Q350,20 530,65" fill="none" stroke="#FFD54F" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="4,4"/>
+  <path d="M580,155 Q630,180 630,220" fill="none" stroke="#FFD54F" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="4,4"/>
+
+  <!-- Central label -->
+  <rect x="600" y="90" width="180" height="55" rx="8" fill="#FFD54F" fill-opacity="0.06" stroke="#FFD54F" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <text x="690" y="112" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#FFD54F">FEEDBACK LOOP</text>
+  <text x="690" y="128" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Continuous adaptation</text>
+  <text x="690" y="140" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">to market regimes</text>
+</svg>

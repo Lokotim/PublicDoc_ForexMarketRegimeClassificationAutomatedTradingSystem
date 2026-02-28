@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 720" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <filter id="shadow4" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arUp" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64ffda"/>
+    </marker>
+    <marker id="arUpG" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#F7B32B"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="850" height="720" rx="8" fill="#0a192f"/>
+
+  <!-- Title -->
+  <text x="425" y="38" text-anchor="middle" fill="#ccd6f6" font-size="20" font-weight="700">Monitoring, Diagnostics, and Observability</text>
+  <line x1="190" y1="48" x2="660" y2="48" stroke="#F7B32B" stroke-width="2" stroke-opacity="0.6"/>
+
+  <!-- ========== DATA SOURCES (Bottom strip) ========== -->
+  <rect x="20" y="570" width="810" height="130" rx="8" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow4)"/>
+  <text x="425" y="594" text-anchor="middle" fill="#8892b0" font-size="12" font-weight="600">DATA SOURCES</text>
+
+  <!-- DB1 -->
+  <rect x="40" y="608" width="170" height="72" rx="6" fill="#0a192f" stroke="#F7B32B" stroke-width="1.5"/>
+  <ellipse cx="125" cy="618" rx="60" ry="8" fill="#F7B32B" fill-opacity="0.15" stroke="#F7B32B" stroke-width="1"/>
+  <text x="125" y="622" text-anchor="middle" fill="#F7B32B" font-size="8" font-weight="600">DB</text>
+  <text x="125" y="645" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">forex_sentiment.db</text>
+  <text x="125" y="660" text-anchor="middle" fill="#8892b0" font-size="9">831 MB | 29+ tables</text>
+  <text x="125" y="675" text-anchor="middle" fill="#F7B32B" font-size="8">Signals, ML, RL</text>
+
+  <!-- DB2 -->
+  <rect x="230" y="608" width="170" height="72" rx="6" fill="#0a192f" stroke="#64ffda" stroke-width="1.5"/>
+  <ellipse cx="315" cy="618" rx="60" ry="8" fill="#64ffda" fill-opacity="0.15" stroke="#64ffda" stroke-width="1"/>
+  <text x="315" y="622" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="600">DB</text>
+  <text x="315" y="645" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">forexregime.db</text>
+  <text x="315" y="660" text-anchor="middle" fill="#8892b0" font-size="9">2 MB | 8 tables</text>
+  <text x="315" y="675" text-anchor="middle" fill="#64ffda" font-size="8">IBKR, OHLC, FX</text>
+
+  <!-- DB3 -->
+  <rect x="420" y="608" width="170" height="72" rx="6" fill="#0a192f" stroke="#ff6b6b" stroke-width="1.5"/>
+  <ellipse cx="505" cy="618" rx="60" ry="8" fill="#ff6b6b" fill-opacity="0.15" stroke="#ff6b6b" stroke-width="1"/>
+  <text x="505" y="622" text-anchor="middle" fill="#ff6b6b" font-size="8" font-weight="600">DB</text>
+  <text x="505" y="645" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">risk_management.db</text>
+  <text x="505" y="660" text-anchor="middle" fill="#8892b0" font-size="9">5 tables</text>
+  <text x="505" y="675" text-anchor="middle" fill="#ff6b6b" font-size="8">PnL, Circuit Breaker</text>
+
+  <!-- IBKR TWS API -->
+  <rect x="620" y="608" width="190" height="72" rx="6" fill="#0a192f" stroke="#F7B32B" stroke-width="1.5"/>
+  <text x="715" y="636" text-anchor="middle" fill="#F7B32B" font-size="12" font-weight="700">IBKR TWS API</text>
+  <text x="715" y="655" text-anchor="middle" fill="#8892b0" font-size="9">Live positions &amp; P&amp;L</text>
+  <text x="715" y="670" text-anchor="middle" fill="#8892b0" font-size="9">Account balances</text>
+
+  <!-- Feed arrows going up from data sources -->
+  <line x1="125" y1="608" x2="125" y2="540" stroke="#F7B32B" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+  <line x1="315" y1="608" x2="315" y2="540" stroke="#64ffda" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+  <line x1="505" y1="608" x2="505" y2="540" stroke="#ff6b6b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+  <line x1="715" y1="608" x2="715" y2="540" stroke="#F7B32B" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+
+  <!-- Central "feeds into" label -->
+  <text x="425" y="555" text-anchor="middle" fill="#8892b0" font-size="10" font-style="italic">All sources feed into monitoring layer</text>
+
+  <!-- ========== 4 MONITORING COMPONENTS ========== -->
+
+  <!-- 1. Pipeline Diagnostics -->
+  <rect x="20" y="70" width="395" height="220" rx="8" fill="#112240" stroke="#64ffda" stroke-width="1.5" filter="url(#shadow4)"/>
+  <rect x="20" y="70" width="395" height="30" rx="8" fill="#64ffda" fill-opacity="0.1"/>
+  <text x="217" y="91" text-anchor="middle" fill="#64ffda" font-size="13" font-weight="700">Pipeline Diagnostics</text>
+
+  <text x="40" y="120" fill="#ccd6f6" font-size="11" font-weight="600">11 diagnostic categories</text>
+  <text x="40" y="138" fill="#8892b0" font-size="10">100+ individual health checks</text>
+
+  <!-- Status badges -->
+  <g transform="translate(40, 150)">
+    <rect x="0" y="0" width="55" height="22" rx="4" fill="#4ADE80" fill-opacity="0.15" stroke="#4ADE80" stroke-width="1"/>
+    <text x="27" y="15" text-anchor="middle" fill="#4ADE80" font-size="10" font-weight="700">OK</text>
+
+    <rect x="65" y="0" width="65" height="22" rx="4" fill="#F7B32B" fill-opacity="0.15" stroke="#F7B32B" stroke-width="1"/>
+    <text x="97" y="15" text-anchor="middle" fill="#F7B32B" font-size="10" font-weight="700">WARN</text>
+
+    <rect x="140" y="0" width="60" height="22" rx="4" fill="#ff6b6b" fill-opacity="0.15" stroke="#ff6b6b" stroke-width="1"/>
+    <text x="170" y="15" text-anchor="middle" fill="#ff6b6b" font-size="10" font-weight="700">CRIT</text>
+
+    <rect x="210" y="0" width="55" height="22" rx="4" fill="#8892b0" fill-opacity="0.15" stroke="#8892b0" stroke-width="1"/>
+    <text x="237" y="15" text-anchor="middle" fill="#8892b0" font-size="10" font-weight="700">INFO</text>
+  </g>
+
+  <!-- Category samples -->
+  <rect x="35" y="185" width="180" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+  <circle cx="48" cy="197" r="4" fill="#4ADE80"/>
+  <text x="58" y="201" fill="#ccd6f6" font-size="9">Database integrity</text>
+
+  <rect x="220" y="185" width="180" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+  <circle cx="233" cy="197" r="4" fill="#4ADE80"/>
+  <text x="243" y="201" fill="#ccd6f6" font-size="9">Signal freshness</text>
+
+  <rect x="35" y="215" width="180" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+  <circle cx="48" cy="227" r="4" fill="#F7B32B"/>
+  <text x="58" y="231" fill="#ccd6f6" font-size="9">Position reconciliation</text>
+
+  <rect x="220" y="215" width="180" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+  <circle cx="233" cy="227" r="4" fill="#ff6b6b"/>
+  <text x="243" y="231" fill="#ccd6f6" font-size="9">Circuit breaker status</text>
+
+  <rect x="35" y="245" width="180" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+  <circle cx="48" cy="257" r="4" fill="#4ADE80"/>
+  <text x="58" y="261" fill="#ccd6f6" font-size="9">ML model health</text>
+
+  <rect x="220" y="245" width="180" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+  <circle cx="233" cy="257" r="4" fill="#8892b0"/>
+  <text x="243" y="261" fill="#ccd6f6" font-size="9">Scraper latency</text>
+
+  <!-- 2. Real-Time Liveboard -->
+  <rect x="435" y="70" width="395" height="220" rx="8" fill="#112240" stroke="#F7B32B" stroke-width="1.5" filter="url(#shadow4)"/>
+  <rect x="435" y="70" width="395" height="30" rx="8" fill="#F7B32B" fill-opacity="0.1"/>
+  <text x="632" y="91" text-anchor="middle" fill="#F7B32B" font-size="13" font-weight="700">Real-Time Liveboard</text>
+
+  <text x="455" y="118" fill="#ccd6f6" font-size="11" font-weight="600">Flask web application</text>
+
+  <!-- Tech specs -->
+  <rect x="450" y="130" width="100" height="24" rx="4" fill="#0a192f" stroke="#F7B32B" stroke-width="1"/>
+  <text x="500" y="146" text-anchor="middle" fill="#F7B32B" font-size="10" font-weight="600">Port 5089</text>
+
+  <rect x="558" y="130" width="65" height="24" rx="4" fill="#0a192f" stroke="#64ffda" stroke-width="1"/>
+  <text x="590" y="146" text-anchor="middle" fill="#64ffda" font-size="10" font-weight="600">SSE</text>
+
+  <rect x="631" y="130" width="100" height="24" rx="4" fill="#0a192f" stroke="#64ffda" stroke-width="1"/>
+  <text x="681" y="146" text-anchor="middle" fill="#64ffda" font-size="10" font-weight="600">3s refresh</text>
+
+  <!-- Liveboard features -->
+  <rect x="450" y="168" width="365" height="108" rx="5" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+  <text x="460" y="188" fill="#8892b0" font-size="9" font-weight="600">DASHBOARD PANELS:</text>
+
+  <circle cx="465" cy="206" r="3" fill="#64ffda"/>
+  <text x="476" y="210" fill="#ccd6f6" font-size="9">Live P&amp;L per account &amp; aggregate</text>
+
+  <circle cx="465" cy="224" r="3" fill="#64ffda"/>
+  <text x="476" y="228" fill="#ccd6f6" font-size="9">Active positions with unrealized gains</text>
+
+  <circle cx="465" cy="242" r="3" fill="#64ffda"/>
+  <text x="476" y="246" fill="#ccd6f6" font-size="9">Signal confidence heatmap</text>
+
+  <circle cx="465" cy="260" r="3" fill="#64ffda"/>
+  <text x="476" y="264" fill="#ccd6f6" font-size="9">Risk metrics: drawdown, exposure, Sortino</text>
+
+  <!-- 3. Exhaustive Report -->
+  <rect x="20" y="308" width="395" height="220" rx="8" fill="#112240" stroke="#4ADE80" stroke-width="1.5" filter="url(#shadow4)"/>
+  <rect x="20" y="308" width="395" height="30" rx="8" fill="#4ADE80" fill-opacity="0.1"/>
+  <text x="217" y="329" text-anchor="middle" fill="#4ADE80" font-size="13" font-weight="700">Exhaustive Report</text>
+
+  <text x="40" y="356" fill="#ccd6f6" font-size="11" font-weight="600">20-section HTML dashboard</text>
+  <text x="40" y="374" fill="#8892b0" font-size="10">Published to moneyprod.com</text>
+
+  <!-- Section grid -->
+  <g transform="translate(35, 386)">
+    <rect x="0" y="0" width="88" height="22" rx="3" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <text x="44" y="15" text-anchor="middle" fill="#ccd6f6" font-size="8">P&amp;L Summary</text>
+
+    <rect x="94" y="0" width="88" height="22" rx="3" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <text x="138" y="15" text-anchor="middle" fill="#ccd6f6" font-size="8">Position Grid</text>
+
+    <rect x="188" y="0" width="88" height="22" rx="3" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <text x="232" y="15" text-anchor="middle" fill="#ccd6f6" font-size="8">Risk Metrics</text>
+
+    <rect x="282" y="0" width="88" height="22" rx="3" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <text x="326" y="15" text-anchor="middle" fill="#ccd6f6" font-size="8">Signal Quality</text>
+
+    <rect x="0" y="28" width="88" height="22" rx="3" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <text x="44" y="43" text-anchor="middle" fill="#ccd6f6" font-size="8">ML Accuracy</text>
+
+    <rect x="94" y="28" width="88" height="22" rx="3" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <text x="138" y="43" text-anchor="middle" fill="#ccd6f6" font-size="8">Drawdown</text>
+
+    <rect x="188" y="28" width="88" height="22" rx="3" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <text x="232" y="43" text-anchor="middle" fill="#ccd6f6" font-size="8">Theory Scores</text>
+
+    <rect x="282" y="28" width="88" height="22" rx="3" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <text x="326" y="43" text-anchor="middle" fill="#ccd6f6" font-size="8">RL Performance</text>
+
+    <rect x="0" y="56" width="88" height="22" rx="3" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <text x="44" y="71" text-anchor="middle" fill="#ccd6f6" font-size="8">Exposure Map</text>
+
+    <rect x="94" y="56" width="88" height="22" rx="3" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <text x="138" y="71" text-anchor="middle" fill="#ccd6f6" font-size="8">ATR Analysis</text>
+
+    <rect x="188" y="56" width="88" height="22" rx="3" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <text x="232" y="71" text-anchor="middle" fill="#ccd6f6" font-size="8">Scraper Health</text>
+
+    <rect x="282" y="56" width="88" height="22" rx="3" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <text x="326" y="71" text-anchor="middle" fill="#ccd6f6" font-size="8">+ 8 more...</text>
+  </g>
+
+  <!-- Publish target -->
+  <rect x="35" y="484" width="365" height="28" rx="5" fill="#4ADE80" fill-opacity="0.08" stroke="#4ADE80" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="217" y="503" text-anchor="middle" fill="#4ADE80" font-size="10" font-weight="600">moneyprod.com/report -- auto-published every cycle</text>
+
+  <!-- 4. Discord Alerts -->
+  <rect x="435" y="308" width="395" height="220" rx="8" fill="#112240" stroke="#ff6b6b" stroke-width="1.5" filter="url(#shadow4)"/>
+  <rect x="435" y="308" width="395" height="30" rx="8" fill="#ff6b6b" fill-opacity="0.1"/>
+  <text x="632" y="329" text-anchor="middle" fill="#ff6b6b" font-size="13" font-weight="700">Discord Alerts</text>
+
+  <text x="455" y="356" fill="#ccd6f6" font-size="11" font-weight="600">Intelligent alerting system</text>
+
+  <!-- Anti-spam -->
+  <rect x="450" y="368" width="160" height="24" rx="4" fill="#0a192f" stroke="#F7B32B" stroke-width="1"/>
+  <text x="530" y="384" text-anchor="middle" fill="#F7B32B" font-size="10" font-weight="600">15-min cooldown</text>
+  <text x="625" y="384" fill="#8892b0" font-size="9">(anti-spam)</text>
+
+  <!-- Alert types -->
+  <rect x="450" y="400" width="365" height="116" rx="5" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+  <text x="460" y="418" fill="#8892b0" font-size="9" font-weight="600">ALERT TYPES:</text>
+
+  <rect x="462" y="426" width="14" height="14" rx="2" fill="#ff6b6b" fill-opacity="0.3" stroke="#ff6b6b" stroke-width="0.8"/>
+  <text x="469" y="437" text-anchor="middle" fill="#ff6b6b" font-size="9" font-weight="700">!</text>
+  <text x="484" y="437" fill="#ccd6f6" font-size="9">Pipeline failures &amp; crashes</text>
+
+  <rect x="462" y="448" width="14" height="14" rx="2" fill="#F7B32B" fill-opacity="0.3" stroke="#F7B32B" stroke-width="0.8"/>
+  <text x="469" y="459" text-anchor="middle" fill="#F7B32B" font-size="9" font-weight="700">$</text>
+  <text x="484" y="459" fill="#ccd6f6" font-size="9">Drawdown alerts (threshold breach)</text>
+
+  <rect x="462" y="470" width="14" height="14" rx="2" fill="#64ffda" fill-opacity="0.3" stroke="#64ffda" stroke-width="0.8"/>
+  <text x="469" y="481" text-anchor="middle" fill="#64ffda" font-size="9" font-weight="700">&#10003;</text>
+  <text x="484" y="481" fill="#ccd6f6" font-size="9">CSV ready confirmations</text>
+
+  <rect x="462" y="492" width="14" height="14" rx="2" fill="#8892b0" fill-opacity="0.3" stroke="#8892b0" stroke-width="0.8"/>
+  <text x="469" y="503" text-anchor="middle" fill="#8892b0" font-size="9" font-weight="700">i</text>
+  <text x="484" y="503" fill="#ccd6f6" font-size="9">Position mismatch warnings</text>
+</svg>

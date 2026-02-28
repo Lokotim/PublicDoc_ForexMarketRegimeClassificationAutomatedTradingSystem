@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1923"/>
+      <stop offset="100%" stop-color="#0a1219"/>
+    </linearGradient>
+    <linearGradient id="spectrumGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4CAF50"/>
+      <stop offset="35%" stop-color="#4CAF50"/>
+      <stop offset="45%" stop-color="#FFC107"/>
+      <stop offset="55%" stop-color="#FFC107"/>
+      <stop offset="65%" stop-color="#F44336"/>
+      <stop offset="100%" stop-color="#F44336"/>
+    </linearGradient>
+    <linearGradient id="spectrumGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4CAF50" stop-opacity="0.15"/>
+      <stop offset="35%" stop-color="#4CAF50" stop-opacity="0.15"/>
+      <stop offset="45%" stop-color="#FFC107" stop-opacity="0.1"/>
+      <stop offset="55%" stop-color="#FFC107" stop-opacity="0.1"/>
+      <stop offset="65%" stop-color="#F44336" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#F44336" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="400" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="2.5">VOLATILITY REGIME CLASSIFICATION</text>
+  <line x1="250" y1="40" x2="650" y2="40" stroke="#37474F" stroke-width="0.5"/>
+
+  <!-- ==================== SPECTRUM BAR ==================== -->
+  <!-- Background glow for spectrum -->
+  <rect x="60" y="55" width="780" height="110" rx="6" fill="url(#spectrumGlow)"/>
+
+  <!-- Three regime zones -->
+  <!-- COMPLACENT zone (left, green) -->
+  <rect x="60" y="60" width="250" height="100" rx="6" fill="#0f1923" stroke="#4CAF50" stroke-width="1.2" opacity="0.8"/>
+  <rect x="60" y="60" width="250" height="4" rx="2" fill="#4CAF50"/>
+  <text x="185" y="86" text-anchor="middle" fill="#4CAF50" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="2">COMPLACENT</text>
+  <text x="185" y="104" text-anchor="middle" fill="#78909C" font-family="Segoe UI, Arial, sans-serif" font-size="9">VRP &lt; threshold</text>
+  <line x1="100" y1="114" x2="270" y2="114" stroke="#4CAF50" stroke-width="0.3" opacity="0.5"/>
+  <text x="185" y="132" text-anchor="middle" fill="#B0BEC5" font-family="Segoe UI, Arial, sans-serif" font-size="8.5" font-style="italic">Mean-Reversion + StatArb favored</text>
+
+  <!-- Divider -->
+  <line x1="320" y1="68" x2="320" y2="152" stroke="#37474F" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+
+  <!-- PRICED zone (center, yellow) -->
+  <rect x="325" y="60" width="250" height="100" rx="6" fill="#0f1923" stroke="#FFC107" stroke-width="1.2" opacity="0.8"/>
+  <rect x="325" y="60" width="250" height="4" rx="2" fill="#FFC107"/>
+  <text x="450" y="86" text-anchor="middle" fill="#FFC107" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="2">PRICED</text>
+  <text x="450" y="104" text-anchor="middle" fill="#78909C" font-family="Segoe UI, Arial, sans-serif" font-size="9">VRP &#8776; 0</text>
+  <line x1="365" y1="114" x2="535" y2="114" stroke="#FFC107" stroke-width="0.3" opacity="0.5"/>
+  <text x="450" y="132" text-anchor="middle" fill="#B0BEC5" font-family="Segoe UI, Arial, sans-serif" font-size="8.5" font-style="italic">Trend + Momentum favored</text>
+
+  <!-- Divider -->
+  <line x1="585" y1="68" x2="585" y2="152" stroke="#37474F" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+
+  <!-- FEARFUL zone (right, red) -->
+  <rect x="590" y="60" width="250" height="100" rx="6" fill="#0f1923" stroke="#F44336" stroke-width="1.2" opacity="0.8"/>
+  <rect x="590" y="60" width="250" height="4" rx="2" fill="#F44336"/>
+  <text x="715" y="86" text-anchor="middle" fill="#F44336" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="2">FEARFUL</text>
+  <text x="715" y="104" text-anchor="middle" fill="#78909C" font-family="Segoe UI, Arial, sans-serif" font-size="9">VRP &gt; threshold</text>
+  <line x1="630" y1="114" x2="800" y2="114" stroke="#F44336" stroke-width="0.3" opacity="0.5"/>
+  <text x="715" y="132" text-anchor="middle" fill="#B0BEC5" font-family="Segoe UI, Arial, sans-serif" font-size="8.5" font-style="italic">Breakout + VolSell favored</text>
+
+  <!-- Spectrum gradient bar below -->
+  <rect x="60" y="170" width="780" height="5" rx="2.5" fill="url(#spectrumGrad)" opacity="0.6"/>
+  <!-- Arrow indicators -->
+  <text x="60" y="190" fill="#4CAF50" font-family="Segoe UI, Arial, sans-serif" font-size="7" opacity="0.7">LOW RISK</text>
+  <text x="840" y="190" text-anchor="end" fill="#F44336" font-family="Segoe UI, Arial, sans-serif" font-size="7" opacity="0.7">HIGH RISK</text>
+  <text x="450" y="190" text-anchor="middle" fill="#FFC107" font-family="Segoe UI, Arial, sans-serif" font-size="7" opacity="0.7">NEUTRAL</text>
+
+  <!-- ==================== PAIR REGIME TABLE ==================== -->
+  <text x="450" y="218" text-anchor="middle" fill="#607D8B" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="2">CURRENT REGIME ASSIGNMENTS</text>
+  <line x1="300" y1="223" x2="600" y2="223" stroke="#37474F" stroke-width="0.5"/>
+
+  <!-- Table header -->
+  <rect x="60" y="232" width="780" height="22" rx="3" fill="#1a2a36" opacity="0.6"/>
+  <text x="170" y="247" text-anchor="middle" fill="#78909C" font-family="Segoe UI, Arial, sans-serif" font-size="8" font-weight="600" letter-spacing="1">PAIR</text>
+  <text x="350" y="247" text-anchor="middle" fill="#78909C" font-family="Segoe UI, Arial, sans-serif" font-size="8" font-weight="600" letter-spacing="1">REGIME</text>
+  <text x="560" y="247" text-anchor="middle" fill="#78909C" font-family="Segoe UI, Arial, sans-serif" font-size="8" font-weight="600" letter-spacing="1">PAIR</text>
+  <text x="740" y="247" text-anchor="middle" fill="#78909C" font-family="Segoe UI, Arial, sans-serif" font-size="8" font-weight="600" letter-spacing="1">REGIME</text>
+
+  <!-- Vertical divider -->
+  <line x1="450" y1="232" x2="450" y2="340" stroke="#37474F" stroke-width="0.5"/>
+
+  <!-- Row 1: EURUSD / AUDUSD -->
+  <rect x="60" y="256" width="390" height="20" rx="0" fill="#0f1923" opacity="0.5"/>
+  <text x="170" y="270" text-anchor="middle" fill="#ffffff" font-family="Consolas, monospace" font-size="9.5" font-weight="600">EURUSD</text>
+  <circle cx="290" cy="266" r="4" fill="#4CAF50"/>
+  <text x="350" y="270" text-anchor="middle" fill="#4CAF50" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">COMPLACENT</text>
+
+  <rect x="450" y="256" width="390" height="20" rx="0" fill="#0f1923" opacity="0.5"/>
+  <text x="560" y="270" text-anchor="middle" fill="#ffffff" font-family="Consolas, monospace" font-size="9.5" font-weight="600">AUDUSD</text>
+  <circle cx="680" cy="266" r="4" fill="#F44336"/>
+  <text x="740" y="270" text-anchor="middle" fill="#F44336" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">FEARFUL</text>
+
+  <!-- Row 2: USDJPY / USDCAD -->
+  <rect x="60" y="278" width="390" height="20" rx="0" fill="#1a2a36" opacity="0.3"/>
+  <text x="170" y="292" text-anchor="middle" fill="#ffffff" font-family="Consolas, monospace" font-size="9.5" font-weight="600">USDJPY</text>
+  <circle cx="290" cy="288" r="4" fill="#FFC107"/>
+  <text x="350" y="292" text-anchor="middle" fill="#FFC107" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">PRICED</text>
+
+  <rect x="450" y="278" width="390" height="20" rx="0" fill="#1a2a36" opacity="0.3"/>
+  <text x="560" y="292" text-anchor="middle" fill="#ffffff" font-family="Consolas, monospace" font-size="9.5" font-weight="600">USDCAD</text>
+  <circle cx="680" cy="288" r="4" fill="#F44336"/>
+  <text x="740" y="292" text-anchor="middle" fill="#F44336" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">FEARFUL</text>
+
+  <!-- Row 3: GBPUSD / EURJPY -->
+  <rect x="60" y="300" width="390" height="20" rx="0" fill="#0f1923" opacity="0.5"/>
+  <text x="170" y="314" text-anchor="middle" fill="#ffffff" font-family="Consolas, monospace" font-size="9.5" font-weight="600">GBPUSD</text>
+  <circle cx="290" cy="310" r="4" fill="#F44336"/>
+  <text x="350" y="314" text-anchor="middle" fill="#F44336" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">FEARFUL</text>
+
+  <rect x="450" y="300" width="390" height="20" rx="0" fill="#0f1923" opacity="0.5"/>
+  <text x="560" y="314" text-anchor="middle" fill="#ffffff" font-family="Consolas, monospace" font-size="9.5" font-weight="600">EURJPY</text>
+  <circle cx="680" cy="310" r="4" fill="#4CAF50"/>
+  <text x="740" y="314" text-anchor="middle" fill="#4CAF50" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">COMPLACENT</text>
+
+  <!-- Row 4: USDCHF / AUDJPY -->
+  <rect x="60" y="322" width="390" height="20" rx="0" fill="#1a2a36" opacity="0.3"/>
+  <text x="170" y="336" text-anchor="middle" fill="#ffffff" font-family="Consolas, monospace" font-size="9.5" font-weight="600">USDCHF</text>
+  <circle cx="290" cy="332" r="4" fill="#F44336"/>
+  <text x="350" y="336" text-anchor="middle" fill="#F44336" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">FEARFUL</text>
+
+  <rect x="450" y="322" width="390" height="20" rx="0" fill="#1a2a36" opacity="0.3"/>
+  <text x="560" y="336" text-anchor="middle" fill="#ffffff" font-family="Consolas, monospace" font-size="9.5" font-weight="600">AUDJPY</text>
+  <circle cx="680" cy="332" r="4" fill="#F44336"/>
+  <text x="740" y="336" text-anchor="middle" fill="#F44336" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">FEARFUL</text>
+
+  <!-- ==================== BOTTOM ANNOTATION ==================== -->
+  <rect x="60" y="358" width="780" height="30" rx="5" fill="#0f1923" stroke="#37474F" stroke-width="0.8"/>
+  <text x="450" y="372" text-anchor="middle" fill="#78909C" font-family="Segoe UI, Arial, sans-serif" font-size="8">VRP = Implied Volatility - Realized Volatility</text>
+  <text x="450" y="384" text-anchor="middle" fill="#607D8B" font-family="Segoe UI, Arial, sans-serif" font-size="7">Source: CME FX ETF Options (FXE, FXB, FXY, FXF, FXA, FXC)</text>
+
+  <!-- Corner accents -->
+  <path d="M 5 5 L 25 5 L 25 7 L 7 7 L 7 25 L 5 25 Z" fill="#607D8B" opacity="0.3"/>
+  <path d="M 895 5 L 875 5 L 875 7 L 893 7 L 893 25 L 895 25 Z" fill="#607D8B" opacity="0.3"/>
+  <path d="M 5 395 L 25 395 L 25 393 L 7 393 L 7 375 L 5 375 Z" fill="#607D8B" opacity="0.3"/>
+  <path d="M 895 395 L 875 395 L 875 393 L 893 393 L 893 375 L 895 375 Z" fill="#607D8B" opacity="0.3"/>
+</svg>

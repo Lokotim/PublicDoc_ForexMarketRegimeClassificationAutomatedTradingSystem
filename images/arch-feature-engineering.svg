@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="feBgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1923"/>
+      <stop offset="100%" stop-color="#0a1219"/>
+    </linearGradient>
+    <linearGradient id="feHighlight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD54F" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#FFD54F" stop-opacity="0.08"/>
+    </linearGradient>
+    <filter id="feGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="feArrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#94A3B8"/>
+    </marker>
+    <marker id="feArrowGold" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#FFD54F"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="400" fill="url(#feBgGrad)"/>
+
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" font-family="monospace" font-size="18" font-weight="bold" fill="#FFD54F" filter="url(#feGlow)">FEATURE ENGINEERING PIPELINE</text>
+  <line x1="200" y1="42" x2="700" y2="42" stroke="#FFD54F" stroke-opacity="0.3" stroke-width="1"/>
+
+  <!-- Raw Data Sources (left) -->
+  <rect x="20" y="60" width="160" height="310" rx="10" fill="#4ADE80" fill-opacity="0.06" stroke="#4ADE80" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="100" y="82" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#4ADE80">RAW SOURCES</text>
+
+  <g font-family="monospace" font-size="9">
+    <rect x="35" y="95" width="130" height="22" rx="4" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-width="0.5"/>
+    <text x="100" y="110" text-anchor="middle" fill="#4ADE80">Market Prices</text>
+
+    <rect x="35" y="125" width="130" height="22" rx="4" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-width="0.5"/>
+    <text x="100" y="140" text-anchor="middle" fill="#4ADE80">Economic Data</text>
+
+    <rect x="35" y="155" width="130" height="22" rx="4" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-width="0.5"/>
+    <text x="100" y="170" text-anchor="middle" fill="#4ADE80">CFTC/COT</text>
+
+    <rect x="35" y="185" width="130" height="22" rx="4" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-width="0.5"/>
+    <text x="100" y="200" text-anchor="middle" fill="#4ADE80">News + RSS</text>
+
+    <rect x="35" y="215" width="130" height="22" rx="4" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-width="0.5"/>
+    <text x="100" y="230" text-anchor="middle" fill="#4ADE80">IV / Options</text>
+
+    <rect x="35" y="245" width="130" height="22" rx="4" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-width="0.5"/>
+    <text x="100" y="260" text-anchor="middle" fill="#4ADE80">Sentiment</text>
+
+    <rect x="35" y="275" width="130" height="22" rx="4" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-width="0.5"/>
+    <text x="100" y="290" text-anchor="middle" fill="#4ADE80">DXY / Crosses</text>
+
+    <rect x="35" y="305" width="130" height="22" rx="4" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-width="0.5"/>
+    <text x="100" y="320" text-anchor="middle" fill="#4ADE80">Rate Differentials</text>
+
+    <rect x="35" y="335" width="130" height="22" rx="4" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-width="0.5"/>
+    <text x="100" y="350" text-anchor="middle" fill="#4ADE80">Correlation</text>
+  </g>
+
+  <!-- Arrows from raw to categories -->
+  <line x1="182" y1="215" x2="220" y2="215" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#feArrow)" stroke-dasharray="4,2"/>
+
+  <!-- Feature Categories (center) -->
+  <rect x="225" y="60" width="420" height="310" rx="10" fill="#00e5ff" fill-opacity="0.04" stroke="#00e5ff" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="435" y="82" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#00e5ff">FEATURE CATEGORIES</text>
+
+  <!-- Category boxes - row 1 -->
+  <rect x="240" y="95" width="120" height="55" rx="6" fill="#00e5ff" fill-opacity="0.1" stroke="#00e5ff" stroke-width="0.8"/>
+  <text x="300" y="115" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#00e5ff">Sentiment</text>
+  <text x="300" y="130" text-anchor="middle" font-family="monospace" font-size="16" font-weight="bold" fill="#E2E8F0">~20</text>
+  <text x="300" y="143" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">features</text>
+
+  <rect x="375" y="95" width="120" height="55" rx="6" fill="#00e5ff" fill-opacity="0.1" stroke="#00e5ff" stroke-width="0.8"/>
+  <text x="435" y="115" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#00e5ff">Fundamental</text>
+  <text x="435" y="130" text-anchor="middle" font-family="monospace" font-size="16" font-weight="bold" fill="#E2E8F0">~15</text>
+  <text x="435" y="143" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">features</text>
+
+  <rect x="510" y="95" width="120" height="55" rx="6" fill="#00e5ff" fill-opacity="0.1" stroke="#00e5ff" stroke-width="0.8"/>
+  <text x="570" y="115" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#00e5ff">Theories</text>
+  <text x="570" y="130" text-anchor="middle" font-family="monospace" font-size="16" font-weight="bold" fill="#E2E8F0">~30</text>
+  <text x="570" y="143" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">features</text>
+
+  <!-- Category boxes - row 2 -->
+  <rect x="240" y="165" width="120" height="55" rx="6" fill="#00e5ff" fill-opacity="0.1" stroke="#00e5ff" stroke-width="0.8"/>
+  <text x="300" y="182" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#00e5ff">Mkt Structure</text>
+  <text x="300" y="200" text-anchor="middle" font-family="monospace" font-size="16" font-weight="bold" fill="#E2E8F0">~20</text>
+  <text x="300" y="213" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">features</text>
+
+  <rect x="375" y="165" width="120" height="55" rx="6" fill="#00e5ff" fill-opacity="0.1" stroke="#00e5ff" stroke-width="0.8"/>
+  <text x="435" y="185" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#00e5ff">Technical</text>
+  <text x="435" y="200" text-anchor="middle" font-family="monospace" font-size="16" font-weight="bold" fill="#E2E8F0">~25</text>
+  <text x="435" y="213" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">features</text>
+
+  <rect x="510" y="165" width="120" height="55" rx="6" fill="#00e5ff" fill-opacity="0.1" stroke="#00e5ff" stroke-width="0.8"/>
+  <text x="570" y="185" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#00e5ff">Regime</text>
+  <text x="570" y="200" text-anchor="middle" font-family="monospace" font-size="16" font-weight="bold" fill="#E2E8F0">~15</text>
+  <text x="570" y="213" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">features</text>
+
+  <!-- News row -->
+  <rect x="375" y="235" width="120" height="55" rx="6" fill="#00e5ff" fill-opacity="0.1" stroke="#00e5ff" stroke-width="0.8"/>
+  <text x="435" y="255" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#00e5ff">News / NLP</text>
+  <text x="435" y="270" text-anchor="middle" font-family="monospace" font-size="16" font-weight="bold" fill="#E2E8F0">~9</text>
+  <text x="435" y="283" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">features</text>
+
+  <!-- Processing info -->
+  <rect x="250" y="305" width="380" height="50" rx="6" fill="#0f1923" stroke="#00e5ff" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="440" y="322" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">Processing: Normalization + Winsorization + Lag Alignment</text>
+  <text x="440" y="337" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">Missing Data: Forward-fill + Sentinel values</text>
+  <text x="440" y="352" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">Update: Rolling windows per feature cadence</text>
+
+  <!-- Arrow to output -->
+  <line x1="647" y1="215" x2="680" y2="215" stroke="#FFD54F" stroke-width="2" marker-end="url(#feArrowGold)" stroke-dasharray="5,3"/>
+
+  <!-- 134-Feature Vector (right, highlighted) -->
+  <rect x="685" y="70" width="195" height="300" rx="10" fill="url(#feHighlight)" stroke="#FFD54F" stroke-width="2"/>
+  <text x="782" y="95" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#FFD54F">OUTPUT VECTOR</text>
+
+  <text x="782" y="145" text-anchor="middle" font-family="monospace" font-size="42" font-weight="bold" fill="#FFD54F" filter="url(#feGlow)">134</text>
+  <text x="782" y="170" text-anchor="middle" font-family="monospace" font-size="12" fill="#E2E8F0">Features</text>
+
+  <!-- Breakdown -->
+  <g font-family="monospace" font-size="8" fill="#94A3B8">
+    <text x="705" y="200">Sentiment</text><text x="860" y="200" text-anchor="end" fill="#00e5ff">~20</text>
+    <text x="705" y="215">Fundamental</text><text x="860" y="215" text-anchor="end" fill="#00e5ff">~15</text>
+    <text x="705" y="230">Theories</text><text x="860" y="230" text-anchor="end" fill="#00e5ff">~30</text>
+    <text x="705" y="245">Mkt Structure</text><text x="860" y="245" text-anchor="end" fill="#00e5ff">~20</text>
+    <text x="705" y="260">Technical</text><text x="860" y="260" text-anchor="end" fill="#00e5ff">~25</text>
+    <text x="705" y="275">Regime</text><text x="860" y="275" text-anchor="end" fill="#00e5ff">~15</text>
+    <text x="705" y="290">News / NLP</text><text x="860" y="290" text-anchor="end" fill="#00e5ff">~9</text>
+    <line x1="705" y1="298" x2="860" y2="298" stroke="#FFD54F" stroke-width="0.5" stroke-opacity="0.5"/>
+    <text x="705" y="312" fill="#FFD54F" font-weight="bold" font-size="9">TOTAL</text>
+    <text x="860" y="312" text-anchor="end" fill="#FFD54F" font-weight="bold" font-size="9">134</text>
+  </g>
+
+  <!-- Per-pair label -->
+  <rect x="710" y="325" width="145" height="25" rx="5" fill="#FFD54F" fill-opacity="0.15" stroke="#FFD54F" stroke-width="0.8"/>
+  <text x="782" y="342" text-anchor="middle" font-family="monospace" font-size="9" fill="#FFD54F">Per Currency Pair</text>
+</svg>

@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 700" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <filter id="shadow2" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrowFlow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64ffda"/>
+    </marker>
+    <marker id="arrowFlowGold" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#F7B32B"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="850" height="700" rx="8" fill="#0a192f"/>
+
+  <!-- Title -->
+  <text x="425" y="38" text-anchor="middle" fill="#ccd6f6" font-size="20" font-weight="700">Three-Database Normalization</text>
+  <line x1="230" y1="48" x2="620" y2="48" stroke="#F7B32B" stroke-width="2" stroke-opacity="0.6"/>
+
+  <!-- Principle badges row -->
+  <rect x="200" y="60" width="130" height="26" rx="13" fill="#64ffda" fill-opacity="0.12" stroke="#64ffda" stroke-width="1"/>
+  <text x="265" y="78" text-anchor="middle" fill="#64ffda" font-size="11" font-weight="600">WAL Mode</text>
+
+  <rect x="360" y="60" width="180" height="26" rx="13" fill="#F7B32B" fill-opacity="0.12" stroke="#F7B32B" stroke-width="1"/>
+  <text x="450" y="78" text-anchor="middle" fill="#F7B32B" font-size="11" font-weight="600">Non-Circular Writes</text>
+
+  <rect x="570" y="60" width="130" height="26" rx="13" fill="#64ffda" fill-opacity="0.12" stroke="#64ffda" stroke-width="1"/>
+  <text x="635" y="78" text-anchor="middle" fill="#64ffda" font-size="11" font-weight="600">Single Writer</text>
+
+  <!-- ============ DB1: forex_sentiment.db ============ -->
+  <g transform="translate(25, 110)">
+    <!-- Cylinder body -->
+    <rect x="0" y="20" width="250" height="320" rx="6" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow2)"/>
+    <!-- Cylinder top ellipse -->
+    <ellipse cx="125" cy="20" rx="125" ry="18" fill="#112240" stroke="#F7B32B" stroke-width="2"/>
+    <ellipse cx="125" cy="20" rx="125" ry="18" fill="#F7B32B" fill-opacity="0.1"/>
+    <!-- DB icon -->
+    <text x="125" y="26" text-anchor="middle" fill="#F7B32B" font-size="12" font-weight="700">forex_sentiment.db</text>
+
+    <!-- Size & meta -->
+    <rect x="15" y="48" width="70" height="20" rx="4" fill="#F7B32B" fill-opacity="0.15"/>
+    <text x="50" y="62" text-anchor="middle" fill="#F7B32B" font-size="9" font-weight="600">831 MB</text>
+    <rect x="92" y="48" width="70" height="20" rx="4" fill="#233554"/>
+    <text x="127" y="62" text-anchor="middle" fill="#8892b0" font-size="9">29+ tables</text>
+
+    <!-- Authority badge -->
+    <rect x="170" y="48" width="68" height="20" rx="4" fill="#64ffda" fill-opacity="0.15" stroke="#64ffda" stroke-width="0.8"/>
+    <text x="204" y="62" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="600">SCRAPER</text>
+
+    <!-- Table list -->
+    <line x1="15" y1="78" x2="235" y2="78" stroke="#233554" stroke-width="1"/>
+    <text x="20" y="94" fill="#8892b0" font-size="9" font-weight="600">KEY TABLES:</text>
+
+    <rect x="15" y="102" width="220" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <circle cx="28" cy="114" r="4" fill="#F7B32B" opacity="0.6"/>
+    <text x="38" y="118" fill="#ccd6f6" font-size="10">sentiment_hourly</text>
+
+    <rect x="15" y="132" width="220" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <circle cx="28" cy="144" r="4" fill="#F7B32B" opacity="0.6"/>
+    <text x="38" y="148" fill="#ccd6f6" font-size="10">theory_scores</text>
+
+    <rect x="15" y="162" width="220" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <circle cx="28" cy="174" r="4" fill="#F7B32B" opacity="0.6"/>
+    <text x="38" y="178" fill="#ccd6f6" font-size="10">ml_classifications</text>
+
+    <rect x="15" y="192" width="220" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <circle cx="28" cy="204" r="4" fill="#F7B32B" opacity="0.6"/>
+    <text x="38" y="208" fill="#ccd6f6" font-size="10">meta_signals</text>
+
+    <rect x="15" y="222" width="220" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <circle cx="28" cy="234" r="4" fill="#F7B32B" opacity="0.6"/>
+    <text x="38" y="238" fill="#ccd6f6" font-size="10">rl_experiences</text>
+
+    <!-- Write source -->
+    <rect x="15" y="270" width="220" height="40" rx="4" fill="#0a192f" stroke="#64ffda" stroke-width="1" stroke-dasharray="4,2"/>
+    <text x="125" y="287" text-anchor="middle" fill="#64ffda" font-size="9" font-weight="600">WRITES FROM:</text>
+    <text x="125" y="302" text-anchor="middle" fill="#8892b0" font-size="9">Scraper, ML Pipeline, RL Agent</text>
+  </g>
+
+  <!-- ============ DB2: forexregime.db ============ -->
+  <g transform="translate(300, 110)">
+    <rect x="0" y="20" width="250" height="320" rx="6" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow2)"/>
+    <ellipse cx="125" cy="20" rx="125" ry="18" fill="#112240" stroke="#64ffda" stroke-width="2"/>
+    <ellipse cx="125" cy="20" rx="125" ry="18" fill="#64ffda" fill-opacity="0.08"/>
+    <text x="125" y="26" text-anchor="middle" fill="#64ffda" font-size="12" font-weight="700">forexregime.db</text>
+
+    <rect x="15" y="48" width="50" height="20" rx="4" fill="#64ffda" fill-opacity="0.15"/>
+    <text x="40" y="62" text-anchor="middle" fill="#64ffda" font-size="9" font-weight="600">2 MB</text>
+    <rect x="72" y="48" width="70" height="20" rx="4" fill="#233554"/>
+    <text x="107" y="62" text-anchor="middle" fill="#8892b0" font-size="9">8 tables</text>
+
+    <rect x="150" y="48" width="88" height="20" rx="4" fill="#64ffda" fill-opacity="0.15" stroke="#64ffda" stroke-width="0.8"/>
+    <text x="194" y="62" text-anchor="middle" fill="#64ffda" font-size="8" font-weight="600">IBKR/PIPELINE</text>
+
+    <line x1="15" y1="78" x2="235" y2="78" stroke="#233554" stroke-width="1"/>
+    <text x="20" y="94" fill="#8892b0" font-size="9" font-weight="600">KEY TABLES:</text>
+
+    <rect x="15" y="102" width="220" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <circle cx="28" cy="114" r="4" fill="#64ffda" opacity="0.6"/>
+    <text x="38" y="118" fill="#ccd6f6" font-size="10">ibkr_positions</text>
+
+    <rect x="15" y="132" width="220" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <circle cx="28" cy="144" r="4" fill="#64ffda" opacity="0.6"/>
+    <text x="38" y="148" fill="#ccd6f6" font-size="10">ohlc_bars</text>
+
+    <rect x="15" y="162" width="220" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <circle cx="28" cy="174" r="4" fill="#64ffda" opacity="0.6"/>
+    <text x="38" y="178" fill="#ccd6f6" font-size="10">fx_rates_cache</text>
+
+    <rect x="15" y="192" width="220" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <circle cx="28" cy="204" r="4" fill="#64ffda" opacity="0.6"/>
+    <text x="38" y="208" fill="#ccd6f6" font-size="10">atr_data</text>
+
+    <rect x="15" y="270" width="220" height="40" rx="4" fill="#0a192f" stroke="#64ffda" stroke-width="1" stroke-dasharray="4,2"/>
+    <text x="125" y="287" text-anchor="middle" fill="#64ffda" font-size="9" font-weight="600">WRITES FROM:</text>
+    <text x="125" y="302" text-anchor="middle" fill="#8892b0" font-size="9">IBKR Gateway, Pipeline Engine</text>
+  </g>
+
+  <!-- ============ DB3: risk_management.db ============ -->
+  <g transform="translate(575, 110)">
+    <rect x="0" y="20" width="250" height="320" rx="6" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow2)"/>
+    <ellipse cx="125" cy="20" rx="125" ry="18" fill="#112240" stroke="#ff6b6b" stroke-width="2"/>
+    <ellipse cx="125" cy="20" rx="125" ry="18" fill="#ff6b6b" fill-opacity="0.08"/>
+    <text x="125" y="26" text-anchor="middle" fill="#ff6b6b" font-size="12" font-weight="700">risk_management.db</text>
+
+    <rect x="15" y="48" width="70" height="20" rx="4" fill="#ff6b6b" fill-opacity="0.15"/>
+    <text x="50" y="62" text-anchor="middle" fill="#ff6b6b" font-size="9" font-weight="600">5 tables</text>
+
+    <rect x="150" y="48" width="88" height="20" rx="4" fill="#ff6b6b" fill-opacity="0.15" stroke="#ff6b6b" stroke-width="0.8"/>
+    <text x="194" y="62" text-anchor="middle" fill="#ff6b6b" font-size="8" font-weight="600">RISK ENGINE</text>
+
+    <line x1="15" y1="78" x2="235" y2="78" stroke="#233554" stroke-width="1"/>
+    <text x="20" y="94" fill="#8892b0" font-size="9" font-weight="600">KEY TABLES:</text>
+
+    <rect x="15" y="102" width="220" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <circle cx="28" cy="114" r="4" fill="#ff6b6b" opacity="0.6"/>
+    <text x="38" y="118" fill="#ccd6f6" font-size="10">pnl_realized</text>
+
+    <rect x="15" y="132" width="220" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <circle cx="28" cy="144" r="4" fill="#ff6b6b" opacity="0.6"/>
+    <text x="38" y="148" fill="#ccd6f6" font-size="10">circuit_breaker_state</text>
+
+    <rect x="15" y="162" width="220" height="24" rx="4" fill="#0a192f" stroke="#233554" stroke-width="0.8"/>
+    <circle cx="28" cy="174" r="4" fill="#ff6b6b" opacity="0.6"/>
+    <text x="38" y="178" fill="#ccd6f6" font-size="10">daily_pnl_tracking</text>
+
+    <rect x="15" y="270" width="220" height="40" rx="4" fill="#0a192f" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="4,2"/>
+    <text x="125" y="287" text-anchor="middle" fill="#ff6b6b" font-size="9" font-weight="600">WRITES FROM:</text>
+    <text x="125" y="302" text-anchor="middle" fill="#8892b0" font-size="9">Risk Engine Only</text>
+  </g>
+
+  <!-- Data flow arrows between databases -->
+  <!-- DB1 reads from DB2 -->
+  <path d="M440,480 C440,510 200,510 200,480" fill="none" stroke="#64ffda" stroke-width="1.5" marker-end="url(#arrowFlow)" opacity="0.7"/>
+  <text x="320" y="520" text-anchor="middle" fill="#8892b0" font-size="9">Pipeline reads positions</text>
+
+  <!-- DB1 reads from DB3 -->
+  <path d="M700,480 C700,540 200,540 200,480" fill="none" stroke="#F7B32B" stroke-width="1.5" marker-end="url(#arrowFlowGold)" opacity="0.7"/>
+  <text x="450" y="552" text-anchor="middle" fill="#8892b0" font-size="9">Risk reads sentiment signals</text>
+
+  <!-- DB2 to DB3 -->
+  <path d="M540,460 L590,460" fill="none" stroke="#64ffda" stroke-width="1.5" marker-end="url(#arrowFlow)" opacity="0.7"/>
+
+  <!-- Non-circular principle box -->
+  <rect x="115" y="580" width="620" height="100" rx="8" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="425" y="604" text-anchor="middle" fill="#F7B32B" font-size="13" font-weight="700">Data Flow Principle: Non-Circular Writes</text>
+
+  <g transform="translate(140, 615)">
+    <circle cx="8" cy="8" r="6" fill="#F7B32B" opacity="0.3" stroke="#F7B32B" stroke-width="1"/>
+    <text x="22" y="12" fill="#ccd6f6" font-size="10">Each DB has a single authority that writes to it</text>
+  </g>
+  <g transform="translate(140, 638)">
+    <circle cx="8" cy="8" r="6" fill="#64ffda" opacity="0.3" stroke="#64ffda" stroke-width="1"/>
+    <text x="22" y="12" fill="#ccd6f6" font-size="10">Other components only read -- no write-back loops</text>
+  </g>
+  <g transform="translate(140, 661)">
+    <circle cx="8" cy="8" r="6" fill="#ff6b6b" opacity="0.3" stroke="#ff6b6b" stroke-width="1"/>
+    <text x="22" y="12" fill="#ccd6f6" font-size="10">WAL mode enables concurrent readers with zero contention</text>
+  </g>
+</svg>

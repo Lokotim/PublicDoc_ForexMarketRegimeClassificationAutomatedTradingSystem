@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="950" height="300" viewBox="0 0 950 300">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+    </marker>
+    <style>
+      text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="950" height="300" fill="#0f1923" rx="8"/>
+
+  <!-- Title -->
+  <text x="475" y="32" text-anchor="middle" fill="white" font-size="16" font-weight="bold" letter-spacing="2">FOUR-LAYER PERTURBATION MATRIX</text>
+
+  <!-- ===== L1 Box ===== -->
+  <rect x="20" y="52" width="205" height="180" rx="10" fill="#0d2a33" stroke="#00BCD4" stroke-width="2"/>
+  <!-- L1 header band -->
+  <rect x="20" y="52" width="205" height="36" rx="10" fill="#00BCD4"/>
+  <rect x="20" y="72" width="205" height="16" fill="#00BCD4"/>
+  <text x="122" y="76" text-anchor="middle" fill="#0f1923" font-size="18" font-weight="bold">L1</text>
+  <!-- Title text -->
+  <text x="122" y="108" text-anchor="middle" fill="#00BCD4" font-size="10" font-weight="bold">TICK-LEVEL</text>
+  <text x="122" y="122" text-anchor="middle" fill="#00BCD4" font-size="10" font-weight="bold">RANDOMIZATION</text>
+  <!-- Separator -->
+  <line x1="40" y1="132" x2="205" y2="132" stroke="#00BCD4" stroke-opacity="0.3" stroke-width="1"/>
+  <!-- Subtitle lines -->
+  <text x="122" y="150" text-anchor="middle" fill="#8eacbb" font-size="9">50/50% up/down, max 50%</text>
+  <text x="122" y="168" text-anchor="middle" fill="#8eacbb" font-size="9">Intra-bar sequence</text>
+  <text x="122" y="180" text-anchor="middle" fill="#8eacbb" font-size="9">dependency</text>
+
+  <!-- Arrow L1 -> L2 -->
+  <line x1="225" y1="142" x2="248" y2="142" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- ===== L2 Box ===== -->
+  <rect x="253" y="52" width="205" height="180" rx="10" fill="#0d1f33" stroke="#2196F3" stroke-width="2"/>
+  <rect x="253" y="52" width="205" height="36" rx="10" fill="#2196F3"/>
+  <rect x="253" y="72" width="205" height="16" fill="#2196F3"/>
+  <text x="355" y="76" text-anchor="middle" fill="white" font-size="18" font-weight="bold">L2</text>
+  <text x="355" y="108" text-anchor="middle" fill="#2196F3" font-size="10" font-weight="bold">OHLC DATA</text>
+  <text x="355" y="122" text-anchor="middle" fill="#2196F3" font-size="10" font-weight="bold">PERTURBATION</text>
+  <line x1="273" y1="132" x2="438" y2="132" stroke="#2196F3" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="355" y="150" text-anchor="middle" fill="#8eacbb" font-size="9">70/80% prob, 7% of ATR(14)</text>
+  <text x="355" y="168" text-anchor="middle" fill="#8eacbb" font-size="9">Exact price level</text>
+  <text x="355" y="180" text-anchor="middle" fill="#8eacbb" font-size="9">dependency</text>
+
+  <!-- Arrow L2 -> L3 -->
+  <line x1="458" y1="142" x2="481" y2="142" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- ===== L3 Box ===== -->
+  <rect x="486" y="52" width="205" height="180" rx="10" fill="#1f1a0d" stroke="#FF9800" stroke-width="2"/>
+  <rect x="486" y="52" width="205" height="36" rx="10" fill="#FF9800"/>
+  <rect x="486" y="72" width="205" height="16" fill="#FF9800"/>
+  <text x="588" y="76" text-anchor="middle" fill="#0f1923" font-size="18" font-weight="bold">L3</text>
+  <text x="588" y="108" text-anchor="middle" fill="#FF9800" font-size="10" font-weight="bold">SLIPPAGE</text>
+  <text x="588" y="122" text-anchor="middle" fill="#FF9800" font-size="10" font-weight="bold">RANDOMIZATION</text>
+  <line x1="506" y1="132" x2="671" y2="132" stroke="#FF9800" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="588" y="150" text-anchor="middle" fill="#8eacbb" font-size="9">0-5 pips random fill</text>
+  <text x="588" y="168" text-anchor="middle" fill="#8eacbb" font-size="9">Razor-thin edge</text>
+  <text x="588" y="180" text-anchor="middle" fill="#8eacbb" font-size="9">vulnerability</text>
+
+  <!-- Arrow L3 -> L4 -->
+  <line x1="691" y1="142" x2="714" y2="142" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- ===== L4 Box ===== -->
+  <rect x="719" y="52" width="205" height="180" rx="10" fill="#1f1a0d" stroke="#FFC107" stroke-width="2"/>
+  <rect x="719" y="52" width="205" height="36" rx="10" fill="#FFC107"/>
+  <rect x="719" y="72" width="205" height="16" fill="#FFC107"/>
+  <text x="821" y="76" text-anchor="middle" fill="#0f1923" font-size="18" font-weight="bold">L4</text>
+  <text x="821" y="108" text-anchor="middle" fill="#FFC107" font-size="10" font-weight="bold">PARAMETER</text>
+  <text x="821" y="122" text-anchor="middle" fill="#FFC107" font-size="10" font-weight="bold">RANDOMIZATION</text>
+  <line x1="739" y1="132" x2="904" y2="132" stroke="#FFC107" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="821" y="150" text-anchor="middle" fill="#8eacbb" font-size="9">30% prob, +/-30% change</text>
+  <text x="821" y="168" text-anchor="middle" fill="#8eacbb" font-size="9">Parameter-specific</text>
+  <text x="821" y="180" text-anchor="middle" fill="#8eacbb" font-size="9">artifacts</text>
+
+  <!-- Bottom text -->
+  <text x="475" y="265" text-anchor="middle" fill="#00BCD4" font-size="13" font-weight="bold">All 4 layers applied simultaneously across 1,000 simulations</text>
+
+  <!-- Decorative bottom line -->
+  <line x1="150" y1="278" x2="800" y2="278" stroke="#00BCD4" stroke-opacity="0.2" stroke-width="1"/>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="230" viewBox="0 0 800 230">
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="230" fill="#0f1923" rx="8"/>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold" letter-spacing="2">CONFIDENCE LEVEL FILTERS</text>
+
+  <!-- ===== Box 1: Net Profit (Green) ===== -->
+  <rect x="30" y="50" width="230" height="160" rx="10" fill="#1a2d42" stroke="#4CAF50" stroke-width="2.5"/>
+  <!-- Header band -->
+  <rect x="30" y="50" width="230" height="38" rx="10" fill="#1a2d42" stroke="#4CAF50" stroke-width="0"/>
+  <rect x="31" y="50" width="228" height="38" rx="10" fill="rgba(76,175,80,0.12)"/>
+  <text x="145" y="75" text-anchor="middle" fill="#4CAF50" font-size="14" font-weight="bold" letter-spacing="1">NET PROFIT</text>
+  <!-- Separator -->
+  <line x1="50" y1="92" x2="240" y2="92" stroke="#4CAF50" stroke-opacity="0.3" stroke-width="1"/>
+  <!-- Big confidence text -->
+  <text x="145" y="138" text-anchor="middle" fill="white" font-size="32" font-weight="bold">Conf: 80%</text>
+  <!-- Small description -->
+  <text x="145" y="170" text-anchor="middle" fill="#8eacbb" font-size="11">&gt;= 50% of original</text>
+  <!-- Check icon -->
+  <circle cx="145" cy="192" r="8" fill="none" stroke="#4CAF50" stroke-width="1.5" stroke-opacity="0.5"/>
+  <polyline points="139,192 143,196 151,188" fill="none" stroke="#4CAF50" stroke-width="1.5" stroke-opacity="0.5"/>
+
+  <!-- ===== Box 2: Max Drawdown (Red) ===== -->
+  <rect x="285" y="50" width="230" height="160" rx="10" fill="#1a2d42" stroke="#F44336" stroke-width="2.5"/>
+  <rect x="286" y="50" width="228" height="38" rx="10" fill="rgba(244,67,54,0.12)"/>
+  <text x="400" y="75" text-anchor="middle" fill="#F44336" font-size="14" font-weight="bold" letter-spacing="1">MAX DRAWDOWN</text>
+  <line x1="305" y1="92" x2="495" y2="92" stroke="#F44336" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="400" y="138" text-anchor="middle" fill="white" font-size="32" font-weight="bold">Conf: 80%</text>
+  <text x="400" y="170" text-anchor="middle" fill="#8eacbb" font-size="11">&lt;= 200% of original</text>
+  <circle cx="400" cy="192" r="8" fill="none" stroke="#F44336" stroke-width="1.5" stroke-opacity="0.5"/>
+  <polyline points="394,192 398,196 406,188" fill="none" stroke="#F44336" stroke-width="1.5" stroke-opacity="0.5"/>
+
+  <!-- ===== Box 3: Return/DD (Yellow) ===== -->
+  <rect x="540" y="50" width="230" height="160" rx="10" fill="#1a2d42" stroke="#FFC107" stroke-width="2.5"/>
+  <rect x="541" y="50" width="228" height="38" rx="10" fill="rgba(255,193,7,0.12)"/>
+  <text x="655" y="75" text-anchor="middle" fill="#FFC107" font-size="14" font-weight="bold" letter-spacing="1">RETURN/DD</text>
+  <line x1="560" y1="92" x2="750" y2="92" stroke="#FFC107" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="655" y="138" text-anchor="middle" fill="white" font-size="32" font-weight="bold">Conf: 100%</text>
+  <text x="655" y="170" text-anchor="middle" fill="#8eacbb" font-size="11">&gt;= 50% of original</text>
+  <circle cx="655" cy="192" r="8" fill="none" stroke="#FFC107" stroke-width="1.5" stroke-opacity="0.5"/>
+  <polyline points="649,192 653,196 661,188" fill="none" stroke="#FFC107" stroke-width="1.5" stroke-opacity="0.5"/>
+</svg>

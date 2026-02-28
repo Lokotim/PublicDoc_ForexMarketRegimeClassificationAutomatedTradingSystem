@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="slBgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1923"/>
+      <stop offset="100%" stop-color="#0a1219"/>
+    </linearGradient>
+    <filter id="slGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="slShieldGrad1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ef5350" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ef5350" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="slShieldGrad2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff9100" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ff9100" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="slShieldGrad3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD54F" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#FFD54F" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="slShieldGrad4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#00e5ff" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="slShieldGrad5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4ADE80" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#4ADE80" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="400" fill="url(#slBgGrad)"/>
+
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" font-family="monospace" font-size="18" font-weight="bold" fill="#FFD54F" filter="url(#slGlow)">5 INDEPENDENT SAFETY LAYERS</text>
+  <line x1="225" y1="42" x2="675" y2="42" stroke="#FFD54F" stroke-opacity="0.3" stroke-width="1"/>
+
+  <!-- Shield 1: Circuit Breaker -->
+  <g>
+    <!-- Shield shape -->
+    <path d="M90,70 L90,200 Q90,240 90,245 Q90,260 90,260 L90,260 Q90,260 55,280 Q20,260 20,260 L20,260 Q20,260 20,245 Q20,240 20,200 L20,70 Z" fill="url(#slShieldGrad1)" stroke="#ef5350" stroke-width="1.5" transform="translate(35, 0) scale(1.05)"/>
+    <path d="M55,80 Q55,80 55,80 L55,80 L110,80 L110,210 Q110,245 82,265 Q55,280 55,280 Q55,280 28,265 Q0,245 0,210 L0,80 Z" fill="none" stroke="#ef5350" stroke-width="1.2" transform="translate(35, 0)"/>
+    <!-- Shield icon top -->
+    <circle cx="90" cy="100" r="12" fill="#ef5350" fill-opacity="0.2" stroke="#ef5350" stroke-width="0.8"/>
+    <text x="90" y="105" text-anchor="middle" font-family="monospace" font-size="12" font-weight="bold" fill="#ef5350">1</text>
+
+    <text x="90" y="130" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#ef5350">CIRCUIT</text>
+    <text x="90" y="142" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#ef5350">BREAKER</text>
+
+    <text x="90" y="165" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">-3% PnL</text>
+    <text x="90" y="178" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">→ reduce</text>
+    <text x="90" y="198" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">-5% PnL</text>
+    <text x="90" y="211" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">→ halt</text>
+
+    <text x="90" y="240" text-anchor="middle" font-family="monospace" font-size="6" fill="#94A3B8">Daily PnL</text>
+    <text x="90" y="252" text-anchor="middle" font-family="monospace" font-size="6" fill="#94A3B8">Monitoring</text>
+  </g>
+
+  <!-- Shield 2: Shock Detector -->
+  <g transform="translate(170, 0)">
+    <path d="M55,80 Q55,80 55,80 L55,80 L110,80 L110,210 Q110,245 82,265 Q55,280 55,280 Q55,280 28,265 Q0,245 0,210 L0,80 Z" fill="url(#slShieldGrad2)" stroke="#ff9100" stroke-width="1.2"/>
+    <circle cx="55" cy="100" r="12" fill="#ff9100" fill-opacity="0.2" stroke="#ff9100" stroke-width="0.8"/>
+    <text x="55" y="105" text-anchor="middle" font-family="monospace" font-size="12" font-weight="bold" fill="#ff9100">2</text>
+
+    <text x="55" y="130" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#ff9100">SHOCK</text>
+    <text x="55" y="142" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#ff9100">DETECTOR</text>
+
+    <text x="55" y="165" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">White Swan</text>
+    <text x="55" y="178" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">ATR spike</text>
+    <text x="55" y="195" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">detection</text>
+
+    <text x="55" y="220" text-anchor="middle" font-family="monospace" font-size="6" fill="#94A3B8">Kelly reduced</text>
+    <text x="55" y="232" text-anchor="middle" font-family="monospace" font-size="6" fill="#94A3B8">during shock</text>
+  </g>
+
+  <!-- Shield 3: Crowding Penalty -->
+  <g transform="translate(340, 0)">
+    <path d="M55,80 Q55,80 55,80 L55,80 L110,80 L110,210 Q110,245 82,265 Q55,280 55,280 Q55,280 28,265 Q0,245 0,210 L0,80 Z" fill="url(#slShieldGrad3)" stroke="#FFD54F" stroke-width="1.2"/>
+    <circle cx="55" cy="100" r="12" fill="#FFD54F" fill-opacity="0.2" stroke="#FFD54F" stroke-width="0.8"/>
+    <text x="55" y="105" text-anchor="middle" font-family="monospace" font-size="12" font-weight="bold" fill="#FFD54F">3</text>
+
+    <text x="55" y="130" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#FFD54F">CROWDING</text>
+    <text x="55" y="142" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#FFD54F">PENALTY</text>
+
+    <text x="55" y="165" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">A/B Tested</text>
+    <text x="55" y="178" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Cohort A vs B</text>
+
+    <text x="55" y="200" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Penalizes</text>
+    <text x="55" y="212" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">correlated</text>
+    <text x="55" y="224" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">positions</text>
+  </g>
+
+  <!-- Shield 4: IBKR Cross-Validation -->
+  <g transform="translate(510, 0)">
+    <path d="M55,80 Q55,80 55,80 L55,80 L110,80 L110,210 Q110,245 82,265 Q55,280 55,280 Q55,280 28,265 Q0,245 0,210 L0,80 Z" fill="url(#slShieldGrad4)" stroke="#00e5ff" stroke-width="1.2"/>
+    <circle cx="55" cy="100" r="12" fill="#00e5ff" fill-opacity="0.2" stroke="#00e5ff" stroke-width="0.8"/>
+    <text x="55" y="105" text-anchor="middle" font-family="monospace" font-size="12" font-weight="bold" fill="#00e5ff">4</text>
+
+    <text x="55" y="130" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#00e5ff">IBKR</text>
+    <text x="55" y="142" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#00e5ff">CROSS-VAL</text>
+
+    <text x="55" y="165" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">GV positions</text>
+    <text x="55" y="178" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">vs</text>
+    <text x="55" y="191" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">IBKR positions</text>
+
+    <text x="55" y="215" text-anchor="middle" font-family="monospace" font-size="6" fill="#94A3B8">Mismatch</text>
+    <text x="55" y="227" text-anchor="middle" font-family="monospace" font-size="6" fill="#94A3B8">→ alert</text>
+  </g>
+
+  <!-- Shield 5: Data Integrity Guard -->
+  <g transform="translate(680, 0)">
+    <path d="M55,80 Q55,80 55,80 L55,80 L110,80 L110,210 Q110,245 82,265 Q55,280 55,280 Q55,280 28,265 Q0,245 0,210 L0,80 Z" fill="url(#slShieldGrad5)" stroke="#4ADE80" stroke-width="1.2"/>
+    <circle cx="55" cy="100" r="12" fill="#4ADE80" fill-opacity="0.2" stroke="#4ADE80" stroke-width="0.8"/>
+    <text x="55" y="105" text-anchor="middle" font-family="monospace" font-size="12" font-weight="bold" fill="#4ADE80">5</text>
+
+    <text x="55" y="130" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#4ADE80">DATA</text>
+    <text x="55" y="142" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#4ADE80">INTEGRITY</text>
+
+    <text x="55" y="165" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">Staleness</text>
+    <text x="55" y="178" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">checks</text>
+    <text x="55" y="195" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">Consistency</text>
+    <text x="55" y="208" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">validation</text>
+
+    <text x="55" y="232" text-anchor="middle" font-family="monospace" font-size="6" fill="#94A3B8">Stale data</text>
+    <text x="55" y="244" text-anchor="middle" font-family="monospace" font-size="6" fill="#94A3B8">→ skip pair</text>
+  </g>
+
+  <!-- Independence line -->
+  <rect x="30" y="300" width="840" height="2" rx="1" fill="#ef5350" fill-opacity="0.3"/>
+
+  <!-- "ANY layer can halt" banner -->
+  <rect x="200" y="315" width="500" height="55" rx="10" fill="#ef5350" fill-opacity="0.1" stroke="#ef5350" stroke-width="2"/>
+  <text x="450" y="340" text-anchor="middle" font-family="monospace" font-size="14" font-weight="bold" fill="#ef5350">ANY LAYER CAN HALT TRADING</text>
+  <text x="450" y="358" text-anchor="middle" font-family="monospace" font-size="9" fill="#94A3B8">Each layer operates independently | No single point of failure</text>
+
+  <!-- Down arrows from each shield -->
+  <g stroke="#94A3B8" stroke-width="1" stroke-opacity="0.4">
+    <line x1="90" y1="282" x2="90" y2="300"/>
+    <line x1="225" y1="282" x2="225" y2="300"/>
+    <line x1="395" y1="282" x2="395" y2="300"/>
+    <line x1="565" y1="282" x2="565" y2="300"/>
+    <line x1="735" y1="282" x2="735" y2="300"/>
+  </g>
+
+  <!-- Pipeline reference -->
+  <rect x="250" y="380" width="400" height="18" rx="4" fill="#0f1923" stroke="#94A3B8" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="450" y="393" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Integrated across entire execution pipeline</text>
+</svg>

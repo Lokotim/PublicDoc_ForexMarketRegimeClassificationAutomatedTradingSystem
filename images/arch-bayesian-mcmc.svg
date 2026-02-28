@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="bmBgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1923"/>
+      <stop offset="100%" stop-color="#0a1219"/>
+    </linearGradient>
+    <filter id="bmGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="bmArrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#94A3B8"/>
+    </marker>
+    <linearGradient id="bmChain1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#00e5ff" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="bmChain2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4ADE80" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#4ADE80" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="bmChain3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFD54F" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#FFD54F" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="bmChain4" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff9100" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ff9100" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="400" fill="url(#bmBgGrad)"/>
+
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" font-family="monospace" font-size="18" font-weight="bold" fill="#FFD54F" filter="url(#bmGlow)">BAYESIAN MCMC - MULTI-CHAIN INFERENCE</text>
+  <line x1="175" y1="42" x2="725" y2="42" stroke="#FFD54F" stroke-opacity="0.3" stroke-width="1"/>
+
+  <!-- 4 Parallel Chains -->
+  <!-- Chain 1 - Cyan -->
+  <rect x="30" y="60" width="530" height="55" rx="8" fill="url(#bmChain1)" stroke="#00e5ff" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="50" y="80" font-family="monospace" font-size="9" font-weight="bold" fill="#00e5ff">Chain 1</text>
+  <g font-family="monospace" font-size="8" fill="#94A3B8">
+    <rect x="115" y="70" width="60" height="22" rx="4" fill="#00e5ff" fill-opacity="0.1" stroke="#00e5ff" stroke-width="0.5"/>
+    <text x="145" y="85" text-anchor="middle" fill="#00e5ff">Propose</text>
+    <text x="190" y="85" fill="#94A3B8">→</text>
+    <rect x="205" y="70" width="70" height="22" rx="4" fill="#00e5ff" fill-opacity="0.1" stroke="#00e5ff" stroke-width="0.5"/>
+    <text x="240" y="85" text-anchor="middle" fill="#00e5ff">Accept?</text>
+    <text x="290" y="85" fill="#94A3B8">→</text>
+    <rect x="305" y="70" width="60" height="22" rx="4" fill="#00e5ff" fill-opacity="0.1" stroke="#00e5ff" stroke-width="0.5"/>
+    <text x="335" y="85" text-anchor="middle" fill="#00e5ff">Store</text>
+    <text x="380" y="85" fill="#94A3B8">→</text>
+    <rect x="395" y="70" width="60" height="22" rx="4" fill="#00e5ff" fill-opacity="0.08" stroke="#00e5ff" stroke-width="0.4" stroke-dasharray="3,2"/>
+    <text x="425" y="85" text-anchor="middle" fill="#94A3B8">Repeat</text>
+    <!-- Loop arrow -->
+    <path d="M457,81 Q475,81 475,68 Q475,55 425,55 Q145,55 120,68" fill="none" stroke="#00e5ff" stroke-width="0.6" stroke-opacity="0.5" stroke-dasharray="2,2"/>
+  </g>
+
+  <!-- Chain 2 - Green -->
+  <rect x="30" y="125" width="530" height="55" rx="8" fill="url(#bmChain2)" stroke="#4ADE80" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="50" y="145" font-family="monospace" font-size="9" font-weight="bold" fill="#4ADE80">Chain 2</text>
+  <g font-family="monospace" font-size="8">
+    <rect x="115" y="135" width="60" height="22" rx="4" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-width="0.5"/>
+    <text x="145" y="150" text-anchor="middle" fill="#4ADE80">Propose</text>
+    <text x="190" y="150" fill="#94A3B8">→</text>
+    <rect x="205" y="135" width="70" height="22" rx="4" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-width="0.5"/>
+    <text x="240" y="150" text-anchor="middle" fill="#4ADE80">Accept?</text>
+    <text x="290" y="150" fill="#94A3B8">→</text>
+    <rect x="305" y="135" width="60" height="22" rx="4" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-width="0.5"/>
+    <text x="335" y="150" text-anchor="middle" fill="#4ADE80">Store</text>
+    <text x="380" y="150" fill="#94A3B8">→</text>
+    <rect x="395" y="135" width="60" height="22" rx="4" fill="#4ADE80" fill-opacity="0.08" stroke="#4ADE80" stroke-width="0.4" stroke-dasharray="3,2"/>
+    <text x="425" y="150" text-anchor="middle" fill="#94A3B8">Repeat</text>
+  </g>
+
+  <!-- Chain 3 - Gold -->
+  <rect x="30" y="190" width="530" height="55" rx="8" fill="url(#bmChain3)" stroke="#FFD54F" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="50" y="210" font-family="monospace" font-size="9" font-weight="bold" fill="#FFD54F">Chain 3</text>
+  <g font-family="monospace" font-size="8">
+    <rect x="115" y="200" width="60" height="22" rx="4" fill="#FFD54F" fill-opacity="0.1" stroke="#FFD54F" stroke-width="0.5"/>
+    <text x="145" y="215" text-anchor="middle" fill="#FFD54F">Propose</text>
+    <text x="190" y="215" fill="#94A3B8">→</text>
+    <rect x="205" y="200" width="70" height="22" rx="4" fill="#FFD54F" fill-opacity="0.1" stroke="#FFD54F" stroke-width="0.5"/>
+    <text x="240" y="215" text-anchor="middle" fill="#FFD54F">Accept?</text>
+    <text x="290" y="215" fill="#94A3B8">→</text>
+    <rect x="305" y="200" width="60" height="22" rx="4" fill="#FFD54F" fill-opacity="0.1" stroke="#FFD54F" stroke-width="0.5"/>
+    <text x="335" y="215" text-anchor="middle" fill="#FFD54F">Store</text>
+    <text x="380" y="215" fill="#94A3B8">→</text>
+    <rect x="395" y="200" width="60" height="22" rx="4" fill="#FFD54F" fill-opacity="0.08" stroke="#FFD54F" stroke-width="0.4" stroke-dasharray="3,2"/>
+    <text x="425" y="215" text-anchor="middle" fill="#94A3B8">Repeat</text>
+  </g>
+
+  <!-- Chain 4 - Orange -->
+  <rect x="30" y="255" width="530" height="55" rx="8" fill="url(#bmChain4)" stroke="#ff9100" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="50" y="275" font-family="monospace" font-size="9" font-weight="bold" fill="#ff9100">Chain 4</text>
+  <g font-family="monospace" font-size="8">
+    <rect x="115" y="265" width="60" height="22" rx="4" fill="#ff9100" fill-opacity="0.1" stroke="#ff9100" stroke-width="0.5"/>
+    <text x="145" y="280" text-anchor="middle" fill="#ff9100">Propose</text>
+    <text x="190" y="280" fill="#94A3B8">→</text>
+    <rect x="205" y="265" width="70" height="22" rx="4" fill="#ff9100" fill-opacity="0.1" stroke="#ff9100" stroke-width="0.5"/>
+    <text x="240" y="280" text-anchor="middle" fill="#ff9100">Accept?</text>
+    <text x="290" y="280" fill="#94A3B8">→</text>
+    <rect x="305" y="265" width="60" height="22" rx="4" fill="#ff9100" fill-opacity="0.1" stroke="#ff9100" stroke-width="0.5"/>
+    <text x="335" y="280" text-anchor="middle" fill="#ff9100">Store</text>
+    <text x="380" y="280" fill="#94A3B8">→</text>
+    <rect x="395" y="265" width="60" height="22" rx="4" fill="#ff9100" fill-opacity="0.08" stroke="#ff9100" stroke-width="0.4" stroke-dasharray="3,2"/>
+    <text x="425" y="280" text-anchor="middle" fill="#94A3B8">Repeat</text>
+  </g>
+
+  <!-- Convergence arrows to right panel -->
+  <line x1="562" y1="87" x2="600" y2="140" stroke="#00e5ff" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="562" y1="152" x2="600" y2="155" stroke="#4ADE80" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="562" y1="217" x2="600" y2="170" stroke="#FFD54F" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="562" y1="282" x2="600" y2="185" stroke="#ff9100" stroke-width="1" stroke-opacity="0.5"/>
+
+  <!-- Convergence Diagnostic Box -->
+  <rect x="600" y="60" width="280" height="135" rx="10" fill="#00e5ff" fill-opacity="0.06" stroke="#00e5ff" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="740" y="82" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#00e5ff">CONVERGENCE DIAGNOSTIC</text>
+
+  <rect x="620" y="95" width="240" height="35" rx="6" fill="#0f1923" stroke="#4ADE80" stroke-width="0.8"/>
+  <text x="740" y="112" text-anchor="middle" font-family="monospace" font-size="11" fill="#4ADE80">Gelman-Rubin R-hat</text>
+  <text x="740" y="125" text-anchor="middle" font-family="monospace" font-size="14" font-weight="bold" fill="#4ADE80">&lt; 1.1</text>
+
+  <rect x="620" y="140" width="240" height="22" rx="4" fill="#0f1923" stroke="#94A3B8" stroke-width="0.5"/>
+  <text x="740" y="155" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">Inter-chain variance check</text>
+
+  <text x="740" y="182" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">1000 burn-in + 2000 samples</text>
+
+  <!-- Arrow down to output -->
+  <line x1="740" y1="197" x2="740" y2="218" stroke="#00e5ff" stroke-width="1.5" marker-end="url(#bmArrow)"/>
+
+  <!-- Output: Posterior -->
+  <rect x="600" y="222" width="280" height="60" rx="10" fill="#FFD54F" fill-opacity="0.1" stroke="#FFD54F" stroke-width="1.2"/>
+  <text x="740" y="245" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#FFD54F">POSTERIOR WEIGHTS</text>
+  <text x="740" y="262" text-anchor="middle" font-family="monospace" font-size="9" fill="#E2E8F0">Weight distribution per expert</text>
+  <text x="740" y="275" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">w1 + w2 + ... + wN = 1.0</text>
+
+  <!-- Guard Rail -->
+  <rect x="100" y="330" width="700" height="55" rx="10" fill="#ef5350" fill-opacity="0.08" stroke="#ef5350" stroke-width="1.5"/>
+  <text x="450" y="350" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#ef5350">SAFETY GUARD</text>
+  <text x="450" y="368" text-anchor="middle" font-family="monospace" font-size="10" fill="#E2E8F0">n_effective &lt; 15  →  Skip MCMC (use uniform weights)</text>
+  <text x="450" y="380" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">Insufficient samples = unreliable posterior → fall back to equal weighting</text>
+</svg>

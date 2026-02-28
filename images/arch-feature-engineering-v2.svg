@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 620" font-family="'Segoe UI', system-ui, sans-serif">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#071225"/>
+    </linearGradient>
+    <linearGradient id="goldG3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F7B32B" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#FFD54F" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="greenG3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#64ffda" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#4ADE80" stop-opacity="0.3"/>
+    </linearGradient>
+    <filter id="sh3">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arr3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64ffda" opacity="0.7"/>
+    </marker>
+    <marker id="arr3g" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#F7B32B" opacity="0.7"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="850" height="620" fill="url(#bg3)" rx="8"/>
+
+  <!-- Title -->
+  <text x="425" y="36" text-anchor="middle" fill="#ccd6f6" font-size="18" font-weight="700">Feature Engineering Pipeline</text>
+  <text x="425" y="56" text-anchor="middle" fill="#F7B32B" font-size="13" font-weight="500">23 Data Loaders  -->  134 Features per Pair</text>
+  <line x1="250" y1="66" x2="600" y2="66" stroke="#F7B32B" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- === LEFT SECTION: 3 Databases === -->
+  <text x="90" y="96" text-anchor="middle" fill="#8892b0" font-size="11" font-weight="600" text-transform="uppercase" letter-spacing="1">DATA STORES</text>
+
+  <!-- DB 1: forex_sentiment.db -->
+  <rect x="15" y="115" width="155" height="70" rx="6" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#sh3)"/>
+  <rect x="15" y="115" width="155" height="24" rx="6" fill="#1a3356"/>
+  <rect x="15" y="133" width="155" height="6" fill="#1a3356"/>
+  <text x="92" y="132" text-anchor="middle" fill="#64ffda" font-size="10" font-weight="600">forex_sentiment.db</text>
+  <text x="92" y="155" text-anchor="middle" fill="#8892b0" font-size="9">Retail sentiment data</text>
+  <text x="92" y="170" text-anchor="middle" fill="#8892b0" font-size="9">COT positions, news</text>
+  <!-- Arrow -->
+  <line x1="170" y1="150" x2="218" y2="250" stroke="#64ffda" stroke-width="1.2" opacity="0.4" marker-end="url(#arr3)"/>
+
+  <!-- DB 2: forexregime.db -->
+  <rect x="15" y="200" width="155" height="70" rx="6" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#sh3)"/>
+  <rect x="15" y="200" width="155" height="24" rx="6" fill="#1a3356"/>
+  <rect x="15" y="218" width="155" height="6" fill="#1a3356"/>
+  <text x="92" y="217" text-anchor="middle" fill="#64ffda" font-size="10" font-weight="600">forexregime.db</text>
+  <text x="92" y="240" text-anchor="middle" fill="#8892b0" font-size="9">ML models, regimes</text>
+  <text x="92" y="255" text-anchor="middle" fill="#8892b0" font-size="9">Theory engine, RL state</text>
+  <line x1="170" y1="235" x2="218" y2="290" stroke="#64ffda" stroke-width="1.2" opacity="0.4" marker-end="url(#arr3)"/>
+
+  <!-- DB 3: risk_management.db -->
+  <rect x="15" y="285" width="155" height="70" rx="6" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#sh3)"/>
+  <rect x="15" y="285" width="155" height="24" rx="6" fill="#1a3356"/>
+  <rect x="15" y="303" width="155" height="6" fill="#1a3356"/>
+  <text x="92" y="302" text-anchor="middle" fill="#64ffda" font-size="10" font-weight="600">risk_management.db</text>
+  <text x="92" y="325" text-anchor="middle" fill="#8892b0" font-size="9">Position sizing, equity</text>
+  <text x="92" y="340" text-anchor="middle" fill="#8892b0" font-size="9">P&amp;L, drawdown data</text>
+  <line x1="170" y1="320" x2="218" y2="320" stroke="#64ffda" stroke-width="1.2" opacity="0.4" marker-end="url(#arr3)"/>
+
+  <!-- === CENTER: ComprehensiveFeatureLoader === -->
+  <rect x="222" y="88" width="380" height="470" rx="8" fill="#112240" stroke="#F7B32B" stroke-width="1.5" filter="url(#sh3)"/>
+  <!-- Header -->
+  <rect x="222" y="88" width="380" height="36" rx="8" fill="#1a2a10"/>
+  <rect x="222" y="114" width="380" height="10" fill="#1a2a10"/>
+  <text x="412" y="112" text-anchor="middle" fill="#F7B32B" font-size="13" font-weight="700">ComprehensiveFeatureLoader</text>
+
+  <!-- Subtitle -->
+  <text x="412" y="145" text-anchor="middle" fill="#8892b0" font-size="10">23 Specialized Loaders (A through U)</text>
+
+  <!-- Loader categories in a grid -->
+  <!-- Row 1 -->
+  <rect x="236" y="158" width="110" height="44" rx="4" fill="#0d1b30" stroke="#233554" stroke-width="1"/>
+  <text x="291" y="175" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">Price</text>
+  <text x="291" y="192" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="700">12</text>
+
+  <rect x="354" y="158" width="110" height="44" rx="4" fill="#0d1b30" stroke="#233554" stroke-width="1"/>
+  <text x="409" y="175" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">Strength</text>
+  <text x="409" y="192" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="700">6</text>
+
+  <rect x="472" y="158" width="120" height="44" rx="4" fill="#0d1b30" stroke="#233554" stroke-width="1"/>
+  <text x="532" y="175" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">Sentiment</text>
+  <text x="532" y="192" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="700">8</text>
+
+  <!-- Row 2 -->
+  <rect x="236" y="210" width="110" height="44" rx="4" fill="#0d1b30" stroke="#233554" stroke-width="1"/>
+  <text x="291" y="227" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">COT</text>
+  <text x="291" y="244" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="700">6</text>
+
+  <rect x="354" y="210" width="110" height="44" rx="4" fill="#0d1b30" stroke="#233554" stroke-width="1"/>
+  <text x="409" y="227" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">Calendar</text>
+  <text x="409" y="244" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="700">4</text>
+
+  <rect x="472" y="210" width="120" height="44" rx="4" fill="#0d1b30" stroke="#233554" stroke-width="1"/>
+  <text x="532" y="227" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">Theory</text>
+  <text x="532" y="244" text-anchor="middle" fill="#F7B32B" font-size="14" font-weight="700">25</text>
+
+  <!-- Row 3 -->
+  <rect x="236" y="262" width="110" height="44" rx="4" fill="#0d1b30" stroke="#233554" stroke-width="1"/>
+  <text x="291" y="279" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">Volatility</text>
+  <text x="291" y="296" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="700">6</text>
+
+  <rect x="354" y="262" width="110" height="44" rx="4" fill="#0d1b30" stroke="#233554" stroke-width="1"/>
+  <text x="409" y="279" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">Markets</text>
+  <text x="409" y="296" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="700">6</text>
+
+  <rect x="472" y="262" width="120" height="44" rx="4" fill="#0d1b30" stroke="#233554" stroke-width="1"/>
+  <text x="532" y="279" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">RL</text>
+  <text x="532" y="296" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="700">3</text>
+
+  <!-- Row 4 -->
+  <rect x="236" y="314" width="110" height="44" rx="4" fill="#0d1b30" stroke="#233554" stroke-width="1"/>
+  <text x="291" y="331" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">Forecast</text>
+  <text x="291" y="348" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="700">4</text>
+
+  <rect x="354" y="314" width="110" height="44" rx="4" fill="#0d1b30" stroke="#233554" stroke-width="1"/>
+  <text x="409" y="331" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">Position</text>
+  <text x="409" y="348" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="700">4</text>
+
+  <rect x="472" y="314" width="120" height="44" rx="4" fill="#0d1b30" stroke="#233554" stroke-width="1"/>
+  <text x="532" y="331" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">Equity</text>
+  <text x="532" y="348" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="700">1</text>
+
+  <!-- Row 5 -->
+  <rect x="236" y="366" width="110" height="44" rx="4" fill="#0d1b30" stroke="#233554" stroke-width="1"/>
+  <text x="291" y="383" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">P&amp;L</text>
+  <text x="291" y="400" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="700">4</text>
+
+  <rect x="354" y="366" width="238" height="44" rx="4" fill="#0d1b30" stroke="#233554" stroke-width="1"/>
+  <text x="473" y="383" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">Derived / Interactions</text>
+  <text x="473" y="400" text-anchor="middle" fill="#64ffda" font-size="14" font-weight="700">3+</text>
+
+  <!-- Feature count summary inside loader -->
+  <rect x="252" y="425" width="330" height="38" rx="5" fill="#0d1b30" stroke="#F7B32B" stroke-width="1" opacity="0.8"/>
+  <text x="417" y="440" text-anchor="middle" fill="#8892b0" font-size="10">Total features per loader pass</text>
+  <text x="417" y="456" text-anchor="middle" fill="#F7B32B" font-size="13" font-weight="700">12+6+8+6+4+25+6+6+3+4+4+1+4+3+ = ~92 base + derived</text>
+
+  <!-- NaN safety note -->
+  <text x="412" y="485" text-anchor="middle" fill="#8892b0" font-size="9" font-style="italic">NaN-safe: missing sources filled with neutral defaults</text>
+
+  <!-- Normalization -->
+  <rect x="252" y="496" width="330" height="28" rx="5" fill="#0d1b30" stroke="#233554" stroke-width="1"/>
+  <text x="417" y="515" text-anchor="middle" fill="#64ffda" font-size="10" font-weight="600">RobustScaler normalization (IQR-based)</text>
+
+  <!-- Cleaning note -->
+  <text x="412" y="548" text-anchor="middle" fill="#8892b0" font-size="9">Inf clipping | Winsorization | Correlation pruning</text>
+
+  <!-- === RIGHT SECTION: Output Feature Vector === -->
+  <text x="720" y="96" text-anchor="middle" fill="#8892b0" font-size="11" font-weight="600" letter-spacing="1">OUTPUT</text>
+
+  <!-- Arrow from center to right -->
+  <line x1="602" y1="310" x2="630" y2="310" stroke="#F7B32B" stroke-width="2" marker-end="url(#arr3g)"/>
+
+  <!-- Feature vector visualization -->
+  <rect x="635" y="110" width="200" height="260" rx="8" fill="#112240" stroke="#4ADE80" stroke-width="2" filter="url(#sh3)"/>
+  <rect x="635" y="110" width="200" height="32" rx="8" fill="#0f2a1a"/>
+  <rect x="635" y="134" width="200" height="8" fill="#0f2a1a"/>
+  <text x="735" y="131" text-anchor="middle" fill="#4ADE80" font-size="12" font-weight="700">Feature Vector</text>
+
+  <text x="735" y="165" text-anchor="middle" fill="#ccd6f6" font-size="11" font-weight="600">Per Currency Pair</text>
+
+  <!-- Feature dimension display -->
+  <rect x="660" y="178" width="150" height="45" rx="6" fill="#0d1b30" stroke="#4ADE80" stroke-width="1"/>
+  <text x="735" y="198" text-anchor="middle" fill="#4ADE80" font-size="22" font-weight="700">134</text>
+  <text x="735" y="215" text-anchor="middle" fill="#8892b0" font-size="10">dimensions</text>
+
+  <!-- 8 pairs -->
+  <text x="735" y="248" text-anchor="middle" fill="#8892b0" font-size="10">Across 8 currency pairs</text>
+
+  <!-- Multiplication visual -->
+  <text x="735" y="275" text-anchor="middle" fill="#ccd6f6" font-size="12">134 x 8 pairs =</text>
+
+  <rect x="660" y="285" width="150" height="40" rx="6" fill="#0d1b30" stroke="#F7B32B" stroke-width="1"/>
+  <text x="735" y="308" text-anchor="middle" fill="#F7B32B" font-size="20" font-weight="700">1,072</text>
+  <text x="735" y="325" text-anchor="middle" fill="#8892b0" font-size="10">total features</text>
+
+  <!-- Pairs list -->
+  <rect x="635" y="380" width="200" height="140" rx="6" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#sh3)"/>
+  <text x="735" y="400" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">8 Currency Pairs</text>
+  <text x="735" y="420" text-anchor="middle" fill="#64ffda" font-size="10">EUR/USD  GBP/USD</text>
+  <text x="735" y="437" text-anchor="middle" fill="#64ffda" font-size="10">USD/JPY  USD/CHF</text>
+  <text x="735" y="454" text-anchor="middle" fill="#64ffda" font-size="10">AUD/USD  NZD/USD</text>
+  <text x="735" y="471" text-anchor="middle" fill="#64ffda" font-size="10">USD/CAD  EUR/GBP</text>
+  <text x="735" y="498" text-anchor="middle" fill="#8892b0" font-size="9" font-style="italic">134 features each</text>
+
+  <!-- Bottom flow summary -->
+  <rect x="15" y="575" width="820" height="34" rx="6" fill="#112240" stroke="#233554" stroke-width="1"/>
+  <text x="425" y="596" text-anchor="middle" fill="#8892b0" font-size="11">
+    <tspan fill="#64ffda" font-weight="600">3 DBs</tspan> --> <tspan fill="#F7B32B" font-weight="600">23 Loaders</tspan> --> <tspan fill="#ccd6f6" font-weight="600">~92 base features</tspan> --> <tspan fill="#64ffda">scaling + cleaning</tspan> --> <tspan fill="#4ADE80" font-weight="700">134 final features</tspan> x 8 pairs = <tspan fill="#F7B32B" font-weight="700">1,072 total</tspan>
+  </text>
+</svg>

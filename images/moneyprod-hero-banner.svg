@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD54F"/>
+      <stop offset="50%" style="stop-color:#F7B32B"/>
+      <stop offset="100%" style="stop-color:#D4A012"/>
+    </linearGradient>
+    <linearGradient id="heroBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0B1120"/>
+      <stop offset="40%" style="stop-color:#0F172A"/>
+      <stop offset="100%" style="stop-color:#1E293B"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ADE80"/>
+      <stop offset="100%" style="stop-color:#22C55E"/>
+    </linearGradient>
+    <linearGradient id="goldLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F7B32B;stop-opacity:0"/>
+      <stop offset="50%" style="stop-color:#F7B32B;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#F7B32B;stop-opacity:0"/>
+    </linearGradient>
+    <filter id="goldGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#F7B32B" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Clean dark background, no grid, no dots -->
+  <rect width="800" height="200" fill="url(#heroBg)"/>
+
+  <!-- Logo icon (hexagonal chart) -->
+  <g transform="translate(248, 18) scale(1.05)">
+    <path d="M15,75 L15,45 L45,25 L75,45 L75,75 L45,95 Z" fill="#0F172A" stroke="#334155" stroke-width="0.6"/>
+    <rect x="22" y="65" width="8" height="20" rx="1.5" fill="url(#greenGrad)" opacity="0.85"/>
+    <rect x="34" y="55" width="8" height="30" rx="1.5" fill="url(#greenGrad)"/>
+    <rect x="46" y="42" width="8" height="43" rx="1.5" fill="url(#goldGrad)" filter="url(#goldGlow)"/>
+    <rect x="58" y="30" width="8" height="55" rx="1.5" fill="url(#goldGrad)" filter="url(#goldGlow)"/>
+    <path d="M22,80 Q40,55 68,28" stroke="#FFD54F" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#goldGlow)"/>
+    <polygon points="68,22 75,32 64,32" fill="#FFD54F"/>
+  </g>
+
+  <!-- "Money" in gold -->
+  <text x="348" y="82" font-family="'JetBrains Mono', 'Cascadia Code', monospace" font-size="48" font-weight="700" fill="url(#goldGrad)" filter="url(#softShadow)" letter-spacing="-1">Money</text>
+
+  <!-- "Prod" in light gray -->
+  <text x="495" y="82" font-family="'JetBrains Mono', 'Cascadia Code', monospace" font-size="48" font-weight="300" fill="#E2E8F0" letter-spacing="-1">Prod</text>
+
+  <!-- Subtitle -->
+  <text x="400" y="112" text-anchor="middle" font-family="'JetBrains Mono', 'Segoe UI', monospace" font-size="10" fill="#94A3B8" font-weight="500" letter-spacing="3.5">AUTONOMOUS FX TRADING PIPELINE</text>
+
+  <!-- Gold accent line -->
+  <rect x="220" y="122" width="360" height="1.2" rx="0.6" fill="url(#goldLine)"/>
+
+  <!-- Version badge -->
+  <rect x="332" y="135" width="136" height="20" rx="10" fill="#0F172A" stroke="#F7B32B" stroke-opacity="0.2" stroke-width="0.7"/>
+  <text x="400" y="149" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#F7B32B" opacity="0.7" letter-spacing="1.8">v17.0 PRODUCTION</text>
+
+  <!-- Subtle separator line at bottom -->
+  <rect x="100" y="175" width="600" height="0.5" rx="0.25" fill="#334155" opacity="0.3"/>
+</svg>

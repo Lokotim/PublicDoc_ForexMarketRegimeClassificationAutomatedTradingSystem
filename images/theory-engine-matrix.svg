@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="tmBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1117"/>
+      <stop offset="100%" style="stop-color:#1A1A2E"/>
+    </linearGradient>
+    <filter id="tmShadow">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="tmGlow">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00D4FF" flood-opacity="0.3"/>
+    </filter>
+    <pattern id="tmGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.3" fill="#fff" opacity="0.03"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="400" fill="url(#tmBg)" rx="12"/>
+  <rect width="800" height="400" fill="url(#tmGrid)" rx="12"/>
+
+  <!-- Title -->
+  <text x="400" y="28" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="16" font-weight="700" fill="#00D4FF" letter-spacing="2">THEORY ENGINE MATRIX</text>
+  <text x="400" y="44" text-anchor="middle" font-family="monospace" font-size="9" fill="#94A3B8">30 theories across 6 clusters producing 240 scores per cycle</text>
+
+  <!-- Row 1: Technical (#1-8) -->
+  <g filter="url(#tmShadow)">
+    <rect x="20" y="58" width="100" height="44" rx="6" fill="#16213E" stroke="#00D4FF" stroke-opacity="0.5" stroke-width="1"/>
+    <text x="70" y="77" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#00D4FF" font-weight="700">TECHNICAL</text>
+    <text x="70" y="93" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">#1 - #8</text>
+  </g>
+  <!-- Theory cells -->
+  <g font-family="monospace" font-size="7">
+    <rect x="128" y="58" width="78" height="44" rx="4" fill="#00D4FF" fill-opacity="0.06" stroke="#00D4FF" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="167" y="76" text-anchor="middle" fill="#E2E8F0" font-size="7">MA Cross</text>
+    <text x="167" y="90" text-anchor="middle" fill="#00D4FF" opacity="0.6" font-size="6">#1 trend</text>
+
+    <rect x="210" y="58" width="78" height="44" rx="4" fill="#00D4FF" fill-opacity="0.06" stroke="#00D4FF" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="249" y="76" text-anchor="middle" fill="#E2E8F0" font-size="7">RSI Regime</text>
+    <text x="249" y="90" text-anchor="middle" fill="#00D4FF" opacity="0.6" font-size="6">#2 momentum</text>
+
+    <rect x="292" y="58" width="78" height="44" rx="4" fill="#00D4FF" fill-opacity="0.06" stroke="#00D4FF" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="331" y="76" text-anchor="middle" fill="#E2E8F0" font-size="7">Breakout</text>
+    <text x="331" y="90" text-anchor="middle" fill="#00D4FF" opacity="0.6" font-size="6">#3 range</text>
+
+    <rect x="374" y="58" width="78" height="44" rx="4" fill="#00D4FF" fill-opacity="0.06" stroke="#00D4FF" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="413" y="76" text-anchor="middle" fill="#E2E8F0" font-size="7">ADX Trend</text>
+    <text x="413" y="90" text-anchor="middle" fill="#00D4FF" opacity="0.6" font-size="6">#4 strength</text>
+
+    <rect x="456" y="58" width="78" height="44" rx="4" fill="#00D4FF" fill-opacity="0.06" stroke="#00D4FF" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="495" y="76" text-anchor="middle" fill="#E2E8F0" font-size="7">BB Squeeze</text>
+    <text x="495" y="90" text-anchor="middle" fill="#00D4FF" opacity="0.6" font-size="6">#5 volatility</text>
+
+    <rect x="538" y="58" width="78" height="44" rx="4" fill="#00D4FF" fill-opacity="0.06" stroke="#00D4FF" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="577" y="76" text-anchor="middle" fill="#E2E8F0" font-size="7">Ichimoku</text>
+    <text x="577" y="90" text-anchor="middle" fill="#00D4FF" opacity="0.6" font-size="6">#6 cloud</text>
+
+    <rect x="620" y="58" width="78" height="44" rx="4" fill="#00D4FF" fill-opacity="0.06" stroke="#00D4FF" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="659" y="76" text-anchor="middle" fill="#E2E8F0" font-size="7">MACD Div</text>
+    <text x="659" y="90" text-anchor="middle" fill="#00D4FF" opacity="0.6" font-size="6">#7 divergence</text>
+
+    <rect x="702" y="58" width="78" height="44" rx="4" fill="#00D4FF" fill-opacity="0.06" stroke="#00D4FF" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="741" y="76" text-anchor="middle" fill="#E2E8F0" font-size="7">S/R Levels</text>
+    <text x="741" y="90" text-anchor="middle" fill="#00D4FF" opacity="0.6" font-size="6">#8 structure</text>
+  </g>
+
+  <!-- Row 2: Sentiment (#9-14) -->
+  <g filter="url(#tmShadow)">
+    <rect x="20" y="110" width="100" height="44" rx="6" fill="#16213E" stroke="#FF6B35" stroke-opacity="0.5" stroke-width="1"/>
+    <text x="70" y="129" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#FF6B35" font-weight="700">SENTIMENT</text>
+    <text x="70" y="145" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">#9 - #14</text>
+  </g>
+  <g font-family="monospace" font-size="7">
+    <rect x="128" y="110" width="98" height="44" rx="4" fill="#FF6B35" fill-opacity="0.06" stroke="#FF6B35" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="177" y="128" text-anchor="middle" fill="#E2E8F0">Retail Crowd</text>
+    <text x="177" y="142" text-anchor="middle" fill="#FF6B35" opacity="0.6" font-size="6">#9 contrarian</text>
+
+    <rect x="230" y="110" width="98" height="44" rx="4" fill="#FF6B35" fill-opacity="0.06" stroke="#FF6B35" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="279" y="128" text-anchor="middle" fill="#E2E8F0">COT Position</text>
+    <text x="279" y="142" text-anchor="middle" fill="#FF6B35" opacity="0.6" font-size="6">#10 institutional</text>
+
+    <rect x="332" y="110" width="98" height="44" rx="4" fill="#FF6B35" fill-opacity="0.06" stroke="#FF6B35" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="381" y="128" text-anchor="middle" fill="#E2E8F0">Extreme Read</text>
+    <text x="381" y="142" text-anchor="middle" fill="#FF6B35" opacity="0.6" font-size="6">#11 extremes</text>
+
+    <rect x="434" y="110" width="98" height="44" rx="4" fill="#FF6B35" fill-opacity="0.06" stroke="#FF6B35" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="483" y="128" text-anchor="middle" fill="#E2E8F0">Divergence</text>
+    <text x="483" y="142" text-anchor="middle" fill="#FF6B35" opacity="0.6" font-size="6">#12 price/sent</text>
+
+    <rect x="536" y="110" width="98" height="44" rx="4" fill="#FF6B35" fill-opacity="0.06" stroke="#FF6B35" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="585" y="128" text-anchor="middle" fill="#E2E8F0">Crowding</text>
+    <text x="585" y="142" text-anchor="middle" fill="#FF6B35" opacity="0.6" font-size="6">#13 concentration</text>
+
+    <rect x="638" y="110" width="98" height="44" rx="4" fill="#FF6B35" fill-opacity="0.06" stroke="#FF6B35" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="687" y="128" text-anchor="middle" fill="#E2E8F0">Flow Shift</text>
+    <text x="687" y="142" text-anchor="middle" fill="#FF6B35" opacity="0.6" font-size="6">#14 momentum</text>
+  </g>
+
+  <!-- Row 3: Macro (#15-18) -->
+  <g filter="url(#tmShadow)">
+    <rect x="20" y="162" width="100" height="44" rx="6" fill="#16213E" stroke="#4ADE80" stroke-opacity="0.5" stroke-width="1"/>
+    <text x="70" y="181" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#4ADE80" font-weight="700">MACRO</text>
+    <text x="70" y="197" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">#15 - #18</text>
+  </g>
+  <g font-family="monospace" font-size="7">
+    <rect x="128" y="162" width="138" height="44" rx="4" fill="#4ADE80" fill-opacity="0.06" stroke="#4ADE80" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="197" y="180" text-anchor="middle" fill="#E2E8F0">Calendar Impact</text>
+    <text x="197" y="194" text-anchor="middle" fill="#4ADE80" opacity="0.6" font-size="6">#15 event proximity</text>
+
+    <rect x="270" y="162" width="138" height="44" rx="4" fill="#4ADE80" fill-opacity="0.06" stroke="#4ADE80" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="339" y="180" text-anchor="middle" fill="#E2E8F0">Seasonal Pattern</text>
+    <text x="339" y="194" text-anchor="middle" fill="#4ADE80" opacity="0.6" font-size="6">#16 monthly bias</text>
+
+    <rect x="412" y="162" width="138" height="44" rx="4" fill="#4ADE80" fill-opacity="0.06" stroke="#4ADE80" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="481" y="180" text-anchor="middle" fill="#E2E8F0">Rate Differential</text>
+    <text x="481" y="194" text-anchor="middle" fill="#4ADE80" opacity="0.6" font-size="6">#17 carry trade</text>
+
+    <rect x="554" y="162" width="138" height="44" rx="4" fill="#4ADE80" fill-opacity="0.06" stroke="#4ADE80" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="623" y="180" text-anchor="middle" fill="#E2E8F0">GDP Surprise</text>
+    <text x="623" y="194" text-anchor="middle" fill="#4ADE80" opacity="0.6" font-size="6">#18 econ momentum</text>
+  </g>
+
+  <!-- Row 4: Volatility (#19-22) -->
+  <g filter="url(#tmShadow)">
+    <rect x="20" y="214" width="100" height="44" rx="6" fill="#16213E" stroke="#F87171" stroke-opacity="0.5" stroke-width="1"/>
+    <text x="70" y="233" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#F87171" font-weight="700">VOLATILITY</text>
+    <text x="70" y="249" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">#19 - #22</text>
+  </g>
+  <g font-family="monospace" font-size="7">
+    <rect x="128" y="214" width="138" height="44" rx="4" fill="#F87171" fill-opacity="0.06" stroke="#F87171" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="197" y="232" text-anchor="middle" fill="#E2E8F0">IV Regime</text>
+    <text x="197" y="246" text-anchor="middle" fill="#F87171" opacity="0.6" font-size="6">#19 implied vol state</text>
+
+    <rect x="270" y="214" width="138" height="44" rx="4" fill="#F87171" fill-opacity="0.06" stroke="#F87171" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="339" y="232" text-anchor="middle" fill="#E2E8F0">VRP Signal</text>
+    <text x="339" y="246" text-anchor="middle" fill="#F87171" opacity="0.6" font-size="6">#20 vol risk premium</text>
+
+    <rect x="412" y="214" width="138" height="44" rx="4" fill="#F87171" fill-opacity="0.06" stroke="#F87171" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="481" y="232" text-anchor="middle" fill="#E2E8F0">ATR Breakout</text>
+    <text x="481" y="246" text-anchor="middle" fill="#F87171" opacity="0.6" font-size="6">#21 range expansion</text>
+
+    <rect x="554" y="214" width="138" height="44" rx="4" fill="#F87171" fill-opacity="0.06" stroke="#F87171" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="623" y="232" text-anchor="middle" fill="#E2E8F0">Term Structure</text>
+    <text x="623" y="246" text-anchor="middle" fill="#F87171" opacity="0.6" font-size="6">#22 vol curve shape</text>
+  </g>
+
+  <!-- Row 5: Prediction Markets (#23-25) -->
+  <g filter="url(#tmShadow)">
+    <rect x="20" y="266" width="100" height="44" rx="6" fill="#16213E" stroke="#FBBF24" stroke-opacity="0.5" stroke-width="1"/>
+    <text x="70" y="285" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#FBBF24" font-weight="700">PRED MKTS</text>
+    <text x="70" y="301" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">#23 - #25</text>
+  </g>
+  <g font-family="monospace" font-size="7">
+    <rect x="128" y="266" width="182" height="44" rx="4" fill="#FBBF24" fill-opacity="0.06" stroke="#FBBF24" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="219" y="284" text-anchor="middle" fill="#E2E8F0">Rate Probability</text>
+    <text x="219" y="298" text-anchor="middle" fill="#FBBF24" opacity="0.6" font-size="6">#23 Kalshi Fed bets</text>
+
+    <rect x="314" y="266" width="182" height="44" rx="4" fill="#FBBF24" fill-opacity="0.06" stroke="#FBBF24" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="405" y="284" text-anchor="middle" fill="#E2E8F0">Geopolitical Risk</text>
+    <text x="405" y="298" text-anchor="middle" fill="#FBBF24" opacity="0.6" font-size="6">#24 Polymarket events</text>
+
+    <rect x="500" y="266" width="182" height="44" rx="4" fill="#FBBF24" fill-opacity="0.06" stroke="#FBBF24" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="591" y="284" text-anchor="middle" fill="#E2E8F0">Consensus Shift</text>
+    <text x="591" y="298" text-anchor="middle" fill="#FBBF24" opacity="0.6" font-size="6">#25 market delta</text>
+  </g>
+
+  <!-- Row 6: News/NLP (#26-30) -->
+  <g filter="url(#tmShadow)">
+    <rect x="20" y="318" width="100" height="44" rx="6" fill="#16213E" stroke="#7B68EE" stroke-opacity="0.5" stroke-width="1"/>
+    <text x="70" y="337" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#7B68EE" font-weight="700">NEWS / NLP</text>
+    <text x="70" y="353" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">#26 - #30</text>
+  </g>
+  <g font-family="monospace" font-size="7">
+    <rect x="128" y="318" width="118" height="44" rx="4" fill="#7B68EE" fill-opacity="0.06" stroke="#7B68EE" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="187" y="336" text-anchor="middle" fill="#E2E8F0">FinBERT Tone</text>
+    <text x="187" y="350" text-anchor="middle" fill="#7B68EE" opacity="0.6" font-size="6">#26 headline NLP</text>
+
+    <rect x="250" y="318" width="118" height="44" rx="4" fill="#7B68EE" fill-opacity="0.06" stroke="#7B68EE" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="309" y="336" text-anchor="middle" fill="#E2E8F0">Event Impact</text>
+    <text x="309" y="350" text-anchor="middle" fill="#7B68EE" opacity="0.6" font-size="6">#27 severity score</text>
+
+    <rect x="372" y="318" width="118" height="44" rx="4" fill="#7B68EE" fill-opacity="0.06" stroke="#7B68EE" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="431" y="336" text-anchor="middle" fill="#E2E8F0">Narrative Shift</text>
+    <text x="431" y="350" text-anchor="middle" fill="#7B68EE" opacity="0.6" font-size="6">#28 theme tracking</text>
+
+    <rect x="494" y="318" width="118" height="44" rx="4" fill="#7B68EE" fill-opacity="0.06" stroke="#7B68EE" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="553" y="336" text-anchor="middle" fill="#E2E8F0">Vol Surprise</text>
+    <text x="553" y="350" text-anchor="middle" fill="#7B68EE" opacity="0.6" font-size="6">#29 news vs IV</text>
+
+    <rect x="616" y="318" width="118" height="44" rx="4" fill="#7B68EE" fill-opacity="0.06" stroke="#7B68EE" stroke-opacity="0.15" stroke-width="0.5"/>
+    <text x="675" y="336" text-anchor="middle" fill="#E2E8F0">Risk Aversion</text>
+    <text x="675" y="350" text-anchor="middle" fill="#7B68EE" opacity="0.6" font-size="6">#30 flight index</text>
+  </g>
+
+  <!-- Output arrow -->
+  <g filter="url(#tmGlow)">
+    <rect x="230" y="374" width="340" height="22" rx="11" fill="#0A1628" stroke="#00D4FF" stroke-opacity="0.5" stroke-width="1"/>
+    <text x="400" y="389" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#00D4FF" font-weight="700">OUTPUT: 240 theory scores (30 x 8 pairs)</text>
+  </g>
+
+  <!-- Border -->
+</svg>

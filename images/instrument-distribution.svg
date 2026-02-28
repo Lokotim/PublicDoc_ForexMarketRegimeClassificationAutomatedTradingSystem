@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="350" viewBox="0 0 850 350">
+  <defs>
+    <style>
+      .title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #ffffff; }
+      .bar-label { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; fill: #ffffff; }
+      .bar-value { font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; font-weight: bold; fill: #ffffff; }
+      .box-title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #ffffff; }
+      .box-text { font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; fill: #ffffff; }
+      .box-value { font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; fill: #8899aa; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="850" height="350" fill="#0f1923" rx="8"/>
+
+  <!-- Title -->
+  <text x="425" y="35" text-anchor="middle" class="title">DISTRIBUTION BY INSTRUMENT</text>
+
+  <!-- Bar chart area: labels from x=30, bars from x=120 to x=450 (330px width), 8 bars -->
+  <!-- Bar height=28, gap=6, starting y=58 -->
+
+  <!-- AUDJPY -->
+  <text x="110" y="78" text-anchor="end" class="bar-label">AUDJPY</text>
+  <rect x="120" y="60" width="330" height="28" rx="4" fill="#2196F3"/>
+  <text x="460" y="80" class="bar-value">4</text>
+
+  <!-- AUDUSD -->
+  <text x="110" y="112" text-anchor="end" class="bar-label">AUDUSD</text>
+  <rect x="120" y="94" width="330" height="28" rx="4" fill="#00BCD4"/>
+  <text x="460" y="114" class="bar-value">4</text>
+
+  <!-- EURJPY -->
+  <text x="110" y="146" text-anchor="end" class="bar-label">EURJPY</text>
+  <rect x="120" y="128" width="330" height="28" rx="4" fill="#4CAF50"/>
+  <text x="460" y="148" class="bar-value">4</text>
+
+  <!-- EURUSD -->
+  <text x="110" y="180" text-anchor="end" class="bar-label">EURUSD</text>
+  <rect x="120" y="162" width="330" height="28" rx="4" fill="#F44336"/>
+  <text x="460" y="182" class="bar-value">4</text>
+
+  <!-- GBPUSD -->
+  <text x="110" y="214" text-anchor="end" class="bar-label">GBPUSD</text>
+  <rect x="120" y="196" width="330" height="28" rx="4" fill="#FF9800"/>
+  <text x="460" y="216" class="bar-value">4</text>
+
+  <!-- USDCAD -->
+  <text x="110" y="248" text-anchor="end" class="bar-label">USDCAD</text>
+  <rect x="120" y="230" width="330" height="28" rx="4" fill="#9C27B0"/>
+  <text x="460" y="250" class="bar-value">4</text>
+
+  <!-- USDCHF -->
+  <text x="110" y="282" text-anchor="end" class="bar-label">USDCHF</text>
+  <rect x="120" y="264" width="330" height="28" rx="4" fill="#2a9d8f"/>
+  <text x="460" y="284" class="bar-value">4</text>
+
+  <!-- USDJPY -->
+  <text x="110" y="316" text-anchor="end" class="bar-label">USDJPY</text>
+  <rect x="120" y="298" width="330" height="28" rx="4" fill="#FF6B6B"/>
+  <text x="460" y="318" class="bar-value">4</text>
+
+  <!-- Balance Analysis Box on the right -->
+  <rect x="530" y="60" width="290" height="200" rx="8" fill="#162330" stroke="#2a3a4a" stroke-width="1"/>
+
+  <!-- Box title -->
+  <text x="675" y="92" text-anchor="middle" class="box-title">BALANCE ANALYSIS</text>
+
+  <!-- Separator line -->
+  <line x1="555" y1="105" x2="795" y2="105" stroke="#2a3a4a" stroke-width="1"/>
+
+  <!-- Direction balance -->
+  <text x="565" y="135" class="box-text">Long:</text>
+  <text x="795" y="135" text-anchor="end" class="box-text">16 (50%)</text>
+
+  <text x="565" y="162" class="box-text">Short:</text>
+  <text x="795" y="162" text-anchor="end" class="box-text">16 (50%)</text>
+
+  <!-- Separator -->
+  <line x1="555" y1="178" x2="795" y2="178" stroke="#2a3a4a" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Strategy type balance -->
+  <text x="565" y="205" class="box-text">Trend-Following:</text>
+  <text x="795" y="205" text-anchor="end" class="box-text">16 (50%)</text>
+
+  <text x="565" y="232" class="box-text">Mean-Reversion:</text>
+  <text x="795" y="232" text-anchor="end" class="box-text">16 (50%)</text>
+</svg>

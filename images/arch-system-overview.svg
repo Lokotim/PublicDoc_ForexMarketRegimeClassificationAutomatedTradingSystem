@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450">
+  <defs>
+    <linearGradient id="soBgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1923"/>
+      <stop offset="100%" stop-color="#0a1219"/>
+    </linearGradient>
+    <linearGradient id="soGreenGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4ADE80" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#4ADE80" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="soCyanGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00e5ff" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="soOrangeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff9100" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ff9100" stop-opacity="0.08"/>
+    </linearGradient>
+    <filter id="soGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="soArrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#94A3B8"/>
+    </marker>
+    <marker id="soArrowGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#4ADE80"/>
+    </marker>
+    <marker id="soArrowCyan" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#00e5ff"/>
+    </marker>
+    <marker id="soArrowOrange" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#ff9100"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="450" fill="url(#soBgGrad)"/>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" font-family="monospace" font-size="18" font-weight="bold" fill="#FFD54F" filter="url(#soGlow)">SYSTEM ARCHITECTURE OVERVIEW</text>
+  <line x1="200" y1="45" x2="700" y2="45" stroke="#FFD54F" stroke-opacity="0.3" stroke-width="1"/>
+
+  <!-- DATA ACQUISITION subsystem -->
+  <rect x="20" y="65" width="260" height="340" rx="12" fill="url(#soGreenGrad)" stroke="#4ADE80" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="150" y="92" text-anchor="middle" font-family="monospace" font-size="13" font-weight="bold" fill="#4ADE80">DATA ACQUISITION</text>
+
+  <!-- Scrapers -->
+  <rect x="40" y="108" width="220" height="28" rx="6" fill="#4ADE80" fill-opacity="0.12" stroke="#4ADE80" stroke-width="0.8" stroke-opacity="0.5"/>
+  <text x="150" y="127" text-anchor="middle" font-family="monospace" font-size="10" fill="#4ADE80">15 Scrapers</text>
+
+  <!-- Individual scraper items -->
+  <g font-family="monospace" font-size="8" fill="#94A3B8">
+    <text x="55" y="155">DXY</text>
+    <text x="95" y="155">CFTC</text>
+    <text x="135" y="155">ECON</text>
+    <text x="175" y="155">NEWS</text>
+    <text x="215" y="155">IV</text>
+    <text x="55" y="172">SENT</text>
+    <text x="95" y="172">COT</text>
+    <text x="135" y="172">GDP</text>
+    <text x="175" y="172">CPI</text>
+    <text x="215" y="172">RATE</text>
+    <text x="55" y="189">TECH</text>
+    <text x="95" y="189">VOL</text>
+    <text x="135" y="189">CORR</text>
+    <text x="175" y="189">FLOW</text>
+    <text x="215" y="189">PPP</text>
+  </g>
+
+  <!-- Down arrows to DBs -->
+  <line x1="150" y1="198" x2="150" y2="218" stroke="#4ADE80" stroke-width="1.2" marker-end="url(#soArrowGreen)" stroke-opacity="0.7"/>
+
+  <!-- 3 SQLite DBs -->
+  <g>
+    <rect x="35" y="225" width="60" height="35" rx="5" fill="#1a2a1a" stroke="#4ADE80" stroke-width="1" stroke-opacity="0.6"/>
+    <text x="65" y="240" text-anchor="middle" font-family="monospace" font-size="7" fill="#4ADE80">SQLite</text>
+    <text x="65" y="252" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">market.db</text>
+  </g>
+  <g>
+    <rect x="115" y="225" width="60" height="35" rx="5" fill="#1a2a1a" stroke="#4ADE80" stroke-width="1" stroke-opacity="0.6"/>
+    <text x="145" y="240" text-anchor="middle" font-family="monospace" font-size="7" fill="#4ADE80">SQLite</text>
+    <text x="145" y="252" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">econ.db</text>
+  </g>
+  <g>
+    <rect x="195" y="225" width="60" height="35" rx="5" fill="#1a2a1a" stroke="#4ADE80" stroke-width="1" stroke-opacity="0.6"/>
+    <text x="225" y="240" text-anchor="middle" font-family="monospace" font-size="7" fill="#4ADE80">SQLite</text>
+    <text x="225" y="252" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">news.db</text>
+  </g>
+
+  <!-- Schedule info -->
+  <rect x="40" y="275" width="220" height="50" rx="6" fill="#0f1923" stroke="#4ADE80" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="150" y="293" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">Scheduler: cron-based</text>
+  <text x="150" y="307" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">Staleness checks + retries</text>
+
+  <!-- Feature count -->
+  <rect x="60" y="340" width="180" height="25" rx="5" fill="#4ADE80" fill-opacity="0.15" stroke="#4ADE80" stroke-width="1"/>
+  <text x="150" y="357" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#4ADE80">134 Features Output</text>
+
+  <!-- INTELLIGENCE subsystem -->
+  <rect x="320" y="65" width="260" height="340" rx="12" fill="url(#soCyanGrad)" stroke="#00e5ff" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="450" y="92" text-anchor="middle" font-family="monospace" font-size="13" font-weight="bold" fill="#00e5ff">INTELLIGENCE</text>
+
+  <!-- ML MoE -->
+  <rect x="340" y="110" width="105" height="35" rx="6" fill="#00e5ff" fill-opacity="0.12" stroke="#00e5ff" stroke-width="0.8"/>
+  <text x="392" y="125" text-anchor="middle" font-family="monospace" font-size="9" fill="#00e5ff">ML MoE</text>
+  <text x="392" y="137" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Ensemble</text>
+
+  <!-- Bayesian -->
+  <rect x="455" y="110" width="105" height="35" rx="6" fill="#00e5ff" fill-opacity="0.12" stroke="#00e5ff" stroke-width="0.8"/>
+  <text x="507" y="125" text-anchor="middle" font-family="monospace" font-size="9" fill="#00e5ff">Bayesian</text>
+  <text x="507" y="137" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">MCMC</text>
+
+  <!-- Forecast -->
+  <rect x="340" y="155" width="105" height="35" rx="6" fill="#00e5ff" fill-opacity="0.12" stroke="#00e5ff" stroke-width="0.8"/>
+  <text x="392" y="170" text-anchor="middle" font-family="monospace" font-size="9" fill="#00e5ff">Forecast</text>
+  <text x="392" y="182" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Multi-horizon</text>
+
+  <!-- RL -->
+  <rect x="455" y="155" width="105" height="35" rx="6" fill="#00e5ff" fill-opacity="0.12" stroke="#00e5ff" stroke-width="0.8"/>
+  <text x="507" y="170" text-anchor="middle" font-family="monospace" font-size="9" fill="#00e5ff">RL Agent</text>
+  <text x="507" y="182" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Q-Learning</text>
+
+  <!-- Down arrows to meta resolver -->
+  <line x1="392" y1="190" x2="420" y2="220" stroke="#00e5ff" stroke-width="0.8" stroke-opacity="0.5"/>
+  <line x1="507" y1="190" x2="480" y2="220" stroke="#00e5ff" stroke-width="0.8" stroke-opacity="0.5"/>
+  <line x1="392" y1="145" x2="420" y2="220" stroke="#00e5ff" stroke-width="0.8" stroke-opacity="0.5"/>
+  <line x1="507" y1="145" x2="480" y2="220" stroke="#00e5ff" stroke-width="0.8" stroke-opacity="0.5"/>
+
+  <!-- Meta Resolver -->
+  <rect x="365" y="220" width="170" height="45" rx="8" fill="#00e5ff" fill-opacity="0.2" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="450" y="240" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold" fill="#00e5ff">Meta-Resolver</text>
+  <text x="450" y="255" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">Signal Arbitration</text>
+
+  <!-- IV Regime -->
+  <rect x="345" y="280" width="100" height="30" rx="5" fill="#FFD54F" fill-opacity="0.1" stroke="#FFD54F" stroke-width="0.8"/>
+  <text x="395" y="298" text-anchor="middle" font-family="monospace" font-size="8" fill="#FFD54F">IV Regime</text>
+
+  <!-- Shock Detector -->
+  <rect x="455" y="280" width="100" height="30" rx="5" fill="#ef5350" fill-opacity="0.1" stroke="#ef5350" stroke-width="0.8"/>
+  <text x="505" y="298" text-anchor="middle" font-family="monospace" font-size="8" fill="#ef5350">Shock Detect</text>
+
+  <!-- Output -->
+  <rect x="360" y="325" width="180" height="30" rx="5" fill="#00e5ff" fill-opacity="0.15" stroke="#00e5ff" stroke-width="1"/>
+  <text x="450" y="345" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#00e5ff">Direction + Confidence</text>
+
+  <!-- EXECUTION subsystem -->
+  <rect x="620" y="65" width="260" height="340" rx="12" fill="url(#soOrangeGrad)" stroke="#ff9100" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="750" y="92" text-anchor="middle" font-family="monospace" font-size="13" font-weight="bold" fill="#ff9100">EXECUTION</text>
+
+  <!-- Position Sizing -->
+  <rect x="645" y="110" width="210" height="35" rx="6" fill="#ff9100" fill-opacity="0.12" stroke="#ff9100" stroke-width="0.8"/>
+  <text x="750" y="125" text-anchor="middle" font-family="monospace" font-size="9" fill="#ff9100">Position Sizing</text>
+  <text x="750" y="137" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">6-layer cascade</text>
+
+  <!-- CSV Bridge -->
+  <rect x="645" y="160" width="210" height="35" rx="6" fill="#ff9100" fill-opacity="0.12" stroke="#ff9100" stroke-width="0.8"/>
+  <text x="750" y="175" text-anchor="middle" font-family="monospace" font-size="9" fill="#ff9100">CSV + GlobalVar</text>
+  <text x="750" y="187" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Shared memory bridge</text>
+
+  <!-- MultiCharts -->
+  <rect x="645" y="210" width="210" height="35" rx="6" fill="#ff9100" fill-opacity="0.12" stroke="#ff9100" stroke-width="0.8"/>
+  <text x="750" y="225" text-anchor="middle" font-family="monospace" font-size="9" fill="#ff9100">MultiCharts</text>
+  <text x="750" y="237" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">32 strategies</text>
+
+  <!-- IBKR -->
+  <rect x="645" y="260" width="210" height="45" rx="6" fill="#ff9100" fill-opacity="0.12" stroke="#ff9100" stroke-width="0.8"/>
+  <text x="750" y="277" text-anchor="middle" font-family="monospace" font-size="9" fill="#ff9100">IBKR TWS</text>
+  <text x="750" y="292" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Port 7496 + 7497</text>
+
+  <!-- Safety -->
+  <rect x="645" y="320" width="210" height="40" rx="6" fill="#ef5350" fill-opacity="0.1" stroke="#ef5350" stroke-width="1"/>
+  <text x="750" y="338" text-anchor="middle" font-family="monospace" font-size="9" fill="#ef5350">5 Safety Layers</text>
+  <text x="750" y="350" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Circuit Breaker + Guards</text>
+
+  <!-- Execution arrows down -->
+  <line x1="750" y1="145" x2="750" y2="158" stroke="#ff9100" stroke-width="1" marker-end="url(#soArrowOrange)" stroke-opacity="0.6"/>
+  <line x1="750" y1="195" x2="750" y2="208" stroke="#ff9100" stroke-width="1" marker-end="url(#soArrowOrange)" stroke-opacity="0.6"/>
+  <line x1="750" y1="245" x2="750" y2="258" stroke="#ff9100" stroke-width="1" marker-end="url(#soArrowOrange)" stroke-opacity="0.6"/>
+
+  <!-- Inter-subsystem flow arrows -->
+  <!-- Data Acq → Intelligence -->
+  <line x1="282" y1="200" x2="318" y2="200" stroke="#4ADE80" stroke-width="2" marker-end="url(#soArrowGreen)" stroke-dasharray="6,3"/>
+  <text x="300" y="192" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">134</text>
+  <text x="300" y="213" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">features</text>
+
+  <!-- Intelligence → Execution -->
+  <line x1="582" y1="200" x2="618" y2="200" stroke="#00e5ff" stroke-width="2" marker-end="url(#soArrowCyan)" stroke-dasharray="6,3"/>
+  <text x="600" y="192" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">signal</text>
+  <text x="600" y="213" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">+ conf</text>
+
+  <!-- Feedback arrow (bottom) -->
+  <path d="M 750,370 L 750,420 L 150,420 L 150,370" fill="none" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#soArrow)" stroke-opacity="0.5"/>
+  <text x="450" y="435" text-anchor="middle" font-family="monospace" font-size="8" fill="#94A3B8">Continuous Learning Feedback Loop</text>
+</svg>
