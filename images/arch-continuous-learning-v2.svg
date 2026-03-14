@@ -1,134 +1,115 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 680" font-family="'Segoe UI', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" font-family="'Segoe UI', Arial, sans-serif">
   <defs>
-    <filter id="shadow1" x="-5%" y="-5%" width="115%" height="115%">
-      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    <filter id="clShadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
     </filter>
-    <marker id="arrowGold" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#F7B32B"/>
+    <marker id="arwGold" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#F7B32B"/>
     </marker>
-    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#64ffda"/>
-    </marker>
-    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F7B32B" stop-opacity="0.15"/>
-      <stop offset="100%" stop-color="#FFD54F" stop-opacity="0.05"/>
+    <linearGradient id="hubGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7B32B" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#FFD54F" stop-opacity="0.06"/>
     </linearGradient>
   </defs>
 
   <!-- Background -->
-  <rect width="850" height="680" rx="8" fill="#0a192f"/>
+  <rect width="800" height="500" rx="8" fill="#0a192f"/>
 
   <!-- Title -->
-  <text x="425" y="38" text-anchor="middle" fill="#ccd6f6" font-size="20" font-weight="700">Continuous Learning: The LEVIER System</text>
-  <line x1="200" y1="48" x2="650" y2="48" stroke="#F7B32B" stroke-width="2" stroke-opacity="0.6"/>
+  <text x="400" y="30" text-anchor="middle" fill="#ccd6f6" font-size="17" font-weight="700">Continuous Learning: The LEVIER System</text>
+  <line x1="200" y1="38" x2="600" y2="38" stroke="#F7B32B" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="400" y="52" text-anchor="middle" fill="#8892b0" font-size="9">9 adaptive mechanisms feeding a central feedback cycle</text>
 
-  <!-- Central cycle hub -->
-  <ellipse cx="425" cy="290" rx="80" ry="35" fill="url(#goldGrad)" stroke="#F7B32B" stroke-width="2"/>
-  <text x="425" y="285" text-anchor="middle" fill="#F7B32B" font-size="13" font-weight="700">LEVIER</text>
-  <text x="425" y="302" text-anchor="middle" fill="#FFD54F" font-size="10">Feedback Cycle</text>
+  <!-- Central hub -->
+  <ellipse cx="400" cy="262" rx="68" ry="30" fill="url(#hubGrad)" stroke="#F7B32B" stroke-width="2"/>
+  <text x="400" y="257" text-anchor="middle" fill="#F7B32B" font-size="12" font-weight="700">LEVIER</text>
+  <text x="400" y="271" text-anchor="middle" fill="#FFD54F" font-size="9">Feedback Cycle</text>
 
-  <!-- LEVIER 1 - Top Left -->
-  <rect x="30" y="80" width="230" height="90" rx="8" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow1)"/>
-  <rect x="30" y="80" width="230" height="24" rx="8" fill="#F7B32B" fill-opacity="0.15"/>
-  <rect x="30" y="96" width="230" height="2" fill="none"/>
-  <text x="42" y="97" fill="#F7B32B" font-size="11" font-weight="700">LEVIER 1</text>
-  <text x="112" y="97" fill="#ccd6f6" font-size="11">Soft Outcomes</text>
-  <text x="145" y="120" text-anchor="middle" fill="#8892b0" font-size="10">Unrealized P&amp;L</text>
-  <text x="145" y="136" text-anchor="middle" fill="#64ffda" font-size="10" font-weight="600">&#8594; RL reward signals</text>
-  <text x="145" y="156" text-anchor="middle" fill="#8892b0" font-size="9">Shapes Q-values before close</text>
+  <!-- ========== 9 LEVIER BOXES ========== -->
 
-  <!-- LEVIER 2 - Top Right -->
-  <rect x="590" y="80" width="230" height="90" rx="8" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow1)"/>
-  <rect x="590" y="80" width="230" height="24" rx="8" fill="#F7B32B" fill-opacity="0.15"/>
-  <text x="602" y="97" fill="#F7B32B" font-size="11" font-weight="700">LEVIER 2</text>
-  <text x="672" y="97" fill="#ccd6f6" font-size="11">Bayesian Optimization</text>
-  <text x="705" y="120" text-anchor="middle" fill="#8892b0" font-size="10">MCMC sampling</text>
-  <text x="705" y="136" text-anchor="middle" fill="#64ffda" font-size="10" font-weight="600">&#8594; Prior weight updates</text>
-  <text x="705" y="156" text-anchor="middle" fill="#8892b0" font-size="9">Adapts theory priors from evidence</text>
+  <!-- ROW 1: top 3 boxes (y=68) -->
 
-  <!-- LEVIER 3 - Middle Left -->
-  <rect x="20" y="220" width="230" height="90" rx="8" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow1)"/>
-  <rect x="20" y="220" width="230" height="24" rx="8" fill="#F7B32B" fill-opacity="0.15"/>
-  <text x="32" y="237" fill="#F7B32B" font-size="11" font-weight="700">LEVIER 3</text>
-  <text x="112" y="237" fill="#ccd6f6" font-size="11">Walk-Forward ML</text>
-  <text x="135" y="260" text-anchor="middle" fill="#8892b0" font-size="10">Retrain specialists each cycle</text>
-  <text x="135" y="276" text-anchor="middle" fill="#64ffda" font-size="10" font-weight="600">&#8594; Fresh model weights</text>
-  <text x="135" y="296" text-anchor="middle" fill="#8892b0" font-size="9">Expanding window, no lookahead</text>
+  <!-- L1: Soft Outcomes (top-left) -->
+  <rect x="14" y="68" width="232" height="72" rx="6" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#clShadow)"/>
+  <rect x="14" y="68" width="232" height="20" rx="6" fill="#F7B32B" fill-opacity="0.12"/>
+  <text x="26" y="82" fill="#F7B32B" font-size="9" font-weight="700">L1</text>
+  <text x="52" y="82" fill="#ccd6f6" font-size="9" font-weight="600">Soft Outcomes</text>
+  <text x="130" y="100" text-anchor="middle" fill="#8892b0" font-size="8">Unrealized PnL tracking</text>
+  <text x="130" y="114" text-anchor="middle" fill="#64ffda" font-size="8">Shapes RL reward before close</text>
+  <path d="M200,140 Q300,195 345,240" fill="none" stroke="#F7B32B" stroke-width="1" marker-end="url(#arwGold)" stroke-dasharray="4,3"/>
 
-  <!-- LEVIER 4 - Middle Right -->
-  <rect x="600" y="220" width="230" height="90" rx="8" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow1)"/>
-  <rect x="600" y="220" width="230" height="24" rx="8" fill="#F7B32B" fill-opacity="0.15"/>
-  <text x="612" y="237" fill="#F7B32B" font-size="11" font-weight="700">LEVIER 4</text>
-  <text x="692" y="237" fill="#ccd6f6" font-size="11">Experience Replay</text>
-  <text x="715" y="260" text-anchor="middle" fill="#8892b0" font-size="10">Priority sampling buffer</text>
-  <text x="715" y="276" text-anchor="middle" fill="#64ffda" font-size="10" font-weight="600">&#8594; Weighted replay batches</text>
-  <text x="715" y="296" text-anchor="middle" fill="#8892b0" font-size="9">High-TD-error experiences first</text>
+  <!-- L2: Bayesian Optimization (top-center) -->
+  <rect x="284" y="68" width="232" height="72" rx="6" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#clShadow)"/>
+  <rect x="284" y="68" width="232" height="20" rx="6" fill="#F7B32B" fill-opacity="0.12"/>
+  <text x="296" y="82" fill="#F7B32B" font-size="9" font-weight="700">L2</text>
+  <text x="322" y="82" fill="#ccd6f6" font-size="9" font-weight="600">Bayesian Optimization</text>
+  <text x="400" y="100" text-anchor="middle" fill="#8892b0" font-size="8">MCMC weight recalibration</text>
+  <text x="400" y="114" text-anchor="middle" fill="#64ffda" font-size="8">24h cooldown, prior updates</text>
+  <path d="M400,140 L400,232" fill="none" stroke="#F7B32B" stroke-width="1" marker-end="url(#arwGold)" stroke-dasharray="4,3"/>
 
-  <!-- LEVIER 5 - Bottom Left -->
-  <rect x="30" y="360" width="230" height="90" rx="8" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow1)"/>
-  <rect x="30" y="360" width="230" height="24" rx="8" fill="#F7B32B" fill-opacity="0.15"/>
-  <text x="42" y="377" fill="#F7B32B" font-size="11" font-weight="700">LEVIER 5</text>
-  <text x="122" y="377" fill="#ccd6f6" font-size="11">Live P&amp;L Adjustment</text>
-  <text x="145" y="400" text-anchor="middle" fill="#8892b0" font-size="10">Position P&amp;L feedback</text>
-  <text x="145" y="416" text-anchor="middle" fill="#64ffda" font-size="10" font-weight="600">&#8594; Confidence scaling</text>
-  <text x="145" y="436" text-anchor="middle" fill="#8892b0" font-size="9">Winning positions gain confidence</text>
+  <!-- L3: Walk-Forward ML (top-right) -->
+  <rect x="554" y="68" width="232" height="72" rx="6" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#clShadow)"/>
+  <rect x="554" y="68" width="232" height="20" rx="6" fill="#F7B32B" fill-opacity="0.12"/>
+  <text x="566" y="82" fill="#F7B32B" font-size="9" font-weight="700">L3</text>
+  <text x="592" y="82" fill="#ccd6f6" font-size="9" font-weight="600">Walk-Forward ML</text>
+  <text x="670" y="100" text-anchor="middle" fill="#8892b0" font-size="8">30d rolling window retrain</text>
+  <text x="670" y="114" text-anchor="middle" fill="#64ffda" font-size="8">Bayesian per-pair accuracy</text>
+  <path d="M600,140 Q500,195 455,240" fill="none" stroke="#F7B32B" stroke-width="1" marker-end="url(#arwGold)" stroke-dasharray="4,3"/>
 
-  <!-- LEVIER 6 - Bottom Right -->
-  <rect x="590" y="360" width="230" height="90" rx="8" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow1)"/>
-  <rect x="590" y="360" width="230" height="24" rx="8" fill="#F7B32B" fill-opacity="0.15"/>
-  <text x="602" y="377" fill="#F7B32B" font-size="11" font-weight="700">LEVIER 6</text>
-  <text x="682" y="377" fill="#ccd6f6" font-size="11">Differential Sortino</text>
-  <text x="705" y="400" text-anchor="middle" fill="#8892b0" font-size="10">Downside-only reward</text>
-  <text x="705" y="416" text-anchor="middle" fill="#64ffda" font-size="10" font-weight="600">&#8594; RL penalty shaping</text>
-  <text x="705" y="436" text-anchor="middle" fill="#8892b0" font-size="9">Penalizes losses &gt; gains equally</text>
+  <!-- ROW 2: middle-left and middle-right (y=208) -->
 
-  <!-- Cycle arrows: connect LEVIER boxes around the center -->
-  <!-- L1 to Center -->
-  <path d="M260,140 Q340,200 355,270" fill="none" stroke="#F7B32B" stroke-width="1.5" marker-end="url(#arrowGold)" stroke-dasharray="5,3"/>
-  <!-- Center to L2 -->
-  <path d="M495,270 Q560,200 590,140" fill="none" stroke="#F7B32B" stroke-width="1.5" marker-end="url(#arrowGold)" stroke-dasharray="5,3"/>
-  <!-- L2 to L4 -->
-  <path d="M715,170 L715,220" fill="none" stroke="#F7B32B" stroke-width="1.5" marker-end="url(#arrowGold)" stroke-dasharray="5,3"/>
-  <!-- L4 to L6 -->
-  <path d="M715,310 L715,360" fill="none" stroke="#F7B32B" stroke-width="1.5" marker-end="url(#arrowGold)" stroke-dasharray="5,3"/>
-  <!-- L6 to Center -->
-  <path d="M590,410 Q520,360 495,305" fill="none" stroke="#F7B32B" stroke-width="1.5" marker-end="url(#arrowGold)" stroke-dasharray="5,3"/>
-  <!-- Center to L5 -->
-  <path d="M355,305 Q290,360 260,400" fill="none" stroke="#F7B32B" stroke-width="1.5" marker-end="url(#arrowGold)" stroke-dasharray="5,3"/>
-  <!-- L5 to L3 -->
-  <path d="M135,360 L135,310" fill="none" stroke="#F7B32B" stroke-width="1.5" marker-end="url(#arrowGold)" stroke-dasharray="5,3"/>
-  <!-- L3 to L1 -->
-  <path d="M135,220 L135,170" fill="none" stroke="#F7B32B" stroke-width="1.5" marker-end="url(#arrowGold)" stroke-dasharray="5,3"/>
+  <!-- L4: Experience Replay (mid-left) -->
+  <rect x="14" y="226" width="220" height="72" rx="6" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#clShadow)"/>
+  <rect x="14" y="226" width="220" height="20" rx="6" fill="#F7B32B" fill-opacity="0.12"/>
+  <text x="26" y="240" fill="#F7B32B" font-size="9" font-weight="700">L4</text>
+  <text x="52" y="240" fill="#ccd6f6" font-size="9" font-weight="600">Experience Replay</text>
+  <text x="124" y="258" text-anchor="middle" fill="#8892b0" font-size="8">RL prioritized replay</text>
+  <text x="124" y="272" text-anchor="middle" fill="#64ffda" font-size="8">32 batch x 5 iterations</text>
+  <path d="M234,262 L332,262" fill="none" stroke="#F7B32B" stroke-width="1" marker-end="url(#arwGold)" stroke-dasharray="4,3"/>
 
-  <!-- Retraining Triggers Section -->
-  <rect x="115" y="488" width="620" height="80" rx="8" fill="#112240" stroke="#ff6b6b" stroke-width="1.5" stroke-dasharray="6,3" filter="url(#shadow1)"/>
-  <text x="425" y="510" text-anchor="middle" fill="#ff6b6b" font-size="13" font-weight="700">&#9888; Retraining Triggers</text>
+  <!-- L5: Live P&L Adjustment (mid-right) -->
+  <rect x="566" y="226" width="220" height="72" rx="6" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#clShadow)"/>
+  <rect x="566" y="226" width="220" height="20" rx="6" fill="#F7B32B" fill-opacity="0.12"/>
+  <text x="578" y="240" fill="#F7B32B" font-size="9" font-weight="700">L5</text>
+  <text x="604" y="240" fill="#ccd6f6" font-size="9" font-weight="600">Live P&amp;L Adjustment</text>
+  <text x="676" y="258" text-anchor="middle" fill="#8892b0" font-size="8">Source weight learning</text>
+  <text x="676" y="272" text-anchor="middle" fill="#64ffda" font-size="8">From realized outcomes</text>
+  <path d="M566,262 L468,262" fill="none" stroke="#F7B32B" stroke-width="1" marker-end="url(#arwGold)" stroke-dasharray="4,3"/>
 
-  <rect x="140" y="522" width="170" height="32" rx="6" fill="#0a192f" stroke="#ff6b6b" stroke-width="1" stroke-opacity="0.6"/>
-  <text x="225" y="543" text-anchor="middle" fill="#ff6b6b" font-size="11" font-weight="600">Sortino &lt; -0.3</text>
+  <!-- ROW 3: bottom 3 boxes (y=360) -->
 
-  <rect x="340" y="522" width="170" height="32" rx="6" fill="#0a192f" stroke="#ff6b6b" stroke-width="1" stroke-opacity="0.6"/>
-  <text x="425" y="543" text-anchor="middle" fill="#ff6b6b" font-size="11" font-weight="600">Accuracy &lt; 55%</text>
+  <!-- L6: Differential Sortino (bot-left) -->
+  <rect x="14" y="370" width="232" height="72" rx="6" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#clShadow)"/>
+  <rect x="14" y="370" width="232" height="20" rx="6" fill="#F7B32B" fill-opacity="0.12"/>
+  <text x="26" y="384" fill="#F7B32B" font-size="9" font-weight="700">L6</text>
+  <text x="52" y="384" fill="#ccd6f6" font-size="9" font-weight="600">Differential Sortino</text>
+  <text x="130" y="402" text-anchor="middle" fill="#8892b0" font-size="8">RL reward = Sortino(with)</text>
+  <text x="130" y="416" text-anchor="middle" fill="#64ffda" font-size="8">- Sortino(without RL)</text>
+  <path d="M200,370 Q300,320 345,285" fill="none" stroke="#F7B32B" stroke-width="1" marker-end="url(#arwGold)" stroke-dasharray="4,3"/>
 
-  <rect x="540" y="522" width="170" height="32" rx="6" fill="#0a192f" stroke="#ff6b6b" stroke-width="1" stroke-opacity="0.6"/>
-  <text x="625" y="543" text-anchor="middle" fill="#ff6b6b" font-size="11" font-weight="600">Drawdown &gt; 12%</text>
+  <!-- L7: Strategy Analytics CSI (bot-center-left) -->
+  <rect x="170" y="448" width="180" height="46" rx="6" fill="#112240" stroke="#64ffda" stroke-width="1.2" filter="url(#clShadow)"/>
+  <rect x="170" y="448" width="180" height="18" rx="6" fill="#64ffda" fill-opacity="0.08"/>
+  <text x="182" y="461" fill="#64ffda" font-size="9" font-weight="700">L7</text>
+  <text x="208" y="461" fill="#ccd6f6" font-size="9" font-weight="600">Strategy Analytics (CSI)</text>
+  <text x="260" y="480" text-anchor="middle" fill="#8892b0" font-size="7">Composite Strategy Index, zero-kill</text>
+  <path d="M290,448 Q340,380 370,292" fill="none" stroke="#64ffda" stroke-width="1" marker-end="url(#arwGold)" stroke-dasharray="4,3"/>
 
-  <!-- Persistence Section -->
-  <rect x="115" y="590" width="620" height="72" rx="8" fill="#112240" stroke="#64ffda" stroke-width="1.5" filter="url(#shadow1)"/>
-  <text x="425" y="612" text-anchor="middle" fill="#64ffda" font-size="13" font-weight="700">Persistence Layer</text>
+  <!-- L8: Paper Consensus (bot-center) -->
+  <rect x="284" y="370" width="232" height="72" rx="6" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#clShadow)"/>
+  <rect x="284" y="370" width="232" height="20" rx="6" fill="#F7B32B" fill-opacity="0.12"/>
+  <text x="296" y="384" fill="#F7B32B" font-size="9" font-weight="700">L8</text>
+  <text x="322" y="384" fill="#ccd6f6" font-size="9" font-weight="600">Paper Consensus</text>
+  <text x="400" y="402" text-anchor="middle" fill="#8892b0" font-size="8">32 MCPT theoretical signals</text>
+  <text x="400" y="416" text-anchor="middle" fill="#64ffda" font-size="8">4th meta-signal source</text>
+  <path d="M400,370 L400,292" fill="none" stroke="#F7B32B" stroke-width="1" marker-end="url(#arwGold)" stroke-dasharray="4,3"/>
 
-  <rect x="140" y="624" width="170" height="28" rx="6" fill="#0a192f" stroke="#233554" stroke-width="1"/>
-  <circle cx="155" cy="638" r="5" fill="#F7B32B" opacity="0.7"/>
-  <text x="168" y="642" fill="#ccd6f6" font-size="10">Q-table</text>
-  <text x="280" y="642" fill="#8892b0" font-size="9" text-anchor="end">.pkl</text>
-
-  <rect x="340" y="624" width="170" height="28" rx="6" fill="#0a192f" stroke="#233554" stroke-width="1"/>
-  <circle cx="355" cy="638" r="5" fill="#64ffda" opacity="0.7"/>
-  <text x="368" y="642" fill="#ccd6f6" font-size="10">Bayesian weights</text>
-  <text x="480" y="642" fill="#8892b0" font-size="9" text-anchor="end">SQLite</text>
-
-  <rect x="540" y="624" width="170" height="28" rx="6" fill="#0a192f" stroke="#233554" stroke-width="1"/>
-  <circle cx="555" cy="638" r="5" fill="#4ADE80" opacity="0.7"/>
-  <text x="568" y="642" fill="#ccd6f6" font-size="10">Learning state</text>
-  <text x="680" y="642" fill="#8892b0" font-size="9" text-anchor="end">SQLite</text>
+  <!-- L9: Pair Track Record (bot-right) -->
+  <rect x="554" y="370" width="232" height="72" rx="6" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#clShadow)"/>
+  <rect x="554" y="370" width="232" height="20" rx="6" fill="#F7B32B" fill-opacity="0.12"/>
+  <text x="566" y="384" fill="#F7B32B" font-size="9" font-weight="700">L9</text>
+  <text x="592" y="384" fill="#ccd6f6" font-size="9" font-weight="600">Pair Track Record</text>
+  <text x="670" y="402" text-anchor="middle" fill="#8892b0" font-size="8">30d rolling win rate/pair</text>
+  <text x="670" y="416" text-anchor="middle" fill="#64ffda" font-size="8">&lt;35% = Track Penalty</text>
+  <path d="M600,370 Q500,320 455,285" fill="none" stroke="#F7B32B" stroke-width="1" marker-end="url(#arwGold)" stroke-dasharray="4,3"/>
 </svg>

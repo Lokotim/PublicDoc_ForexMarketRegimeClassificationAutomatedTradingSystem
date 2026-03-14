@@ -1,151 +1,181 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 780" font-family="'Segoe UI', system-ui, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
   <defs>
-    <filter id="shadow2" x="-4%" y="-4%" width="108%" height="108%">
-      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.3"/>
+    <linearGradient id="abg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#101828"/>
+    </linearGradient>
+    <filter id="ds">
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#000" flood-opacity="0.45"/>
     </filter>
-    <linearGradient id="goldGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F7B32B"/>
-      <stop offset="100%" stop-color="#FFD54F"/>
-    </linearGradient>
-    <linearGradient id="greenGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#64ffda"/>
-      <stop offset="100%" stop-color="#4ADE80"/>
-    </linearGradient>
-    <marker id="arr2Down" markerWidth="8" markerHeight="6" refX="4" refY="6" orient="auto">
-      <polygon points="0 0, 8 0, 4 6" fill="#8892b0"/>
-    </marker>
-    <marker id="arr2Gold" markerWidth="8" markerHeight="6" refX="4" refY="6" orient="auto">
-      <polygon points="0 0, 8 0, 4 6" fill="#F7B32B"/>
-    </marker>
-    <marker id="arr2Green" markerWidth="8" markerHeight="6" refX="4" refY="6" orient="auto">
-      <polygon points="0 0, 8 0, 4 6" fill="#64ffda"/>
-    </marker>
   </defs>
 
   <!-- Background -->
-  <rect width="850" height="780" rx="8" fill="#0a192f"/>
+  <rect width="800" height="450" fill="url(#abg)" rx="6"/>
 
-  <!-- Title -->
-  <text x="425" y="38" text-anchor="middle" fill="url(#goldGrad2)" font-size="20" font-weight="700" letter-spacing="0.5">Meta-Signal Resolution: Three Intelligences</text>
-  <line x1="180" y1="50" x2="670" y2="50" stroke="#233554" stroke-width="1"/>
+  <!-- Title bar -->
+  <rect x="0" y="0" width="800" height="40" fill="#0f172a" rx="6"/>
+  <rect x="0" y="30" width="800" height="10" fill="#0f172a"/>
+  <text x="400" y="26" text-anchor="middle" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="0.5">Meta-Signal Resolver Architecture</text>
 
-  <!-- ===== THREE INPUT SOURCES ===== -->
-  <!-- ML Classifier -->
-  <rect x="40" y="70" width="230" height="110" rx="6" fill="#112240" stroke="#64ffda" stroke-width="2" filter="url(#shadow2)"/>
-  <rect x="40" y="70" width="230" height="30" rx="6" fill="#64ffda"/>
-  <rect x="40" y="86" width="230" height="14" fill="#64ffda"/>
-  <text x="155" y="91" text-anchor="middle" fill="#0a192f" font-size="13" font-weight="700">ML CLASSIFIER</text>
-  <text x="155" y="122" text-anchor="middle" fill="#ccd6f6" font-size="11">Mixture-of-Experts</text>
-  <text x="155" y="139" text-anchor="middle" fill="#ccd6f6" font-size="11">Regime + Direction</text>
-  <circle cx="230" cy="160" r="18" fill="#0a192f" stroke="#64ffda" stroke-width="1.5"/>
-  <text x="230" y="165" text-anchor="middle" fill="#64ffda" font-size="13" font-weight="700">55%</text>
+  <!-- ===== STAGE 1: INPUT SOURCES (top row) ===== -->
+  <text x="28" y="62" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">INPUTS</text>
 
-  <!-- 4-Day Forecast -->
-  <rect x="310" y="70" width="230" height="110" rx="6" fill="#112240" stroke="#F7B32B" stroke-width="2" filter="url(#shadow2)"/>
-  <rect x="310" y="70" width="230" height="30" rx="6" fill="#F7B32B"/>
-  <rect x="310" y="86" width="230" height="14" fill="#F7B32B"/>
-  <text x="425" y="91" text-anchor="middle" fill="#0a192f" font-size="13" font-weight="700">4-DAY FORECAST</text>
-  <text x="425" y="122" text-anchor="middle" fill="#ccd6f6" font-size="11">Bayesian MCMC</text>
-  <text x="425" y="139" text-anchor="middle" fill="#ccd6f6" font-size="11">Direction + Magnitude</text>
-  <circle cx="500" cy="160" r="18" fill="#0a192f" stroke="#F7B32B" stroke-width="1.5"/>
-  <text x="500" y="165" text-anchor="middle" fill="#F7B32B" font-size="13" font-weight="700">25%</text>
+  <!-- ML Classifier box -->
+  <rect x="20" y="70" width="160" height="52" rx="6" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" filter="url(#ds)"/>
+  <rect x="20" y="70" width="160" height="4" rx="2" fill="#3b82f6"/>
+  <text x="100" y="91" text-anchor="middle" fill="#3b82f6" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700">ML Classifier</text>
+  <text x="100" y="105" text-anchor="middle" fill="#94a3b8" font-family="Consolas, monospace" font-size="8">w_ml = 0.40 (default)</text>
+  <text x="100" y="116" text-anchor="middle" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="8">MoE + 5 sub-models</text>
 
-  <!-- RL Agent -->
-  <rect x="580" y="70" width="230" height="110" rx="6" fill="#112240" stroke="#ff6b6b" stroke-width="2" filter="url(#shadow2)"/>
-  <rect x="580" y="70" width="230" height="30" rx="6" fill="#ff6b6b"/>
-  <rect x="580" y="86" width="230" height="14" fill="#ff6b6b"/>
-  <text x="695" y="91" text-anchor="middle" fill="#0a192f" font-size="13" font-weight="700">RL AGENT</text>
-  <text x="695" y="122" text-anchor="middle" fill="#ccd6f6" font-size="11">Q-Learning</text>
-  <text x="695" y="139" text-anchor="middle" fill="#ccd6f6" font-size="11">Strategy Selection</text>
-  <circle cx="770" cy="160" r="18" fill="#0a192f" stroke="#ff6b6b" stroke-width="1.5"/>
-  <text x="770" y="165" text-anchor="middle" fill="#ff6b6b" font-size="13" font-weight="700">20%</text>
+  <!-- 4-Day Forecast box -->
+  <rect x="200" y="70" width="160" height="52" rx="6" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5" filter="url(#ds)"/>
+  <rect x="200" y="70" width="160" height="4" rx="2" fill="#06b6d4"/>
+  <text x="280" y="91" text-anchor="middle" fill="#06b6d4" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700">4-Day Forecast</text>
+  <text x="280" y="105" text-anchor="middle" fill="#94a3b8" font-family="Consolas, monospace" font-size="8">w_fcst = 0.30 (default)</text>
+  <text x="280" y="116" text-anchor="middle" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="8">Markov chain</text>
 
-  <!-- Connecting arrows down -->
-  <line x1="155" y1="180" x2="155" y2="210" stroke="#64ffda" stroke-width="2" marker-end="url(#arr2Green)"/>
-  <line x1="425" y1="180" x2="425" y2="210" stroke="#F7B32B" stroke-width="2" marker-end="url(#arr2Gold)"/>
-  <line x1="695" y1="180" x2="695" y2="210" stroke="#8892b0" stroke-width="2" marker-end="url(#arr2Down)"/>
+  <!-- RL Agent box -->
+  <rect x="380" y="70" width="160" height="52" rx="6" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5" filter="url(#ds)"/>
+  <rect x="380" y="70" width="160" height="4" rx="2" fill="#8b5cf6"/>
+  <text x="460" y="91" text-anchor="middle" fill="#8b5cf6" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700">RL Agent</text>
+  <text x="460" y="105" text-anchor="middle" fill="#94a3b8" font-family="Consolas, monospace" font-size="8">w_rl = 0.21 (default)</text>
+  <text x="460" y="116" text-anchor="middle" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="8">Q-learning policy</text>
 
-  <!-- ===== WEIGHTED CONSENSUS ENGINE ===== -->
-  <rect x="70" y="218" width="710" height="100" rx="6" fill="#112240" stroke="#F7B32B" stroke-width="2" filter="url(#shadow2)"/>
-  <text x="425" y="244" text-anchor="middle" fill="#F7B32B" font-size="15" font-weight="700">WEIGHTED CONSENSUS ENGINE</text>
+  <!-- Paper Consensus box -->
+  <rect x="560" y="70" width="160" height="52" rx="6" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" filter="url(#ds)"/>
+  <rect x="560" y="70" width="160" height="4" rx="2" fill="#f59e0b"/>
+  <rect x="672" y="73" width="42" height="14" rx="7" fill="#dc2626"/>
+  <text x="693" y="83" text-anchor="middle" fill="#fff" font-family="Segoe UI, Arial, sans-serif" font-size="7" font-weight="700">NEW</text>
+  <text x="640" y="91" text-anchor="middle" fill="#f59e0b" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700">Paper Consensus</text>
+  <text x="640" y="105" text-anchor="middle" fill="#94a3b8" font-family="Consolas, monospace" font-size="8">w_paper = 0.09 (default)</text>
+  <text x="640" y="116" text-anchor="middle" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="8">32 MCPT, PnL-weighted</text>
 
-  <!-- Direction voting visualization -->
-  <rect x="100" y="256" width="200" height="48" rx="4" fill="#0a192f" stroke="#233554"/>
-  <text x="200" y="274" text-anchor="middle" fill="#8892b0" font-size="10">Direction Voting</text>
-  <text x="200" y="294" text-anchor="middle" fill="#ccd6f6" font-size="11">weighted_sum(signals) &gt; 0 ?</text>
+  <!-- ===== DOWN ARROWS from sources ===== -->
+  <line x1="100" y1="122" x2="100" y2="148" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.6"/>
+  <polygon points="96,146 100,153 104,146" fill="#3b82f6" fill-opacity="0.6"/>
+  <line x1="280" y1="122" x2="280" y2="148" stroke="#06b6d4" stroke-width="1.5" stroke-opacity="0.6"/>
+  <polygon points="276,146 280,153 284,146" fill="#06b6d4" fill-opacity="0.6"/>
+  <line x1="460" y1="122" x2="460" y2="148" stroke="#8b5cf6" stroke-width="1.5" stroke-opacity="0.6"/>
+  <polygon points="456,146 460,153 464,146" fill="#8b5cf6" fill-opacity="0.6"/>
+  <line x1="640" y1="122" x2="640" y2="148" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.6"/>
+  <polygon points="636,146 640,153 644,146" fill="#f59e0b" fill-opacity="0.6"/>
 
-  <rect x="325" y="256" width="200" height="48" rx="4" fill="#0a192f" stroke="#233554"/>
-  <text x="425" y="274" text-anchor="middle" fill="#8892b0" font-size="10">Strategy Selection</text>
-  <text x="425" y="294" text-anchor="middle" fill="#ccd6f6" font-size="11">RL agent picks TF or MR</text>
+  <!-- ===== STAGE 2: PROCESSING PIPELINE (middle row) ===== -->
+  <text x="28" y="162" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">PROCESSING PIPELINE</text>
 
-  <rect x="550" y="256" width="200" height="48" rx="4" fill="#0a192f" stroke="#233554"/>
-  <text x="650" y="274" text-anchor="middle" fill="#8892b0" font-size="10">Confidence Score</text>
-  <text x="650" y="294" text-anchor="middle" fill="#ccd6f6" font-size="11">agreement_level × weights</text>
+  <!-- Step A: Weighted Sum -->
+  <rect x="20" y="168" width="172" height="64" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" filter="url(#ds)"/>
+  <rect x="26" y="173" width="8" height="8" rx="2" fill="#22c55e"/>
+  <text x="40" y="181" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600">A. Weighted Sum</text>
+  <text x="106" y="198" text-anchor="middle" fill="#cbd5e1" font-family="Consolas, monospace" font-size="8">final = w_ml*ML</text>
+  <text x="106" y="210" text-anchor="middle" fill="#cbd5e1" font-family="Consolas, monospace" font-size="8">+ w_fcst*F + w_rl*RL</text>
+  <text x="106" y="222" text-anchor="middle" fill="#cbd5e1" font-family="Consolas, monospace" font-size="8">+ w_paper*Paper</text>
 
-  <!-- Arrow down -->
-  <line x1="425" y1="318" x2="425" y2="346" stroke="#F7B32B" stroke-width="2" marker-end="url(#arr2Gold)"/>
+  <!-- Arrow A to B -->
+  <line x1="192" y1="200" x2="210" y2="200" stroke="#475569" stroke-width="1.5"/>
+  <polygon points="208,196 215,200 208,204" fill="#475569"/>
 
-  <!-- ===== AGREEMENT TAXONOMY ===== -->
-  <rect x="70" y="354" width="710" height="100" rx="6" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow2)"/>
-  <text x="425" y="378" text-anchor="middle" fill="#64ffda" font-size="13" font-weight="600">AGREEMENT TAXONOMY</text>
+  <!-- Step B: Echo Detection -->
+  <rect x="216" y="168" width="172" height="64" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" filter="url(#ds)"/>
+  <rect x="222" y="173" width="8" height="8" rx="2" fill="#22c55e"/>
+  <text x="236" y="181" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600">B. Echo Detection</text>
+  <text x="302" y="198" text-anchor="middle" fill="#06b6d4" font-family="Segoe UI, Arial, sans-serif" font-size="9">Fcst mirrors ML</text>
+  <text x="302" y="210" text-anchor="middle" fill="#06b6d4" font-family="Consolas, monospace" font-size="9">-60% discount</text>
+  <text x="302" y="222" text-anchor="middle" fill="#f59e0b" font-family="Segoe UI, Arial, sans-serif" font-size="9">Paper mirrors ML</text>
+  <text x="371" y="222" fill="#f59e0b" font-family="Consolas, monospace" font-size="9">-40%</text>
 
-  <!-- Three agreement boxes -->
-  <rect x="100" y="390" width="190" height="50" rx="4" fill="#1a3a2a" stroke="#4ADE80" stroke-width="1.5"/>
-  <text x="195" y="410" text-anchor="middle" fill="#4ADE80" font-size="12" font-weight="700">UNANIMOUS</text>
-  <text x="195" y="428" text-anchor="middle" fill="#ccd6f6" font-size="11">All 3 agree → <tspan fill="#4ADE80" font-weight="700">+10%</tspan> boost</text>
+  <!-- Arrow B to C -->
+  <line x1="388" y1="200" x2="406" y2="200" stroke="#475569" stroke-width="1.5"/>
+  <polygon points="404,196 411,200 404,204" fill="#475569"/>
 
-  <rect x="320" y="390" width="190" height="50" rx="4" fill="#1a2f50" stroke="#F7B32B" stroke-width="1.5"/>
-  <text x="415" y="410" text-anchor="middle" fill="#F7B32B" font-size="12" font-weight="700">MAJORITY</text>
-  <text x="415" y="428" text-anchor="middle" fill="#ccd6f6" font-size="11">2 of 3 agree → <tspan fill="#F7B32B" font-weight="700">0%</tspan> adjust</text>
+  <!-- Step C: Agreement Check -->
+  <rect x="412" y="168" width="172" height="64" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" filter="url(#ds)"/>
+  <rect x="418" y="173" width="8" height="8" rx="2" fill="#22c55e"/>
+  <text x="432" y="181" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600">C. Agreement Check</text>
+  <text x="498" y="196" text-anchor="middle" fill="#22c55e" font-family="Consolas, monospace" font-size="8">4/4 UNANIMOUS x1.20</text>
+  <text x="498" y="207" text-anchor="middle" fill="#3b82f6" font-family="Consolas, monospace" font-size="8">3/4 STRONG    x1.00</text>
+  <text x="498" y="218" text-anchor="middle" fill="#eab308" font-family="Consolas, monospace" font-size="8">2/4 MAJORITY  x0.75</text>
+  <text x="498" y="229" text-anchor="middle" fill="#ef4444" font-family="Consolas, monospace" font-size="8">0-1 SPLIT     x0.50</text>
 
-  <rect x="540" y="390" width="210" height="50" rx="4" fill="#3a1a1a" stroke="#ff6b6b" stroke-width="1.5"/>
-  <text x="645" y="410" text-anchor="middle" fill="#ff6b6b" font-size="12" font-weight="700">SPLIT</text>
-  <text x="645" y="428" text-anchor="middle" fill="#ccd6f6" font-size="11">No agreement → <tspan fill="#ff6b6b" font-weight="700">-30%</tspan> penalty</text>
+  <!-- Arrow C to D -->
+  <line x1="584" y1="200" x2="602" y2="200" stroke="#475569" stroke-width="1.5"/>
+  <polygon points="600,196 607,200 600,204" fill="#475569"/>
 
-  <!-- Arrow down -->
-  <line x1="425" y1="454" x2="425" y2="478" stroke="#8892b0" stroke-width="2" marker-end="url(#arr2Down)"/>
+  <!-- Step D: Confidence Scaling -->
+  <rect x="608" y="168" width="172" height="64" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" filter="url(#ds)"/>
+  <rect x="614" y="173" width="8" height="8" rx="2" fill="#22c55e"/>
+  <text x="628" y="181" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600">D. Confidence Scale</text>
+  <text x="694" y="198" text-anchor="middle" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="9">Track Penalty check</text>
+  <text x="694" y="210" text-anchor="middle" fill="#94a3b8" font-family="Consolas, monospace" font-size="8">WR &lt;35%/30d = ~0</text>
+  <text x="694" y="224" text-anchor="middle" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="9">Final sizing mult</text>
 
-  <!-- ===== ECHO DETECTION + LIVE P&amp;L ===== -->
-  <!-- Echo Detection -->
-  <rect x="70" y="486" width="340" height="100" rx="6" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow2)"/>
-  <text x="240" y="510" text-anchor="middle" fill="#ff6b6b" font-size="13" font-weight="600">ECHO DETECTION</text>
-  <text x="240" y="532" text-anchor="middle" fill="#ccd6f6" font-size="11">If Forecast mirrors ML Classifier:</text>
-  <rect x="100" y="542" width="280" height="30" rx="4" fill="#3a1a1a" stroke="#ff6b6b" stroke-width="1"/>
-  <text x="240" y="562" text-anchor="middle" fill="#ff6b6b" font-size="11" font-weight="600">Downweight forecast to avoid double-counting</text>
+  <!-- ===== DOWN ARROW from pipeline to output ===== -->
+  <line x1="694" y1="232" x2="694" y2="260" stroke="#22c55e" stroke-width="1.5"/>
+  <polygon points="690,258 694,265 698,258" fill="#22c55e"/>
 
-  <!-- Live P&amp;L Adjustment -->
-  <rect x="440" y="486" width="340" height="100" rx="6" fill="#112240" stroke="#233554" stroke-width="1.5" filter="url(#shadow2)"/>
-  <text x="610" y="510" text-anchor="middle" fill="#F7B32B" font-size="13" font-weight="600">LIVE P&amp;L ADJUSTMENT</text>
+  <!-- ===== STAGE 3: OUTPUT ROW ===== -->
+  <text x="28" y="278" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">OUTPUT</text>
 
-  <rect x="470" y="522" width="140" height="48" rx="4" fill="#1a3a2a" stroke="#4ADE80" stroke-width="1"/>
-  <text x="540" y="542" text-anchor="middle" fill="#4ADE80" font-size="11" font-weight="600">Profitable</text>
-  <text x="540" y="560" text-anchor="middle" fill="#4ADE80" font-size="13" font-weight="700">+10%</text>
+  <!-- Output box -->
+  <rect x="548" y="268" width="232" height="50" rx="6" fill="#0f172a" stroke="#22c55e" stroke-width="1.5" filter="url(#ds)"/>
+  <text x="664" y="288" text-anchor="middle" fill="#22c55e" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700">Signal per Pair</text>
+  <text x="664" y="305" text-anchor="middle" fill="#94a3b8" font-family="Consolas, monospace" font-size="9">dir(L/S) strat(TF/MR) conf agree sizing</text>
 
-  <rect x="630" y="522" width="140" height="48" rx="4" fill="#3a1a1a" stroke="#ff6b6b" stroke-width="1"/>
-  <text x="700" y="542" text-anchor="middle" fill="#ff6b6b" font-size="11" font-weight="600">Unprofitable</text>
-  <text x="700" y="560" text-anchor="middle" fill="#ff6b6b" font-size="13" font-weight="700">-15%</text>
+  <!-- ===== WEIGHT LEARNING LOOP (bottom section) ===== -->
+  <text x="28" y="342" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">WEIGHT LEARNING LOOP</text>
 
-  <!-- Converging arrows -->
-  <line x1="240" y1="586" x2="240" y2="610" stroke="#8892b0" stroke-width="1.5"/>
-  <line x1="610" y1="586" x2="610" y2="610" stroke="#8892b0" stroke-width="1.5"/>
-  <line x1="240" y1="610" x2="610" y2="610" stroke="#8892b0" stroke-width="1.5"/>
-  <line x1="425" y1="610" x2="425" y2="634" stroke="#F7B32B" stroke-width="2" marker-end="url(#arr2Gold)"/>
+  <!-- Learning loop box -->
+  <rect x="20" y="350" width="760" height="82" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1" stroke-dasharray="5,3"/>
 
-  <!-- ===== OUTPUT ===== -->
-  <rect x="140" y="642" width="570" height="120" rx="8" fill="#112240" stroke="#F7B32B" stroke-width="2" filter="url(#shadow2)"/>
-  <text x="425" y="668" text-anchor="middle" fill="#F7B32B" font-size="15" font-weight="700">OUTPUT: meta_signals</text>
-  <text x="425" y="688" text-anchor="middle" fill="#8892b0" font-size="11">Per currency pair</text>
+  <!-- PnL Attribution -->
+  <rect x="36" y="360" width="150" height="42" rx="5" fill="#1e293b" stroke="#475569" stroke-width="0.8"/>
+  <text x="111" y="378" text-anchor="middle" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600">PnL Attribution</text>
+  <text x="111" y="394" text-anchor="middle" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="8">Realized PnL per source</text>
 
-  <!-- Output fields -->
-  <rect x="170" y="700" width="150" height="40" rx="4" fill="#0a192f" stroke="#64ffda" stroke-width="1"/>
-  <text x="245" y="716" text-anchor="middle" fill="#64ffda" font-size="11" font-weight="600">direction</text>
-  <text x="245" y="732" text-anchor="middle" fill="#ccd6f6" font-size="11">LONG / SHORT</text>
+  <!-- Arrow -->
+  <line x1="186" y1="381" x2="210" y2="381" stroke="#475569" stroke-width="1.5"/>
+  <polygon points="208,377 215,381 208,385" fill="#475569"/>
 
-  <rect x="350" y="700" width="150" height="40" rx="4" fill="#0a192f" stroke="#F7B32B" stroke-width="1"/>
-  <text x="425" y="716" text-anchor="middle" fill="#F7B32B" font-size="11" font-weight="600">strategy</text>
-  <text x="425" y="732" text-anchor="middle" fill="#ccd6f6" font-size="11">TF / MR</text>
+  <!-- Performance Evaluation -->
+  <rect x="216" y="360" width="150" height="42" rx="5" fill="#1e293b" stroke="#475569" stroke-width="0.8"/>
+  <text x="291" y="378" text-anchor="middle" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600">Perf Evaluation</text>
+  <text x="291" y="394" text-anchor="middle" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="8">Hourly accuracy scoring</text>
 
-  <rect x="530" y="700" width="150" height="40" rx="4" fill="#0a192f" stroke="#4ADE80" stroke-width="1"/>
-  <text x="605" y="716" text-anchor="middle" fill="#4ADE80" font-size="11" font-weight="600">confidence</text>
-  <text x="605" y="732" text-anchor="middle" fill="#ccd6f6" font-size="11">0.0 - 1.0</text>
+  <!-- Arrow -->
+  <line x1="366" y1="381" x2="390" y2="381" stroke="#475569" stroke-width="1.5"/>
+  <polygon points="388,377 395,381 388,385" fill="#475569"/>
+
+  <!-- Weight Update -->
+  <rect x="396" y="360" width="150" height="42" rx="5" fill="#1e293b" stroke="#475569" stroke-width="0.8"/>
+  <text x="471" y="378" text-anchor="middle" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600">Weight Update</text>
+  <text x="471" y="394" text-anchor="middle" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="8">Adjust w_ml, w_fcst, w_rl, w_paper</text>
+
+  <!-- Arrow -->
+  <line x1="546" y1="381" x2="570" y2="381" stroke="#475569" stroke-width="1.5"/>
+  <polygon points="568,377 575,381 568,385" fill="#475569"/>
+
+  <!-- Paper Weight Cap -->
+  <rect x="576" y="360" width="130" height="42" rx="5" fill="#1e293b" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="641" y="378" text-anchor="middle" fill="#f59e0b" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600">Paper Cap</text>
+  <text x="641" y="394" text-anchor="middle" fill="#f59e0b" font-family="Consolas, monospace" font-size="9">max 25%</text>
+
+  <!-- Curved feedback arrow from Weight Update back to Weighted Sum (step A) -->
+  <path d="M 471 402 Q 471 430 280 434 Q 70 434 70 240" fill="none" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="66,243 70,235 74,243" fill="#475569"/>
+  <text x="270" y="444" text-anchor="middle" fill="#475569" font-family="Segoe UI, Arial, sans-serif" font-size="8">Updated weights feed back to resolver (hourly)</text>
+
+  <!-- ===== source_weights TABLE annotation ===== -->
+  <rect x="20" y="268" width="220" height="50" rx="6" fill="#1e293b" stroke="#334155" stroke-width="0.8"/>
+  <text x="130" y="285" text-anchor="middle" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">source_weights table (4 rows)</text>
+  <text x="36" y="300" fill="#3b82f6" font-family="Consolas, monospace" font-size="8">ml_classifier</text>
+  <text x="115" y="300" fill="#06b6d4" font-family="Consolas, monospace" font-size="8">forecast</text>
+  <text x="160" y="300" fill="#8b5cf6" font-family="Consolas, monospace" font-size="8">rl_agent</text>
+  <text x="206" y="300" fill="#f59e0b" font-family="Consolas, monospace" font-size="8">paper</text>
+  <text x="36" y="312" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="7">Stored in forex_sentiment.db</text>
+
+  <!-- ===== meta_signals TABLE annotation ===== -->
+  <rect x="280" y="268" width="250" height="50" rx="6" fill="#1e293b" stroke="#334155" stroke-width="0.8"/>
+  <text x="405" y="285" text-anchor="middle" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="600">meta_signals columns (new)</text>
+  <text x="296" y="300" fill="#f59e0b" font-family="Consolas, monospace" font-size="8">paper_direction | paper_strategy | paper_confidence</text>
+  <text x="296" y="312" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="7">3 new columns added for paper consensus source</text>
 </svg>

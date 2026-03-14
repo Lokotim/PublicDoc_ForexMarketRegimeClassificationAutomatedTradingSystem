@@ -3,7 +3,7 @@
 </p>
 
 <p align="center" style="font-size:15pt; color:#e6f1ff; font-weight:bold; margin-top:18px;"><em>The Machine That Trades While You Sleep</em></p>
-<p align="center" style="font-size:11pt; color:#a8b2d1;">Inside a Production Pipeline That Scrapes 15 Data Sources, Trains 5 ML Models, Deploys a Reinforcement Learning Agent, and Executes Trades Across 8 Accounts — Every Hour, Autonomously</p>
+<p align="center" style="font-size:11pt; color:#a8b2d1;">Inside a Production Pipeline That Fuses 4 Intelligence Sources (ML, Forecast, RL, Paper Consensus), Scrapes 15 Data Sources, and Executes Trades Across 8 Accounts — Every Hour, Autonomously</p>
 
 <p align="center">
   <strong>Author:</strong> <a href="https://linkedin.com/in/timothy-lokotar/">Timothy Lokotar</a> · <a href="https://www.moneyprod.com/">MoneyProd</a><br>
@@ -29,7 +29,8 @@
 | **Currency Pairs** | 8 major + cross pairs |
 | **Brokerage Accounts** | 8 (Interactive Brokers, dual gateway) |
 | **Pipeline Frequency** | Every H4 bar close (6×/day) |
-| **Safety Layers** | 5 independent circuit breakers |
+| **Signal Sources** | 4 (ML Classifier, 4-Day Forecast, RL Agent, Paper Consensus) |
+| **Safety Layers** | 6 independent circuit breakers + strategy analytics |
 | **RL Experiences** | 6,832 (growing every cycle) |
 | **Model Version** | v17.0 (self-versioning) |
 
@@ -54,8 +55,9 @@
   - [Chapter 10 — The Arbiter: Meta-Signal Resolution](#chapter-10--the-arbiter-meta-signal-resolution)
   - [Chapter 11 — The Risk Cascade: Position Sizing](#chapter-11--the-risk-cascade-position-sizing)
 - [Act V: The Living System — Self-Improvement and Defense](#act-v-the-living-system--self-improvement-and-defense)
-  - [Chapter 12 — The Five Shields: Circuit Breakers and White Swan Philosophy](#chapter-12--the-five-shields-circuit-breakers-and-white-swan-philosophy)
+  - [Chapter 12 — The Six Shields: Circuit Breakers, White Swan, and Strategy Analytics](#chapter-12--the-six-shields-circuit-breakers-white-swan-and-strategy-analytics)
   - [Chapter 13 — The Self-Improving Machine](#chapter-13--the-self-improving-machine)
+  - [Chapter 14 — Strategy Analytics: The AlgoChef Layer](#chapter-14--strategy-analytics-the-algochef-layer)
 - [Epilogue: What This Machine Proves](#epilogue-what-this-machine-proves)
 - [Technical Appendix](#technical-appendix)
 - [References](#references)
@@ -79,9 +81,10 @@ Not a metaphorical machine. A *real* one. A production server running Python 3.1
 5. **Consult a Bayesian MCMC optimizer** for confidence calibration
 6. **Generate 4-day probabilistic forecasts** using Markov transition matrices
 7. **Train and deploy a Reinforcement Learning agent** with 6,832 experiences
-8. **Arbitrate conflicting signals** through a weighted meta-resolution engine
-9. **Compute risk-adjusted position sizes** through a 6-layer cascade
-10. **Write a CSV file** that activates or deactivates each of the 32 strategies in real time
+8. **Aggregate paper signals** from 32 live MCPT strategies via PnL-weighted majority vote
+9. **Arbitrate conflicting signals** from 4 sources through a weighted meta-resolution engine
+10. **Compute risk-adjusted position sizes** through a 6-layer cascade
+11. **Write a CSV file** that activates or deactivates each of the 32 strategies in real time
 
 By **06:23:28** — exactly **155 seconds** after it started — the CSV is written. The charting platform reads it. Orders flow to Interactive Brokers. The machine goes quiet.
 
@@ -874,12 +877,12 @@ The RL agent's weight in the meta-resolver (Chapter 10) is **progressively scale
 
 ```
 RL samples: 10/200 → RL scale: 30%
-Target weight: 16% × 30% = 4.8% effective
+Target weight: 21% × 30% = 6.3% effective
 ```
 
-Currently at 30% of its target weight, the RL agent's influence will grow as it accumulates more hard outcomes. This prevents an undertrained agent from overriding the more established ML and Markov signals.
+Currently at 30% of its target weight, the RL agent's influence will grow as it accumulates more hard outcomes. This prevents an undertrained agent from overriding the more established ML, Forecast, and Paper Consensus signals.
 
-*The machine now has three independent intelligence sources. But what happens when they disagree?*
+*The machine now has four independent intelligence sources. But what happens when they disagree?*
 
 ---
 
@@ -893,9 +896,9 @@ Currently at 30% of its target weight, the RL agent's influence will grow as it 
 
 #### The Conflict Problem
 
-Three signal sources. Three methodologies. Three sets of biases. What happens when ML says "go long" but RL says "go short"?
+Four signal sources. Four methodologies. Four sets of biases. What happens when ML says "go long" but RL says "go short" and Paper Consensus says "go long"?
 
-The **Meta-Signal Resolver** is the pipeline's supreme arbiter. It takes signals from all three sources, applies learned weights, and produces a single unified trading decision per pair.
+The **Meta-Signal Resolver** is the pipeline's supreme arbiter. It takes signals from all four sources, applies learned weights, and produces a single unified trading decision per pair.
 
 ![Meta Resolver](images/meta-resolver-v2.svg)
 
@@ -903,45 +906,53 @@ The **Meta-Signal Resolver** is the pipeline's supreme arbiter. It takes signals
 
 ```
 META-SIGNAL RESOLVER — CONFLICT ARBITRATION
-  Weights: ml_classifier=46% | forecast_4day=38% | rl_agent=16%
+  Weights: ml_classifier=40% | forecast_4day=30% | rl_agent=21% | paper_consensus=9%
   RL samples: 10/200 → RL scale: 30%
 ```
 
-The weights are not arbitrary — they are **learned from historical accuracy**:
-- **ML Classifier (46%)**: Richest feature set, most data, highest demonstrated accuracy
-- **4-Day Forecast (38%)**: Temporal stability, good at confirming directional persistence
-- **RL Agent (16%)**: Growing — will increase toward 33% as experiences accumulate
+The weights are not arbitrary — they are **learned from historical accuracy** (defaults shown; weights adjust hourly via PnL attribution):
+- **ML Classifier (40%)**: Richest feature set, most data, highest demonstrated accuracy
+- **4-Day Forecast (30%)**: Temporal stability, good at confirming directional persistence
+- **RL Agent (21%)**: Growing — will increase as experiences accumulate
+- **Paper Consensus (9%, NEW)**: PnL-weighted majority vote from the 32 MCPT strategies' paper signals (max learnable weight capped at 25%)
 
-The RL agent's effective weight is currently damped to **4.8%** (16% × 30% scale), ensuring the most experienced systems dominate until the RL agent earns its authority through demonstrated performance.
+The RL agent's effective weight is currently damped to **6.3%** (21% x 30% scale), ensuring the most experienced systems dominate until the RL agent earns its authority through demonstrated performance.
+
+**Echo Detection:** When two sources produce correlated signals, their combined weight is discounted to avoid double-counting:
+- Forecast mirrors ML direction: 60% discount on Forecast weight
+- Paper Consensus mirrors ML direction: 40% discount on Paper weight
+
+The `meta_signals` table stores three additional columns for the paper source: `paper_direction`, `paper_strategy`, and `paper_confidence`. Learned weights for all four sources are persisted in the `source_weights` table.
 
 #### The Resolution Output (Feb 26, 2026)
 
 ```
-PAIR      ML   FCST    RL →   FINAL           CONF    AGREEMENT     SIZE
-────────────────────────────────────────────────────────────────────────────
-AUDJPY     L     L    --- →   L trend          55%  🟡 MAJORITY     ×0.41
-AUDUSD     S     S    --- →   S mean_rev       54%  🟡 MAJORITY     ×0.41
-EURJPY     S     S    --- →   S mean_rev       63%  🟡 MAJORITY     ×0.47
-EURUSD     S     S    --- →   S trend          58%  🟡 MAJORITY     ×0.43
-GBPUSD     S     S    --- →   S trend          50%  🟡 MAJORITY     ×0.40
-USDCAD     L     L    --- →   L trend          53%  🟡 MAJORITY     ×0.40
-USDCHF     S     S    --- →   S mean_rev       54%  🟡 MAJORITY     ×0.41
-USDJPY     L     L    --- →   L trend          58%  🟡 MAJORITY     ×0.43
+PAIR      ML   FCST    RL  PAPER →  FINAL           CONF    AGREEMENT     SIZE
+──────────────────────────────────────────────────────────────────────────────────
+AUDJPY     L     L    ---    L  →   L trend          55%  🟢 STRONG       ×0.75
+AUDUSD     S     S    ---    S  →   S mean_rev       54%  🟢 STRONG       ×0.75
+EURJPY     S     S    ---    S  →   S mean_rev       63%  🟢 STRONG       ×0.75
+EURUSD     S     S    ---    S  →   S trend          58%  🟢 STRONG       ×0.75
+GBPUSD     S     S    ---    S  →   S trend          50%  🟢 STRONG       ×0.75
+USDCAD     L     L    ---    L  →   L trend          53%  🟢 STRONG       ×0.75
+USDCHF     S     S    ---   --- →   S mean_rev       54%  🟡 MAJORITY     ×0.75
+USDJPY     L     L    ---    L  →   L trend          58%  🟢 STRONG       ×0.75
 
-SUMMARY: UNANIMOUS:0 | MAJORITY:8 | SPLIT:0 | FLAT:0
+SUMMARY: UNANIMOUS:0 | STRONG:7 | MAJORITY:1 | SPLIT:0 | FLAT:0
   Tradeable: 8/8
 ```
 
-**All 8 pairs show MAJORITY agreement.** ML and Forecast align on every pair, but with the RL agent inactive (`---`), the agreement level is MAJORITY rather than UNANIMOUS. The sizing multipliers reflect this moderate confidence — ranging from ×0.40 to ×0.47.
+**7 of 8 pairs show STRONG agreement** (3/4 sources agree). ML, Forecast, and Paper Consensus align on most pairs, but with the RL agent still inactive (`---`), UNANIMOUS (4/4) is not yet possible. The sizing multipliers reflect the agreement taxonomy.
 
-#### Agreement Levels and Sizing
+#### Agreement Taxonomy and Sizing
 
-| Level | Condition | Sizing Impact |
+| Level | Condition | Sizing Multiplier |
 |---|---|---|
-| **UNANIMOUS** | All 3 sources agree | ×1.0 + bonus |
-| **MAJORITY** | 2/3 agree, or 2/2 when RL inactive | ×0.8-1.0 (normal) |
-| **SPLIT** | Sources disagree | ×0.5-0.7 (reduced) |
-| **FLAT** | No clear signal | ×0.0 (no trade) |
+| **UNANIMOUS** | 4/4 sources agree | ×1.20 (conviction bonus) |
+| **STRONG** | 3/4 sources agree | ×1.00 (full size) |
+| **MAJORITY** | 2/4 agree (simple majority) | ×0.75 (reduced) |
+| **SPLIT** | No majority — sources disagree | ×0.50 (minimal) |
+| **TRACK PENALTY** | Pair win rate < 35% historically | ~×0.00 (effectively blocked) |
 
 *The arbiter has spoken. Now the machine must translate conviction into capital allocation.*
 
@@ -1018,10 +1029,10 @@ Kelly confidence from Meta-Resolver:
 #### Layer 5: IV Regime Adjustment
 
 ```
-FEARFUL:    × 85% (reduce exposure in stressed markets)
 COMPLACENT: × 100% (full exposure in calm markets)
-PRICED:     × 70% (cautious in transitional states)
-SURPRISE:   → Directional White Swan Filter (see Layer 6)
+FEARFUL:    × 85%  (reduce exposure in stressed markets)
+PRICED:     × 70%  (cautious in transitional states)
+SURPRISE:   × 45%  (deep cut + Directional White Swan Filter, see Layer 6)
 ```
 
 With 3 pairs in FEARFUL and 2 in SURPRISE regime, a significant portion of the portfolio is either reduced or directionally filtered.
@@ -1083,11 +1094,11 @@ Of the 32 strategy slots, exactly **8 are authorized** — one per pair. For COM
 
 ---
 
-### Chapter 12 — The Five Shields: Circuit Breakers and White Swan Philosophy
+### Chapter 12 — The Six Shields: Circuit Breakers, White Swan, and Strategy Analytics
 
 #### Defense in Depth
 
-No system is infallible. Markets can gap. Brokers can disconnect. Models can fail in ways nobody predicted. The pipeline implements **5 independent safety layers**, any one of which can reduce or halt trading.
+No system is infallible. Markets can gap. Brokers can disconnect. Models can fail in ways nobody predicted. The pipeline implements **6 independent safety layers**, any one of which can reduce or halt trading.
 
 ![Safety Layers](images/safety-layers-v2.svg)
 
@@ -1156,7 +1167,28 @@ DATA INTEGRITY GUARD
 
 Validates that all input data falls within expected ranges: no NaN values, no stale timestamps, no anomalous readings. If any critical data fails validation, the pipeline can reduce confidence or skip affected pairs entirely.
 
-*Five shields. Each independent. Each self-correcting. The machine does not just trade — it watches itself trade.*
+#### Shield 6: Strategy Analytics (AlgoChef-Inspired)
+
+```
+STRATEGY ANALYTICS (AlgoChef)
+  Health [C:1/O:12/R:7]  CSI avg mult=53%
+  ⚠ 7 strategies degraded — sizing reduced via CSI multipliers
+```
+
+Where previous shields protect against market events and data failures, the sixth shield monitors the **strategies themselves**. Four interlocking modules — inspired by institutional-grade portfolio analytics platforms — continuously evaluate whether each of the 32 strategies deserves to remain active:
+
+| Module | What It Measures | Action on Failure |
+|---|---|---|
+| **Health Monitor** | Composite score (0-100) from Sharpe, win rate, drawdown, consecutive losses | Tiered degradation: GREEN → CYAN → ORANGE → RED → DARK_RED |
+| **CSI (Composite Sizing Index)** | Profitability, risk, and confidence blended into a single multiplier (0-1) | Sizing scaled proportionally — a 0.3 CSI means 30% of normal size |
+| **Correlation Matrix** | Pearson correlations between all strategy pairs on weekly returns | Alerts when correlation > 0.85 (diversification failure) |
+| **Monte Carlo Simulation** | 10,000-path simulation per strategy using bootstrapped returns | Risk-of-ruin percentage — flags strategies with >20% ruin probability |
+
+The Health Monitor assigns each strategy to a tier every pipeline cycle. **CSI v2** translates that health assessment into a **continuous sizing multiplier** using a 6-tier graduated system — from full authorization (1.00) down to probation (0.10). Unlike the original binary zero-kill, CSI v2 ensures strategies are never permanently deadlocked: even at the lowest tier, a strategy trades at 10% size, generating the new trades needed to improve its score.
+
+When sub-scores trigger what would have been a zero-kill, CSI v2 applies **graduated penalties** (floor = 5.0, scale = 0.25) instead of forcing scores to absolute zero. After 48 hours in penalty, **time-based recovery** adds +3 CSI per 24 hours, providing a guaranteed recovery path. Paper trading outcomes can also rescue all three dimensions (profitability, risk, confidence), not just confidence.
+
+*Six shields. Each independent. Each self-correcting. The machine does not just trade — it watches itself trade, and it watches its strategies degrade before they can do real damage.*
 
 ---
 
@@ -1168,39 +1200,68 @@ Most trading systems are static: built once, deployed, and slowly degraded by ch
 
 ![Continuous Learning Loop](images/continuous-learning-loop.svg)
 
-#### Six Interlocking Feedback Systems
+#### Nine LEVIER Mechanisms
 
-**1. ML Ensemble → Outcome Recorder → ML Ensemble**
+The pipeline's self-improvement operates through **9 interlocking feedback loops** — collectively named **LEVIER** (the French word for "lever"):
+
+**L1: Soft Outcomes — ML Ensemble → Outcome Recorder → ML Ensemble**
 - Every trade outcome is recorded and linked to the ML prediction that triggered it
 - The ensemble retrains each cycle with updated labels from realized returns
 - Model accuracy is tracked through the Continuous Learning System
 
-**2. Bayesian MCMC → Confidence Calibration**
+**L2: Bayesian Optimization — MCMC → Confidence Calibration**
 - Trade outcomes update the posterior distribution of model accuracy
-- When sufficient data accumulates (n_effective ≥ 15), confidence scores are auto-corrected
+- When sufficient data accumulates (n_effective >= 15), confidence scores are auto-corrected
 - Gelman-Rubin convergence diagnostic ensures statistical validity
 
-**3. RL Agent → Q-Table → RL Agent**
+**L3: Walk-Forward ML — Continuous Retraining**
+- Walk-forward validation guard ensures no temporal leakage
+- Validation ratio (OOS/IS) must exceed threshold before reaching production
+- Model version auto-incremented on performance degradation or capability integration
+
+**L4: Experience Replay — RL Agent → Q-Table → RL Agent**
 - Every position snapshot adds to the experience buffer (6,832 and growing)
 - Prioritized Experience Replay upweights surprising outcomes
 - Progressive trust mechanism scales RL influence with data accumulation
 
-**4. Crowding A/B → Penalty Parameters**
+**L5: Live P&L Adjustment — Crowding A/B → Penalty Parameters**
 - Treatment vs. control comparison with 1,057 samples
-- Auto-adjusts threshold, penalty factor, and boost factor
+- Auto-adjusts threshold, penalty factor, and boost factor using Sortino ratio
 - Self-correcting: strengthens when helpful, weakens when harmful
 
-**5. Pipeline Diagnostics → Alert System**
+**L6: Differential Sortino — Pipeline Diagnostics → Alert System**
 - 41 automated checks across all subsystems
 - Discord webhooks for real-time alerts
 - Gradient severity: INFO → WARNING → CRITICAL
 
-**6. Model Versioning → Continuous Learning**
+**L7: Strategy Analytics (CSI) → Adaptive Sizing**
+```
+STRATEGY ANALYTICS (AlgoChef)
+  Health: 20 strategies scored, avg=44.3
+  CSI: 22 strategies, avg_mult=53%
+  Correlation: no pair > 0.85
+  Monte Carlo: no alerts (all RoR < 20%)
+```
+
+Every pipeline cycle, four analytics modules re-evaluate each strategy's health using realized performance data. The Health Monitor scores each strategy on a 0-100 composite scale; CSI v2 converts that score into a 6-tier sizing multiplier (1.00 → 0.75 → 0.50 → 0.25 → 0.10 → 0.00) that directly modulates position size in the next cycle. The v2 system replaces the original binary zero-kill with graduated penalties — strategies in trouble enter **probation** at 10% size rather than being permanently deadlocked at zero. Time-based recovery (+3 CSI per 24h after 48h in penalty) ensures even the worst performers have a path back.
+
+**L8: Paper Consensus → 4th Meta-Signal Source**
+- 32 MCPT strategies publish paper signals and unrealized PnL via shared memory (GlobalVariable.dll)
+- PnL-weighted majority vote per pair produces a 4th directional signal for the meta-resolver
+- Paper trades rescue strategies from all CSI sub-score penalties (profitability, risk, confidence)
+- Paper discount (0.50), blend cap (0.40), CSI cap (50), min paper trades (3) prevent over-reliance
+
+**L9: Pair Track Record v2 → Recency-Weighted Win Rate**
+- Per-pair win rate tracked with **exponential decay** (half-life = 7 days) over a 14-day lookback window
+- Pairs with weighted WR < 35% receive a TRACK PENALTY with **soft rejection** (confidence floor = 0.20, sizing floor = 0.15)
+- Recovery 2× faster than original 30-day window — losing trades age out in ~7 days instead of ~30
+
 ```
 CONTINUOUS LEARNING SYSTEM
   Model Version: v17.0
   Learning History: 100 records (last 7 days)
   1,368 classifications tracked
+  9 LEVIER mechanisms active
   ✅ State persisted to SQLite
 ```
 
@@ -1217,7 +1278,7 @@ PIPELINE DIAGNOSTICS — 2026-02-26T06:23:32
   ✅ [ML]         8/8 classified, avg confidence: 56%
   ✅ [FORECAST]   8/8 forecasts align with ML
   ✅ [META]       8/8 resolved, avg meta confidence: 56%
-  ✅ [META]       ml_classifier=46% / forecast_4day=38% / rl_agent=16%
+  ✅ [META]       ml_classifier=40% / forecast_4day=30% / rl_agent=21% / paper_consensus=9%
   ✅ [POSITIONS]  5 live positions synced
   ✅ [CB]         Circuit breaker NORMAL — sizing=100%
   ✅ [SIZING]     6 authorized, 26 blocked
@@ -1225,13 +1286,56 @@ PIPELINE DIAGNOSTICS — 2026-02-26T06:23:32
   ✅ [SYSTEM]     Timezone, databases, notifier — all OK
   ⚠️  [SHOCK]     4 pairs in RECOVERY phase
   ⚠️  [RL]        RL agent needs more training data
+  ⚠️  [STRATEGY]  7 strategies RED — CSI sizing reduced
 
-  SUMMARY: 0 CRITICAL | 5 WARNINGS | 28 OK | 8 INFO
+  SUMMARY: 0 CRITICAL | 6 WARNINGS | 28 OK | 8 INFO
 ```
 
-Zero critical issues. Five warnings — all expected (shock recovery phases and RL data accumulation). The machine is operating well within design parameters.
+Zero critical issues. Six warnings — all expected (shock recovery phases, RL data accumulation, and strategy degradation being handled by the CSI). The machine is operating well within design parameters.
 
 *Every hour, the machine learns. Every cycle, it becomes slightly better than the last.*
+
+---
+
+### Chapter 14 — Strategy Analytics: The AlgoChef Layer
+
+*"The best trading systems don't just decide when to trade — they decide when to stop trusting themselves."*
+
+---
+
+Traditional algorithmic trading treats strategies as binary: on or off, live or dead. MoneyProd's Strategy Analytics layer — inspired by institutional portfolio analytics platforms — introduces a continuous spectrum between full confidence and full shutdown.
+
+#### The Four Modules
+
+**Health Monitor** — Each of the 32 strategies is scored every pipeline cycle on a composite health scale (0-100), combining rolling Sharpe ratio, win rate, maximum drawdown, and consecutive loss count. The score determines a tier:
+
+| Tier | Score Range | Meaning |
+|---|---|---|
+| 🟢 **GREEN** | 75-100 | Strategy performing well — full authorization |
+| 🔵 **CYAN** | 60-74 | Minor degradation — normal market conditions |
+| 🟠 **ORANGE** | 45-59 | Noticeable degradation — monitoring closely |
+| 🔴 **RED** | 25-44 | Significant issues — sizing reduced |
+| ⛔ **DARK_RED** | 0-24 | Critical failure — circuit breaker engaged |
+
+**CSI v2 (Composite Sizing Index)** — Where the Health Monitor classifies, the CSI v2 *acts*. It blends profitability, risk, and confidence into a 6-tier graduated multiplier (1.00 / 0.75 / 0.50 / 0.25 / 0.10 / 0.00) that directly scales position sizing. The v2 system replaces the original binary zero-kill with **graduated penalties** — sub-scores that would have been forced to zero now receive a floor of 5.0 and a 0.25× penalty scale, enabling strategies to trade at probation-level size (10%) and recover through new trades. Time-based recovery (+3 CSI per 24h after 48h in penalty) provides a guaranteed escape from low-score states.
+
+**Correlation Matrix** — Weekly Pearson correlations between all strategy pairs. When two strategies become highly correlated (> 0.85), the portfolio is effectively taking a concentrated bet disguised as diversification. The matrix surfaces these hidden concentration risks before they materialize as correlated drawdowns.
+
+**Monte Carlo Simulation** — For each strategy, 10,000 return paths are bootstrapped from historical data. The risk-of-ruin percentage — the fraction of paths that hit a catastrophic drawdown threshold — quantifies tail risk in a way that standard deviation cannot. A strategy with 25% risk of ruin looks fine on average metrics but has a one-in-four chance of blowing up.
+
+#### Integration Across the Stack
+
+Strategy Analytics is not a standalone dashboard. It is woven into every layer of the monitoring stack:
+
+- **STAGE 9 inline probes** verify health and CSI data integrity every cycle
+- **Node 8** in the Data Truth Watchdog validates score bounds and tier consistency
+- **Section 2b** of the diagnostic prompt surfaces RED strategies and CSI circuit breakers
+- **Discord hourly report** includes a dedicated Strategy Analytics embed
+- **Exhaustive HTML report** (Section 20) renders tier distribution, metric cards, and per-strategy tables
+- **Real-time liveboard** (`moneyprod.com/live/`) streams health and CSI data via SSE
+- **Watchdog master** monitors strategy health and sends Discord alerts on degradation
+
+*The AlgoChef layer transforms the pipeline from a system that trades 32 strategies into a system that continuously evaluates whether each of those 32 strategies still deserves to trade — and adjusts capital accordingly.*
 
 ---
 
@@ -1253,7 +1357,8 @@ This document described a **production-grade autonomous FX trading pipeline** th
 | **Stage 3** | (parallel) PnL tracking, IV weighting, shock detection | 1s |
 | **Stage 4** | Bayesian MCMC + 4-day Markov forecast + outcome recording | 153s |
 | **Stage 5** | RL agent training (27 Q-states, 6,832 experiences) | 154s |
-| **Stage 6** | Meta-signal resolution (8/8 pairs, MAJORITY agreement) | 155s |
+| **Stage 6a** | Paper Consensus — 32 MCPT paper signals, PnL-weighted majority vote | 155s |
+| **Stage 6** | Meta-signal resolution (4 sources, 8/8 pairs, STRONG agreement) | 155s |
 | **Stage 7** | **CSV generated — 6 authorized, 26 blocked** | **155s** |
 | **Stage 8** | Post-CSV: RL continuous, crowding A/B, diagnostics, report | 168s |
 
@@ -1269,10 +1374,10 @@ This document described a **production-grade autonomous FX trading pipeline** th
 | **Data Collection** | 1-2 sources, sequential | 15 sources, 9 parallel threads (62s) |
 | **ML Architecture** | Single model | 5-model MoE with gating network, 3 databases |
 | **Volatility Regime** | Binary (trending/ranging) | 4 regimes (COMPLACENT, PRICED, FEARFUL, SURPRISE) |
-| **Signal Fusion** | Majority vote | Weighted meta-resolution with progressive RL trust |
+| **Signal Fusion** | Majority vote | 4-source weighted meta-resolution (ML, Forecast, RL, Paper Consensus) with echo detection |
 | **Position Sizing** | Fixed % or fixed lot | 6-layer cascade (ATR × Kelly × IV × Leverage × Directional White Swan) |
-| **Risk Management** | Single stop-loss | 5 independent safety layers + A/B-tested crowding |
-| **Learning** | Periodic manual retrain | Continuous hourly: ML + Bayesian + RL + A/B test |
+| **Risk Management** | Single stop-loss | 6 independent safety layers + A/B-tested crowding + strategy analytics |
+| **Learning** | Periodic manual retrain | 9 LEVIER mechanisms: continuous hourly self-improvement |
 | **Risk Philosophy** | Reduce size on risk | White Swan: directional semi-variance filter — trade opposite the surprise, reject into it |
 
 ### What Makes This Different
@@ -1289,7 +1394,7 @@ The pipeline execution documented here was captured at **06:20:52 AM EST on Febr
 
 The pipeline is a **living system** — by design, it will never be "finished." Current development vectors:
 
-- **RL Agent Maturation**: At 6,832 experiences, the agent is approaching the 10,000-experience threshold where its meta-resolver weight will step from 16% to 25%
+- **RL Agent Maturation**: At 6,832 experiences, the agent is approaching the 10,000-experience threshold where its meta-resolver weight will step from 21% toward its maximum learnable share
 - **Expanded Data Sources**: Satellite imagery (port activity), cross-asset correlations (S&P 500, gold, oil), and order flow data
 - **Multi-Timeframe Fusion**: Currently H4-only; M15 and D1 layers will provide shorter- and longer-term perspective
 - **Portfolio-Level Optimization**: Cross-pair correlation management and Markowitz-inspired portfolio Kelly sizing
@@ -1343,6 +1448,8 @@ Time     Phase                              Elapsed
 06:23:25 STAGE 5: RL + Circuit Breaker          +154s
          ├─ Phase 7: RL Training                  2s
          └─ Phase 0a-CB: Circuit Breaker          1s
+06:23:26 STAGE 6a: Paper Consensus               +155s
+         └─ 32 MCPT paper signals → PnL-weighted majority vote per pair
 06:23:27 STAGE 6: Meta-Signal Resolution        +155s
 06:23:28 STAGE 7: Position Sizing + CSV         +155s
          ✅ CSV GENERATED

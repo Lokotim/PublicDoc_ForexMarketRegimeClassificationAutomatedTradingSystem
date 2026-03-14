@@ -72,7 +72,7 @@
     <rect x="560" y="108" width="200" height="70" rx="10" fill="#16213E" stroke="#7B68EE" stroke-opacity="0.5" stroke-width="1"/>
     <rect x="560" y="108" width="200" height="22" rx="10" fill="#7B68EE" fill-opacity="0.1"/>
     <text x="660" y="125" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#7B68EE" font-weight="700">2. PREDICT</text>
-    <text x="660" y="146" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">5-Model MoE + Markov + RL</text>
+    <text x="660" y="146" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">5-Model MoE + Markov + RL + Paper</text>
     <text x="660" y="160" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">regime detection + forecasting</text>
     <text x="660" y="172" text-anchor="middle" font-family="monospace" font-size="7" fill="#7B68EE" opacity="0.6">meta-signal resolution</text>
   </g>
@@ -84,7 +84,7 @@
     <text x="660" y="267" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#4ADE80" font-weight="700">3. EXECUTE</text>
     <text x="660" y="288" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">CSV -&gt; MCPT -&gt; IBKR</text>
     <text x="660" y="302" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">position sizing cascade</text>
-    <text x="660" y="314" text-anchor="middle" font-family="monospace" font-size="7" fill="#4ADE80" opacity="0.6">5 safety layers active</text>
+    <text x="660" y="314" text-anchor="middle" font-family="monospace" font-size="7" fill="#4ADE80" opacity="0.6">6 safety layers active</text>
   </g>
 
   <!-- Bottom: OBSERVE (6 o'clock) -->

@@ -1,336 +1,372 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 700" width="800" height="700">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
   <defs>
     <linearGradient id="dagBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0D1117"/>
-      <stop offset="100%" style="stop-color:#1A1A2E"/>
+      <stop offset="0%" style="stop-color:#080c18"/>
+      <stop offset="100%" style="stop-color:#0a0e1a"/>
     </linearGradient>
     <filter id="boxShadow">
-      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.5"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="glowGreen">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#4ADE80" flood-opacity="0.5"/>
+    </filter>
+    <filter id="glowAmber">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#F59E0B" flood-opacity="0.4"/>
     </filter>
     <filter id="glowCyan">
       <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00D4FF" flood-opacity="0.3"/>
     </filter>
-    <filter id="glowGreen">
-      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#4ADE80" flood-opacity="0.4"/>
-    </filter>
-    <marker id="arrowGray" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <path d="M 0 0 L 8 3 L 0 6 Z" fill="#475569"/>
+    <marker id="arrowGray" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <path d="M 0 0 L 7 2.5 L 0 5 Z" fill="#475569"/>
     </marker>
-    <marker id="arrowCyan" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <path d="M 0 0 L 8 3 L 0 6 Z" fill="#00D4FF"/>
+    <marker id="arrowGreen" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <path d="M 0 0 L 7 2.5 L 0 5 Z" fill="#4ADE80"/>
     </marker>
     <pattern id="dagGrid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <circle cx="10" cy="10" r="0.4" fill="#ffffff" opacity="0.04"/>
+      <circle cx="10" cy="10" r="0.3" fill="#ffffff" opacity="0.03"/>
     </pattern>
-    <!-- Stage color gradients -->
-    <linearGradient id="s1grad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#1E3A5F"/><stop offset="100%" style="stop-color:#16213E"/>
+    <!-- Stage gradients -->
+    <linearGradient id="s1g" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E3A5F"/><stop offset="100%" style="stop-color:#142840"/>
     </linearGradient>
-    <linearGradient id="s2grad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="s2g" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#2D1B69"/><stop offset="100%" style="stop-color:#1A1145"/>
     </linearGradient>
-    <linearGradient id="s3grad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="s3g" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#1B4332"/><stop offset="100%" style="stop-color:#14352A"/>
     </linearGradient>
-    <linearGradient id="s4grad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="s4g" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#5C2D0E"/><stop offset="100%" style="stop-color:#3D1F0A"/>
     </linearGradient>
-    <linearGradient id="s5grad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="s5g" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#4A1942"/><stop offset="100%" style="stop-color:#2D1028"/>
     </linearGradient>
-    <linearGradient id="s6grad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="s6g" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#1A3C5C"/><stop offset="100%" style="stop-color:#122B42"/>
     </linearGradient>
-    <linearGradient id="s7grad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="s7g" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#1B5E20"/><stop offset="100%" style="stop-color:#145218"/>
     </linearGradient>
-    <linearGradient id="s8grad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="s8g" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#37474F"/><stop offset="100%" style="stop-color:#263238"/>
     </linearGradient>
   </defs>
 
   <!-- Background -->
-  <rect width="800" height="700" fill="url(#dagBg)" rx="12"/>
-  <rect width="800" height="700" fill="url(#dagGrid)" rx="12"/>
+  <rect width="800" height="500" fill="url(#dagBg)" rx="10"/>
+  <rect width="800" height="500" fill="url(#dagGrid)" rx="10"/>
 
   <!-- Title -->
-  <text x="400" y="30" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="16" font-weight="700" fill="#00D4FF" letter-spacing="2">PIPELINE DAG - FULL EXECUTION FLOW</text>
+  <text x="400" y="22" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" font-weight="700" fill="#00D4FF" letter-spacing="2">PIPELINE DAG  -  FULL EXECUTION FLOW</text>
+  <line x1="180" y1="28" x2="620" y2="28" stroke="#00D4FF" stroke-opacity="0.15" stroke-width="0.5"/>
 
-  <!-- ===== STAGE 1: Data Collection (y=45) ===== -->
-  <text x="14" y="58" font-family="'Segoe UI', monospace" font-size="9" fill="#00D4FF" opacity="0.6">S1</text>
-  <rect x="12" y="62" width="4" height="36" rx="2" fill="#00D4FF" opacity="0.4"/>
+  <!-- ================================================================ -->
+  <!-- ROW 1: STAGES 1-4 (y=40..150)                                    -->
+  <!-- ================================================================ -->
 
-  <!-- 9 parallel boxes -->
+  <!-- ===== STAGE 1: Data Collection ===== -->
   <g filter="url(#boxShadow)">
-    <rect x="28" y="48" width="74" height="36" rx="6" fill="url(#s1grad)" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="65" y="63" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">TWS Guard</text>
-    <text x="65" y="76" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" opacity="0.7">gateway</text>
+    <rect x="14" y="40" width="182" height="104" rx="7" fill="url(#s1g)" stroke="#00D4FF" stroke-opacity="0.35" stroke-width="0.8"/>
+    <!-- Header bar -->
+    <rect x="14" y="40" width="182" height="20" rx="7" fill="#00D4FF" fill-opacity="0.12"/>
+    <rect x="14" y="53" width="182" height="7" fill="url(#s1g)"/>
+    <text x="22" y="55" font-family="'Segoe UI', sans-serif" font-size="9" fill="#00D4FF" font-weight="700">S1</text>
+    <text x="38" y="55" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="600">DATA COLLECTION</text>
+    <!-- Timing badge -->
+    <rect x="152" y="43" width="38" height="14" rx="7" fill="#00D4FF" fill-opacity="0.15" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.5"/>
+    <text x="171" y="53" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" font-weight="600">56s</text>
+    <!-- Phases (9 parallel) -->
+    <text x="22" y="72" font-family="monospace" font-size="6.5" fill="#94A3B8">TWS Guard</text>
+    <text x="100" y="72" font-family="monospace" font-size="6.5" fill="#94A3B8">FXSSI</text>
+    <text x="22" y="83" font-family="monospace" font-size="6.5" fill="#94A3B8">IG Client</text>
+    <text x="100" y="83" font-family="monospace" font-size="6.5" fill="#94A3B8">Dukascopy</text>
+    <text x="22" y="94" font-family="monospace" font-size="6.5" fill="#94A3B8">Myfxbook</text>
+    <text x="100" y="94" font-family="monospace" font-size="6.5" fill="#94A3B8">Calendar</text>
+    <text x="22" y="105" font-family="monospace" font-size="6.5" fill="#94A3B8">ATR</text>
+    <text x="100" y="105" font-family="monospace" font-size="6.5" fill="#94A3B8">Pred Mkts</text>
+    <text x="22" y="116" font-family="monospace" font-size="6.5" fill="#94A3B8">News NLP</text>
+    <text x="100" y="116" font-family="monospace" font-size="6.5" fill="#00D4FF" opacity="0.5">9 parallel</text>
+    <!-- Sub-count -->
+    <rect x="22" y="124" width="166" height="14" rx="4" fill="#00D4FF" fill-opacity="0.05" stroke="#00D4FF" stroke-opacity="0.1" stroke-width="0.3"/>
+    <text x="105" y="134" text-anchor="middle" font-family="monospace" font-size="6" fill="#64748B">FinBERT + Kalshi + Polymarket</text>
   </g>
+
+  <!-- ===== STAGE 2: IBKR + Theories ===== -->
   <g filter="url(#boxShadow)">
-    <rect x="108" y="48" width="74" height="36" rx="6" fill="url(#s1grad)" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="145" y="63" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">FXSSI</text>
-    <text x="145" y="76" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" opacity="0.7">sentiment</text>
+    <rect x="208" y="40" width="182" height="104" rx="7" fill="url(#s2g)" stroke="#7B68EE" stroke-opacity="0.35" stroke-width="0.8"/>
+    <rect x="208" y="40" width="182" height="20" rx="7" fill="#7B68EE" fill-opacity="0.12"/>
+    <rect x="208" y="53" width="182" height="7" fill="url(#s2g)"/>
+    <text x="216" y="55" font-family="'Segoe UI', sans-serif" font-size="9" fill="#7B68EE" font-weight="700">S2</text>
+    <text x="232" y="55" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="600">IBKR + THEORIES</text>
+    <rect x="346" y="43" width="38" height="14" rx="7" fill="#7B68EE" fill-opacity="0.15" stroke="#7B68EE" stroke-opacity="0.3" stroke-width="0.5"/>
+    <text x="365" y="53" text-anchor="middle" font-family="monospace" font-size="7" fill="#7B68EE" font-weight="600">12s</text>
+    <!-- Phases -->
+    <text x="216" y="72" font-family="monospace" font-size="6.5" fill="#94A3B8">IBKR Positions</text>
+    <text x="216" y="85" font-family="monospace" font-size="6.5" fill="#94A3B8">Theory Engine</text>
+    <text x="310" y="85" font-family="monospace" font-size="6.5" fill="#7B68EE" opacity="0.6">(30)</text>
+    <text x="216" y="98" font-family="monospace" font-size="6.5" fill="#94A3B8">Cross-Validation</text>
+    <rect x="216" y="106" width="166" height="14" rx="4" fill="#7B68EE" fill-opacity="0.05" stroke="#7B68EE" stroke-opacity="0.1" stroke-width="0.3"/>
+    <text x="299" y="116" text-anchor="middle" font-family="monospace" font-size="6" fill="#64748B">6 clusters x 8 pairs = 240 scores</text>
   </g>
+
+  <!-- ===== STAGE 3: ML Ensemble (BOTTLENECK) ===== -->
+  <g filter="url(#glowAmber)">
+    <rect x="402" y="40" width="182" height="104" rx="7" fill="url(#s3g)" stroke="#4ADE80" stroke-opacity="0.45" stroke-width="1"/>
+    <rect x="402" y="40" width="182" height="20" rx="7" fill="#4ADE80" fill-opacity="0.12"/>
+    <rect x="402" y="53" width="182" height="7" fill="url(#s3g)"/>
+    <text x="410" y="55" font-family="'Segoe UI', sans-serif" font-size="9" fill="#4ADE80" font-weight="700">S3</text>
+    <text x="426" y="55" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="600">ML ENSEMBLE</text>
+    <rect x="530" y="43" width="48" height="14" rx="7" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-opacity="0.5" stroke-width="0.5"/>
+    <text x="554" y="53" text-anchor="middle" font-family="monospace" font-size="7" fill="#F59E0B" font-weight="700">25s</text>
+    <!-- BOTTLENECK badge -->
+    <rect x="410" y="126" width="80" height="12" rx="6" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-opacity="0.5" stroke-width="0.5"/>
+    <text x="450" y="135" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="6.5" fill="#F59E0B" font-weight="700">BOTTLENECK</text>
+    <!-- Phases -->
+    <text x="410" y="72" font-family="monospace" font-size="6.5" fill="#94A3B8">Features</text>
+    <text x="475" y="72" font-family="monospace" font-size="6.5" fill="#4ADE80" opacity="0.6">(134)</text>
+    <text x="410" y="85" font-family="monospace" font-size="6.5" fill="#94A3B8">5-Model MoE Train</text>
+    <text x="410" y="98" font-family="monospace" font-size="6.5" fill="#94A3B8">IV Weights</text>
+    <text x="475" y="98" font-family="monospace" font-size="6.5" fill="#94A3B8">PnL Track</text>
+    <text x="410" y="111" font-family="monospace" font-size="6.5" fill="#94A3B8">Shock Detector</text>
+  </g>
+
+  <!-- ===== STAGE 4: Post-ML ===== -->
   <g filter="url(#boxShadow)">
-    <rect x="188" y="48" width="74" height="36" rx="6" fill="url(#s1grad)" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="225" y="63" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">Scrapers(7)</text>
-    <text x="225" y="76" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" opacity="0.7">retail data</text>
+    <rect x="596" y="40" width="190" height="104" rx="7" fill="url(#s4g)" stroke="#FF6B35" stroke-opacity="0.35" stroke-width="0.8"/>
+    <rect x="596" y="40" width="190" height="20" rx="7" fill="#FF6B35" fill-opacity="0.12"/>
+    <rect x="596" y="53" width="190" height="7" fill="url(#s4g)"/>
+    <text x="604" y="55" font-family="'Segoe UI', sans-serif" font-size="9" fill="#FF6B35" font-weight="700">S4</text>
+    <text x="620" y="55" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="600">POST-ML</text>
+    <rect x="746" y="43" width="34" height="14" rx="7" fill="#FF6B35" fill-opacity="0.15" stroke="#FF6B35" stroke-opacity="0.3" stroke-width="0.5"/>
+    <text x="763" y="53" text-anchor="middle" font-family="monospace" font-size="7" fill="#FF6B35" font-weight="600">3s</text>
+    <!-- Phases -->
+    <text x="604" y="72" font-family="monospace" font-size="6.5" fill="#94A3B8">Bayesian MCMC</text>
+    <text x="604" y="85" font-family="monospace" font-size="6.5" fill="#94A3B8">4-Day Forecast</text>
+    <text x="700" y="85" font-family="monospace" font-size="6.5" fill="#FF6B35" opacity="0.5">(Markov)</text>
+    <text x="604" y="98" font-family="monospace" font-size="6.5" fill="#94A3B8">Outcome Recording</text>
   </g>
+
+  <!-- ================================================================ -->
+  <!-- ARROWS: Row 1 → Row 2                                            -->
+  <!-- ================================================================ -->
+  <g stroke="#475569" stroke-width="0.7" fill="none" marker-end="url(#arrowGray)" opacity="0.45">
+    <!-- S1 → S2 -->
+    <line x1="196" y1="92" x2="208" y2="92"/>
+    <!-- S2 → S3 -->
+    <line x1="390" y1="92" x2="402" y2="92"/>
+    <!-- S3 → S4 -->
+    <line x1="584" y1="92" x2="596" y2="92"/>
+  </g>
+
+  <!-- Vertical arrows to row 2 -->
+  <g stroke="#475569" stroke-width="0.7" fill="none" marker-end="url(#arrowGray)" opacity="0.45">
+    <path d="M 691 144 L 691 160 Q 691 170 681 170 L 280 170 Q 270 170 270 180 L 270 188"/>
+    <path d="M 493 144 L 493 160 Q 493 170 483 170 L 280 170"/>
+  </g>
+
+  <!-- ================================================================ -->
+  <!-- ROW 2: STAGES 5-8 (y=188..350)                                   -->
+  <!-- ================================================================ -->
+
+  <!-- ===== STAGE 5: RL Agent ===== -->
   <g filter="url(#boxShadow)">
-    <rect x="268" y="48" width="74" height="36" rx="6" fill="url(#s1grad)" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="305" y="63" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">Calendar</text>
-    <text x="305" y="76" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" opacity="0.7">macro events</text>
-  </g>
-  <g filter="url(#boxShadow)">
-    <rect x="348" y="48" width="74" height="36" rx="6" fill="url(#s1grad)" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="385" y="63" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">IV (CME)</text>
-    <text x="385" y="76" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" opacity="0.7">options vol</text>
-  </g>
-  <g filter="url(#boxShadow)">
-    <rect x="428" y="48" width="74" height="36" rx="6" fill="url(#s1grad)" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="465" y="63" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">ATR</text>
-    <text x="465" y="76" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" opacity="0.7">volatility</text>
-  </g>
-  <g filter="url(#boxShadow)">
-    <rect x="508" y="48" width="74" height="36" rx="6" fill="url(#s1grad)" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="545" y="63" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">GV Health</text>
-    <text x="545" y="76" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" opacity="0.7">system</text>
-  </g>
-  <g filter="url(#boxShadow)">
-    <rect x="588" y="48" width="74" height="36" rx="6" fill="url(#s1grad)" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="625" y="63" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">PredMkt</text>
-    <text x="625" y="76" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" opacity="0.7">Kalshi+Poly</text>
-  </g>
-  <g filter="url(#boxShadow)">
-    <rect x="668" y="48" width="74" height="36" rx="6" fill="url(#s1grad)" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="705" y="63" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">News</text>
-    <text x="705" y="76" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" opacity="0.7">FinBERT</text>
+    <rect x="14" y="188" width="160" height="78" rx="7" fill="url(#s5g)" stroke="#F472B6" stroke-opacity="0.35" stroke-width="0.8"/>
+    <rect x="14" y="188" width="160" height="20" rx="7" fill="#F472B6" fill-opacity="0.12"/>
+    <rect x="14" y="201" width="160" height="7" fill="url(#s5g)"/>
+    <text x="22" y="203" font-family="'Segoe UI', sans-serif" font-size="9" fill="#F472B6" font-weight="700">S5</text>
+    <text x="38" y="203" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="600">RL AGENT</text>
+    <rect x="132" y="191" width="36" height="14" rx="7" fill="#F472B6" fill-opacity="0.15" stroke="#F472B6" stroke-opacity="0.3" stroke-width="0.5"/>
+    <text x="150" y="201" text-anchor="middle" font-family="monospace" font-size="7" fill="#F472B6" font-weight="600">1s</text>
+    <!-- Phases -->
+    <text x="22" y="222" font-family="monospace" font-size="6.5" fill="#94A3B8">Q-Learning Update</text>
+    <text x="22" y="235" font-family="monospace" font-size="6.5" fill="#94A3B8">Circuit Breaker Check</text>
+    <rect x="22" y="243" width="144" height="14" rx="4" fill="#F472B6" fill-opacity="0.05" stroke="#F472B6" stroke-opacity="0.1" stroke-width="0.3"/>
+    <text x="94" y="253" text-anchor="middle" font-family="monospace" font-size="6" fill="#64748B">PnL limits + drawdown guard</text>
   </g>
 
-  <!-- Timing label S1 -->
-  <rect x="754" y="56" width="36" height="18" rx="9" fill="#00D4FF" fill-opacity="0.1" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.5"/>
-  <text x="772" y="69" text-anchor="middle" font-family="monospace" font-size="8" fill="#00D4FF">62s</text>
+  <!-- Arrow S5 → S6 -->
+  <line x1="174" y1="230" x2="188" y2="230" stroke="#475569" stroke-width="0.7" fill="none" marker-end="url(#arrowGray)" opacity="0.45"/>
 
-  <!-- Arrows S1 → S2 -->
-  <g stroke="#475569" stroke-width="0.8" fill="none" marker-end="url(#arrowGray)" opacity="0.5">
-    <line x1="400" y1="84" x2="250" y2="120"/>
-    <line x1="400" y1="84" x2="400" y2="120"/>
-    <line x1="400" y1="84" x2="600" y2="120"/>
+  <!-- ===== STAGE 6: Signal Resolution (PROMINENT) ===== -->
+  <g filter="url(#glowCyan)">
+    <rect x="188" y="188" width="240" height="78" rx="7" fill="url(#s6g)" stroke="#00D4FF" stroke-opacity="0.5" stroke-width="1.2"/>
+    <rect x="188" y="188" width="240" height="20" rx="7" fill="#00D4FF" fill-opacity="0.12"/>
+    <rect x="188" y="201" width="240" height="7" fill="url(#s6g)"/>
+    <text x="196" y="203" font-family="'Segoe UI', sans-serif" font-size="9" fill="#00D4FF" font-weight="700">S6</text>
+    <text x="212" y="203" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="600">SIGNAL RESOLUTION</text>
+    <rect x="384" y="191" width="38" height="14" rx="7" fill="#00D4FF" fill-opacity="0.15" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.5"/>
+    <text x="403" y="201" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" font-weight="600">2s</text>
+    <!-- 6a: Paper Consensus (NEW - highlighted) -->
+    <rect x="196" y="212" width="224" height="16" rx="4" fill="#F59E0B" fill-opacity="0.1" stroke="#F59E0B" stroke-opacity="0.4" stroke-width="0.7"/>
+    <text x="204" y="223" font-family="'Segoe UI', sans-serif" font-size="7" fill="#F59E0B" font-weight="700">6a</text>
+    <text x="220" y="223" font-family="monospace" font-size="6.5" fill="#F59E0B">Paper Consensus</text>
+    <text x="320" y="223" font-family="monospace" font-size="6" fill="#F59E0B" opacity="0.7">32 MCPT PnL-vote</text>
+    <!-- NEW badge -->
+    <rect x="396" y="214" width="22" height="10" rx="5" fill="#F59E0B" fill-opacity="0.3" stroke="#F59E0B" stroke-opacity="0.6" stroke-width="0.4"/>
+    <text x="407" y="222" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="5.5" fill="#F59E0B" font-weight="800">NEW</text>
+    <!-- 6b: Meta-Signal Resolver -->
+    <rect x="196" y="232" width="224" height="16" rx="4" fill="#00D4FF" fill-opacity="0.06" stroke="#00D4FF" stroke-opacity="0.15" stroke-width="0.3"/>
+    <text x="204" y="243" font-family="'Segoe UI', sans-serif" font-size="7" fill="#00D4FF" font-weight="700">6b</text>
+    <text x="220" y="243" font-family="monospace" font-size="6.5" fill="#94A3B8">Meta-Signal Resolver</text>
+    <!-- Weight breakdown -->
+    <rect x="196" y="252" width="224" height="10" rx="3" fill="#00D4FF" fill-opacity="0.03"/>
+    <text x="308" y="260" text-anchor="middle" font-family="monospace" font-size="6" fill="#00D4FF" opacity="0.7">ML(40%) + Forecast(30%) + RL(21%) + Paper(9%)</text>
   </g>
 
-  <!-- ===== STAGE 2: Enrichment (y=120) ===== -->
-  <text x="14" y="133" font-family="'Segoe UI', monospace" font-size="9" fill="#7B68EE" opacity="0.6">S2</text>
-  <rect x="12" y="137" width="4" height="36" rx="2" fill="#7B68EE" opacity="0.4"/>
+  <!-- Arrow S6 → S7 (highlighted green) -->
+  <line x1="428" y1="230" x2="442" y2="230" stroke="#4ADE80" stroke-width="1.5" fill="none" marker-end="url(#arrowGreen)" opacity="0.8"/>
 
-  <g filter="url(#boxShadow)">
-    <rect x="130" y="123" width="160" height="36" rx="6" fill="url(#s2grad)" stroke="#7B68EE" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="210" y="138" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">IBKR Positions</text>
-    <text x="210" y="151" text-anchor="middle" font-family="monospace" font-size="7" fill="#7B68EE" opacity="0.7">live portfolio state</text>
-  </g>
-  <g filter="url(#boxShadow)">
-    <rect x="320" y="123" width="160" height="36" rx="6" fill="url(#s2grad)" stroke="#7B68EE" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="400" y="138" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">Theories (30)</text>
-    <text x="400" y="151" text-anchor="middle" font-family="monospace" font-size="7" fill="#7B68EE" opacity="0.7">6 clusters x 8 pairs = 240 scores</text>
-  </g>
-  <g filter="url(#boxShadow)">
-    <rect x="510" y="123" width="160" height="36" rx="6" fill="url(#s2grad)" stroke="#7B68EE" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="590" y="138" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">Cross-Validation</text>
-    <text x="590" y="151" text-anchor="middle" font-family="monospace" font-size="7" fill="#7B68EE" opacity="0.7">coherence checks</text>
-  </g>
-
-  <rect x="754" y="131" width="36" height="18" rx="9" fill="#7B68EE" fill-opacity="0.1" stroke="#7B68EE" stroke-opacity="0.3" stroke-width="0.5"/>
-  <text x="772" y="144" text-anchor="middle" font-family="monospace" font-size="8" fill="#7B68EE">38s</text>
-
-  <!-- Arrows S2 → S3 -->
-  <g stroke="#475569" stroke-width="0.8" fill="none" marker-end="url(#arrowGray)" opacity="0.5">
-    <line x1="400" y1="159" x2="300" y2="195"/>
-    <line x1="400" y1="159" x2="500" y2="195"/>
-    <line x1="400" y1="159" x2="650" y2="195"/>
-  </g>
-
-  <!-- ===== STAGE 3: Intelligence (y=195) ===== -->
-  <text x="14" y="208" font-family="'Segoe UI', monospace" font-size="9" fill="#4ADE80" opacity="0.6">S3</text>
-  <rect x="12" y="212" width="4" height="46" rx="2" fill="#4ADE80" opacity="0.4"/>
-
-  <g filter="url(#boxShadow)">
-    <rect x="60" y="198" width="280" height="46" rx="8" fill="url(#s3grad)" stroke="#4ADE80" stroke-opacity="0.4" stroke-width="1"/>
-    <text x="200" y="216" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#E2E8F0" font-weight="700">ML Ensemble (5-Model MoE)</text>
-    <text x="200" y="232" text-anchor="middle" font-family="monospace" font-size="7" fill="#4ADE80" opacity="0.8">XGBoost + LightGBM + Ridge + SVM + RF | Gating Network</text>
-  </g>
-  <g filter="url(#boxShadow)">
-    <rect x="360" y="198" width="120" height="46" rx="6" fill="url(#s3grad)" stroke="#4ADE80" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="420" y="216" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">PnL Tracker</text>
-    <text x="420" y="232" text-anchor="middle" font-family="monospace" font-size="7" fill="#4ADE80" opacity="0.7">hard + soft outcomes</text>
-  </g>
-  <g filter="url(#boxShadow)">
-    <rect x="500" y="198" width="120" height="46" rx="6" fill="url(#s3grad)" stroke="#4ADE80" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="560" y="216" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">IV Weights</text>
-    <text x="560" y="232" text-anchor="middle" font-family="monospace" font-size="7" fill="#4ADE80" opacity="0.7">regime adjustment</text>
-  </g>
-  <g filter="url(#boxShadow)">
-    <rect x="640" y="198" width="120" height="46" rx="6" fill="url(#s3grad)" stroke="#4ADE80" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="700" y="216" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">Shock Detector</text>
-    <text x="700" y="232" text-anchor="middle" font-family="monospace" font-size="7" fill="#4ADE80" opacity="0.7">white swan filter</text>
-  </g>
-
-  <rect x="754" y="210" width="36" height="18" rx="9" fill="#4ADE80" fill-opacity="0.1" stroke="#4ADE80" stroke-opacity="0.3" stroke-width="0.5"/>
-  <text x="772" y="223" text-anchor="middle" font-family="monospace" font-size="8" fill="#4ADE80">149s</text>
-
-  <!-- Arrows S3 → S4 -->
-  <g stroke="#475569" stroke-width="0.8" fill="none" marker-end="url(#arrowGray)" opacity="0.5">
-    <line x1="300" y1="244" x2="200" y2="280"/>
-    <line x1="400" y1="244" x2="400" y2="280"/>
-    <line x1="500" y1="244" x2="570" y2="280"/>
-  </g>
-
-  <!-- ===== STAGE 4: Optimization (y=280) ===== -->
-  <text x="14" y="293" font-family="'Segoe UI', monospace" font-size="9" fill="#FF6B35" opacity="0.6">S4</text>
-  <rect x="12" y="297" width="4" height="36" rx="2" fill="#FF6B35" opacity="0.4"/>
-
-  <g filter="url(#boxShadow)">
-    <rect x="80" y="283" width="180" height="36" rx="6" fill="url(#s4grad)" stroke="#FF6B35" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="170" y="298" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">Bayesian MCMC</text>
-    <text x="170" y="311" text-anchor="middle" font-family="monospace" font-size="7" fill="#FF6B35" opacity="0.7">4 chains x 5000 iter | R-hat</text>
-  </g>
-  <g filter="url(#boxShadow)">
-    <rect x="290" y="283" width="180" height="36" rx="6" fill="url(#s4grad)" stroke="#FF6B35" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="380" y="298" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">4-Day Forecast</text>
-    <text x="380" y="311" text-anchor="middle" font-family="monospace" font-size="7" fill="#FF6B35" opacity="0.7">Markov regime chain</text>
-  </g>
-  <g filter="url(#boxShadow)">
-    <rect x="500" y="283" width="180" height="36" rx="6" fill="url(#s4grad)" stroke="#FF6B35" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="590" y="298" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">Outcomes</text>
-    <text x="590" y="311" text-anchor="middle" font-family="monospace" font-size="7" fill="#FF6B35" opacity="0.7">PnL attribution</text>
-  </g>
-
-  <rect x="754" y="291" width="36" height="18" rx="9" fill="#FF6B35" fill-opacity="0.1" stroke="#FF6B35" stroke-opacity="0.3" stroke-width="0.5"/>
-  <text x="772" y="304" text-anchor="middle" font-family="monospace" font-size="8" fill="#FF6B35">85s</text>
-
-  <!-- Arrows S4 → S5 -->
-  <g stroke="#475569" stroke-width="0.8" fill="none" marker-end="url(#arrowGray)" opacity="0.5">
-    <line x1="350" y1="319" x2="280" y2="355"/>
-    <line x1="400" y1="319" x2="520" y2="355"/>
-  </g>
-
-  <!-- ===== STAGE 5: Decision (y=355) ===== -->
-  <text x="14" y="368" font-family="'Segoe UI', monospace" font-size="9" fill="#F472B6" opacity="0.6">S5</text>
-  <rect x="12" y="372" width="4" height="36" rx="2" fill="#F472B6" opacity="0.4"/>
-
-  <g filter="url(#boxShadow)">
-    <rect x="130" y="358" width="220" height="36" rx="6" fill="url(#s5grad)" stroke="#F472B6" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="240" y="373" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">RL Agent (Q-Learning)</text>
-    <text x="240" y="386" text-anchor="middle" font-family="monospace" font-size="7" fill="#F472B6" opacity="0.7">27 states | 4 actions | 6832 exp replay</text>
-  </g>
-  <g filter="url(#boxShadow)">
-    <rect x="420" y="358" width="220" height="36" rx="6" fill="url(#s5grad)" stroke="#F472B6" stroke-opacity="0.3" stroke-width="0.8"/>
-    <text x="530" y="373" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8" fill="#E2E8F0" font-weight="600">Circuit Breaker</text>
-    <text x="530" y="386" text-anchor="middle" font-family="monospace" font-size="7" fill="#F472B6" opacity="0.7">PnL limits + drawdown protection</text>
-  </g>
-
-  <rect x="754" y="366" width="36" height="18" rx="9" fill="#F472B6" fill-opacity="0.1" stroke="#F472B6" stroke-opacity="0.3" stroke-width="0.5"/>
-  <text x="772" y="379" text-anchor="middle" font-family="monospace" font-size="8" fill="#F472B6">42s</text>
-
-  <!-- Arrows S5 → S6 -->
-  <g stroke="#475569" stroke-width="0.8" fill="none" marker-end="url(#arrowGray)" opacity="0.5">
-    <line x1="400" y1="394" x2="400" y2="430"/>
-  </g>
-
-  <!-- ===== STAGE 6: Resolution (y=430) ===== -->
-  <text x="14" y="443" font-family="'Segoe UI', monospace" font-size="9" fill="#00D4FF" opacity="0.6">S6</text>
-  <rect x="12" y="447" width="4" height="36" rx="2" fill="#00D4FF" opacity="0.4"/>
-
-  <g filter="url(#boxShadow)">
-    <rect x="200" y="433" width="400" height="36" rx="6" fill="url(#s6grad)" stroke="#00D4FF" stroke-opacity="0.4" stroke-width="1"/>
-    <text x="400" y="448" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="700">Meta-Signal Resolver</text>
-    <text x="400" y="461" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" opacity="0.8">ML(46%) + Forecast(38%) + RL(16%) → Weighted Arbitration</text>
-  </g>
-
-  <rect x="754" y="441" width="36" height="18" rx="9" fill="#00D4FF" fill-opacity="0.1" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.5"/>
-  <text x="772" y="454" text-anchor="middle" font-family="monospace" font-size="8" fill="#00D4FF">12s</text>
-
-  <!-- Arrow S6 → S7 (highlighted) -->
-  <line x1="400" y1="469" x2="400" y2="505" stroke="#4ADE80" stroke-width="2" marker-end="url(#arrowCyan)" opacity="0.8"/>
-
-  <!-- ===== STAGE 7: CSV OUTPUT (y=505) - HIGHLIGHTED ===== -->
-  <text x="14" y="518" font-family="'Segoe UI', monospace" font-size="9" fill="#4ADE80" opacity="0.8">S7</text>
-  <rect x="12" y="522" width="4" height="40" rx="2" fill="#4ADE80" opacity="0.6"/>
-
+  <!-- ===== STAGE 7: CSV Generation (HIGHLIGHTED OUTPUT) ===== -->
   <g filter="url(#glowGreen)">
-    <rect x="200" y="508" width="400" height="40" rx="8" fill="#1B5E20" stroke="#4ADE80" stroke-opacity="0.7" stroke-width="1.5"/>
-    <text x="400" y="525" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="11" fill="#4ADE80" font-weight="800">CSV GENERATION</text>
-    <text x="400" y="540" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0" opacity="0.9">CRITICAL OUTPUT: 8 pairs x [direction, confidence, size, regime]</text>
+    <rect x="442" y="188" width="196" height="78" rx="7" fill="url(#s7g)" stroke="#4ADE80" stroke-opacity="0.65" stroke-width="1.5"/>
+    <rect x="442" y="188" width="196" height="20" rx="7" fill="#4ADE80" fill-opacity="0.15"/>
+    <rect x="442" y="201" width="196" height="7" fill="url(#s7g)"/>
+    <text x="450" y="203" font-family="'Segoe UI', sans-serif" font-size="9" fill="#4ADE80" font-weight="700">S7</text>
+    <text x="466" y="203" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="600">CSV GENERATION</text>
+    <rect x="594" y="191" width="38" height="14" rx="7" fill="#4ADE80" fill-opacity="0.15" stroke="#4ADE80" stroke-opacity="0.3" stroke-width="0.5"/>
+    <text x="613" y="201" text-anchor="middle" font-family="monospace" font-size="7" fill="#4ADE80" font-weight="600">1s</text>
+    <!-- Phases -->
+    <text x="450" y="220" font-family="monospace" font-size="6.5" fill="#94A3B8">Position Sizing</text>
+    <text x="450" y="231" font-family="monospace" font-size="6" fill="#64748B">Kelly + CSI + Track Penalty + IV</text>
+    <text x="450" y="244" font-family="monospace" font-size="6.5" fill="#94A3B8">CSV Write</text>
+    <text x="502" y="244" font-family="monospace" font-size="5.5" fill="#4ADE80" opacity="0.6">8 pairs x 32 strats x 8 accts</text>
+    <!-- CSV DELIVERED badge -->
+    <rect x="462" y="250" width="100" height="14" rx="7" fill="#4ADE80" fill-opacity="0.2" stroke="#4ADE80" stroke-opacity="0.6" stroke-width="0.8"/>
+    <text x="512" y="260" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="7.5" fill="#4ADE80" font-weight="800">CSV DELIVERED</text>
+    <!-- Star indicators -->
+    <text x="449" y="260" font-family="sans-serif" font-size="10" fill="#4ADE80" opacity="0.7">&#9733;</text>
+    <text x="566" y="260" font-family="sans-serif" font-size="10" fill="#4ADE80" opacity="0.7">&#9733;</text>
   </g>
 
-  <!-- Star indicator -->
-  <text x="185" y="532" font-family="sans-serif" font-size="16" fill="#4ADE80">&#9733;</text>
-  <text x="610" y="532" font-family="sans-serif" font-size="16" fill="#4ADE80">&#9733;</text>
+  <!-- Arrow S7 → S8 (dashed, deferred) -->
+  <line x1="638" y1="230" x2="651" y2="230" stroke="#475569" stroke-width="0.7" fill="none" marker-end="url(#arrowGray)" stroke-dasharray="3,2" opacity="0.35"/>
 
-  <rect x="754" y="516" width="36" height="18" rx="9" fill="#4ADE80" fill-opacity="0.15" stroke="#4ADE80" stroke-opacity="0.4" stroke-width="0.5"/>
-  <text x="772" y="529" text-anchor="middle" font-family="monospace" font-size="8" fill="#4ADE80">5s</text>
-
-  <!-- Arrow S7 → S8 -->
-  <line x1="400" y1="548" x2="400" y2="580" stroke="#475569" stroke-width="0.8" marker-end="url(#arrowGray)" stroke-dasharray="4,3" opacity="0.4"/>
-  <text x="400" y="570" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8" opacity="0.5">deferred</text>
-
-  <!-- ===== STAGE 8: Post-CSV (y=580) ===== -->
-  <text x="14" y="597" font-family="'Segoe UI', monospace" font-size="9" fill="#64748B" opacity="0.5">S8</text>
-  <rect x="12" y="601" width="4" height="32" rx="2" fill="#64748B" opacity="0.3"/>
-
-  <g opacity="0.6">
-    <g filter="url(#boxShadow)">
-      <rect x="28" y="585" width="95" height="30" rx="5" fill="url(#s8grad)" stroke="#64748B" stroke-opacity="0.2" stroke-width="0.5"/>
-      <text x="75" y="604" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="7" fill="#94A3B8">Perf Report</text>
-    </g>
-    <g filter="url(#boxShadow)">
-      <rect x="132" y="585" width="95" height="30" rx="5" fill="url(#s8grad)" stroke="#64748B" stroke-opacity="0.2" stroke-width="0.5"/>
-      <text x="179" y="604" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="7" fill="#94A3B8">A/B Crowding</text>
-    </g>
-    <g filter="url(#boxShadow)">
-      <rect x="236" y="585" width="95" height="30" rx="5" fill="url(#s8grad)" stroke="#64748B" stroke-opacity="0.2" stroke-width="0.5"/>
-      <text x="283" y="604" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="7" fill="#94A3B8">Dream Journal</text>
-    </g>
-    <g filter="url(#boxShadow)">
-      <rect x="340" y="585" width="95" height="30" rx="5" fill="url(#s8grad)" stroke="#64748B" stroke-opacity="0.2" stroke-width="0.5"/>
-      <text x="387" y="604" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="7" fill="#94A3B8">Model Archive</text>
-    </g>
-    <g filter="url(#boxShadow)">
-      <rect x="444" y="585" width="95" height="30" rx="5" fill="url(#s8grad)" stroke="#64748B" stroke-opacity="0.2" stroke-width="0.5"/>
-      <text x="491" y="604" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="7" fill="#94A3B8">RL Update</text>
-    </g>
-    <g filter="url(#boxShadow)">
-      <rect x="548" y="585" width="95" height="30" rx="5" fill="url(#s8grad)" stroke="#64748B" stroke-opacity="0.2" stroke-width="0.5"/>
-      <text x="595" y="604" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="7" fill="#94A3B8">MCMC Store</text>
-    </g>
-    <g filter="url(#boxShadow)">
-      <rect x="652" y="585" width="95" height="30" rx="5" fill="url(#s8grad)" stroke="#64748B" stroke-opacity="0.2" stroke-width="0.5"/>
-      <text x="699" y="604" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="7" fill="#94A3B8">Diagnostics</text>
-    </g>
+  <!-- ===== STAGE 8: Post-CSV ===== -->
+  <g filter="url(#boxShadow)" opacity="0.7">
+    <rect x="651" y="188" width="137" height="78" rx="7" fill="url(#s8g)" stroke="#64748B" stroke-opacity="0.25" stroke-width="0.6"/>
+    <rect x="651" y="188" width="137" height="20" rx="7" fill="#64748B" fill-opacity="0.08"/>
+    <rect x="651" y="201" width="137" height="7" fill="url(#s8g)"/>
+    <text x="659" y="203" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748B" font-weight="700">S8</text>
+    <text x="675" y="203" font-family="'Segoe UI', sans-serif" font-size="9" fill="#94A3B8" font-weight="600">POST-CSV</text>
+    <rect x="748" y="191" width="34" height="14" rx="7" fill="#64748B" fill-opacity="0.1" stroke="#64748B" stroke-opacity="0.2" stroke-width="0.5"/>
+    <text x="765" y="201" text-anchor="middle" font-family="monospace" font-size="7" fill="#64748B" font-weight="600">15s</text>
+    <!-- 7 phases in compact list -->
+    <text x="659" y="218" font-family="monospace" font-size="5.5" fill="#64748B">Exhaustive Report</text>
+    <text x="659" y="228" font-family="monospace" font-size="5.5" fill="#64748B">A/B Crowding</text>
+    <text x="659" y="238" font-family="monospace" font-size="5.5" fill="#64748B">Strategy Health</text>
+    <text x="659" y="248" font-family="monospace" font-size="5.5" fill="#64748B">Model Archive</text>
+    <text x="730" y="218" font-family="monospace" font-size="5.5" fill="#64748B">Diagnostics</text>
+    <text x="730" y="228" font-family="monospace" font-size="5.5" fill="#64748B">Discord Alert</text>
+    <text x="730" y="238" font-family="monospace" font-size="5.5" fill="#64748B">GV Health</text>
+    <text x="730" y="248" font-family="monospace" font-size="5.5" fill="#64748B" opacity="0.6">7 phases</text>
   </g>
 
-  <rect x="754" y="591" width="36" height="18" rx="9" fill="#64748B" fill-opacity="0.1" stroke="#64748B" stroke-opacity="0.2" stroke-width="0.5"/>
-  <text x="772" y="604" text-anchor="middle" font-family="monospace" font-size="8" fill="#64748B">45s</text>
+  <!-- ================================================================ -->
+  <!-- TIMING SUMMARY BAR (bottom)                                       -->
+  <!-- ================================================================ -->
 
-  <!-- Total time -->
-  <rect x="280" y="635" width="240" height="28" rx="14" fill="#16213E" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.8"/>
-  <text x="400" y="654" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#00D4FF" font-weight="600">Total Pipeline: ~438s (7m 18s)</text>
+  <!-- Timeline bar -->
+  <rect x="14" y="290" width="772" height="32" rx="6" fill="#0D1117" stroke="#1E293B" stroke-width="0.5"/>
 
-  <!-- Legend -->
-  <g transform="translate(30, 670)">
-    <rect x="0" y="0" width="8" height="8" rx="2" fill="#00D4FF" opacity="0.5"/>
-    <text x="12" y="8" font-family="monospace" font-size="7" fill="#64748B">Data</text>
-    <rect x="55" y="0" width="8" height="8" rx="2" fill="#7B68EE" opacity="0.5"/>
-    <text x="67" y="8" font-family="monospace" font-size="7" fill="#64748B">Enrich</text>
-    <rect x="115" y="0" width="8" height="8" rx="2" fill="#4ADE80" opacity="0.5"/>
-    <text x="127" y="8" font-family="monospace" font-size="7" fill="#64748B">Intel</text>
-    <rect x="170" y="0" width="8" height="8" rx="2" fill="#FF6B35" opacity="0.5"/>
-    <text x="182" y="8" font-family="monospace" font-size="7" fill="#64748B">Optim</text>
-    <rect x="225" y="0" width="8" height="8" rx="2" fill="#F472B6" opacity="0.5"/>
-    <text x="237" y="8" font-family="monospace" font-size="7" fill="#64748B">Decide</text>
-    <rect x="285" y="0" width="8" height="8" rx="2" fill="#4ADE80" opacity="0.8"/>
-    <text x="297" y="8" font-family="monospace" font-size="7" fill="#64748B">Output</text>
-    <rect x="340" y="0" width="8" height="8" rx="2" fill="#64748B" opacity="0.4"/>
-    <text x="352" y="8" font-family="monospace" font-size="7" fill="#64748B">Deferred</text>
+  <!-- Timeline segments (proportional widths, total ~170s) -->
+  <!-- S1: 56s = 253px, S2: 12s = 54px, S3: 25s = 113px, S4: 3s = 14px, S5: 1s = 5px, S6: 2s = 9px, S7: 1s = 5px, S8: 15s = 68px  -->
+  <!-- Using slightly adjusted widths for readability, total bar = 750px -->
+  <rect x="24" y="296" width="248" height="8" rx="4" fill="#00D4FF" fill-opacity="0.3"/>
+  <rect x="274" y="296" width="58" height="8" rx="4" fill="#7B68EE" fill-opacity="0.3"/>
+  <rect x="334" y="296" width="118" height="8" rx="4" fill="#4ADE80" fill-opacity="0.3"/>
+  <rect x="454" y="296" width="30" height="8" rx="4" fill="#FF6B35" fill-opacity="0.3"/>
+  <rect x="486" y="296" width="16" height="8" rx="4" fill="#F472B6" fill-opacity="0.3"/>
+  <rect x="504" y="296" width="22" height="8" rx="4" fill="#00D4FF" fill-opacity="0.3"/>
+  <rect x="528" y="296" width="16" height="8" rx="4" fill="#4ADE80" fill-opacity="0.4"/>
+  <rect x="546" y="296" width="68" height="8" rx="4" fill="#64748B" fill-opacity="0.2"/>
+
+  <!-- CSV delivery marker -->
+  <line x1="528" y1="293" x2="528" y2="307" stroke="#4ADE80" stroke-width="1.5" opacity="0.8"/>
+  <text x="528" y="316" text-anchor="middle" font-family="monospace" font-size="6" fill="#4ADE80" font-weight="600">CSV @~100s</text>
+
+  <!-- End marker -->
+  <line x1="614" y1="293" x2="614" y2="307" stroke="#64748B" stroke-width="1" opacity="0.5"/>
+  <text x="614" y="316" text-anchor="middle" font-family="monospace" font-size="6" fill="#64748B">END @~170s</text>
+
+  <!-- Stage labels along timeline -->
+  <text x="148" y="316" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#00D4FF" opacity="0.5">S1 56s</text>
+  <text x="303" y="316" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#7B68EE" opacity="0.5">S2</text>
+  <text x="393" y="316" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#4ADE80" opacity="0.5">S3 25s</text>
+  <text x="469" y="316" text-anchor="middle" font-family="monospace" font-size="5.5" fill="#FF6B35" opacity="0.5">S4</text>
+
+  <!-- ================================================================ -->
+  <!-- DATA FLOW DETAIL (bottom section)                                 -->
+  <!-- ================================================================ -->
+
+  <!-- Flow labels -->
+  <rect x="14" y="330" width="772" height="70" rx="6" fill="#0D1117" stroke="#1E293B" stroke-width="0.4"/>
+
+  <!-- Left: Input sources -->
+  <text x="24" y="345" font-family="'Segoe UI', sans-serif" font-size="8" fill="#00D4FF" font-weight="600">INPUT SOURCES</text>
+  <text x="24" y="358" font-family="monospace" font-size="6" fill="#64748B">forex_sentiment.db</text>
+  <text x="24" y="368" font-family="monospace" font-size="6" fill="#64748B">forexregime.db</text>
+  <text x="24" y="378" font-family="monospace" font-size="6" fill="#64748B">risk_management.db</text>
+  <text x="24" y="388" font-family="monospace" font-size="6" fill="#64748B">TWS Gateway (2x)</text>
+
+  <!-- Center: Pipeline core -->
+  <text x="200" y="345" font-family="'Segoe UI', sans-serif" font-size="8" fill="#7B68EE" font-weight="600">PIPELINE CORE</text>
+  <text x="200" y="358" font-family="monospace" font-size="6" fill="#64748B">8 FX pairs: AUDJPY AUDUSD EURJPY EURUSD</text>
+  <text x="200" y="368" font-family="monospace" font-size="6" fill="#64748B">              GBPUSD USDCAD USDCHF USDJPY</text>
+  <text x="200" y="378" font-family="monospace" font-size="6" fill="#64748B">134 features  |  5-model MoE  |  30 theories</text>
+  <text x="200" y="388" font-family="monospace" font-size="6" fill="#64748B">4 signal sources: ML + Forecast + RL + Paper</text>
+
+  <!-- Right: Output -->
+  <text x="530" y="345" font-family="'Segoe UI', sans-serif" font-size="8" fill="#4ADE80" font-weight="600">OUTPUT</text>
+  <rect x="530" y="350" width="244" height="38" rx="5" fill="#1B5E20" fill-opacity="0.2" stroke="#4ADE80" stroke-opacity="0.2" stroke-width="0.5"/>
+  <text x="540" y="363" font-family="monospace" font-size="6.5" fill="#4ADE80">strategies_auth_simple.csv</text>
+  <text x="540" y="375" font-family="monospace" font-size="6" fill="#64748B">8 pairs x 32 strategies x 8 IBKR accounts</text>
+  <text x="540" y="385" font-family="monospace" font-size="6" fill="#64748B">direction | confidence | size | regime</text>
+
+  <!-- ================================================================ -->
+  <!-- PAPER CONSENSUS DETAIL CALLOUT                                    -->
+  <!-- ================================================================ -->
+  <rect x="14" y="412" width="380" height="46" rx="6" fill="#0D1117" stroke="#F59E0B" stroke-opacity="0.25" stroke-width="0.6"/>
+  <rect x="14" y="412" width="380" height="14" rx="6" fill="#F59E0B" fill-opacity="0.06"/>
+  <rect x="14" y="422" width="380" height="4" fill="#0D1117"/>
+  <text x="24" y="423" font-family="'Segoe UI', sans-serif" font-size="7.5" fill="#F59E0B" font-weight="700">PAPER CONSENSUS (Stage 6a) - 4th Signal Source</text>
+  <rect x="310" y="414" width="22" height="10" rx="5" fill="#F59E0B" fill-opacity="0.25" stroke="#F59E0B" stroke-opacity="0.5" stroke-width="0.4"/>
+  <text x="321" y="422" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="5.5" fill="#F59E0B" font-weight="800">NEW</text>
+  <text x="24" y="438" font-family="monospace" font-size="6" fill="#94A3B8">32 MCPT strategies  |  PnL-weighted majority vote per pair</text>
+  <text x="24" y="450" font-family="monospace" font-size="6" fill="#94A3B8">confidence = agreement(40%) + pnl_perf(40%) + csi_quality(20%)</text>
+
+  <!-- ================================================================ -->
+  <!-- LEGEND                                                            -->
+  <!-- ================================================================ -->
+  <g transform="translate(410, 418)">
+    <rect x="0" y="0" width="376" height="40" rx="6" fill="#0D1117" stroke="#1E293B" stroke-width="0.4"/>
+    <text x="10" y="13" font-family="'Segoe UI', sans-serif" font-size="7" fill="#64748B" font-weight="600">LEGEND</text>
+    <!-- Color keys -->
+    <rect x="10" y="20" width="8" height="8" rx="2" fill="#00D4FF" opacity="0.5"/>
+    <text x="22" y="27" font-family="monospace" font-size="6" fill="#64748B">Data</text>
+    <rect x="55" y="20" width="8" height="8" rx="2" fill="#7B68EE" opacity="0.5"/>
+    <text x="67" y="27" font-family="monospace" font-size="6" fill="#64748B">Enrich</text>
+    <rect x="105" y="20" width="8" height="8" rx="2" fill="#4ADE80" opacity="0.5"/>
+    <text x="117" y="27" font-family="monospace" font-size="6" fill="#64748B">ML</text>
+    <rect x="140" y="20" width="8" height="8" rx="2" fill="#FF6B35" opacity="0.5"/>
+    <text x="152" y="27" font-family="monospace" font-size="6" fill="#64748B">PostML</text>
+    <rect x="190" y="20" width="8" height="8" rx="2" fill="#F472B6" opacity="0.5"/>
+    <text x="202" y="27" font-family="monospace" font-size="6" fill="#64748B">RL</text>
+    <rect x="220" y="20" width="8" height="8" rx="2" fill="#00D4FF" opacity="0.7"/>
+    <text x="232" y="27" font-family="monospace" font-size="6" fill="#64748B">Signal</text>
+    <rect x="268" y="20" width="8" height="8" rx="2" fill="#4ADE80" opacity="0.8"/>
+    <text x="280" y="27" font-family="monospace" font-size="6" fill="#64748B">Output</text>
+    <rect x="315" y="20" width="8" height="8" rx="2" fill="#64748B" opacity="0.4"/>
+    <text x="327" y="27" font-family="monospace" font-size="6" fill="#64748B">Deferred</text>
   </g>
 
-  <!-- Border -->
+  <!-- ================================================================ -->
+  <!-- TOTAL PIPELINE TIMING (bottom center)                             -->
+  <!-- ================================================================ -->
+  <rect x="250" y="470" width="300" height="22" rx="11" fill="#0D1117" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.8"/>
+  <text x="310" y="485" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8.5" fill="#94A3B8">CSV delivered at</text>
+  <text x="375" y="485" text-anchor="middle" font-family="monospace" font-size="8.5" fill="#4ADE80" font-weight="700">~155s</text>
+  <text x="400" y="485" font-family="'Segoe UI', sans-serif" font-size="8.5" fill="#94A3B8">|</text>
+  <text x="430" y="485" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="8.5" fill="#94A3B8">Total:</text>
+  <text x="480" y="485" text-anchor="middle" font-family="monospace" font-size="8.5" fill="#00D4FF" font-weight="700">~170s (2m 50s)</text>
+
 </svg>

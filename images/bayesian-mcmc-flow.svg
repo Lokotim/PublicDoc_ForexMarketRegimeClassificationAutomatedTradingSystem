@@ -100,8 +100,8 @@
   <g filter="url(#mcmcShadow)">
     <rect x="180" y="210" width="440" height="60" rx="8" fill="#16213E" stroke="#FBBF24" stroke-opacity="0.35" stroke-width="0.8"/>
     <text x="400" y="232" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#FBBF24" font-weight="700">Gelman-Rubin R-hat Convergence Diagnostic</text>
-    <text x="400" y="250" text-anchor="middle" font-family="monospace" font-size="8" fill="#E2E8F0">R-hat &lt; 1.05 required for convergence | Between-chain vs within-chain variance</text>
-    <text x="400" y="264" text-anchor="middle" font-family="monospace" font-size="7" fill="#FBBF24" opacity="0.7">Current R-hat: 1.02 (converged)</text>
+    <text x="400" y="250" text-anchor="middle" font-family="monospace" font-size="8" fill="#E2E8F0">R-hat &lt; 1.1 required for convergence | Between-chain vs within-chain variance</text>
+    <text x="400" y="264" text-anchor="middle" font-family="monospace" font-size="7" fill="#FBBF24" opacity="0.7">Threshold: R-hat &lt; 1.1</text>
   </g>
 
   <!-- Arrow down from MCMC to R-hat -->
