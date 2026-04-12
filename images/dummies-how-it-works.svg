@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" font-family="'Segoe UI', system-ui, sans-serif">
+  <defs>
+    <linearGradient id="hw-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#101828"/>
+    </linearGradient>
+    <filter id="hw-s">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="340" fill="url(#hw-bg)" rx="10"/>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" fill="#e2e8f0" font-size="18" font-weight="700">How MoneyProd Works — The Big Picture</text>
+  <text x="400" y="48" text-anchor="middle" fill="#64748b" font-size="11">Every hour, 8 stages turn market data into trading decisions</text>
+
+  <!-- Stage 1: Data Collection -->
+  <rect x="20" y="70" width="140" height="100" rx="10" fill="#1e293b" stroke="#3b82f6" stroke-width="2" filter="url(#hw-s)"/>
+  <text x="90" y="92" text-anchor="middle" fill="#3b82f6" font-size="28">&#128225;</text>
+  <text x="90" y="116" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="700">Collect Data</text>
+  <text x="90" y="132" text-anchor="middle" fill="#94a3b8" font-size="9">7 scrapers</text>
+  <text x="90" y="144" text-anchor="middle" fill="#94a3b8" font-size="9">News, sentiment</text>
+  <text x="90" y="156" text-anchor="middle" fill="#94a3b8" font-size="9">Broker positions</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="160" y1="120" x2="178" y2="120" stroke="#475569" stroke-width="2"/>
+  <polygon points="176,116 183,120 176,124" fill="#475569"/>
+
+  <!-- Stage 2: ML Brain -->
+  <rect x="185" y="70" width="140" height="100" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="2" filter="url(#hw-s)"/>
+  <text x="255" y="92" text-anchor="middle" fill="#8b5cf6" font-size="28">&#129504;</text>
+  <text x="255" y="116" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="700">ML Brain</text>
+  <text x="255" y="132" text-anchor="middle" fill="#94a3b8" font-size="9">5-model ensemble</text>
+  <text x="255" y="144" text-anchor="middle" fill="#94a3b8" font-size="9">Regime detection</text>
+  <text x="255" y="156" text-anchor="middle" fill="#94a3b8" font-size="9">Direction forecast</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="325" y1="120" x2="343" y2="120" stroke="#475569" stroke-width="2"/>
+  <polygon points="341,116 348,120 341,124" fill="#475569"/>
+
+  <!-- Stage 3: 4 Voices Vote -->
+  <rect x="350" y="70" width="140" height="100" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2" filter="url(#hw-s)"/>
+  <text x="420" y="92" text-anchor="middle" fill="#f59e0b" font-size="28">&#128499;</text>
+  <text x="420" y="116" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="700">3 Voices Vote</text>
+  <text x="420" y="132" text-anchor="middle" fill="#94a3b8" font-size="9">ML + Forecast</text>
+  <text x="420" y="144" text-anchor="middle" fill="#94a3b8" font-size="9">+ RL Agent</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="490" y1="120" x2="508" y2="120" stroke="#475569" stroke-width="2"/>
+  <polygon points="506,116 513,120 506,124" fill="#475569"/>
+
+  <!-- Stage 4: Size & Safety -->
+  <rect x="515" y="70" width="140" height="100" rx="10" fill="#1e293b" stroke="#22c55e" stroke-width="2" filter="url(#hw-s)"/>
+  <text x="585" y="92" text-anchor="middle" fill="#22c55e" font-size="28">&#128737;</text>
+  <text x="585" y="116" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="700">Size &amp; Safety</text>
+  <text x="585" y="132" text-anchor="middle" fill="#94a3b8" font-size="9">Kelly criterion</text>
+  <text x="585" y="144" text-anchor="middle" fill="#94a3b8" font-size="9">6 safety layers</text>
+  <text x="585" y="156" text-anchor="middle" fill="#94a3b8" font-size="9">Graduated auth</text>
+
+  <!-- Arrow 4→5 -->
+  <line x1="655" y1="120" x2="673" y2="120" stroke="#475569" stroke-width="2"/>
+  <polygon points="671,116 678,120 671,124" fill="#475569"/>
+
+  <!-- Stage 5: Trade -->
+  <rect x="680" y="70" width="100" height="100" rx="10" fill="#1e293b" stroke="#ef4444" stroke-width="2" filter="url(#hw-s)"/>
+  <text x="730" y="92" text-anchor="middle" fill="#ef4444" font-size="28">&#128200;</text>
+  <text x="730" y="116" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="700">Trade!</text>
+  <text x="730" y="132" text-anchor="middle" fill="#94a3b8" font-size="9">CSV to MCPT</text>
+  <text x="730" y="144" text-anchor="middle" fill="#94a3b8" font-size="9">32 strategies</text>
+  <text x="730" y="156" text-anchor="middle" fill="#94a3b8" font-size="9">8 accounts</text>
+
+  <!-- Bottom: Learning loop -->
+  <path d="M 730 170 Q 730 230 400 230 Q 90 230 90 170" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <polygon points="86,173 90,165 94,173" fill="#64748b"/>
+  <text x="400" y="250" text-anchor="middle" fill="#64748b" font-size="11" font-weight="600">Self-Improving Loop: results feed back into the brain every hour</text>
+
+  <!-- Timeline bar -->
+  <rect x="60" y="275" width="680" height="40" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+  <rect x="60" y="275" width="120" height="40" rx="8" fill="rgba(59,130,246,0.15)"/>
+  <text x="120" y="293" text-anchor="middle" fill="#3b82f6" font-size="10" font-weight="600">~56s</text>
+  <text x="120" y="306" text-anchor="middle" fill="#64748b" font-size="8">Data</text>
+  <rect x="180" y="275" width="180" height="40" fill="rgba(139,92,246,0.15)"/>
+  <text x="270" y="293" text-anchor="middle" fill="#8b5cf6" font-size="10" font-weight="600">~150s</text>
+  <text x="270" y="306" text-anchor="middle" fill="#64748b" font-size="8">ML + Theories + Forecast</text>
+  <rect x="360" y="275" width="100" height="40" fill="rgba(245,158,11,0.15)"/>
+  <text x="410" y="293" text-anchor="middle" fill="#f59e0b" font-size="10" font-weight="600">~2s</text>
+  <text x="410" y="306" text-anchor="middle" fill="#64748b" font-size="8">Resolver</text>
+  <rect x="460" y="275" width="100" height="40" fill="rgba(34,197,94,0.15)"/>
+  <text x="510" y="293" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="600">~20s</text>
+  <text x="510" y="306" text-anchor="middle" fill="#64748b" font-size="8">CSV Gen</text>
+  <rect x="560" y="275" width="180" height="40" rx="8" fill="rgba(239,68,68,0.12)"/>
+  <text x="650" y="293" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="600">Post</text>
+  <text x="650" y="306" text-anchor="middle" fill="#64748b" font-size="8">Reports + Learning</text>
+  <text x="400" y="330" text-anchor="middle" fill="#475569" font-size="9">Total pipeline: ~4 minutes per cycle | Runs every hour at :55</text>
+</svg>

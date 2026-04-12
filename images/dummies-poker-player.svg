@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 350" width="850" height="350">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="glow">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#FFD54F" flood-opacity="0.5"/>
+    </filter>
+    <filter id="goldGlow">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#FFD54F" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="850" height="350" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="425" y="42" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold" fill="#FFD54F" filter="url(#glow)">The RL Agent: Learning from 6,832 Trades</text>
+
+  <!-- Q-Table frame -->
+  <rect x="140" y="70" width="500" height="230" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+
+  <!-- Column headers -->
+  <text x="310" y="62" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#E2E8F0">Q-Table: Expected Reward per Action</text>
+
+  <rect x="290" y="78" width="110" height="28" rx="6" fill="#4ADE80" opacity="0.15"/>
+  <text x="345" y="97" text-anchor="middle" font-family="Consolas, monospace" font-size="14" font-weight="bold" fill="#4ADE80">BUY</text>
+
+  <rect x="405" y="78" width="110" height="28" rx="6" fill="#F87171" opacity="0.15"/>
+  <text x="460" y="97" text-anchor="middle" font-family="Consolas, monospace" font-size="14" font-weight="bold" fill="#F87171">SELL</text>
+
+  <rect x="520" y="78" width="110" height="28" rx="6" fill="#94A3B8" opacity="0.15"/>
+  <text x="575" y="97" text-anchor="middle" font-family="Consolas, monospace" font-size="14" font-weight="bold" fill="#94A3B8">FLAT</text>
+
+  <!-- Row labels -->
+  <text x="215" y="140" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#00D4FF">Trending</text>
+  <text x="215" y="185" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#E879F9">Ranging</text>
+  <text x="215" y="230" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#F87171">Volatile</text>
+  <text x="215" y="275" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#4ADE80">Calm</text>
+
+  <!-- Grid lines -->
+  <line x1="280" y1="108" x2="280" y2="295" stroke="#334155" stroke-width="0.8"/>
+  <line x1="400" y1="108" x2="400" y2="295" stroke="#334155" stroke-width="0.5"/>
+  <line x1="515" y1="108" x2="515" y2="295" stroke="#334155" stroke-width="0.5"/>
+  <line x1="140" y1="155" x2="640" y2="155" stroke="#334155" stroke-width="0.5"/>
+  <line x1="140" y1="200" x2="640" y2="200" stroke="#334155" stroke-width="0.5"/>
+  <line x1="140" y1="245" x2="640" y2="245" stroke="#334155" stroke-width="0.5"/>
+
+  <!-- Cells: Row 1 (Trending) -->
+  <!-- BUY +0.8% = BEST ACTION (gold highlight) -->
+  <rect x="291" y="114" width="108" height="40" rx="6" fill="#FFD54F" opacity="0.2" stroke="#FFD54F" stroke-width="2.5" filter="url(#goldGlow)"/>
+  <text x="345" y="140" text-anchor="middle" font-family="Consolas, monospace" font-size="18" font-weight="bold" fill="#4ADE80">+0.8%</text>
+
+  <!-- SELL -0.3% -->
+  <rect x="406" y="114" width="108" height="40" rx="6" fill="#F87171" opacity="0.1"/>
+  <text x="460" y="140" text-anchor="middle" font-family="Consolas, monospace" font-size="18" font-weight="bold" fill="#F87171">-0.3%</text>
+
+  <!-- FLAT +0.1% -->
+  <rect x="521" y="114" width="108" height="40" rx="6" fill="#4ADE80" opacity="0.05"/>
+  <text x="575" y="140" text-anchor="middle" font-family="Consolas, monospace" font-size="18" font-weight="bold" fill="#94A3B8">+0.1%</text>
+
+  <!-- Cells: Row 2 (Ranging) -->
+  <rect x="291" y="159" width="108" height="40" rx="6" fill="#F87171" opacity="0.08"/>
+  <text x="345" y="185" text-anchor="middle" font-family="Consolas, monospace" font-size="18" font-weight="bold" fill="#F87171">-0.2%</text>
+
+  <rect x="406" y="159" width="108" height="40" rx="6" fill="#F87171" opacity="0.08"/>
+  <text x="460" y="185" text-anchor="middle" font-family="Consolas, monospace" font-size="18" font-weight="bold" fill="#F87171">-0.1%</text>
+
+  <rect x="521" y="159" width="108" height="40" rx="6" fill="#4ADE80" opacity="0.1"/>
+  <text x="575" y="185" text-anchor="middle" font-family="Consolas, monospace" font-size="18" font-weight="bold" fill="#4ADE80">+0.3%</text>
+
+  <!-- Cells: Row 3 (Volatile) -->
+  <rect x="291" y="204" width="108" height="40" rx="6" fill="#F87171" opacity="0.1"/>
+  <text x="345" y="230" text-anchor="middle" font-family="Consolas, monospace" font-size="18" font-weight="bold" fill="#F87171">-0.5%</text>
+
+  <rect x="406" y="204" width="108" height="40" rx="6" fill="#4ADE80" opacity="0.08"/>
+  <text x="460" y="230" text-anchor="middle" font-family="Consolas, monospace" font-size="18" font-weight="bold" fill="#4ADE80">+0.2%</text>
+
+  <rect x="521" y="204" width="108" height="40" rx="6" fill="#4ADE80" opacity="0.12"/>
+  <text x="575" y="230" text-anchor="middle" font-family="Consolas, monospace" font-size="18" font-weight="bold" fill="#4ADE80">+0.4%</text>
+
+  <!-- Cells: Row 4 (Calm) -->
+  <rect x="291" y="249" width="108" height="40" rx="6" fill="#4ADE80" opacity="0.1"/>
+  <text x="345" y="275" text-anchor="middle" font-family="Consolas, monospace" font-size="18" font-weight="bold" fill="#4ADE80">+0.5%</text>
+
+  <rect x="406" y="249" width="108" height="40" rx="6" fill="#4ADE80" opacity="0.08"/>
+  <text x="460" y="275" text-anchor="middle" font-family="Consolas, monospace" font-size="18" font-weight="bold" fill="#4ADE80">+0.3%</text>
+
+  <rect x="521" y="249" width="108" height="40" rx="6" fill="#F87171" opacity="0.05"/>
+  <text x="575" y="275" text-anchor="middle" font-family="Consolas, monospace" font-size="18" font-weight="bold" fill="#94A3B8">0.0%</text>
+
+  <!-- "Best action" callout arrow -->
+  <line x1="345" y1="114" x2="345" y2="88" stroke="#FFD54F" stroke-width="1.5"/>
+  <text x="345" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#FFD54F">BEST</text>
+
+  <!-- Right side explanation -->
+  <g transform="translate(665, 90)">
+    <rect x="0" y="0" width="165" height="200" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1" filter="url(#shadow)"/>
+    <text x="82" y="24" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#E2E8F0">How it works</text>
+    <line x1="15" y1="32" x2="150" y2="32" stroke="#334155" stroke-width="0.5"/>
+
+    <text x="15" y="52" font-family="Segoe UI, sans-serif" font-size="11" fill="#00D4FF">1.</text>
+    <text x="28" y="52" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8">Detect regime</text>
+
+    <text x="15" y="76" font-family="Segoe UI, sans-serif" font-size="11" fill="#00D4FF">2.</text>
+    <text x="28" y="76" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8">Look up row</text>
+
+    <text x="15" y="100" font-family="Segoe UI, sans-serif" font-size="11" fill="#00D4FF">3.</text>
+    <text x="28" y="100" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8">Pick highest cell</text>
+
+    <text x="15" y="124" font-family="Segoe UI, sans-serif" font-size="11" fill="#00D4FF">4.</text>
+    <text x="28" y="124" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8">Trade + observe</text>
+
+    <text x="15" y="148" font-family="Segoe UI, sans-serif" font-size="11" fill="#00D4FF">5.</text>
+    <text x="28" y="148" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8">Update cell value</text>
+
+    <line x1="15" y1="162" x2="150" y2="162" stroke="#334155" stroke-width="0.5"/>
+    <text x="82" y="180" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#FFD54F">6,832 updates</text>
+    <text x="82" y="194" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#94A3B8">and counting</text>
+  </g>
+
+  <!-- Bottom tagline -->
+  <text x="425" y="330" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#94A3B8">Like a poker player who remembers which hands pay off in which situations</text>
+</svg>

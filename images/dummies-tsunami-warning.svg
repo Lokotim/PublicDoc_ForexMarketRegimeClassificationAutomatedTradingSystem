@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 350" width="850" height="350">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="gaugeGreen" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#4ADE80" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#4ADE80" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="gaugeAmber" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#FFB74D" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#FFB74D" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="gaugeRed" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#F87171" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#F87171" stop-opacity="0.4"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="glow">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#FFD54F" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="850" height="350" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="425" y="42" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold" fill="#FFD54F" filter="url(#glow)">Cross-Asset Vol Kill Switch: 4 Gauges</text>
+
+  <!-- Gauge parameters: x positions at 120, 290, 460, 630. Height 200px, width 70px -->
+
+  <!-- Zone labels (shared, left side) -->
+  <text x="52" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#F87171">z &gt; 4</text>
+  <text x="52" y="105" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#94A3B8">DANGER</text>
+  <text x="52" y="170" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#FFB74D">z &gt; 2</text>
+  <text x="52" y="175" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#94A3B8">CAUTION</text>
+  <text x="52" y="240" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#4ADE80">z &lt; 2</text>
+  <text x="52" y="245" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#94A3B8">NORMAL</text>
+
+  <!-- GAUGE 1: VIX (normal, green zone, filled ~30%) -->
+  <g transform="translate(120, 72)">
+    <!-- Gauge frame -->
+    <rect x="0" y="0" width="70" height="200" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+    <!-- Zone backgrounds -->
+    <rect x="4" y="4" width="62" height="50" rx="4" fill="#F87171" opacity="0.08"/>
+    <rect x="4" y="54" width="62" height="70" rx="0" fill="#FFB74D" opacity="0.06"/>
+    <rect x="4" y="124" width="62" height="72" rx="4" fill="#4ADE80" opacity="0.06"/>
+    <!-- Zone lines -->
+    <line x1="4" y1="54" x2="66" y2="54" stroke="#F87171" stroke-width="0.8" opacity="0.4" stroke-dasharray="3,3"/>
+    <line x1="4" y1="124" x2="66" y2="124" stroke="#FFB74D" stroke-width="0.8" opacity="0.4" stroke-dasharray="3,3"/>
+    <!-- Fill (30% from bottom = 60px) -->
+    <rect x="10" y="136" width="50" height="56" rx="4" fill="url(#gaugeGreen)" filter="url(#shadow)"/>
+    <!-- Level indicator -->
+    <rect x="6" y="133" width="58" height="3" rx="1" fill="#4ADE80"/>
+    <!-- Label -->
+    <text x="35" y="220" text-anchor="middle" font-family="Consolas, monospace" font-size="15" font-weight="bold" fill="#E2E8F0">VIX</text>
+    <text x="35" y="237" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#4ADE80">z=1.2</text>
+  </g>
+
+  <!-- GAUGE 2: FX IV (elevated, amber zone, filled ~60%) -->
+  <g transform="translate(290, 72)">
+    <rect x="0" y="0" width="70" height="200" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+    <rect x="4" y="4" width="62" height="50" rx="4" fill="#F87171" opacity="0.08"/>
+    <rect x="4" y="54" width="62" height="70" rx="0" fill="#FFB74D" opacity="0.06"/>
+    <rect x="4" y="124" width="62" height="72" rx="4" fill="#4ADE80" opacity="0.06"/>
+    <line x1="4" y1="54" x2="66" y2="54" stroke="#F87171" stroke-width="0.8" opacity="0.4" stroke-dasharray="3,3"/>
+    <line x1="4" y1="124" x2="66" y2="124" stroke="#FFB74D" stroke-width="0.8" opacity="0.4" stroke-dasharray="3,3"/>
+    <!-- Fill (60% from bottom = 120px, into amber zone) -->
+    <rect x="10" y="76" width="50" height="116" rx="4" fill="url(#gaugeAmber)" filter="url(#shadow)"/>
+    <!-- Level indicator -->
+    <rect x="6" y="73" width="58" height="3" rx="1" fill="#FFB74D"/>
+    <!-- Pulse ring for elevated -->
+    <rect x="-2" y="-2" width="74" height="204" rx="10" fill="none" stroke="#FFB74D" stroke-width="1.5" opacity="0.4" stroke-dasharray="6,4"/>
+    <text x="35" y="220" text-anchor="middle" font-family="Consolas, monospace" font-size="15" font-weight="bold" fill="#E2E8F0">FX IV</text>
+    <text x="35" y="237" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#FFB74D">z=2.8</text>
+  </g>
+
+  <!-- GAUGE 3: OVX (normal, green zone, filled ~25%) -->
+  <g transform="translate(460, 72)">
+    <rect x="0" y="0" width="70" height="200" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+    <rect x="4" y="4" width="62" height="50" rx="4" fill="#F87171" opacity="0.08"/>
+    <rect x="4" y="54" width="62" height="70" rx="0" fill="#FFB74D" opacity="0.06"/>
+    <rect x="4" y="124" width="62" height="72" rx="4" fill="#4ADE80" opacity="0.06"/>
+    <line x1="4" y1="54" x2="66" y2="54" stroke="#F87171" stroke-width="0.8" opacity="0.4" stroke-dasharray="3,3"/>
+    <line x1="4" y1="124" x2="66" y2="124" stroke="#FFB74D" stroke-width="0.8" opacity="0.4" stroke-dasharray="3,3"/>
+    <!-- Fill (25%) -->
+    <rect x="10" y="146" width="50" height="46" rx="4" fill="url(#gaugeGreen)" filter="url(#shadow)"/>
+    <rect x="6" y="143" width="58" height="3" rx="1" fill="#4ADE80"/>
+    <text x="35" y="220" text-anchor="middle" font-family="Consolas, monospace" font-size="15" font-weight="bold" fill="#E2E8F0">OVX</text>
+    <text x="35" y="237" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#4ADE80">z=0.9</text>
+  </g>
+
+  <!-- GAUGE 4: TLT Vol (normal, green zone, filled ~35%) -->
+  <g transform="translate(630, 72)">
+    <rect x="0" y="0" width="70" height="200" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+    <rect x="4" y="4" width="62" height="50" rx="4" fill="#F87171" opacity="0.08"/>
+    <rect x="4" y="54" width="62" height="70" rx="0" fill="#FFB74D" opacity="0.06"/>
+    <rect x="4" y="124" width="62" height="72" rx="4" fill="#4ADE80" opacity="0.06"/>
+    <line x1="4" y1="54" x2="66" y2="54" stroke="#F87171" stroke-width="0.8" opacity="0.4" stroke-dasharray="3,3"/>
+    <line x1="4" y1="124" x2="66" y2="124" stroke="#FFB74D" stroke-width="0.8" opacity="0.4" stroke-dasharray="3,3"/>
+    <!-- Fill (35%) -->
+    <rect x="10" y="126" width="50" height="66" rx="4" fill="url(#gaugeGreen)" filter="url(#shadow)"/>
+    <rect x="6" y="123" width="58" height="3" rx="1" fill="#4ADE80"/>
+    <text x="35" y="220" text-anchor="middle" font-family="Consolas, monospace" font-size="15" font-weight="bold" fill="#E2E8F0">TLT Vol</text>
+    <text x="35" y="237" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#4ADE80">z=1.5</text>
+  </g>
+
+  <!-- Status badge -->
+  <rect x="290" y="290" width="200" height="40" rx="20" fill="#FFB74D" opacity="0.15" stroke="#FFB74D" stroke-width="1.5" filter="url(#shadow)"/>
+  <circle cx="320" cy="310" r="6" fill="#FFB74D" opacity="0.8"/>
+  <text x="400" y="315" text-anchor="middle" font-family="Consolas, monospace" font-size="15" font-weight="bold" fill="#FFB74D">ELEVATED</text>
+
+  <!-- Sizing effect note -->
+  <text x="580" y="305" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8">Sizing reduced to</text>
+  <text x="580" y="320" font-family="Consolas, monospace" font-size="14" font-weight="bold" fill="#FFB74D">50% of normal</text>
+
+  <!-- Bottom tagline -->
+  <text x="425" y="345" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#94A3B8">If any gauge hits red, all position sizes shrink automatically</text>
+</svg>

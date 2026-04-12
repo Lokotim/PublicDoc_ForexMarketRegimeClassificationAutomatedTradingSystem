@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 350" width="850" height="350">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="glow">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#FFD54F" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="850" height="350" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="425" y="42" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold" fill="#FFD54F" filter="url(#glow)">MoneyProd: The Big Picture</text>
+
+  <!-- Stage 1: 19 Data Sources -->
+  <g transform="translate(30, 80)">
+    <text x="55" y="0" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#E2E8F0">19 Data Sources</text>
+    <g transform="translate(5, 12)">
+      <rect x="0" y="0" width="18" height="18" rx="3" fill="#00D4FF" opacity="0.7"/>
+      <rect x="22" y="0" width="18" height="18" rx="3" fill="#00D4FF" opacity="0.7"/>
+      <rect x="44" y="0" width="18" height="18" rx="3" fill="#4ADE80" opacity="0.7"/>
+      <rect x="66" y="0" width="18" height="18" rx="3" fill="#4ADE80" opacity="0.7"/>
+      <rect x="88" y="0" width="18" height="18" rx="3" fill="#FFD54F" opacity="0.7"/>
+      <rect x="0" y="22" width="18" height="18" rx="3" fill="#FFD54F" opacity="0.7"/>
+      <rect x="22" y="22" width="18" height="18" rx="3" fill="#E879F9" opacity="0.7"/>
+      <rect x="44" y="22" width="18" height="18" rx="3" fill="#E879F9" opacity="0.7"/>
+      <rect x="66" y="22" width="18" height="18" rx="3" fill="#E879F9" opacity="0.7"/>
+      <rect x="88" y="22" width="18" height="18" rx="3" fill="#E879F9" opacity="0.7"/>
+      <rect x="0" y="44" width="18" height="18" rx="3" fill="#4ADE80" opacity="0.7"/>
+      <rect x="22" y="44" width="18" height="18" rx="3" fill="#F87171" opacity="0.7"/>
+      <rect x="44" y="44" width="18" height="18" rx="3" fill="#00D4FF" opacity="0.7"/>
+      <rect x="66" y="44" width="18" height="18" rx="3" fill="#00D4FF" opacity="0.7"/>
+      <rect x="88" y="44" width="18" height="18" rx="3" fill="#E879F9" opacity="0.7"/>
+      <rect x="0" y="66" width="18" height="18" rx="3" fill="#E879F9" opacity="0.7"/>
+      <rect x="22" y="66" width="18" height="18" rx="3" fill="#FFD54F" opacity="0.6"/>
+      <rect x="44" y="66" width="18" height="18" rx="3" fill="#FFD54F" opacity="0.6"/>
+      <rect x="66" y="66" width="18" height="18" rx="3" fill="#4ADE80" opacity="0.7"/>
+    </g>
+  </g>
+
+  <!-- Arrow 1 -->
+  <g transform="translate(150, 140)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round"/>
+    <polygon points="50,-6 62,0 50,6" fill="#94A3B8"/>
+  </g>
+
+  <!-- Stage 2: 4 Judges -->
+  <g transform="translate(220, 80)">
+    <text x="65" y="0" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#E2E8F0">4 Judges</text>
+    <circle cx="20" cy="35" r="22" fill="#00D4FF" opacity="0.8" filter="url(#shadow)"/>
+    <text x="20" y="40" text-anchor="middle" font-family="Consolas, monospace" font-size="11" font-weight="bold" fill="#0F172A">ML</text>
+    <circle cx="70" cy="35" r="22" fill="#4ADE80" opacity="0.8" filter="url(#shadow)"/>
+    <text x="70" y="40" text-anchor="middle" font-family="Consolas, monospace" font-size="11" font-weight="bold" fill="#0F172A">FC</text>
+    <circle cx="45" cy="80" r="22" fill="#E879F9" opacity="0.8" filter="url(#shadow)"/>
+    <text x="45" y="85" text-anchor="middle" font-family="Consolas, monospace" font-size="11" font-weight="bold" fill="#0F172A">RL</text>
+    <circle cx="95" cy="80" r="22" fill="#FFD54F" opacity="0.8" filter="url(#shadow)"/>
+    <text x="95" y="85" text-anchor="middle" font-family="Consolas, monospace" font-size="10" font-weight="bold" fill="#0F172A">Macro</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <g transform="translate(350, 140)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round"/>
+    <polygon points="50,-6 62,0 50,6" fill="#94A3B8"/>
+  </g>
+
+  <!-- Stage 3: Risk Check (Shield) -->
+  <g transform="translate(420, 80)">
+    <text x="45" y="0" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#E2E8F0">Risk Check</text>
+    <path d="M45,15 L75,30 L75,65 Q75,90 45,100 Q15,90 15,65 L15,30 Z" fill="none" stroke="#F87171" stroke-width="2.5" filter="url(#shadow)"/>
+    <path d="M45,25 L65,36 L65,62 Q65,80 45,88 Q25,80 25,62 L25,36 Z" fill="#F87171" opacity="0.2"/>
+    <text x="45" y="65" text-anchor="middle" font-family="Consolas, monospace" font-size="16" font-weight="bold" fill="#F87171">9</text>
+    <text x="45" y="80" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">layers</text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <g transform="translate(520, 140)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round"/>
+    <polygon points="50,-6 62,0 50,6" fill="#94A3B8"/>
+  </g>
+
+  <!-- Stage 4: 32 Strategies -->
+  <g transform="translate(590, 80)">
+    <text x="55" y="0" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#E2E8F0">32 Strategies</text>
+    <g transform="translate(5, 12)">
+      <rect x="0" y="0" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="15" y="0" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="30" y="0" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="45" y="0" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="60" y="0" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="75" y="0" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="90" y="0" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="0" y="15" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="15" y="15" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="30" y="15" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="45" y="15" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="60" y="15" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="75" y="15" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="90" y="15" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="0" y="30" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="15" y="30" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="30" y="30" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="45" y="30" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="60" y="30" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="75" y="30" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="90" y="30" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="0" y="45" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="15" y="45" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="30" y="45" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="45" y="45" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="60" y="45" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="75" y="45" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="90" y="45" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+      <rect x="0" y="60" width="12" height="12" rx="2" fill="#FFD54F" opacity="0.6"/>
+      <rect x="15" y="60" width="12" height="12" rx="2" fill="#FFD54F" opacity="0.6"/>
+      <rect x="30" y="60" width="12" height="12" rx="2" fill="#FFD54F" opacity="0.6"/>
+      <rect x="45" y="60" width="12" height="12" rx="2" fill="#FFD54F" opacity="0.6"/>
+    </g>
+  </g>
+
+  <!-- Arrow 4 -->
+  <g transform="translate(700, 140)">
+    <line x1="0" y1="0" x2="30" y2="0" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round"/>
+    <polygon points="30,-6 42,0 30,6" fill="#94A3B8"/>
+  </g>
+
+  <!-- Stage 5: 8 Accounts -->
+  <g transform="translate(750, 80)">
+    <text x="45" y="0" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#E2E8F0">8 Accounts</text>
+    <g transform="translate(10, 12)">
+      <rect x="0" y="0" width="28" height="20" rx="4" fill="#FFD54F" opacity="0.7" filter="url(#shadow)"/>
+      <rect x="34" y="0" width="28" height="20" rx="4" fill="#FFD54F" opacity="0.7" filter="url(#shadow)"/>
+      <rect x="0" y="26" width="28" height="20" rx="4" fill="#FFD54F" opacity="0.7" filter="url(#shadow)"/>
+      <rect x="34" y="26" width="28" height="20" rx="4" fill="#FFD54F" opacity="0.7" filter="url(#shadow)"/>
+      <rect x="0" y="52" width="28" height="20" rx="4" fill="#FFD54F" opacity="0.7" filter="url(#shadow)"/>
+      <rect x="34" y="52" width="28" height="20" rx="4" fill="#FFD54F" opacity="0.7" filter="url(#shadow)"/>
+      <rect x="0" y="78" width="28" height="20" rx="4" fill="#FFD54F" opacity="0.7" filter="url(#shadow)"/>
+      <rect x="34" y="78" width="28" height="20" rx="4" fill="#FFD54F" opacity="0.7" filter="url(#shadow)"/>
+    </g>
+  </g>
+
+  <!-- Bottom summary labels -->
+  <text x="85" y="215" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8">Gather</text>
+  <text x="285" y="215" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8">Vote</text>
+  <text x="465" y="215" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8">Protect</text>
+  <text x="645" y="215" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8">Trade</text>
+  <text x="795" y="215" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8">Broker</text>
+
+  <!-- Bottom tagline -->
+  <text x="425" y="260" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" fill="#94A3B8">Every 168 seconds, data becomes decisions</text>
+
+  <!-- Decorative bottom line -->
+  <line x1="100" y1="280" x2="750" y2="280" stroke="#94A3B8" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Legend -->
+  <g transform="translate(130, 300)">
+    <rect x="0" y="0" width="10" height="10" rx="2" fill="#00D4FF" opacity="0.7"/>
+    <text x="15" y="9" font-family="Segoe UI, sans-serif" font-size="10" fill="#94A3B8">Sentiment</text>
+    <rect x="90" y="0" width="10" height="10" rx="2" fill="#4ADE80" opacity="0.7"/>
+    <text x="105" y="9" font-family="Segoe UI, sans-serif" font-size="10" fill="#94A3B8">News</text>
+    <rect x="155" y="0" width="10" height="10" rx="2" fill="#FFD54F" opacity="0.7"/>
+    <text x="170" y="9" font-family="Segoe UI, sans-serif" font-size="10" fill="#94A3B8">Institutional</text>
+    <rect x="260" y="0" width="10" height="10" rx="2" fill="#E879F9" opacity="0.7"/>
+    <text x="275" y="9" font-family="Segoe UI, sans-serif" font-size="10" fill="#94A3B8">Macro</text>
+    <rect x="330" y="0" width="10" height="10" rx="2" fill="#F87171" opacity="0.7"/>
+    <text x="345" y="9" font-family="Segoe UI, sans-serif" font-size="10" fill="#94A3B8">Broker</text>
+  </g>
+</svg>

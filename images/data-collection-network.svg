@@ -37,7 +37,7 @@
 
   <!-- Title -->
   <text x="500" y="30" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2.5">STAGE 1: THE ORACLE NETWORK</text>
-  <text x="500" y="48" text-anchor="middle" fill="#607D8B" font-family="Segoe UI, Arial, sans-serif" font-size="10" letter-spacing="1.5">15 DATA SOURCES IN 58 SECONDS</text>
+  <text x="500" y="48" text-anchor="middle" fill="#607D8B" font-family="Segoe UI, Arial, sans-serif" font-size="10" letter-spacing="1.5">19 DATA SOURCES IN 58 SECONDS</text>
 
   <!-- Central Hub -->
   <g filter="url(#glow)">
@@ -200,13 +200,13 @@
     <text x="812" y="311" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="8.5">TWS Health</text>
     <text x="812" y="322" text-anchor="middle" fill="#F44336" font-family="Segoe UI, Arial, sans-serif" font-size="6.5" opacity="0.7">2 instances</text>
   </g>
-  <!-- GV Telemetry -->
-  <g filter="url(#shadow)">
-    <rect x="720" y="353" width="170" height="30" rx="4" fill="#0f1923" stroke="#F44336" stroke-width="1"/>
-    <circle cx="736" cy="368" r="6" fill="#F44336" opacity="0.15"/>
-    <text x="736" y="371" text-anchor="middle" fill="#F44336" font-family="Segoe UI, Arial, sans-serif" font-size="8">&#10003;</text>
-    <text x="812" y="366" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="8.5">GV Telemetry</text>
-    <text x="812" y="377" text-anchor="middle" fill="#F44336" font-family="Segoe UI, Arial, sans-serif" font-size="6.5" opacity="0.7">32 strategies</text>
+  <!-- GV Telemetry (DISABLED) -->
+  <g filter="url(#shadow)" opacity="0.3">
+    <rect x="720" y="353" width="170" height="30" rx="4" fill="#0f1923" stroke="#555" stroke-width="1" stroke-dasharray="4,2"/>
+    <circle cx="736" cy="368" r="6" fill="#555" opacity="0.15"/>
+    <text x="736" y="371" text-anchor="middle" fill="#555" font-family="Segoe UI, Arial, sans-serif" font-size="8">&#10007;</text>
+    <text x="812" y="366" text-anchor="middle" fill="#888" font-family="Segoe UI, Arial, sans-serif" font-size="8.5">GV Telemetry</text>
+    <text x="812" y="377" text-anchor="middle" fill="#666" font-family="Segoe UI, Arial, sans-serif" font-size="6.5" opacity="0.7">DISABLED</text>
   </g>
 
   <!-- Bottom stats bar -->

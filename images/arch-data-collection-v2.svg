@@ -24,7 +24,7 @@
   <rect width="850" height="680" fill="url(#bg2)" rx="8"/>
 
   <!-- Title -->
-  <text x="425" y="38" text-anchor="middle" fill="#ccd6f6" font-size="18" font-weight="700">The Oracle Network: 15 Data Sources</text>
+  <text x="425" y="38" text-anchor="middle" fill="#ccd6f6" font-size="18" font-weight="700">The Oracle Network: 19 Data Sources</text>
   <line x1="260" y1="48" x2="590" y2="48" stroke="#F7B32B" stroke-width="2" opacity="0.5"/>
 
   <!-- Central Hub -->
@@ -212,5 +212,5 @@
   <circle cx="410" cy="653" r="4" fill="#ccd6f6"/>
   <text x="420" y="657" fill="#8892b0" font-size="9">Playwright</text>
   <text x="500" y="657" fill="#8892b0" font-size="9">|</text>
-  <text x="515" y="657" fill="#64ffda" font-size="9" font-weight="600">15 sources total</text>
+  <text x="515" y="657" fill="#64ffda" font-size="9" font-weight="600">19 sources total</text>
 </svg>

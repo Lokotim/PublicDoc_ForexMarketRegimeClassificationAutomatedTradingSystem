@@ -18,7 +18,7 @@
   <!-- Title -->
   <text x="400" y="30" text-anchor="middle" fill="#ccd6f6" font-size="17" font-weight="700">Continuous Learning: The LEVIER System</text>
   <line x1="200" y1="38" x2="600" y2="38" stroke="#F7B32B" stroke-width="1.5" stroke-opacity="0.6"/>
-  <text x="400" y="52" text-anchor="middle" fill="#8892b0" font-size="9">9 adaptive mechanisms feeding a central feedback cycle</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8892b0" font-size="9">8 adaptive mechanisms feeding a central feedback cycle</text>
 
   <!-- Central hub -->
   <ellipse cx="400" cy="262" rx="68" ry="30" fill="url(#hubGrad)" stroke="#F7B32B" stroke-width="2"/>
@@ -95,14 +95,6 @@
   <text x="260" y="480" text-anchor="middle" fill="#8892b0" font-size="7">Composite Strategy Index, zero-kill</text>
   <path d="M290,448 Q340,380 370,292" fill="none" stroke="#64ffda" stroke-width="1" marker-end="url(#arwGold)" stroke-dasharray="4,3"/>
 
-  <!-- L8: Paper Consensus (bot-center) -->
-  <rect x="284" y="370" width="232" height="72" rx="6" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#clShadow)"/>
-  <rect x="284" y="370" width="232" height="20" rx="6" fill="#F7B32B" fill-opacity="0.12"/>
-  <text x="296" y="384" fill="#F7B32B" font-size="9" font-weight="700">L8</text>
-  <text x="322" y="384" fill="#ccd6f6" font-size="9" font-weight="600">Paper Consensus</text>
-  <text x="400" y="402" text-anchor="middle" fill="#8892b0" font-size="8">32 MCPT theoretical signals</text>
-  <text x="400" y="416" text-anchor="middle" fill="#64ffda" font-size="8">4th meta-signal source</text>
-  <path d="M400,370 L400,292" fill="none" stroke="#F7B32B" stroke-width="1" marker-end="url(#arwGold)" stroke-dasharray="4,3"/>
 
   <!-- L9: Pair Track Record (bot-right) -->
   <rect x="554" y="370" width="232" height="72" rx="6" fill="#112240" stroke="#233554" stroke-width="1.2" filter="url(#clShadow)"/>

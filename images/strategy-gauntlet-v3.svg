@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 650" width="850">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="funnelGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F87171" stop-opacity="0.25"/>
+      <stop offset="50%" stop-color="#F7B32B" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#4ADE80" stop-opacity="0.20"/>
+    </linearGradient>
+    <filter id="glowGold2">
+      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#FFD54F" flood-opacity="0.5"/>
+    </filter>
+    <filter id="glowGreen">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#4ADE80" flood-opacity="0.7"/>
+    </filter>
+    <filter id="softShadow">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="850" height="650" fill="url(#bg2)" rx="8"/>
+
+  <!-- Title -->
+  <text x="425" y="40" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="700" fill="#FFD54F" filter="url(#glowGold2)">THE GAUNTLET — 9 Stages of Destruction</text>
+  <text x="425" y="62" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" fill="#8892B0">10,000,000 enter. 32 survive.</text>
+
+  <!-- Entry bar -->
+  <rect x="125" y="80" width="600" height="28" rx="4" fill="#F87171" fill-opacity="0.15" stroke="#F87171" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="425" y="99" text-anchor="middle" font-family="Consolas, monospace" font-size="14" font-weight="700" fill="#E2E8F0">10,000,000 CANDIDATES</text>
+
+  <!-- Stage helper: each stage is a narrowing trapezoid row -->
+  <!-- Stage 1: Monte Carlo -->
+  <polygon points="155,118 695,118 680,158 170,158" fill="#F87171" fill-opacity="0.08" stroke="#F87171" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="425" y="135" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#F87171">1. Monte Carlo</text>
+  <text x="425" y="152" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">1,000 sims x 4 perturbation layers</text>
+  <text x="140" y="142" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#F87171" opacity="0.7">~6M cut</text>
+  <text x="710" y="142" text-anchor="start" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">~40%</text>
+
+  <!-- Stage 2: Walk-Forward -->
+  <polygon points="170,162 680,162 662,202 188,202" fill="#F87171" fill-opacity="0.07" stroke="#F87171" stroke-width="0.5" stroke-opacity="0.25"/>
+  <text x="425" y="179" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#F87171">2. Walk-Forward</text>
+  <text x="425" y="196" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">10,000 IS/OOS combinations</text>
+  <text x="140" y="186" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#F87171" opacity="0.7">~3M cut</text>
+  <text x="710" y="186" text-anchor="start" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">~25%</text>
+
+  <!-- Stage 3: Permutation -->
+  <polygon points="188,206 662,206 642,246 208,246" fill="#F87171" fill-opacity="0.06" stroke="#F87171" stroke-width="0.5" stroke-opacity="0.2"/>
+  <text x="425" y="223" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#E8956A">3. Permutation</text>
+  <text x="425" y="240" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">3,000 parameter variations</text>
+  <text x="140" y="230" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#E8956A" opacity="0.7">~700K cut</text>
+  <text x="710" y="230" text-anchor="start" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">~30%</text>
+
+  <!-- Stage 4: Multi-Market -->
+  <polygon points="208,250 642,250 618,290 232,290" fill="#F7B32B" fill-opacity="0.06" stroke="#F7B32B" stroke-width="0.5" stroke-opacity="0.2"/>
+  <text x="425" y="267" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#F7B32B">4. Multi-Market</text>
+  <text x="425" y="284" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">6 additional pairs, must profit on 4+</text>
+  <text x="140" y="274" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#F7B32B" opacity="0.7">~240K cut</text>
+  <text x="710" y="274" text-anchor="start" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">~20%</text>
+
+  <!-- Stage 5: Slippage -->
+  <polygon points="232,294 618,294 602,334 248,334" fill="#F7B32B" fill-opacity="0.05" stroke="#F7B32B" stroke-width="0.5" stroke-opacity="0.18"/>
+  <text x="425" y="311" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#F7B32B">5. Slippage</text>
+  <text x="425" y="328" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">0.3 pip per trade stress test</text>
+  <text x="140" y="318" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#F7B32B" opacity="0.7">~18K cut</text>
+  <text x="710" y="318" text-anchor="start" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">~70%</text>
+
+  <!-- Stage 6: Robustness -->
+  <polygon points="248,338 602,338 575,378 275,378" fill="#C4A94D" fill-opacity="0.05" stroke="#C4A94D" stroke-width="0.5" stroke-opacity="0.18"/>
+  <text x="425" y="355" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#C4A94D">6. Robustness</text>
+  <text x="425" y="372" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">Broad plateau, not sharp peak</text>
+  <text x="140" y="362" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#C4A94D" opacity="0.7">~34K cut</text>
+  <text x="710" y="362" text-anchor="start" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">~15%</text>
+
+  <!-- Stage 7: Out-of-Sample -->
+  <polygon points="275,382 575,382 555,422 295,422" fill="#7CC97E" fill-opacity="0.05" stroke="#7CC97E" stroke-width="0.5" stroke-opacity="0.18"/>
+  <text x="425" y="399" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#7CC97E">7. Out-of-Sample</text>
+  <text x="425" y="416" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">Pure unseen data</text>
+  <text x="140" y="406" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#7CC97E" opacity="0.7">~3K cut</text>
+  <text x="710" y="406" text-anchor="start" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">~50%</text>
+
+  <!-- Stage 8: Correlation -->
+  <polygon points="295,426 555,426 535,466 315,466" fill="#4ADE80" fill-opacity="0.05" stroke="#4ADE80" stroke-width="0.5" stroke-opacity="0.18"/>
+  <text x="425" y="443" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#4ADE80">8. Correlation</text>
+  <text x="425" y="460" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">Max 0.85 pairwise</text>
+  <text x="140" y="450" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#4ADE80" opacity="0.7">~600 cut</text>
+  <text x="710" y="450" text-anchor="start" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">~80%</text>
+
+  <!-- Stage 9: Final Verdict -->
+  <polygon points="315,470 535,470 505,510 345,510" fill="#4ADE80" fill-opacity="0.06" stroke="#4ADE80" stroke-width="0.5" stroke-opacity="0.2"/>
+  <text x="425" y="487" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#22C55E">9. Final Verdict</text>
+  <text x="425" y="504" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">All criteria simultaneously</text>
+  <text x="140" y="494" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#22C55E" opacity="0.7">~2.4K cut</text>
+  <text x="710" y="494" text-anchor="start" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">~5%</text>
+
+  <!-- Survivor bar -->
+  <rect x="345" y="524" width="160" height="32" rx="6" fill="#4ADE80" fill-opacity="0.12" stroke="#4ADE80" stroke-width="1.5" filter="url(#glowGreen)"/>
+  <text x="425" y="545" text-anchor="middle" font-family="Consolas, monospace" font-size="16" font-weight="700" fill="#4ADE80">32 SURVIVORS</text>
+
+  <!-- Connecting lines (funnel edges) -->
+  <line x1="155" y1="118" x2="345" y2="524" stroke="#94A3B8" stroke-width="0.5" stroke-opacity="0.15" stroke-dasharray="4,4"/>
+  <line x1="695" y1="118" x2="505" y2="524" stroke="#94A3B8" stroke-width="0.5" stroke-opacity="0.15" stroke-dasharray="4,4"/>
+
+  <!-- Footer -->
+  <text x="425" y="590" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8" opacity="0.5">Survival rates are cumulative — each stage filters the output of the previous</text>
+</svg>

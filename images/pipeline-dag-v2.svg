@@ -196,21 +196,13 @@
     <text x="212" y="203" font-family="'Segoe UI', sans-serif" font-size="9" fill="#E2E8F0" font-weight="600">SIGNAL RESOLUTION</text>
     <rect x="384" y="191" width="38" height="14" rx="7" fill="#00D4FF" fill-opacity="0.15" stroke="#00D4FF" stroke-opacity="0.3" stroke-width="0.5"/>
     <text x="403" y="201" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" font-weight="600">2s</text>
-    <!-- 6a: Paper Consensus (NEW - highlighted) -->
-    <rect x="196" y="212" width="224" height="16" rx="4" fill="#F59E0B" fill-opacity="0.1" stroke="#F59E0B" stroke-opacity="0.4" stroke-width="0.7"/>
-    <text x="204" y="223" font-family="'Segoe UI', sans-serif" font-size="7" fill="#F59E0B" font-weight="700">6a</text>
-    <text x="220" y="223" font-family="monospace" font-size="6.5" fill="#F59E0B">Paper Consensus</text>
-    <text x="320" y="223" font-family="monospace" font-size="6" fill="#F59E0B" opacity="0.7">32 MCPT PnL-vote</text>
-    <!-- NEW badge -->
-    <rect x="396" y="214" width="22" height="10" rx="5" fill="#F59E0B" fill-opacity="0.3" stroke="#F59E0B" stroke-opacity="0.6" stroke-width="0.4"/>
-    <text x="407" y="222" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="5.5" fill="#F59E0B" font-weight="800">NEW</text>
-    <!-- 6b: Meta-Signal Resolver -->
+    <!-- Meta-Signal Resolver -->
     <rect x="196" y="232" width="224" height="16" rx="4" fill="#00D4FF" fill-opacity="0.06" stroke="#00D4FF" stroke-opacity="0.15" stroke-width="0.3"/>
-    <text x="204" y="243" font-family="'Segoe UI', sans-serif" font-size="7" fill="#00D4FF" font-weight="700">6b</text>
+    <text x="204" y="243" font-family="'Segoe UI', sans-serif" font-size="7" fill="#00D4FF" font-weight="700">6</text>
     <text x="220" y="243" font-family="monospace" font-size="6.5" fill="#94A3B8">Meta-Signal Resolver</text>
     <!-- Weight breakdown -->
     <rect x="196" y="252" width="224" height="10" rx="3" fill="#00D4FF" fill-opacity="0.03"/>
-    <text x="308" y="260" text-anchor="middle" font-family="monospace" font-size="6" fill="#00D4FF" opacity="0.7">ML(40%) + Forecast(30%) + RL(21%) + Paper(9%)</text>
+    <text x="308" y="260" text-anchor="middle" font-family="monospace" font-size="6" fill="#00D4FF" opacity="0.7">ML(50%) + FC(28%) + RL(12%) + Macro(10%)</text>
   </g>
 
   <!-- Arrow S6 → S7 (highlighted green) -->
@@ -257,7 +249,7 @@
     <text x="659" y="248" font-family="monospace" font-size="5.5" fill="#64748B">Model Archive</text>
     <text x="730" y="218" font-family="monospace" font-size="5.5" fill="#64748B">Diagnostics</text>
     <text x="730" y="228" font-family="monospace" font-size="5.5" fill="#64748B">Discord Alert</text>
-    <text x="730" y="238" font-family="monospace" font-size="5.5" fill="#64748B">GV Health</text>
+    <text x="730" y="238" font-family="monospace" font-size="5.5" fill="#64748B" opacity="0.4">GV Health (OFF)</text>
     <text x="730" y="248" font-family="monospace" font-size="5.5" fill="#64748B" opacity="0.6">7 phases</text>
   </g>
 
@@ -313,7 +305,7 @@
   <text x="200" y="358" font-family="monospace" font-size="6" fill="#64748B">8 FX pairs: AUDJPY AUDUSD EURJPY EURUSD</text>
   <text x="200" y="368" font-family="monospace" font-size="6" fill="#64748B">              GBPUSD USDCAD USDCHF USDJPY</text>
   <text x="200" y="378" font-family="monospace" font-size="6" fill="#64748B">134 features  |  5-model MoE  |  30 theories</text>
-  <text x="200" y="388" font-family="monospace" font-size="6" fill="#64748B">4 signal sources: ML + Forecast + RL + Paper</text>
+  <text x="200" y="388" font-family="monospace" font-size="6" fill="#64748B">3 signal sources: ML + Forecast + RL</text>
 
   <!-- Right: Output -->
   <text x="530" y="345" font-family="'Segoe UI', sans-serif" font-size="8" fill="#4ADE80" font-weight="600">OUTPUT</text>
@@ -322,17 +314,6 @@
   <text x="540" y="375" font-family="monospace" font-size="6" fill="#64748B">8 pairs x 32 strategies x 8 IBKR accounts</text>
   <text x="540" y="385" font-family="monospace" font-size="6" fill="#64748B">direction | confidence | size | regime</text>
 
-  <!-- ================================================================ -->
-  <!-- PAPER CONSENSUS DETAIL CALLOUT                                    -->
-  <!-- ================================================================ -->
-  <rect x="14" y="412" width="380" height="46" rx="6" fill="#0D1117" stroke="#F59E0B" stroke-opacity="0.25" stroke-width="0.6"/>
-  <rect x="14" y="412" width="380" height="14" rx="6" fill="#F59E0B" fill-opacity="0.06"/>
-  <rect x="14" y="422" width="380" height="4" fill="#0D1117"/>
-  <text x="24" y="423" font-family="'Segoe UI', sans-serif" font-size="7.5" fill="#F59E0B" font-weight="700">PAPER CONSENSUS (Stage 6a) - 4th Signal Source</text>
-  <rect x="310" y="414" width="22" height="10" rx="5" fill="#F59E0B" fill-opacity="0.25" stroke="#F59E0B" stroke-opacity="0.5" stroke-width="0.4"/>
-  <text x="321" y="422" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="5.5" fill="#F59E0B" font-weight="800">NEW</text>
-  <text x="24" y="438" font-family="monospace" font-size="6" fill="#94A3B8">32 MCPT strategies  |  PnL-weighted majority vote per pair</text>
-  <text x="24" y="450" font-family="monospace" font-size="6" fill="#94A3B8">confidence = agreement(40%) + pnl_perf(40%) + csi_quality(20%)</text>
 
   <!-- ================================================================ -->
   <!-- LEGEND                                                            -->

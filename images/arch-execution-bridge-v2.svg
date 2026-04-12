@@ -53,10 +53,10 @@
   <text x="380" y="129" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">strategies_auth_simple.csv</text>
   <text x="380" y="148" text-anchor="middle" fill="#8892b0" font-size="9">pair, direction, size, confidence</text>
 
-  <!-- GlobalVariable.dll -->
-  <rect x="295" y="170" width="170" height="48" rx="5" fill="#0a192f" stroke="#F7B32B" stroke-width="1"/>
-  <text x="380" y="189" text-anchor="middle" fill="#ccd6f6" font-size="10" font-weight="600">GlobalVariable.dll</text>
-  <text x="380" y="208" text-anchor="middle" fill="#8892b0" font-size="9">Shared memory bridge</text>
+  <!-- GlobalVariable.dll (DISABLED) -->
+  <rect x="295" y="170" width="170" height="48" rx="5" fill="#0a192f" stroke="#555" stroke-width="1" stroke-dasharray="4,2" opacity="0.4"/>
+  <text x="380" y="189" text-anchor="middle" fill="#666" font-size="10" font-weight="600">GlobalVariable.dll</text>
+  <text x="380" y="208" text-anchor="middle" fill="#555" font-size="9">DISABLED (2026-03-24)</text>
 
   <!-- Arrow: write -->
   <text x="250" y="162" fill="#8892b0" font-size="8" transform="rotate(-90 250 162)">write</text>
@@ -123,9 +123,9 @@
 
   <text x="415" y="427" text-anchor="middle" fill="#8892b0" font-size="9">Secondary execution gateway</text>
 
-  <!-- ========== GV Cross-Validation Section ========== -->
-  <rect x="570" y="310" width="260" height="140" rx="8" fill="#112240" stroke="#ff6b6b" stroke-width="1.5" filter="url(#shadow3)"/>
-  <text x="700" y="335" text-anchor="middle" fill="#ff6b6b" font-size="13" font-weight="700">GV Cross-Validation</text>
+  <!-- ========== GV Cross-Validation Section (DISABLED) ========== -->
+  <rect x="570" y="310" width="260" height="140" rx="8" fill="#112240" stroke="#555" stroke-width="1.5" filter="url(#shadow3)" opacity="0.4" stroke-dasharray="4,2"/>
+  <text x="700" y="335" text-anchor="middle" fill="#666" font-size="13" font-weight="700">GV Cross-Validation (DISABLED)</text>
 
   <!-- MC16 box -->
   <rect x="585" y="350" width="105" height="50" rx="5" fill="#0a192f" stroke="#64ffda" stroke-width="1"/>
@@ -170,8 +170,8 @@
   <line x1="421" y1="530" x2="444" y2="530" stroke="#F7B32B" stroke-width="1.5" marker-end="url(#arwG)"/>
 
   <rect x="449" y="510" width="100" height="40" rx="6" fill="#0a192f" stroke="#ccd6f6" stroke-width="1"/>
-  <text x="499" y="527" text-anchor="middle" fill="#ccd6f6" font-size="9" font-weight="600">GV.dll Read</text>
-  <text x="499" y="542" text-anchor="middle" fill="#8892b0" font-size="8">shared mem</text>
+  <text x="499" y="527" text-anchor="middle" fill="#ccd6f6" font-size="9" font-weight="600">MCPT Read</text>
+  <text x="499" y="542" text-anchor="middle" fill="#8892b0" font-size="8">CSV via DLL</text>
 
   <line x1="549" y1="530" x2="572" y2="530" stroke="#ccd6f6" stroke-width="1.5" marker-end="url(#arwW)"/>
 
@@ -186,6 +186,6 @@
   <text x="760" y="542" text-anchor="middle" fill="#8892b0" font-size="8">live execution</text>
 
   <!-- Timing note -->
-  <text x="425" y="580" text-anchor="middle" fill="#8892b0" font-size="10">Full cycle: Python &#8594; CSV &#8594; GlobalVariable.dll &#8594; MultiCharts &#8594; IBKR TWS &#8594; IDEALPRO</text>
+  <text x="425" y="580" text-anchor="middle" fill="#8892b0" font-size="10">Full cycle: Python &#8594; CSV &#8594; MoneyProdSupervisor.dll &#8594; MultiCharts MCPT &#8594; IBKR TWS &#8594; IDEALPRO</text>
   <text x="425" y="598" text-anchor="middle" fill="#64ffda" font-size="10" font-weight="600">Latency: sub-second for signal propagation</text>
 </svg>

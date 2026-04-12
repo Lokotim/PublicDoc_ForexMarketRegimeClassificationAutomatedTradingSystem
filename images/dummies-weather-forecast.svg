@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 350" width="850" height="350">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="fanUp" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#4ADE80" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#4ADE80" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="fanDown" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F87171" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#F87171" stop-opacity="0.25"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="glow">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#FFD54F" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="850" height="350" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="425" y="42" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold" fill="#FFD54F" filter="url(#glow)">The 4-Day Probabilistic Forecast</text>
+
+  <!-- Y axis label -->
+  <text x="55" y="185" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8" transform="rotate(-90,55,185)">Price</text>
+
+  <!-- Grid lines (horizontal) -->
+  <line x1="100" y1="100" x2="720" y2="100" stroke="#334155" stroke-width="0.5"/>
+  <line x1="100" y1="145" x2="720" y2="145" stroke="#334155" stroke-width="0.5"/>
+  <line x1="100" y1="190" x2="720" y2="190" stroke="#334155" stroke-width="0.5"/>
+  <line x1="100" y1="235" x2="720" y2="235" stroke="#334155" stroke-width="0.5"/>
+  <line x1="100" y1="280" x2="720" y2="280" stroke="#334155" stroke-width="0.5"/>
+
+  <!-- Grid lines (vertical, day markers) -->
+  <line x1="100" y1="80" x2="100" y2="290" stroke="#475569" stroke-width="1"/>
+  <line x1="255" y1="80" x2="255" y2="290" stroke="#334155" stroke-width="0.5" stroke-dasharray="4,4"/>
+  <line x1="410" y1="80" x2="410" y2="290" stroke="#334155" stroke-width="0.5" stroke-dasharray="4,4"/>
+  <line x1="565" y1="80" x2="565" y2="290" stroke="#334155" stroke-width="0.5" stroke-dasharray="4,4"/>
+  <line x1="720" y1="80" x2="720" y2="290" stroke="#334155" stroke-width="0.5" stroke-dasharray="4,4"/>
+
+  <!-- Day labels -->
+  <text x="100" y="308" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#E2E8F0">Now</text>
+  <text x="255" y="308" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#E2E8F0">Day 1</text>
+  <text x="410" y="308" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#E2E8F0">Day 2</text>
+  <text x="565" y="308" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#E2E8F0">Day 3</text>
+  <text x="720" y="308" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#E2E8F0">Day 4</text>
+
+  <!-- Fan chart: upper cone (green, up probability) -->
+  <path d="M100,190 L255,172 L410,148 L565,120 L720,90 L720,175 L565,170 L410,175 L255,182 L100,190 Z" fill="url(#fanUp)" stroke="none"/>
+  <!-- 90% band upper -->
+  <path d="M100,190 L255,176 L410,158 L565,140 L720,115 L720,170 L565,162 L410,170 L255,180 L100,190 Z" fill="#4ADE80" opacity="0.08"/>
+
+  <!-- Fan chart: lower cone (red, down probability) -->
+  <path d="M100,190 L255,205 L410,225 L565,250 L720,280 L720,210 L565,210 L410,205 L255,198 L100,190 Z" fill="url(#fanDown)" stroke="none"/>
+  <!-- 90% band lower -->
+  <path d="M100,190 L255,202 L410,218 L565,238 L720,260 L720,215 L565,218 L410,210 L255,200 L100,190 Z" fill="#F87171" opacity="0.06"/>
+
+  <!-- Upper boundary lines -->
+  <path d="M100,190 L255,172 L410,148 L565,120 L720,90" fill="none" stroke="#4ADE80" stroke-width="1" opacity="0.5" stroke-dasharray="6,3"/>
+  <path d="M100,190 L255,176 L410,158 L565,140 L720,115" fill="none" stroke="#4ADE80" stroke-width="0.8" opacity="0.3" stroke-dasharray="3,3"/>
+
+  <!-- Lower boundary lines -->
+  <path d="M100,190 L255,205 L410,225 L565,250 L720,280" fill="none" stroke="#F87171" stroke-width="1" opacity="0.5" stroke-dasharray="6,3"/>
+  <path d="M100,190 L255,202 L410,218 L565,238 L720,260" fill="none" stroke="#F87171" stroke-width="0.8" opacity="0.3" stroke-dasharray="3,3"/>
+
+  <!-- Most likely path (center line, trending up) -->
+  <path d="M100,190 L255,180 L410,168 L565,158 L720,150" fill="none" stroke="#E2E8F0" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Current price dot -->
+  <circle cx="100" cy="190" r="6" fill="#FFD54F" filter="url(#shadow)"/>
+  <circle cx="100" cy="190" r="3" fill="#0F172A"/>
+
+  <!-- Day 1 probability callout -->
+  <rect x="260" y="120" width="130" height="50" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1" filter="url(#shadow)"/>
+  <text x="325" y="138" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#4ADE80">70% UP</text>
+  <text x="325" y="152" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#F87171">25% DOWN</text>
+  <text x="325" y="165" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">5% sideways</text>
+
+  <!-- Connecting line from callout to Day 1 -->
+  <line x1="290" y1="170" x2="260" y2="180" stroke="#94A3B8" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- Right side info panel -->
+  <g transform="translate(738, 90)">
+    <rect x="0" y="0" width="95" height="80" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1" filter="url(#shadow)"/>
+    <text x="48" y="18" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#E2E8F0">Confidence</text>
+    <line x1="10" y1="24" x2="85" y2="24" stroke="#334155" stroke-width="0.5"/>
+    <text x="12" y="40" font-family="Segoe UI, sans-serif" font-size="10" fill="#4ADE80">Day 1: HIGH</text>
+    <text x="12" y="54" font-family="Segoe UI, sans-serif" font-size="10" fill="#FFD54F">Day 2: MED</text>
+    <text x="12" y="68" font-family="Segoe UI, sans-serif" font-size="10" fill="#F87171">Day 3+: LOW</text>
+  </g>
+
+  <!-- Bottom note -->
+  <text x="425" y="338" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#94A3B8">Wider cone = less certainty (just like a weather forecast)</text>
+</svg>

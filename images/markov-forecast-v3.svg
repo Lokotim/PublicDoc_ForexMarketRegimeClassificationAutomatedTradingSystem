@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 400" width="850" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="glowAmber">
+      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#FFD54F" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="850" height="400" fill="url(#bg)" rx="8"/>
+
+  <!-- Title -->
+  <text x="425" y="30" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#E2E8F0">Markov Transition Matrix and 4-Day Regime Forecast</text>
+  <text x="425" y="48" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#94A3B8">average diagonal persistence ~0.94 | 40 forecasts (8 pairs x 5 steps)</text>
+
+  <!-- Section 1: Transition Matrix Heatmap (left) -->
+  <rect x="20" y="65" width="340" height="300" rx="6" fill="#0F172A" stroke="#334155" stroke-width="1" filter="url(#shadow)"/>
+  <text x="190" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#E2E8F0">4x4 Transition Matrix (EURUSD)</text>
+
+  <!-- Row/Column headers -->
+  <text x="158" y="108" text-anchor="middle" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">TF_L</text>
+  <text x="218" y="108" text-anchor="middle" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">TF_S</text>
+  <text x="278" y="108" text-anchor="middle" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">MR_L</text>
+  <text x="338" y="108" text-anchor="middle" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">MR_S</text>
+
+  <text x="120" y="142" text-anchor="end" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">TF_L</text>
+  <text x="120" y="192" text-anchor="end" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">TF_S</text>
+  <text x="120" y="242" text-anchor="end" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">MR_L</text>
+  <text x="120" y="292" text-anchor="end" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">MR_S</text>
+
+  <!-- Heatmap cells - Row 1 (TF_L) -->
+  <rect x="130" y="115" width="56" height="42" rx="3" fill="#FFD54F" opacity="0.85"/>
+  <text x="158" y="142" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#0F172A">0.94</text>
+  <rect x="190" y="115" width="56" height="42" rx="3" fill="#FFD54F" opacity="0.12"/>
+  <text x="218" y="142" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">0.02</text>
+  <rect x="250" y="115" width="56" height="42" rx="3" fill="#FFD54F" opacity="0.10"/>
+  <text x="278" y="142" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">0.03</text>
+  <rect x="310" y="115" width="56" height="42" rx="3" fill="#FFD54F" opacity="0.06"/>
+  <text x="338" y="142" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">0.01</text>
+
+  <!-- Row 2 (TF_S) -->
+  <rect x="130" y="165" width="56" height="42" rx="3" fill="#FFD54F" opacity="0.10"/>
+  <text x="158" y="192" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">0.01</text>
+  <rect x="190" y="165" width="56" height="42" rx="3" fill="#FFD54F" opacity="0.80"/>
+  <text x="218" y="192" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#0F172A">0.93</text>
+  <rect x="250" y="165" width="56" height="42" rx="3" fill="#FFD54F" opacity="0.08"/>
+  <text x="278" y="192" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">0.02</text>
+  <rect x="310" y="165" width="56" height="42" rx="3" fill="#FFD54F" opacity="0.14"/>
+  <text x="338" y="192" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">0.04</text>
+
+  <!-- Row 3 (MR_L) -->
+  <rect x="130" y="215" width="56" height="42" rx="3" fill="#FFD54F" opacity="0.12"/>
+  <text x="158" y="242" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">0.03</text>
+  <rect x="190" y="215" width="56" height="42" rx="3" fill="#FFD54F" opacity="0.08"/>
+  <text x="218" y="242" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">0.01</text>
+  <rect x="250" y="215" width="56" height="42" rx="3" fill="#FFD54F" opacity="0.82"/>
+  <text x="278" y="242" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#0F172A">0.93</text>
+  <rect x="310" y="215" width="56" height="42" rx="3" fill="#FFD54F" opacity="0.10"/>
+  <text x="338" y="242" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">0.03</text>
+
+  <!-- Row 4 (MR_S) -->
+  <rect x="130" y="265" width="56" height="42" rx="3" fill="#FFD54F" opacity="0.08"/>
+  <text x="158" y="292" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">0.01</text>
+  <rect x="190" y="265" width="56" height="42" rx="3" fill="#FFD54F" opacity="0.14"/>
+  <text x="218" y="292" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">0.04</text>
+  <rect x="250" y="265" width="56" height="42" rx="3" fill="#FFD54F" opacity="0.08"/>
+  <text x="278" y="292" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">0.02</text>
+  <rect x="310" y="265" width="56" height="42" rx="3" fill="#FFD54F" opacity="0.82"/>
+  <text x="338" y="292" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#0F172A">0.93</text>
+
+  <!-- Diagonal highlight label -->
+  <text x="190" y="340" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#FFD54F">bright diagonal = high persistence</text>
+  <text x="190" y="355" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">off-diagonal = transition probability</text>
+
+  <!-- Section 2: 4-Day Timeline / Probability Tree (right) -->
+  <rect x="390" y="65" width="440" height="300" rx="6" fill="#0F172A" stroke="#334155" stroke-width="1" filter="url(#shadow)"/>
+  <text x="610" y="85" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#E2E8F0">4-Day Regime Projection (EURUSD: MR_SHORT)</text>
+
+  <!-- Timeline axis -->
+  <line x1="430" y1="300" x2="800" y2="300" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Day markers -->
+  <circle cx="440" cy="300" r="4" fill="#FFD54F"/>
+  <text x="440" y="320" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">Day 0</text>
+
+  <circle cx="530" cy="300" r="4" fill="#FFD54F" opacity="0.9"/>
+  <text x="530" y="320" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">Day 1</text>
+
+  <circle cx="620" cy="300" r="4" fill="#FFD54F" opacity="0.8"/>
+  <text x="620" y="320" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">Day 2</text>
+
+  <circle cx="710" cy="300" r="4" fill="#FFD54F" opacity="0.7"/>
+  <text x="710" y="320" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">Day 3</text>
+
+  <circle cx="790" cy="300" r="4" fill="#FFD54F" opacity="0.6"/>
+  <text x="790" y="320" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">Day 4</text>
+
+  <!-- Main path (MR_SHORT persisting) -->
+  <line x1="440" y1="300" x2="530" y2="170" stroke="#FFD54F" stroke-width="2.5" stroke-linecap="round" filter="url(#glowAmber)"/>
+  <line x1="530" y1="170" x2="620" y2="180" stroke="#FFD54F" stroke-width="2.5" stroke-linecap="round" filter="url(#glowAmber)"/>
+  <line x1="620" y1="180" x2="710" y2="192" stroke="#FFD54F" stroke-width="2" stroke-linecap="round" filter="url(#glowAmber)"/>
+  <line x1="710" y1="192" x2="790" y2="205" stroke="#FFD54F" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Branch: TF_SHORT possibility -->
+  <line x1="530" y1="170" x2="620" y2="240" stroke="#00D4FF" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <line x1="620" y1="240" x2="710" y2="248" stroke="#00D4FF" stroke-width="0.8" stroke-linecap="round" opacity="0.4"/>
+  <line x1="710" y1="248" x2="790" y2="255" stroke="#00D4FF" stroke-width="0.6" stroke-linecap="round" opacity="0.3"/>
+
+  <!-- Branch: MR_LONG possibility -->
+  <line x1="620" y1="180" x2="710" y2="260" stroke="#4ADE80" stroke-width="0.8" stroke-linecap="round" opacity="0.4"/>
+  <line x1="710" y1="260" x2="790" y2="268" stroke="#4ADE80" stroke-width="0.6" stroke-linecap="round" opacity="0.3"/>
+
+  <!-- Probability labels on main path -->
+  <rect x="460" y="100" width="100" height="50" rx="4" fill="#1E293B" stroke="#FFD54F" stroke-width="1" opacity="0.9"/>
+  <text x="510" y="118" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#FFD54F">MR_S: 93%</text>
+  <text x="510" y="132" text-anchor="middle" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">TF_S:  4%</text>
+  <text x="510" y="144" text-anchor="middle" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">MR_L:  2%</text>
+
+  <rect x="590" y="110" width="100" height="50" rx="4" fill="#1E293B" stroke="#FFD54F" stroke-width="1" opacity="0.8"/>
+  <text x="640" y="128" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#FFD54F">MR_S: 87%</text>
+  <text x="640" y="142" text-anchor="middle" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">TF_S:  7%</text>
+  <text x="640" y="154" text-anchor="middle" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">MR_L:  4%</text>
+
+  <rect x="720" y="120" width="100" height="50" rx="4" fill="#1E293B" stroke="#FFD54F" stroke-width="1" opacity="0.7"/>
+  <text x="770" y="138" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#FFD54F">MR_S: 76%</text>
+  <text x="770" y="152" text-anchor="middle" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">TF_S: 12%</text>
+  <text x="770" y="164" text-anchor="middle" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">MR_L:  8%</text>
+
+  <!-- Legend -->
+  <line x1="420" y1="345" x2="440" y2="345" stroke="#FFD54F" stroke-width="2.5"/>
+  <text x="448" y="349" font-family="Consolas, monospace" font-size="9" fill="#FFD54F">most likely path</text>
+  <line x1="540" y1="345" x2="560" y2="345" stroke="#00D4FF" stroke-width="1" opacity="0.5"/>
+  <text x="568" y="349" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">alternative branch</text>
+  <line x1="680" y1="345" x2="700" y2="345" stroke="#4ADE80" stroke-width="0.8" opacity="0.4"/>
+  <text x="708" y="349" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">low-prob branch</text>
+
+  <!-- Footer -->
+  <text x="425" y="390" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#64748B">P(persist) = diagonal mean 0.94 | transition = regime change probability per hour</text>
+</svg>

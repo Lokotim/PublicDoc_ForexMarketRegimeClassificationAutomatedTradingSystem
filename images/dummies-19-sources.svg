@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 350" width="850" height="350">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="glow">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#FFD54F" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="850" height="350" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="425" y="42" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold" fill="#FFD54F" filter="url(#glow)">19 Data Sources, 10 Parallel Threads</text>
+
+  <!-- Grid: 4 columns x 5 rows, each cell ~185x48 -->
+  <!-- Row 1: Sentiment (cyan) -->
+  <rect x="30" y="65" width="185" height="44" rx="8" fill="#00D4FF" opacity="0.12" stroke="#00D4FF" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="122" y="83" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#00D4FF">IG Sentiment</text>
+  <text x="122" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">retail positioning</text>
+
+  <rect x="225" y="65" width="185" height="44" rx="8" fill="#00D4FF" opacity="0.12" stroke="#00D4FF" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="317" y="83" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#00D4FF">Myfxbook</text>
+  <text x="317" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">community outlook</text>
+
+  <rect x="420" y="65" width="185" height="44" rx="8" fill="#00D4FF" opacity="0.12" stroke="#00D4FF" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="512" y="83" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#00D4FF">DailyFX</text>
+  <text x="512" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">analyst sentiment</text>
+
+  <rect x="615" y="65" width="205" height="44" rx="8" fill="#00D4FF" opacity="0.12" stroke="#00D4FF" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="717" y="83" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#00D4FF">ForexFactory</text>
+  <text x="717" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">crowd gauge</text>
+
+  <!-- Row 2: Institutional (gold) + News (green) -->
+  <rect x="30" y="117" width="185" height="44" rx="8" fill="#FFD54F" opacity="0.12" stroke="#FFD54F" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="122" y="135" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#FFD54F">CFTC COT</text>
+  <text x="122" y="152" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">institutional flows</text>
+
+  <rect x="225" y="117" width="185" height="44" rx="8" fill="#FFD54F" opacity="0.12" stroke="#FFD54F" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="317" y="135" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#FFD54F">COT Spread</text>
+  <text x="317" y="152" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">net positioning</text>
+
+  <rect x="420" y="117" width="185" height="44" rx="8" fill="#4ADE80" opacity="0.12" stroke="#4ADE80" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="512" y="135" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#4ADE80">GDELT News</text>
+  <text x="512" y="152" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">global events</text>
+
+  <rect x="615" y="117" width="205" height="44" rx="8" fill="#4ADE80" opacity="0.12" stroke="#4ADE80" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="717" y="135" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#4ADE80">Econ Calendar</text>
+  <text x="717" y="152" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">scheduled releases</text>
+
+  <!-- Row 3: News (green) + Options (purple) + Prediction (amber) -->
+  <rect x="30" y="169" width="185" height="44" rx="8" fill="#4ADE80" opacity="0.12" stroke="#4ADE80" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="122" y="187" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#4ADE80">Central Banks</text>
+  <text x="122" y="204" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">rate decisions</text>
+
+  <rect x="225" y="169" width="185" height="44" rx="8" fill="#E879F9" opacity="0.12" stroke="#E879F9" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="317" y="187" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#E879F9">FX Options</text>
+  <text x="317" y="204" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">risk reversals</text>
+
+  <rect x="420" y="169" width="185" height="44" rx="8" fill="#FFB74D" opacity="0.12" stroke="#FFB74D" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="512" y="187" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#FFB74D">Polymarket</text>
+  <text x="512" y="204" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">prediction bets</text>
+
+  <rect x="615" y="169" width="205" height="44" rx="8" fill="#FFB74D" opacity="0.12" stroke="#FFB74D" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="717" y="187" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#FFB74D">Metaculus</text>
+  <text x="717" y="204" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">forecast markets</text>
+
+  <!-- Row 4: Macro (purple) -->
+  <rect x="30" y="221" width="185" height="44" rx="8" fill="#E879F9" opacity="0.12" stroke="#E879F9" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="122" y="239" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#E879F9">VIX</text>
+  <text x="122" y="256" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">equity vol</text>
+
+  <rect x="225" y="221" width="185" height="44" rx="8" fill="#E879F9" opacity="0.12" stroke="#E879F9" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="317" y="239" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#E879F9">OVX</text>
+  <text x="317" y="256" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">oil vol</text>
+
+  <rect x="420" y="221" width="185" height="44" rx="8" fill="#E879F9" opacity="0.12" stroke="#E879F9" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="512" y="239" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#E879F9">TLT Vol</text>
+  <text x="512" y="256" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">bond vol</text>
+
+  <rect x="615" y="221" width="205" height="44" rx="8" fill="#E879F9" opacity="0.12" stroke="#E879F9" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="717" y="239" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#E879F9">FX IV</text>
+  <text x="717" y="256" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">currency vol</text>
+
+  <!-- Row 5: Macro (purple) + Broker (red) + empty -->
+  <rect x="30" y="273" width="185" height="44" rx="8" fill="#E879F9" opacity="0.12" stroke="#E879F9" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="122" y="291" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#E879F9">Yield Curves</text>
+  <text x="122" y="308" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">rate spreads</text>
+
+  <rect x="225" y="273" width="185" height="44" rx="8" fill="#E879F9" opacity="0.12" stroke="#E879F9" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="317" y="291" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#E879F9">DXY</text>
+  <text x="317" y="308" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">dollar index</text>
+
+  <rect x="420" y="273" width="185" height="44" rx="8" fill="#F87171" opacity="0.12" stroke="#F87171" stroke-width="1" opacity="0.4" filter="url(#shadow)"/>
+  <text x="512" y="291" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="bold" fill="#F87171">TWS API</text>
+  <text x="512" y="308" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">live positions</text>
+
+  <!-- Empty slot -->
+  <rect x="615" y="273" width="205" height="44" rx="8" fill="#334155" opacity="0.3" stroke="#475569" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="717" y="299" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#475569">reserved</text>
+
+  <!-- Legend bar at bottom -->
+  <g transform="translate(80, 332)">
+    <circle cx="0" cy="0" r="4" fill="#00D4FF"/>
+    <text x="8" y="4" font-family="Segoe UI, sans-serif" font-size="10" fill="#94A3B8">Sentiment (4)</text>
+    <circle cx="110" cy="0" r="4" fill="#FFD54F"/>
+    <text x="118" y="4" font-family="Segoe UI, sans-serif" font-size="10" fill="#94A3B8">Institutional (2)</text>
+    <circle cx="240" cy="0" r="4" fill="#4ADE80"/>
+    <text x="248" y="4" font-family="Segoe UI, sans-serif" font-size="10" fill="#94A3B8">News (3)</text>
+    <circle cx="325" cy="0" r="4" fill="#E879F9"/>
+    <text x="333" y="4" font-family="Segoe UI, sans-serif" font-size="10" fill="#94A3B8">Macro (7)</text>
+    <circle cx="420" cy="0" r="4" fill="#FFB74D"/>
+    <text x="428" y="4" font-family="Segoe UI, sans-serif" font-size="10" fill="#94A3B8">Prediction (2)</text>
+    <circle cx="535" cy="0" r="4" fill="#F87171"/>
+    <text x="543" y="4" font-family="Segoe UI, sans-serif" font-size="10" fill="#94A3B8">Broker (1)</text>
+  </g>
+</svg>

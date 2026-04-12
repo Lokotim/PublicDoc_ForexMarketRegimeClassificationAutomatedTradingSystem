@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 550" width="850" height="550">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="centerGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#00D4FF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="850" height="550" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="425" y="32" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="18" font-weight="bold" fill="#E2E8F0">THE ORACLE NETWORK</text>
+  <text x="425" y="52" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94A3B8">10 Threads, 19 Sources, 62 Seconds</text>
+
+  <!-- Circular timeline ring -->
+  <circle cx="425" cy="290" r="185" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="4,4"/>
+  <circle cx="425" cy="290" r="185" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-dasharray="1100,1162" stroke-dashoffset="-58" stroke-linecap="round" opacity="0.7"/>
+  <!-- 62s label on ring -->
+  <text x="612" y="295" font-family="Consolas, monospace" font-size="10" fill="#4ADE80" text-anchor="middle">62s</text>
+
+  <!-- Center node -->
+  <circle cx="425" cy="290" r="48" fill="#0F172A" stroke="#00D4FF" stroke-width="2.5" filter="shadow"/>
+  <circle cx="425" cy="290" r="42" fill="none" stroke="#00D4FF" stroke-width="0.5" opacity="0.4"/>
+  <text x="425" y="285" text-anchor="middle" font-family="Consolas, monospace" font-size="14" font-weight="bold" fill="#00D4FF">PIPELINE</text>
+  <text x="425" y="302" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">Stage 1</text>
+
+  <!-- Thread arms + source nodes -->
+  <!-- Thread 1: Retail Sentiment (top, slightly left) -->
+  <line x1="425" y1="242" x2="290" y2="95" stroke="#4ADE80" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <rect x="220" y="68" rx="6" ry="6" width="140" height="52" fill="#1E293B" stroke="#4ADE80" stroke-width="1.5" filter="shadow"/>
+  <text x="233" y="84" font-family="Consolas, monospace" font-size="9" fill="#4ADE80">T1</text>
+  <text x="248" y="84" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="bold" fill="#E2E8F0">Retail Sentiment</text>
+  <text x="233" y="98" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">IG / Dukascopy</text>
+  <text x="233" y="112" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">MyFxBook / FXSSI</text>
+
+  <!-- Thread 2: Economic Calendar (top right) -->
+  <line x1="460" y1="248" x2="590" y2="95" stroke="#4ADE80" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <rect x="530" y="68" rx="6" ry="6" width="140" height="52" fill="#1E293B" stroke="#4ADE80" stroke-width="1.5" filter="shadow"/>
+  <text x="543" y="84" font-family="Consolas, monospace" font-size="9" fill="#4ADE80">T2</text>
+  <text x="558" y="84" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="bold" fill="#E2E8F0">Econ Calendar</text>
+  <text x="543" y="98" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">ForexFactory</text>
+  <text x="543" y="112" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">304+ events</text>
+
+  <!-- Thread 3: Implied Vol (right, upper) -->
+  <line x1="473" y1="280" x2="680" y2="180" stroke="#4ADE80" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <rect x="680" y="155" rx="6" ry="6" width="140" height="52" fill="#1E293B" stroke="#4ADE80" stroke-width="1.5" filter="shadow"/>
+  <text x="693" y="171" font-family="Consolas, monospace" font-size="9" fill="#4ADE80">T3</text>
+  <text x="708" y="171" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="bold" fill="#E2E8F0">Implied Vol</text>
+  <text x="693" y="185" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">CME FX ETF Opts</text>
+  <text x="693" y="199" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">6 ETFs / VRP</text>
+
+  <!-- Thread 4: Prediction Markets (right, mid) -->
+  <line x1="473" y1="300" x2="680" y2="300" stroke="#4ADE80" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <rect x="680" y="275" rx="6" ry="6" width="140" height="52" fill="#1E293B" stroke="#4ADE80" stroke-width="1.5" filter="shadow"/>
+  <text x="693" y="291" font-family="Consolas, monospace" font-size="9" fill="#4ADE80">T4</text>
+  <text x="708" y="291" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="bold" fill="#E2E8F0">Pred Markets</text>
+  <text x="693" y="305" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">Kalshi + Polymarket</text>
+  <text x="693" y="319" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">297 contracts</text>
+
+  <!-- Thread 5: News Sentiment (right, lower) -->
+  <line x1="473" y1="315" x2="680" y2="410" stroke="#4ADE80" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <rect x="680" y="388" rx="6" ry="6" width="140" height="52" fill="#1E293B" stroke="#4ADE80" stroke-width="1.5" filter="shadow"/>
+  <text x="693" y="404" font-family="Consolas, monospace" font-size="9" fill="#4ADE80">T5</text>
+  <text x="708" y="404" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="bold" fill="#E2E8F0">News Sentiment</text>
+  <text x="693" y="418" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">GDELT / Google / Finnhub</text>
+  <text x="693" y="432" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">FinBERT NLP</text>
+
+  <!-- Thread 6: ATR (bottom right) -->
+  <line x1="455" y1="335" x2="560" y2="470" stroke="#4ADE80" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <rect x="500" y="450" rx="6" ry="6" width="140" height="52" fill="#1E293B" stroke="#4ADE80" stroke-width="1.5" filter="shadow"/>
+  <text x="513" y="466" font-family="Consolas, monospace" font-size="9" fill="#4ADE80">T6</text>
+  <text x="528" y="466" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="bold" fill="#E2E8F0">ATR Calc</text>
+  <text x="513" y="480" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">IBKR H4 + D1</text>
+  <text x="513" y="494" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">8 pairs</text>
+
+  <!-- Thread 7: CFTC COT (bottom) -->
+  <line x1="425" y1="338" x2="380" y2="470" stroke="#4ADE80" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <rect x="310" y="450" rx="6" ry="6" width="140" height="52" fill="#1E293B" stroke="#4ADE80" stroke-width="1.5" filter="shadow"/>
+  <text x="323" y="466" font-family="Consolas, monospace" font-size="9" fill="#4ADE80">T7</text>
+  <text x="338" y="466" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="bold" fill="#E2E8F0">CFTC COT</text>
+  <text x="323" y="480" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">Institutional flow</text>
+  <text x="323" y="494" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">7 currencies</text>
+
+  <!-- Thread 8: Currency Strength (bottom left) -->
+  <line x1="395" y1="335" x2="230" y2="460" stroke="#4ADE80" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <rect x="130" y="440" rx="6" ry="6" width="140" height="52" fill="#1E293B" stroke="#4ADE80" stroke-width="1.5" filter="shadow"/>
+  <text x="143" y="456" font-family="Consolas, monospace" font-size="9" fill="#4ADE80">T8</text>
+  <text x="158" y="456" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="bold" fill="#E2E8F0">Currency Strength</text>
+  <text x="143" y="470" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">Cross-rate matrix</text>
+  <text x="143" y="484" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">8 pairs</text>
+
+  <!-- Thread 9: Seasonal (left, lower) -->
+  <line x1="377" y1="310" x2="170" y2="350" stroke="#FFD54F" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <rect x="30" y="325" rx="6" ry="6" width="140" height="52" fill="#1E293B" stroke="#FFD54F" stroke-width="1.5" filter="shadow"/>
+  <text x="43" y="341" font-family="Consolas, monospace" font-size="9" fill="#FFD54F">T9</text>
+  <text x="58" y="341" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="bold" fill="#E2E8F0">Seasonals</text>
+  <text x="43" y="355" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">MarketBulls</text>
+  <text x="43" y="369" font-family="Consolas, monospace" font-size="8" fill="#FFD54F">Selenium (slow)</text>
+
+  <!-- Thread 10: Cross-Asset Macro (left, upper) -->
+  <line x1="377" y1="275" x2="170" y2="200" stroke="#4ADE80" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <rect x="30" y="170" rx="6" ry="6" width="140" height="58" fill="#1E293B" stroke="#4ADE80" stroke-width="1.5" filter="shadow"/>
+  <text x="43" y="186" font-family="Consolas, monospace" font-size="9" fill="#4ADE80">T10</text>
+  <text x="60" y="186" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="bold" fill="#E2E8F0">Macro Data</text>
+  <text x="43" y="200" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">Yahoo + FRED</text>
+  <text x="43" y="214" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">25 series / 55d MA</text>
+  <text x="43" y="226" font-family="Consolas, monospace" font-size="8" fill="#94A3B8">1Y z-score</text>
+
+  <!-- Status indicators (green dots for completed, amber for bottleneck) -->
+  <circle cx="220" cy="94" r="4" fill="#4ADE80"/>
+  <circle cx="530" cy="94" r="4" fill="#4ADE80"/>
+  <circle cx="680" cy="181" r="4" fill="#4ADE80"/>
+  <circle cx="680" cy="301" r="4" fill="#4ADE80"/>
+  <circle cx="680" cy="414" r="4" fill="#4ADE80"/>
+  <circle cx="500" cy="476" r="4" fill="#4ADE80"/>
+  <circle cx="310" cy="476" r="4" fill="#4ADE80"/>
+  <circle cx="130" cy="466" r="4" fill="#4ADE80"/>
+  <circle cx="30" cy="351" r="4" fill="#FFD54F"/>
+  <circle cx="30" cy="199" r="4" fill="#4ADE80"/>
+
+  <!-- Legend -->
+  <rect x="30" y="510" rx="4" ry="4" width="790" height="28" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <circle cx="55" cy="524" r="5" fill="#4ADE80"/>
+  <text x="66" y="528" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94A3B8">Completed</text>
+  <circle cx="155" cy="524" r="5" fill="#FFD54F"/>
+  <text x="166" y="528" font-family="'Segoe UI', sans-serif" font-size="10" fill="#94A3B8">Bottleneck</text>
+  <text x="280" y="528" font-family="Consolas, monospace" font-size="10" fill="#00D4FF">19 sources</text>
+  <text x="370" y="528" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">x</text>
+  <text x="385" y="528" font-family="Consolas, monospace" font-size="10" fill="#00D4FF">8 pairs</text>
+  <text x="440" y="528" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">=</text>
+  <text x="455" y="528" font-family="Consolas, monospace" font-size="10" fill="#FFD54F">full coverage across all dimensions</text>
+</svg>

@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 400" width="850" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="longCell" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="shortCell" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F87171"/>
+      <stop offset="100%" stop-color="#DC2626"/>
+    </linearGradient>
+    <filter id="glow">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#FFD54F" flood-opacity="0.4"/>
+    </filter>
+    <filter id="cellShadow">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="850" height="400" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="425" y="36" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#FFD54F" filter="url(#glow)">The 32 Survivors: Orthogonal Portfolio Structure</text>
+
+  <!-- Column group headers -->
+  <text x="330" y="66" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#E879F9">Trend Following</text>
+  <line x1="240" y1="70" x2="420" y2="70" stroke="#E879F9" stroke-width="1" opacity="0.5"/>
+  <text x="555" y="66" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#00D4FF">Mean Reversion</text>
+  <line x1="465" y1="70" x2="645" y2="70" stroke="#00D4FF" stroke-width="1" opacity="0.5"/>
+
+  <!-- Column sub-headers -->
+  <text x="285" y="88" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#3B82F6">TF_L</text>
+  <text x="375" y="88" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#F87171">TF_S</text>
+  <text x="510" y="88" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#3B82F6">MR_L</text>
+  <text x="600" y="88" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#F87171">MR_S</text>
+
+  <!-- 8 pair rows x 4 columns = 32 cells -->
+  <!-- Row labels (pairs) -->
+  <g font-family="Consolas, monospace" font-size="11" fill="#E2E8F0">
+    <text x="190" y="112" text-anchor="end">EURUSD</text>
+    <text x="190" y="147" text-anchor="end">USDJPY</text>
+    <text x="190" y="182" text-anchor="end">GBPUSD</text>
+    <text x="190" y="217" text-anchor="end">USDCHF</text>
+    <text x="190" y="252" text-anchor="end">AUDUSD</text>
+    <text x="190" y="287" text-anchor="end">USDCAD</text>
+    <text x="190" y="322" text-anchor="end">EURJPY</text>
+    <text x="190" y="357" text-anchor="end">AUDJPY</text>
+  </g>
+
+  <!-- Grid cells: 4 columns x 8 rows -->
+  <!-- Col 1: TF_L (Long, blue) -->
+  <g filter="url(#cellShadow)">
+    <rect x="240" y="96" width="80" height="28" rx="4" fill="url(#longCell)" opacity="0.8"/><text x="280" y="115" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">LONG</text>
+    <rect x="240" y="131" width="80" height="28" rx="4" fill="url(#longCell)" opacity="0.8"/><text x="280" y="150" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">LONG</text>
+    <rect x="240" y="166" width="80" height="28" rx="4" fill="url(#longCell)" opacity="0.8"/><text x="280" y="185" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">LONG</text>
+    <rect x="240" y="201" width="80" height="28" rx="4" fill="url(#longCell)" opacity="0.8"/><text x="280" y="220" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">LONG</text>
+    <rect x="240" y="236" width="80" height="28" rx="4" fill="url(#longCell)" opacity="0.8"/><text x="280" y="255" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">LONG</text>
+    <rect x="240" y="271" width="80" height="28" rx="4" fill="url(#longCell)" opacity="0.8"/><text x="280" y="290" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">LONG</text>
+    <rect x="240" y="306" width="80" height="28" rx="4" fill="url(#longCell)" opacity="0.8"/><text x="280" y="325" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">LONG</text>
+    <rect x="240" y="341" width="80" height="28" rx="4" fill="url(#longCell)" opacity="0.8"/><text x="280" y="360" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">LONG</text>
+  </g>
+
+  <!-- Col 2: TF_S (Short, red) -->
+  <g filter="url(#cellShadow)">
+    <rect x="330" y="96" width="80" height="28" rx="4" fill="url(#shortCell)" opacity="0.8"/><text x="370" y="115" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">SHORT</text>
+    <rect x="330" y="131" width="80" height="28" rx="4" fill="url(#shortCell)" opacity="0.8"/><text x="370" y="150" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">SHORT</text>
+    <rect x="330" y="166" width="80" height="28" rx="4" fill="url(#shortCell)" opacity="0.8"/><text x="370" y="185" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">SHORT</text>
+    <rect x="330" y="201" width="80" height="28" rx="4" fill="url(#shortCell)" opacity="0.8"/><text x="370" y="220" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">SHORT</text>
+    <rect x="330" y="236" width="80" height="28" rx="4" fill="url(#shortCell)" opacity="0.8"/><text x="370" y="255" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">SHORT</text>
+    <rect x="330" y="271" width="80" height="28" rx="4" fill="url(#shortCell)" opacity="0.8"/><text x="370" y="290" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">SHORT</text>
+    <rect x="330" y="306" width="80" height="28" rx="4" fill="url(#shortCell)" opacity="0.8"/><text x="370" y="325" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">SHORT</text>
+    <rect x="330" y="341" width="80" height="28" rx="4" fill="url(#shortCell)" opacity="0.8"/><text x="370" y="360" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">SHORT</text>
+  </g>
+
+  <!-- Divider between TF and MR -->
+  <line x1="440" y1="90" x2="440" y2="375" stroke="#334155" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Col 3: MR_L (Long, blue) -->
+  <g filter="url(#cellShadow)">
+    <rect x="465" y="96" width="80" height="28" rx="4" fill="url(#longCell)" opacity="0.8"/><text x="505" y="115" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">LONG</text>
+    <rect x="465" y="131" width="80" height="28" rx="4" fill="url(#longCell)" opacity="0.8"/><text x="505" y="150" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">LONG</text>
+    <rect x="465" y="166" width="80" height="28" rx="4" fill="url(#longCell)" opacity="0.8"/><text x="505" y="185" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">LONG</text>
+    <rect x="465" y="201" width="80" height="28" rx="4" fill="url(#longCell)" opacity="0.8"/><text x="505" y="220" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">LONG</text>
+    <rect x="465" y="236" width="80" height="28" rx="4" fill="url(#longCell)" opacity="0.8"/><text x="505" y="255" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">LONG</text>
+    <rect x="465" y="271" width="80" height="28" rx="4" fill="url(#longCell)" opacity="0.8"/><text x="505" y="290" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">LONG</text>
+    <rect x="465" y="306" width="80" height="28" rx="4" fill="url(#longCell)" opacity="0.8"/><text x="505" y="325" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">LONG</text>
+    <rect x="465" y="341" width="80" height="28" rx="4" fill="url(#longCell)" opacity="0.8"/><text x="505" y="360" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">LONG</text>
+  </g>
+
+  <!-- Col 4: MR_S (Short, red) -->
+  <g filter="url(#cellShadow)">
+    <rect x="555" y="96" width="80" height="28" rx="4" fill="url(#shortCell)" opacity="0.8"/><text x="595" y="115" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">SHORT</text>
+    <rect x="555" y="131" width="80" height="28" rx="4" fill="url(#shortCell)" opacity="0.8"/><text x="595" y="150" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">SHORT</text>
+    <rect x="555" y="166" width="80" height="28" rx="4" fill="url(#shortCell)" opacity="0.8"/><text x="595" y="185" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">SHORT</text>
+    <rect x="555" y="201" width="80" height="28" rx="4" fill="url(#shortCell)" opacity="0.8"/><text x="595" y="220" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">SHORT</text>
+    <rect x="555" y="236" width="80" height="28" rx="4" fill="url(#shortCell)" opacity="0.8"/><text x="595" y="255" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">SHORT</text>
+    <rect x="555" y="271" width="80" height="28" rx="4" fill="url(#shortCell)" opacity="0.8"/><text x="595" y="290" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">SHORT</text>
+    <rect x="555" y="306" width="80" height="28" rx="4" fill="url(#shortCell)" opacity="0.8"/><text x="595" y="325" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">SHORT</text>
+    <rect x="555" y="341" width="80" height="28" rx="4" fill="url(#shortCell)" opacity="0.8"/><text x="595" y="360" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#E2E8F0">SHORT</text>
+  </g>
+
+  <!-- Right side: Summary stats -->
+  <g transform="translate(660, 96)">
+    <rect width="170" height="275" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1" opacity="0.8"/>
+
+    <!-- Direction balance -->
+    <text x="85" y="28" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#E2E8F0">Direction Balance</text>
+    <rect x="20" y="40" width="55" height="20" rx="4" fill="#1D4ED8" opacity="0.6"/>
+    <text x="47" y="55" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#93C5FD">16 L</text>
+    <rect x="95" y="40" width="55" height="20" rx="4" fill="#DC2626" opacity="0.6"/>
+    <text x="122" y="55" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#FCA5A5">16 S</text>
+
+    <!-- Style balance -->
+    <text x="85" y="90" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#E2E8F0">Style Balance</text>
+    <rect x="20" y="102" width="55" height="20" rx="4" fill="#7C3AED" opacity="0.5"/>
+    <text x="47" y="117" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#E879F9">16 TF</text>
+    <rect x="95" y="102" width="55" height="20" rx="4" fill="#0891B2" opacity="0.5"/>
+    <text x="122" y="117" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#00D4FF">16 MR</text>
+
+    <!-- Totals -->
+    <line x1="20" y1="140" x2="150" y2="140" stroke="#334155" stroke-width="1"/>
+    <text x="85" y="165" text-anchor="middle" font-family="Consolas, monospace" font-size="13" font-weight="bold" fill="#FFD54F">16 Long + 16 Short</text>
+    <text x="85" y="188" text-anchor="middle" font-family="Consolas, monospace" font-size="13" font-weight="bold" fill="#FFD54F">16 TF + 16 MR</text>
+
+    <!-- Legend -->
+    <line x1="20" y1="210" x2="150" y2="210" stroke="#334155" stroke-width="1"/>
+    <rect x="20" y="225" width="14" height="14" rx="3" fill="url(#longCell)"/>
+    <text x="42" y="237" font-family="Segoe UI, sans-serif" font-size="10" fill="#94A3B8">Long positions</text>
+    <rect x="20" y="248" width="14" height="14" rx="3" fill="url(#shortCell)"/>
+    <text x="42" y="260" font-family="Segoe UI, sans-serif" font-size="10" fill="#94A3B8">Short positions</text>
+  </g>
+</svg>

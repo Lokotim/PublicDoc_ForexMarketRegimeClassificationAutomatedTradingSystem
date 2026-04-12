@@ -46,7 +46,7 @@
 
   <!-- Scrapers -->
   <rect x="40" y="108" width="220" height="28" rx="6" fill="#4ADE80" fill-opacity="0.12" stroke="#4ADE80" stroke-width="0.8" stroke-opacity="0.5"/>
-  <text x="150" y="127" text-anchor="middle" font-family="monospace" font-size="10" fill="#4ADE80">15 Scrapers</text>
+  <text x="150" y="127" text-anchor="middle" font-family="monospace" font-size="10" fill="#4ADE80">19 Scrapers</text>
 
   <!-- Individual scraper items -->
   <g font-family="monospace" font-size="8" fill="#94A3B8">
@@ -150,11 +150,11 @@
   <!-- Position Sizing -->
   <rect x="645" y="110" width="210" height="35" rx="6" fill="#ff9100" fill-opacity="0.12" stroke="#ff9100" stroke-width="0.8"/>
   <text x="750" y="125" text-anchor="middle" font-family="monospace" font-size="9" fill="#ff9100">Position Sizing</text>
-  <text x="750" y="137" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">6-layer cascade</text>
+  <text x="750" y="137" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">8-layer cascade</text>
 
   <!-- CSV Bridge -->
   <rect x="645" y="160" width="210" height="35" rx="6" fill="#ff9100" fill-opacity="0.12" stroke="#ff9100" stroke-width="0.8"/>
-  <text x="750" y="175" text-anchor="middle" font-family="monospace" font-size="9" fill="#ff9100">CSV + GlobalVar</text>
+  <text x="750" y="175" text-anchor="middle" font-family="monospace" font-size="9" fill="#ff9100">CSV + MoneyProdSupervisor.dll</text>
   <text x="750" y="187" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">Shared memory bridge</text>
 
   <!-- MultiCharts -->

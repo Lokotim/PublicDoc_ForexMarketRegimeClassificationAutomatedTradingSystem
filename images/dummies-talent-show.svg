@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 350" width="850" height="350">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="glow">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#FFD54F" flood-opacity="0.5"/>
+    </filter>
+    <filter id="goldGlow">
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#FFD54F" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="850" height="350" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="425" y="38" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold" fill="#FFD54F" filter="url(#glow)">The 9-Stage Gauntlet: From 10M to 32</text>
+
+  <!-- Funnel: centered, widest at top, narrowest at bottom -->
+  <!-- Each bar: y increments ~32px, width shrinks, centered at x=425 -->
+
+  <!-- Stage 1: 10,000,000 -->
+  <rect x="95" y="55" width="660" height="26" rx="6" fill="#94A3B8" opacity="0.12" stroke="#94A3B8" stroke-width="0.8"/>
+  <text x="425" y="73" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#94A3B8">10,000,000 candidates</text>
+
+  <!-- Stage 2: 50,000 -->
+  <rect x="135" y="85" width="580" height="26" rx="6" fill="#94A3B8" opacity="0.15" stroke="#94A3B8" stroke-width="0.8"/>
+  <text x="425" y="103" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#E2E8F0">50,000</text>
+
+  <!-- Stage 3: 5,000 -->
+  <rect x="175" y="115" width="500" height="26" rx="6" fill="#E879F9" opacity="0.12" stroke="#E879F9" stroke-width="0.8"/>
+  <text x="425" y="133" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#E879F9">5,000</text>
+
+  <!-- Stage 4: 500 -->
+  <rect x="215" y="145" width="420" height="26" rx="6" fill="#00D4FF" opacity="0.15" stroke="#00D4FF" stroke-width="0.8"/>
+  <text x="425" y="163" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#00D4FF">500</text>
+
+  <!-- Stage 5 (labeled 6): 150 -->
+  <rect x="255" y="175" width="340" height="26" rx="6" fill="#00D4FF" opacity="0.18" stroke="#00D4FF" stroke-width="0.8"/>
+  <text x="425" y="193" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#00D4FF">150</text>
+
+  <!-- Stage 6 (labeled 7): 80 -->
+  <rect x="285" y="205" width="280" height="26" rx="6" fill="#4ADE80" opacity="0.15" stroke="#4ADE80" stroke-width="0.8"/>
+  <text x="425" y="223" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#4ADE80">80</text>
+
+  <!-- Stage 7 (labeled 8): 50 -->
+  <rect x="315" y="235" width="220" height="26" rx="6" fill="#4ADE80" opacity="0.2" stroke="#4ADE80" stroke-width="0.8"/>
+  <text x="425" y="253" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#4ADE80">50</text>
+
+  <!-- Stage 8 (labeled 9): 32 SURVIVORS -->
+  <rect x="340" y="265" width="170" height="30" rx="8" fill="#FFD54F" opacity="0.2" stroke="#FFD54F" stroke-width="2" filter="url(#goldGlow)"/>
+  <text x="425" y="285" text-anchor="middle" font-family="Consolas, monospace" font-size="14" font-weight="bold" fill="#FFD54F">32 SURVIVORS</text>
+
+  <!-- Left side stage labels -->
+  <text x="85" y="73" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="10" fill="#94A3B8">S1: Generate</text>
+  <text x="125" y="103" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="10" fill="#94A3B8">S2: Basic filter</text>
+  <text x="165" y="133" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="10" fill="#E879F9">S3: Backtest</text>
+  <text x="205" y="163" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="10" fill="#00D4FF">S4: Walk-forward</text>
+  <text x="245" y="193" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="10" fill="#00D4FF">S6: Monte Carlo</text>
+  <text x="275" y="223" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="10" fill="#4ADE80">S7: Curve-fit test</text>
+  <text x="305" y="253" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="10" fill="#4ADE80">S8: Correlation</text>
+  <text x="330" y="285" text-anchor="end" font-family="Segoe UI, sans-serif" font-size="10" fill="#FFD54F">S9: Live paper</text>
+
+  <!-- Right side: elimination percentages -->
+  <text x="765" y="73" text-anchor="start" font-family="Consolas, monospace" font-size="10" fill="#F87171">99.5% cut</text>
+  <text x="725" y="103" text-anchor="start" font-family="Consolas, monospace" font-size="10" fill="#F87171">90% cut</text>
+  <text x="685" y="133" text-anchor="start" font-family="Consolas, monospace" font-size="10" fill="#F87171">90% cut</text>
+  <text x="645" y="163" text-anchor="start" font-family="Consolas, monospace" font-size="10" fill="#F87171">70% cut</text>
+  <text x="605" y="193" text-anchor="start" font-family="Consolas, monospace" font-size="10" fill="#F87171">47% cut</text>
+  <text x="575" y="223" text-anchor="start" font-family="Consolas, monospace" font-size="10" fill="#F87171">37% cut</text>
+  <text x="545" y="253" text-anchor="start" font-family="Consolas, monospace" font-size="10" fill="#F87171">36% cut</text>
+
+  <!-- Survival rate callout -->
+  <rect x="310" y="305" width="230" height="30" rx="8" fill="#0F172A" stroke="#FFD54F" stroke-width="1" filter="url(#shadow)"/>
+  <text x="425" y="325" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#FFD54F">Survival rate: 0.00032%</text>
+</svg>

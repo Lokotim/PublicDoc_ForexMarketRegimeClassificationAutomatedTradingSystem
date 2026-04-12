@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 400" width="850" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="850" height="400" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="425" y="35" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20" font-weight="bold" fill="#E2E8F0" filter="url(#shadow)">Genetic Programming: Abstract Syntax Trees</text>
+
+  <!-- === LEFT TREE: Original === -->
+  <text x="230" y="65" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#94A3B8">Parent Tree</text>
+
+  <!-- STRATEGY root -->
+  <line x1="230" y1="95" x2="140" y2="145" stroke="#FFD54F" stroke-width="2"/>
+  <line x1="230" y1="95" x2="320" y2="145" stroke="#FFD54F" stroke-width="2"/>
+  <rect x="175" y="75" width="110" height="30" rx="6" fill="#0F172A" stroke="#00D4FF" stroke-width="2" filter="url(#shadow)"/>
+  <text x="230" y="95" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#00D4FF">STRATEGY</text>
+
+  <!-- ENTRY node -->
+  <line x1="140" y1="170" x2="85" y2="220" stroke="#FFD54F" stroke-width="2"/>
+  <rect x="90" y="145" width="100" height="30" rx="6" fill="#0F172A" stroke="#00D4FF" stroke-width="2" filter="url(#shadow)"/>
+  <text x="140" y="165" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#00D4FF">ENTRY</text>
+
+  <!-- EXIT node -->
+  <rect x="270" y="145" width="100" height="30" rx="6" fill="#0F172A" stroke="#00D4FF" stroke-width="2" filter="url(#shadow)"/>
+  <text x="320" y="165" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#00D4FF">EXIT</text>
+
+  <!-- REVERSE leaf under EXIT -->
+  <line x1="320" y1="175" x2="320" y2="220" stroke="#FFD54F" stroke-width="2"/>
+  <rect x="270" y="220" width="100" height="28" rx="6" fill="#0F172A" stroke="#E879F9" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="320" y="239" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#E879F9">REVERSE</text>
+
+  <!-- AND node under ENTRY -->
+  <line x1="85" y1="248" x2="55" y2="290" stroke="#FFD54F" stroke-width="2"/>
+  <line x1="85" y1="248" x2="170" y2="290" stroke="#FFD54F" stroke-width="2"/>
+  <rect x="55" y="220" width="60" height="28" rx="6" fill="#0F172A" stroke="#E879F9" stroke-width="2" filter="url(#shadow)"/>
+  <text x="85" y="239" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#E879F9">AND</text>
+
+  <!-- RSI leaf -->
+  <rect x="10" y="292" width="120" height="28" rx="6" fill="#0F172A" stroke="#4ADE80" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="70" y="311" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#4ADE80">RSI(14) &lt; 30</text>
+
+  <!-- BB_Width leaf -->
+  <rect x="110" y="292" width="145" height="28" rx="6" fill="#0F172A" stroke="#4ADE80" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="182" y="311" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#4ADE80">BB_Width &gt; 0.015</text>
+
+  <!-- Crossover arrow -->
+  <text x="425" y="195" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#FFD54F">Crossover</text>
+  <line x1="400" y1="205" x2="450" y2="205" stroke="#FFD54F" stroke-width="2" marker-end="url(#arrowGold)"/>
+  <defs>
+    <marker id="arrowGold" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#FFD54F"/>
+    </marker>
+  </defs>
+
+  <!-- === RIGHT TREE: After Crossover === -->
+  <text x="650" y="65" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#94A3B8">After Crossover</text>
+
+  <!-- STRATEGY root -->
+  <line x1="650" y1="95" x2="560" y2="145" stroke="#FFD54F" stroke-width="2"/>
+  <line x1="650" y1="95" x2="740" y2="145" stroke="#FFD54F" stroke-width="2"/>
+  <rect x="595" y="75" width="110" height="30" rx="6" fill="#0F172A" stroke="#00D4FF" stroke-width="2" filter="url(#shadow)"/>
+  <text x="650" y="95" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#00D4FF">STRATEGY</text>
+
+  <!-- ENTRY node -->
+  <line x1="560" y1="170" x2="505" y2="220" stroke="#FFD54F" stroke-width="2"/>
+  <rect x="510" y="145" width="100" height="30" rx="6" fill="#0F172A" stroke="#00D4FF" stroke-width="2" filter="url(#shadow)"/>
+  <text x="560" y="165" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#00D4FF">ENTRY</text>
+
+  <!-- EXIT node -->
+  <rect x="690" y="145" width="100" height="30" rx="6" fill="#0F172A" stroke="#00D4FF" stroke-width="2" filter="url(#shadow)"/>
+  <text x="740" y="165" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#00D4FF">EXIT</text>
+
+  <!-- REVERSE under EXIT -->
+  <line x1="740" y1="175" x2="740" y2="220" stroke="#FFD54F" stroke-width="2"/>
+  <rect x="690" y="220" width="100" height="28" rx="6" fill="#0F172A" stroke="#E879F9" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="740" y="239" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#E879F9">REVERSE</text>
+
+  <!-- AND node under ENTRY -->
+  <line x1="505" y1="248" x2="470" y2="290" stroke="#FFD54F" stroke-width="2"/>
+  <line x1="505" y1="248" x2="590" y2="290" stroke="#FFD54F" stroke-width="2"/>
+  <rect x="475" y="220" width="60" height="28" rx="6" fill="#0F172A" stroke="#E879F9" stroke-width="2" filter="url(#shadow)"/>
+  <text x="505" y="239" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#E879F9">AND</text>
+
+  <!-- MUTATED leaf: MACD instead of RSI (highlighted) -->
+  <rect x="415" y="292" width="130" height="28" rx="6" fill="#1E293B" stroke="#F87171" stroke-width="2" filter="url(#shadow)"/>
+  <text x="480" y="311" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#F87171">MACD &gt; 0</text>
+
+  <!-- BB_Width leaf (same) -->
+  <rect x="535" y="292" width="145" height="28" rx="6" fill="#0F172A" stroke="#4ADE80" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="607" y="311" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#4ADE80">BB_Width &gt; 0.015</text>
+
+  <!-- Legend -->
+  <text x="480" y="345" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#F87171">Swapped branch (new genetic material)</text>
+
+  <!-- Bottom annotation -->
+  <text x="425" y="385" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8">Trees evolve through crossover (branch swap), mutation (node change), and reproduction (copy)</text>
+</svg>

@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 350" width="850" height="350">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="glow">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#FFD54F" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="850" height="350" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="425" y="42" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold" fill="#FFD54F" filter="url(#glow)">The 168-Second Heartbeat</text>
+
+  <!-- Pulse icon -->
+  <g transform="translate(30, 85)">
+    <path d="M12,24 C12,18 6,14 6,10 C6,6 9,4 12,7 C15,4 18,6 18,10 C18,14 12,18 12,24Z" fill="#F87171" opacity="0.8"/>
+    <text x="12" y="42" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#94A3B8">pulse</text>
+  </g>
+
+  <!-- Timeline bar background -->
+  <rect x="60" y="90" width="750" height="50" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1" filter="url(#shadow)"/>
+
+  <!-- Segment widths: total 750px for 168s -->
+  <!-- Gather: 0-56s = 250px -->
+  <rect x="60" y="90" width="250" height="50" rx="8" fill="#4ADE80" opacity="0.3"/>
+  <rect x="60" y="90" width="250" height="50" rx="8" fill="none" stroke="#4ADE80" stroke-width="1" opacity="0.5"/>
+
+  <!-- Analyze: 56-103s = 210px -->
+  <rect x="310" y="90" width="210" height="50" fill="#00D4FF" opacity="0.25"/>
+  <rect x="310" y="90" width="210" height="50" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.5"/>
+
+  <!-- Forecast: 103-106s = 13px -->
+  <rect x="520" y="90" width="14" height="50" fill="#E879F9" opacity="0.35"/>
+
+  <!-- Debate: 106-108s = 9px -->
+  <rect x="534" y="90" width="9" height="50" fill="#FFD54F" opacity="0.35"/>
+
+  <!-- Size: 108-109s = 4px -->
+  <rect x="543" y="90" width="5" height="50" fill="#FFB74D" opacity="0.4"/>
+
+  <!-- Execute: 109-155s = 205px -->
+  <rect x="548" y="90" width="205" height="50" fill="#F87171" opacity="0.2"/>
+  <rect x="548" y="90" width="205" height="50" fill="none" stroke="#F87171" stroke-width="1" opacity="0.5"/>
+
+  <!-- Clean Up: 155-168s = 57px -->
+  <rect x="753" y="90" width="57" height="50" rx="0 8 8 0" fill="#94A3B8" opacity="0.15"/>
+
+  <!-- Segment labels (inside bar) -->
+  <text x="185" y="120" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#4ADE80">GATHER</text>
+  <text x="415" y="120" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#00D4FF">ANALYZE</text>
+  <text x="648" y="120" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="bold" fill="#F87171">EXECUTE</text>
+
+  <!-- Time labels below bar -->
+  <text x="60" y="160" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">0s</text>
+  <text x="310" y="160" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">56s</text>
+  <text x="520" y="160" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">103s</text>
+  <text x="548" y="160" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">109s</text>
+  <text x="753" y="160" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">155s</text>
+  <text x="810" y="160" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">168s</text>
+
+  <!-- CSV marker -->
+  <line x1="690" y1="85" x2="690" y2="145" stroke="#F87171" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="690" y="80" text-anchor="middle" font-family="Consolas, monospace" font-size="10" font-weight="bold" fill="#F87171">CSV Write</text>
+
+  <!-- Detailed phase breakdown below -->
+  <g transform="translate(60, 190)">
+    <!-- Phase boxes -->
+    <rect x="0" y="0" width="120" height="32" rx="6" fill="#4ADE80" opacity="0.15" stroke="#4ADE80" stroke-width="1" opacity="0.4"/>
+    <text x="10" y="14" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#4ADE80">Gather</text>
+    <text x="10" y="26" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">56s  10 threads</text>
+
+    <rect x="130" y="0" width="120" height="32" rx="6" fill="#00D4FF" opacity="0.15" stroke="#00D4FF" stroke-width="1" opacity="0.4"/>
+    <text x="140" y="14" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#00D4FF">Analyze</text>
+    <text x="140" y="26" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">47s  ML + features</text>
+
+    <rect x="260" y="0" width="90" height="32" rx="6" fill="#E879F9" opacity="0.15" stroke="#E879F9" stroke-width="1" opacity="0.4"/>
+    <text x="270" y="14" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#E879F9">Forecast</text>
+    <text x="270" y="26" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">3s  4-day</text>
+
+    <rect x="360" y="0" width="90" height="32" rx="6" fill="#FFD54F" opacity="0.15" stroke="#FFD54F" stroke-width="1" opacity="0.4"/>
+    <text x="370" y="14" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#FFD54F">Debate</text>
+    <text x="370" y="26" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">2s  4 judges</text>
+
+    <rect x="460" y="0" width="80" height="32" rx="6" fill="#FFB74D" opacity="0.15" stroke="#FFB74D" stroke-width="1" opacity="0.4"/>
+    <text x="470" y="14" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#FFB74D">Size</text>
+    <text x="470" y="26" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">1s  Kelly</text>
+
+    <rect x="550" y="0" width="110" height="32" rx="6" fill="#F87171" opacity="0.15" stroke="#F87171" stroke-width="1" opacity="0.4"/>
+    <text x="560" y="14" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#F87171">Execute</text>
+    <text x="560" y="26" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">46s  CSV out</text>
+
+    <rect x="670" y="0" width="80" height="32" rx="6" fill="#94A3B8" opacity="0.15" stroke="#94A3B8" stroke-width="1" opacity="0.4"/>
+    <text x="680" y="14" font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" fill="#94A3B8">Clean</text>
+    <text x="680" y="26" font-family="Consolas, monospace" font-size="9" fill="#64748B">13s  logs</text>
+  </g>
+
+  <!-- Heartbeat ECG line decoration -->
+  <polyline points="60,270 120,270 140,270 150,250 160,290 170,260 180,275 190,270 250,270 310,270 370,270 380,250 390,290 400,260 410,275 420,270 520,270 548,270 558,250 568,290 578,260 588,275 598,270 690,270 750,270 810,270"
+    fill="none" stroke="#F87171" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Bottom tagline -->
+  <text x="425" y="320" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#94A3B8">From raw data to broker orders in under 3 minutes</text>
+</svg>

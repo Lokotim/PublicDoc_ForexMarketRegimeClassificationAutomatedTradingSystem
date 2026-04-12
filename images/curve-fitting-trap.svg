@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 400" width="850" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <linearGradient id="redFade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F87171"/>
+      <stop offset="100%" stop-color="#F87171" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="greenFade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4ADE80"/>
+      <stop offset="100%" stop-color="#4ADE80" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+  <rect width="850" height="400" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="425" y="38" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20" font-weight="bold" fill="#E2E8F0" filter="url(#shadow)">The Curve-Fitting Trap: Overfit vs Robust</text>
+
+  <!-- Left panel: OVERFIT -->
+  <rect x="30" y="55" width="385" height="310" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1" filter="url(#shadow)"/>
+  <text x="222" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#F87171">OVERFIT</text>
+
+  <!-- Left axes -->
+  <line x1="70" y1="95" x2="70" y2="340" stroke="#475569" stroke-width="1"/>
+  <line x1="70" y1="340" x2="395" y2="340" stroke="#475569" stroke-width="1"/>
+  <text x="60" y="105" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">+100%</text>
+  <text x="60" y="220" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">0%</text>
+  <text x="60" y="330" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">-50%</text>
+
+  <!-- Left dashed divider at 67% -->
+  <line x1="287" y1="95" x2="287" y2="340" stroke="#FFD54F" stroke-width="1" stroke-dasharray="6,4" opacity="0.6"/>
+  <text x="178" y="358" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#FFD54F">In-Sample</text>
+  <text x="341" y="358" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#FFD54F">Out-of-Sample</text>
+
+  <!-- Left smooth rising curve (in-sample) -->
+  <path d="M 70 280 C 100 275, 130 260, 160 240 C 190 220, 210 195, 240 165 C 260 145, 275 125, 287 110" stroke="#F87171" stroke-width="2.5" fill="none"/>
+  <!-- Left crash curve (out-of-sample, dotted) -->
+  <path d="M 287 110 C 300 120, 320 160, 340 210 C 355 250, 370 290, 390 325" stroke="#F87171" stroke-width="2.5" fill="none" stroke-dasharray="6,4"/>
+
+  <!-- Right panel: ROBUST -->
+  <rect x="435" y="55" width="385" height="310" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1" filter="url(#shadow)"/>
+  <text x="627" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="bold" fill="#4ADE80">ROBUST</text>
+
+  <!-- Right axes -->
+  <line x1="475" y1="95" x2="475" y2="340" stroke="#475569" stroke-width="1"/>
+  <line x1="475" y1="340" x2="800" y2="340" stroke="#475569" stroke-width="1"/>
+  <text x="465" y="105" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">+100%</text>
+  <text x="465" y="220" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">0%</text>
+  <text x="465" y="330" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">-50%</text>
+
+  <!-- Right dashed divider at 67% -->
+  <line x1="692" y1="95" x2="692" y2="340" stroke="#FFD54F" stroke-width="1" stroke-dasharray="6,4" opacity="0.6"/>
+  <text x="583" y="358" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#FFD54F">In-Sample</text>
+  <text x="746" y="358" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#FFD54F">Out-of-Sample</text>
+
+  <!-- Right jagged rising curve (in-sample) -->
+  <path d="M 475 280 L 490 270 L 500 278 L 515 260 L 525 268 L 540 248 L 550 258 L 565 238 L 575 245 L 590 225 L 600 235 L 615 215 L 625 222 L 640 200 L 650 210 L 665 190 L 680 195 L 692 178" stroke="#4ADE80" stroke-width="2.5" fill="none"/>
+  <!-- Right continuing rise (out-of-sample, dotted) -->
+  <path d="M 692 178 L 705 185 L 715 170 L 725 175 L 740 160 L 750 168 L 765 150 L 778 155 L 795 140" stroke="#4ADE80" stroke-width="2.5" fill="none" stroke-dasharray="6,4"/>
+
+  <!-- X-axis label -->
+  <text x="425" y="393" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#94A3B8">Time (In-Sample | Out-of-Sample)</text>
+</svg>

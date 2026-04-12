@@ -30,7 +30,7 @@
   <text x="400" y="40" text-anchor="middle" fill="#ccd6f6" font-size="9">Trade full size or skip entirely -- no half measures in risk management</text>
 
   <!-- Title -->
-  <text x="400" y="65" text-anchor="middle" fill="url(#rlGoldGrad)" font-size="16" font-weight="700" letter-spacing="0.5">Six Independent Circuit Breakers</text>
+  <text x="400" y="65" text-anchor="middle" fill="url(#rlGoldGrad)" font-size="16" font-weight="700" letter-spacing="0.5">Nine Independent Safety Layers</text>
   <line x1="240" y1="72" x2="560" y2="72" stroke="#233554" stroke-width="1"/>
 
   <!-- ===== LAYER 1: IV Black Swan Filter ===== -->

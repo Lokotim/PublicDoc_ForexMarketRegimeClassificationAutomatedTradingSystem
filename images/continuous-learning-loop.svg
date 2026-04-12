@@ -62,7 +62,7 @@
     <rect x="310" y="62" width="180" height="70" rx="10" fill="#16213E" stroke="#00D4FF" stroke-opacity="0.5" stroke-width="1"/>
     <rect x="310" y="62" width="180" height="22" rx="10" fill="#00D4FF" fill-opacity="0.1"/>
     <text x="400" y="79" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10" fill="#00D4FF" font-weight="700">1. COLLECT</text>
-    <text x="400" y="100" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">15 live data sources</text>
+    <text x="400" y="100" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">19 live data sources</text>
     <text x="400" y="114" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">sentiment + macro + vol + news</text>
     <text x="400" y="126" text-anchor="middle" font-family="monospace" font-size="7" fill="#00D4FF" opacity="0.6">134 features/pair generated</text>
   </g>

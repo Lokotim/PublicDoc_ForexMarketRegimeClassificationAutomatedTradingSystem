@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" font-family="'Segoe UI', system-ui, sans-serif">
+  <defs>
+    <linearGradient id="ga-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#101828"/>
+    </linearGradient>
+    <filter id="ga-s">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="380" fill="url(#ga-bg)" rx="10"/>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" fill="#e2e8f0" font-size="18" font-weight="700">Graduated Authorization</text>
+  <text x="400" y="48" text-anchor="middle" fill="#64748b" font-size="11">Not ON/OFF — every strategy trades at a size proportional to its alignment with the signal</text>
+
+  <!-- Signal box (top center) -->
+  <rect x="290" y="62" width="220" height="36" rx="18" fill="#0f172a" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="400" y="85" text-anchor="middle" fill="#22c55e" font-size="12" font-weight="600">Meta-Signal: BUY EURUSD (TF regime)</text>
+
+  <!-- Tier 0: Full Match -->
+  <rect x="50" y="116" width="700" height="54" rx="8" fill="#1e293b" stroke="#00ff88" stroke-width="2" filter="url(#ga-s)"/>
+  <rect x="50" y="116" width="8" height="54" rx="4" fill="#00ff88"/>
+  <!-- Size bar -->
+  <rect x="80" y="134" width="500" height="18" rx="4" fill="rgba(0,255,136,0.2)"/>
+  <rect x="80" y="134" width="500" height="18" rx="4" fill="rgba(0,255,136,0.15)" stroke="#00ff88" stroke-width="0.5"/>
+  <text x="330" y="148" text-anchor="middle" fill="#00ff88" font-size="11" font-weight="700">EURUSD_L TF — Full size (100%)</text>
+  <text x="700" y="148" text-anchor="middle" fill="#00ff88" font-size="13" font-weight="700">1.00x</text>
+  <text x="90" y="164" fill="#64748b" font-size="9">Direction matches (BUY) + Regime matches (TF) = Full Match</text>
+
+  <!-- Tier 1: Dir Only -->
+  <rect x="50" y="178" width="700" height="54" rx="8" fill="#1e293b" stroke="#22c55e" stroke-width="1.5" filter="url(#ga-s)"/>
+  <rect x="50" y="178" width="8" height="54" rx="4" fill="#22c55e"/>
+  <rect x="80" y="196" width="250" height="18" rx="4" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="0.5"/>
+  <text x="205" y="210" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="700">EURUSD_L MR — Half size (50%)</text>
+  <text x="700" y="210" text-anchor="middle" fill="#22c55e" font-size="13" font-weight="700">0.50x</text>
+  <text x="90" y="226" fill="#64748b" font-size="9">Direction matches (BUY) but Regime differs (MR not TF) = Direction Only</text>
+
+  <!-- Tier 2: Regime Only -->
+  <rect x="50" y="240" width="700" height="54" rx="8" fill="#1e293b" stroke="#eab308" stroke-width="1.5" filter="url(#ga-s)"/>
+  <rect x="50" y="240" width="8" height="54" rx="4" fill="#eab308"/>
+  <rect x="80" y="258" width="125" height="18" rx="4" fill="rgba(234,179,8,0.15)" stroke="#eab308" stroke-width="0.5"/>
+  <text x="142" y="272" text-anchor="middle" fill="#eab308" font-size="11" font-weight="700">EURUSD_S TF — Quarter (25%)</text>
+  <text x="700" y="272" text-anchor="middle" fill="#eab308" font-size="13" font-weight="700">0.25x</text>
+  <text x="90" y="288" fill="#64748b" font-size="9">Direction differs (SELL) but Regime matches (TF) = Regime Only</text>
+
+  <!-- Tier 3: Contrarian -->
+  <rect x="50" y="302" width="700" height="54" rx="8" fill="#1e293b" stroke="#ff6b35" stroke-width="1.5" filter="url(#ga-s)"/>
+  <rect x="50" y="302" width="8" height="54" rx="4" fill="#ff6b35"/>
+  <rect x="80" y="320" width="62" height="18" rx="4" fill="rgba(255,107,53,0.15)" stroke="#ff6b35" stroke-width="0.5"/>
+  <text x="111" y="334" text-anchor="middle" fill="#ff6b35" font-size="11" font-weight="700">EURUSD_S MR</text>
+  <text x="200" y="334" fill="#ff6b35" font-size="11"> — Minimal (12.5%)</text>
+  <text x="700" y="334" text-anchor="middle" fill="#ff6b35" font-size="13" font-weight="700">0.125x</text>
+  <text x="90" y="350" fill="#64748b" font-size="9">Direction differs (SELL) + Regime differs (MR) = Contrarian — a small hedge in case of reversal</text>
+
+  <!-- Legend -->
+  <text x="400" y="374" text-anchor="middle" fill="#475569" font-size="9">Typically 28 of 32 strategies authorized | Only CSI=0, Black Swan, or Kelly gate failures get fully blocked</text>
+</svg>

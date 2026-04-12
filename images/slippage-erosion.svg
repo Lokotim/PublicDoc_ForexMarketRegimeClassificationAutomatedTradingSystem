@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 400" width="850" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="greenBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4ADE80"/>
+      <stop offset="100%" stop-color="#22C55E"/>
+    </linearGradient>
+    <linearGradient id="amberBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="redBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F87171"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="glow">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#FFD54F" flood-opacity="0.4"/>
+    </filter>
+    <filter id="barShadow">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="850" height="400" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="425" y="36" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" font-weight="bold" fill="#FFD54F" filter="url(#glow)">Slippage Simulation: 0.3 pip Entry + 0.3 pip Exit</text>
+
+  <!-- Column headers -->
+  <text x="340" y="72" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#94A3B8">Before Slippage</text>
+  <text x="590" y="72" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#94A3B8">After 0.6 pip round-trip</text>
+  <text x="770" y="72" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#94A3B8">Retained</text>
+
+  <!-- Strategy 1: Retains 76% - PASS -->
+  <g transform="translate(0, 85)">
+    <text x="40" y="18" font-family="Consolas, monospace" font-size="13" font-weight="bold" fill="#E2E8F0">Strategy A</text>
+    <text x="40" y="35" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">TF_L EURUSD</text>
+
+    <!-- Before bar -->
+    <rect x="160" y="6" width="360" height="20" rx="4" fill="#334155" opacity="0.4"/>
+    <rect x="160" y="6" width="360" height="20" rx="4" fill="url(#greenBar)" opacity="0.8" filter="url(#barShadow)"/>
+    <text x="345" y="21" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#0F172A" font-weight="bold">RtDD 2.84</text>
+
+    <!-- After bar -->
+    <rect x="160" y="32" width="360" height="20" rx="4" fill="#334155" opacity="0.4"/>
+    <rect x="160" y="32" width="274" height="20" rx="4" fill="url(#greenBar)" opacity="0.6" filter="url(#barShadow)"/>
+    <text x="300" y="47" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#0F172A" font-weight="bold">RtDD 2.16</text>
+
+    <!-- Retained -->
+    <rect x="720" y="15" width="90" height="28" rx="6" fill="#14532D"/>
+    <text x="765" y="35" text-anchor="middle" font-family="Consolas, monospace" font-size="14" font-weight="bold" fill="#4ADE80">76%</text>
+
+    <!-- Pass badge -->
+    <circle cx="700" cy="29" r="8" fill="#14532D" stroke="#4ADE80" stroke-width="1.5"/>
+    <text x="700" y="33" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4ADE80">P</text>
+  </g>
+
+  <!-- Strategy 2: Retains 52% - PASS -->
+  <g transform="translate(0, 185)">
+    <text x="40" y="18" font-family="Consolas, monospace" font-size="13" font-weight="bold" fill="#E2E8F0">Strategy B</text>
+    <text x="40" y="35" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">MR_S GBPUSD</text>
+
+    <!-- Before bar -->
+    <rect x="160" y="6" width="360" height="20" rx="4" fill="#334155" opacity="0.4"/>
+    <rect x="160" y="6" width="280" height="20" rx="4" fill="url(#greenBar)" opacity="0.8" filter="url(#barShadow)"/>
+    <text x="305" y="21" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#0F172A" font-weight="bold">RtDD 2.21</text>
+
+    <!-- After bar -->
+    <rect x="160" y="32" width="360" height="20" rx="4" fill="#334155" opacity="0.4"/>
+    <rect x="160" y="32" width="146" height="20" rx="4" fill="url(#amberBar)" opacity="0.7" filter="url(#barShadow)"/>
+    <text x="236" y="47" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#0F172A" font-weight="bold">RtDD 1.15</text>
+
+    <!-- Retained -->
+    <rect x="720" y="15" width="90" height="28" rx="6" fill="#78350F"/>
+    <text x="765" y="35" text-anchor="middle" font-family="Consolas, monospace" font-size="14" font-weight="bold" fill="#FBBF24">52%</text>
+
+    <!-- Pass badge -->
+    <circle cx="700" cy="29" r="8" fill="#14532D" stroke="#4ADE80" stroke-width="1.5"/>
+    <text x="700" y="33" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#4ADE80">P</text>
+  </g>
+
+  <!-- Strategy 3: Retains 25% - FAIL -->
+  <g transform="translate(0, 285)">
+    <text x="40" y="18" font-family="Consolas, monospace" font-size="13" font-weight="bold" fill="#E2E8F0">Strategy C</text>
+    <text x="40" y="35" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">TF_S AUDJPY</text>
+
+    <!-- Before bar -->
+    <rect x="160" y="6" width="360" height="20" rx="4" fill="#334155" opacity="0.4"/>
+    <rect x="160" y="6" width="200" height="20" rx="4" fill="url(#greenBar)" opacity="0.8" filter="url(#barShadow)"/>
+    <text x="264" y="21" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#0F172A" font-weight="bold">RtDD 1.58</text>
+
+    <!-- After bar -->
+    <rect x="160" y="32" width="360" height="20" rx="4" fill="#334155" opacity="0.4"/>
+    <rect x="160" y="32" width="50" height="20" rx="4" fill="url(#redBar)" opacity="0.7" filter="url(#barShadow)"/>
+    <text x="230" y="47" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#F87171">RtDD 0.40</text>
+
+    <!-- Retained -->
+    <rect x="720" y="15" width="90" height="28" rx="6" fill="#7F1D1D"/>
+    <text x="765" y="35" text-anchor="middle" font-family="Consolas, monospace" font-size="14" font-weight="bold" fill="#F87171">25%</text>
+
+    <!-- Fail badge -->
+    <circle cx="700" cy="29" r="8" fill="#7F1D1D" stroke="#F87171" stroke-width="1.5"/>
+    <text x="700" y="33" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#F87171">F</text>
+  </g>
+
+  <!-- Survival threshold dashed line at RtDD=1.0 -->
+  <line x1="275" y1="82" x2="275" y2="350" stroke="#00D4FF" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.6"/>
+  <text x="275" y="365" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#00D4FF">RtDD = 1.0</text>
+  <text x="275" y="378" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#00D4FF" opacity="0.7">Survival threshold</text>
+</svg>

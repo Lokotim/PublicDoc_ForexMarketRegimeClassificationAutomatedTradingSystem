@@ -1,1553 +1,1073 @@
 <p align="center">
-  <img src="images/moneyprod-logo.svg" alt="MoneyProd — Algorithmic Trading System" width="500">
+ <img src="images/moneyprod-logo.svg" alt="MoneyProd, Algorithmic Trading System" width="500">
 </p>
 
-<p align="center" style="font-size:15pt; color:#e6f1ff; font-weight:bold; margin-top:18px;"><em>System Architecture — A Technical Deep Dive</em></p>
-<p align="center" style="font-size:11pt; color:#a8b2d1;">Complete Architectural Reference for a Production Autonomous Trading System:<br>Machine Learning Ensemble, Reinforcement Learning, Bayesian Optimization, Real-Time Risk Management</p>
+<p align="center" style="font-size:15pt; color:#e6f1ff; font-weight:bold; margin-top:18px;"><em>System Architecture, A Technical Deep Dive</em></p>
+<p align="center" style="font-size:11pt; color:#a8b2d1;">19 Data Sources · 4 Competing Intelligences · 9 Independent Safety Shields<br>Complete Architectural Reference for a Production Autonomous Trading System</p>
 
 <p align="center">
-  <strong>Author:</strong> <a href="https://linkedin.com/in/timothy-lokotar/">Timothy Lokotar</a> · <a href="https://www.moneyprod.com/">MoneyProd</a><br>
-  <a href="https://www.moneyprod.com/">Live Dashboard</a> · <a href="https://linkedin.com/in/timothy-lokotar/">LinkedIn</a>
+ <strong>Author:</strong> <a href="https://linkedin.com/in/timothy-lokotar/">Timothy Lokotar</a> · <a href="https://www.moneyprod.com/">MoneyProd</a><br>
+ <a href="https://www.moneyprod.com/">Live Dashboard</a> · <a href="https://linkedin.com/in/timothy-lokotar/">LinkedIn</a>
 </p>
 
 ---
 
-> *"Architecture is the art of how to waste space."* — Philip Johnson
+> *"Architecture is the art of how to waste space."*, Philip Johnson
 >
-> *In algorithmic trading, architecture is the art of how to waste nothing — not a millisecond of latency, not a byte of stale data, not a dollar of unmanaged risk.*
+> *In algorithmic trading, architecture is the art of how to waste nothing, not a millisecond of latency, not a byte of stale data, not a fraction of unmanaged risk.*
 
 ---
 
 | Dimension | Specification |
 |---|---|
-| **Pipeline Execution** | **201 seconds** (3.4 minutes, CSV delivered at 187s) |
-| **Execution Stages** | 9 sequential stages, 30+ parallel phases |
-| **Data Sources** | 15 (scraped in parallel across 9 threads) |
-| **Features per Pair** | 70–134 (engineered from 23 data loaders) |
-| **ML Architecture** | 5-Model Mixture of Experts (Ridge Regression + Prior Blending) |
-| **RL Agent** | Q-Learning with Prioritized Experience Replay |
-| **Financial Theories** | 30 per pair (240 total across 8 pairs) |
+| **Pipeline Execution** | **168 seconds** (2.8 minutes, CSV delivered at 155s) |
+| **Execution Stages** | 8 sequential stages, 30+ parallel phases |
+| **Data Sources** | 19 (25 macro series, parallel scraping in 10 threads) |
+| **Features per Pair** | 134 (1,072 total across 8 pairs) |
+| **ML Architecture** | 5-Model Mixture of Experts (MoE) |
+| **Signal Sources** | 4 (ML 50%, Forecast 28%, RL 12%, Macro 10%) |
+| **Financial Theories** | 30 per pair (240 total, 6 clusters) |
 | **Live Strategies** | 32 (survivors of ~10 million candidates) |
-| **Currency Pairs** | 8 major + cross pairs (H4 timeframe) |
-| **Brokerage Accounts** | Account 1 through Account 8 (dual gateway) |
+| **Currency Pairs** | 8 major + cross pairs |
+| **Brokerage Accounts** | 8 (Interactive Brokers, dual gateway DOM+VAL) |
 | **Databases** | 3 SQLite (WAL mode, 29+ tables, non-circular writes) |
-| **Safety Layers** | 6 independent circuit breakers + strategy analytics |
-| **Health Checks** | 13 categories, 100+ individual checks |
+| **Safety Layers** | 9 independent shields + RME Guard v4 (9 guards) |
+| **Health Checks** | 14 diagnostic categories, 50+ individual checks |
+| **Position Sizing** | 8-layer cascade (equity → ATR → leverage → Kelly → vol kill → macro regime → IV regime → White Swan) |
 | **Monitoring** | Real-time liveboard + Discord alerts + 21-section HTML report |
 
 ---
 
 ## Table of Contents
 
-- [Chapter 1 — System Overview: The 8-Stage Pipeline](#chapter-1--system-overview-the-8-stage-pipeline)
-- [Chapter 2 — Data Collection: The Oracle Network](#chapter-2--data-collection-the-oracle-network)
-- [Chapter 3 — Feature Engineering: From Raw Data to 134 Dimensions](#chapter-3--feature-engineering-from-raw-data-to-134-dimensions)
-- [Chapter 4 — The ML Ensemble: 5-Model Mixture of Experts](#chapter-4--the-ml-ensemble-5-model-mixture-of-experts)
-- [Chapter 5 — Bayesian Optimization: MCMC Weight Calibration](#chapter-5--bayesian-optimization-mcmc-weight-calibration)
-- [Chapter 6 — The Reinforcement Learning Agent](#chapter-6--the-reinforcement-learning-agent)
-- [Chapter 7 — Meta-Signal Resolution: Arbitrating Four Intelligences](#chapter-7--meta-signal-resolution-arbitrating-four-intelligences)
-- [Chapter 8 — Position Sizing: The Kelly Criterion and Beyond](#chapter-8--position-sizing-the-kelly-criterion-and-beyond)
-- [Chapter 9 — Risk Management: Circuit Breakers and White Swan Philosophy](#chapter-9--risk-management-circuit-breakers-and-white-swan-philosophy)
-- [Chapter 10 — Implied Volatility Regime Classification](#chapter-10--implied-volatility-regime-classification)
-- [Chapter 11 — Continuous Learning and Self-Improvement](#chapter-11--continuous-learning-and-self-improvement)
-- [Chapter 12 — Database Architecture: Three-Database Normalization](#chapter-12--database-architecture-three-database-normalization)
-- [Chapter 13 — Execution Bridge: From Signal to Live Trade](#chapter-13--execution-bridge-from-signal-to-live-trade)
-- [Chapter 14 — Monitoring, Diagnostics, and Observability](#chapter-14--monitoring-diagnostics-and-observability)
-- [Chapter 15 — Strategy Analytics: The AlgoChef Layer](#chapter-15--strategy-analytics-the-algochef-layer)
+- [Chapter 1, System Overview: The Directed Acyclic Graph](#chapter-1--system-overview-the-directed-acyclic-graph)
+- [Chapter 2, Data Collection: The Oracle Network](#chapter-2--data-collection-the-oracle-network)
+- [Chapter 3, Feature Engineering: From Raw Data to 134 Dimensions](#chapter-3--feature-engineering-from-raw-data-to-134-dimensions)
+- [Chapter 4, The ML Ensemble: 5-Model Mixture of Experts](#chapter-4--the-ml-ensemble-5-model-mixture-of-experts)
+- [Chapter 5, Bayesian Optimization: MCMC Weight Calibration](#chapter-5--bayesian-optimization-mcmc-weight-calibration)
+- [Chapter 6, The Reinforcement Learning Agent](#chapter-6--the-reinforcement-learning-agent)
+- [Chapter 7, The Macro Intelligence Layer](#chapter-7--the-macro-intelligence-layer)
+- [Chapter 8, Meta-Signal Resolution: Arbitrating Four Intelligences](#chapter-8--meta-signal-resolution-arbitrating-four-intelligences)
+- [Chapter 9, Position Sizing: The 8-Layer Cascade](#chapter-9--position-sizing-the-8-layer-cascade)
+- [Chapter 10, Risk Management: Nine Shields](#chapter-10--risk-management-nine-shields)
+- [Chapter 11, Implied Volatility Regime Classification](#chapter-11--implied-volatility-regime-classification)
+- [Chapter 12, Continuous Learning and Self-Improvement](#chapter-12--continuous-learning-and-self-improvement)
+- [Chapter 13, Database Architecture: Three-Database Normalization](#chapter-13--database-architecture-three-database-normalization)
+- [Chapter 14, Execution Bridge: From Signal to Live Trade](#chapter-14--execution-bridge-from-signal-to-live-trade)
+- [Chapter 15, Monitoring, Diagnostics, and Observability](#chapter-15--monitoring-diagnostics-and-observability)
 - [Technical Appendix](#technical-appendix)
-- [References](#references)
 
 ---
 
-## Chapter 1 — System Overview: The 8-Stage Pipeline
+## Chapter 1: System Overview: The Directed Acyclic Graph
 
-<p align="center">
-  <img src="images/arch-pipeline-overview.svg" alt="8-Stage Pipeline Architecture" width="850">
-</p>
+Every hour, at 55 minutes past, a Python process wakes on a Windows Server in New York. It has 168 seconds to scrape 19 data sources, run four competing intelligence systems, and write a CSV file that will move real money across eight brokerage accounts. If the file arrives late, 32 strategies trade blind.
+
+![Pipeline Architecture](images/pipeline-dag-v3.svg)
 
 ### 1.1 Design Philosophy
 
 MoneyProd is a **fully autonomous, production-grade algorithmic trading system** that executes on the foreign exchange market every hour. The system's architecture is built on five foundational principles:
 
-1. **Non-Circular Data Flow** — Three separate databases enforce strict write authority. No component reads its own output as input. This prevents feedback loops that could amplify systematic errors.
+1. **Non-Circular Data Flow**, Three separate databases enforce strict write authority. No component reads its own output as input. This prevents feedback loops that could amplify systematic errors into catastrophic trading decisions.
 
-2. **Staged Parallelism with Dependency Gating** — The pipeline is decomposed into 8 stages, each containing phases that execute in parallel via `ThreadPoolExecutor`. Inter-stage gates enforce data dependencies (e.g., ML ensemble cannot run before theory calculations complete).
+2. **Staged Parallelism with Dependency Gating**, The pipeline is decomposed into 8 stages, each containing phases that execute in parallel via `ThreadPoolExecutor`. Inter-stage gates enforce data dependencies: the ML ensemble cannot run before theory calculations complete, the meta-signal resolver cannot fire before all four intelligence sources have spoken.
 
-3. **Ensemble Diversity through Competitive Mixture of Experts** — Rather than relying on a single classifier, the system employs 4 specialist models (each tuned for a specific strategy–direction combination) plus a Meta-Classifier. All four specialists score every input simultaneously, and the Meta-Classifier selects the winner through direct competition — not through a gating network.
+3. **Ensemble Diversity through Competitive Mixture of Experts**, Rather than relying on a single classifier, the system employs 4 specialist models (each tuned for a specific strategy-direction combination) plus a Meta-Classifier. All four specialists score every input simultaneously, and the Meta-Classifier selects the winner through direct competition, not through a gating network.
 
-4. **Defense in Depth** — Six independent safety layers operate without coordination: an IV-based black swan filter, a PnL circuit breaker, a crowding penalty, a broker cross-validation, a data integrity guard, and a strategy health monitor (CSI v2 graduated penalties). Any single layer can halt or reduce trading autonomously.
+4. **Defense in Depth**, Nine independent safety layers operate without coordination: an IV-based regime filter, a PnL circuit breaker, a crowding penalty, a broker cross-validation, a data integrity guard, a strategy health monitor (CSI v2 with graduated penalties), a cross-asset volatility kill switch, a macro regime sizing overlay, and an RME order guard (G1-G9). Any single layer can halt or reduce trading autonomously.
 
-5. **Progressive Trust** — New components (RL agent, Bayesian optimizer) begin in observation mode with minimal influence. Their weight in decision-making increases only as sufficient outcome data accumulates — a principled approach to cold-start in non-stationary environments.
+5. **Progressive Trust**, New components begin in observation mode with minimal influence. The macro composite signal entered at 10% weight. The RL agent began at 12%. Their influence grows only as sufficient outcome data accumulates, a principled approach to cold-start in non-stationary environments.
 
 ### 1.2 Pipeline Execution Model
 
-The pipeline executes as a Python process (`unified_pipeline.py`) triggered every H4 bar close. Its 8 stages form a directed acyclic graph with parallel phases within each stage:
+The pipeline executes as a Python process (`unified_pipeline.py`) triggered every hour at :55. Its 8 stages form a directed acyclic graph (DAG) with parallel phases within each stage:
 
 ```
-STAGE 1: Data Collection          ████████████████████████░░░░░░░░░  61s   (9 parallel phases)
-STAGE 2: IBKR + Theories          ████████████░░░░░░░░░░░░░░░░░░░░░  22s   (3 parallel phases)
-STAGE 3: ML Ensemble + Concurrent ████████████████████████████████░░  98s   (5 parallel phases)
-STAGE 4: Post-ML Fan-out          █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   4s   (3 parallel phases)
-STAGE 5: RL + Circuit Breaker     █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   2s   (2 parallel phases)
-STAGE 6a: Paper Consensus         ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  <1s   (1 phase, non-fatal)
-STAGE 6: Meta-Signal Resolution   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  <1s   (1 phase)
-STAGE 7: Position Sizing + CSV    █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   1s   (1 phase) ◄ CSV DELIVERED
-STAGE 8: Post-CSV Deferred        ████░░░░░░░░░░░░░░░░░░░░░░░░░░░░  13s   (7 sequential phases)
-STAGE 9: Strategy Analytics        █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   2s   (4 parallel phases: Health, CSI, Corr, MC)
-                                                                    ─────
-                                                              TOTAL: 203s
+STAGE 1: DATA COLLECTION ████████████████████████░░░░░░░░░ ~56s (10 parallel phases)
+ Phase 1a: TWS health check
+ Phase 1b: FXSSI sentiment
+ Phase 1c: 7 scrapers (IG, Dukascopy, MFXBook, COT, Calendar, FinBERT, Seasonal)
+ Phase 1d: IV surface scraping (CME FX ETF options)
+ Phase 1e: ATR computation
+ Phase 1f: GV health / prediction markets / news sentiment
+ Phase 1g: Macro data scraper (Yahoo Finance + FRED — 25 series in 10 threads)
+
+STAGE 2: IBKR + THEORIES ████████████░░░░░░░░░░░░░░░░░░░░░ ~47s (3 parallel phases)
+ Phase 2a: IBKR position reconciliation (8 accounts, dual gateway)
+ Phase 2b: 30 theory calculations per pair (240 total, 6 clusters)
+ Phase 2c: GV cross-validation (paper signal verification)
+
+STAGE 3: ML + CONCURRENT ████████████████████████████████░░ ~50s (5 parallel phases)
+ Phase 3a: 5-Model MoE ensemble (134 features/pair)
+ Phase 3b: PnL tracking + closed position detection
+ Phase 3c: IV strategy weight overlay
+ Phase 3d: Shock detector (tail-risk events)
+
+STAGE 4: POST-ML █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ~3s (3 parallel phases)
+ Phase 4a: Bayesian MCMC weight optimizer
+ Phase 4b: 4-day Markov forecast
+ Phase 4c: Outcome recorder (strategy PnL attribution)
+
+STAGE 5: RL + CIRCUIT BREAKER █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ~1s (2 parallel phases)
+ Phase 5a: RL Q-learning agent (6,832 experiences)
+ Phase 5b: PnL circuit breaker (7-day rolling drawdown)
+
+STAGE 6: META-SIGNAL RESOLUTION ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ~2s (sequential)
+ Phase 6a0: Macro composite signal (8 pair-specific factor models)
+ Phase 6a1: Cross-asset vol kill switch (VIX/FX IV/OVX/TLT vol z-scores)
+ Phase 6a2: Macro regime classifier (EXPANSION → RECOVERY)
+ Phase 6a: Paper consensus (32 MCPT signals — evaluation only, firewalled)
+ Phase 6b: Meta-signal resolver (ML 50% + Forecast 28% + RL 12% + Macro 10%)
+
+STAGE 7: CSV GENERATION █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ~1s ◄ CSV DELIVERED AT 155s
+ Phase 7a: smart_position_sizing.py → strategies_auth_simple.csv
+
+STAGE 8: POST-CSV (no time pressure) ████░░░░░░░░░░░░░░░░░░░░░░░░░░░ ~8s (sequential)
+ Phase 8a: IV position sizing overlay
+ Phase 8b: RL continuous training
+ Phase 8c: Crowding sync + penalty
+ Phase 8d: Continuous learning state update
+ Phase 8e: Pipeline diagnostics (14 categories, ~50 checks)
+ Phase 8f: Data truth watchdog (9 nodes)
+ Phase 8g: Exhaustive HTML report (21 sections)
+
+POST-PIPELINE: RME sync, P&L reconciliation, GV health, liveboard update, Discord notifier
+ ─────
+ TOTAL: 168s
 ```
 
-**Critical path analysis**: Stage 3 (ML Ensemble) is the bottleneck at 98 seconds. The 5-Model MoE trains and infers on all 8 currency pairs using walk-forward validation with a 2-bar gap to prevent lookahead bias.
+The critical constraint is **time**: the CSV must land before :00 of the next hour for MultiCharts Portfolio Trader (MCPT) to read it before the next bar close. With delivery at 155 seconds (2 minutes 35 seconds), there is a **105-second safety margin** before the hard deadline. Stage 8 runs entirely after CSV delivery, it has no time pressure because it does not affect the current cycle's trading decisions.
 
-### 1.3 Stage Dependency Graph
+### 1.3 Parallel Execution Architecture
 
-Each stage depends on the output of previous stages. Time budgets enforce hard limits:
-
-| Stage | Depends On | Produces | Wall-Clock | Max Budget |
-|---|---|---|---|---|
-| **1: Data Collection** | External sources | Sentiment, calendar, IV, ATR, GV health | 61s | 120s |
-| **2: IBKR + Theories** | Stage 1 (ATR, sentiment) | IBKR positions, 30 theories/pair, cross-validation | 22s | 90s |
-| **3: ML Ensemble** | Stage 2 (theories, positions) | Regime classifications, confidence scores | 98s | 180s |
-| **4: Post-ML** | Stage 3 (ML classifications) | Bayesian weights, 4-day forecasts, outcomes | 4s | 30s |
-| **5: RL + CB** | Stage 4 (outcomes) | RL recommendations, sizing scale | 2s | 10s |
-| **6a: Paper Consensus** | GV reader (paper signals) | PnL-weighted direction per pair | <1s | 5s |
-| **6: Meta-Signal** | Stages 3-5, 6a (ML, forecast, RL, paper) | Final direction, strategy, confidence | <1s | 10s |
-| **7: Position Sizing** | Stage 6 (meta-signals) + IV data | CSV file with 32 strategy allocations | 1s | 60s |
-| **8: Post-CSV** | All above | RL training, crowding, diagnostics, report | 13s | 300s |
-
-**Timeout guard**: A daemon thread fires after 25 minutes, terminating the process and sending a Discord alert. Normal execution completes in ~3 minutes.
-
-### 1.4 Memory Guardian: Pre-Flight Resource Manager
-
-Before any pipeline stage executes, the **Memory Guardian** (`scripts/memory_guardian.py`) verifies that minimum RAM is available. On a 16 GB server running dual IB Gateways, 32 live strategies, a persistent liveboard, and development tools, memory contention is a production risk.
-
-**Mechanism**: The guardian reads available physical memory via Windows `kernel32.GlobalMemoryStatusEx` (zero-dependency, no pip packages). If free RAM falls below the configured threshold (default: 3 GB), it terminates non-essential processes using a tiered priority system:
-
-| Tier | Priority | Targets | Min Keep |
-|---|---|---|---|
-| 1 | Kill first | Browsers (Edge, Chrome, Firefox), media players | 0 |
-| 2 | Kill second | Email clients (Thunderbird, Outlook), messaging (Slack, Teams) | 0 |
-| 3 | Last resort | Dev tools (Claude Code, VS Code) | 1 |
-
-**Protected processes** (never killed): Python, IB Gateway, Java, AT Center, Windows Defender, all OS services, remote access (SSH, RDP).
-
-Within each tier, processes are sorted by RSS (resident memory) descending — the heaviest are terminated first. After reclaiming memory, the guardian elevates the pipeline to `HIGH_PRIORITY_CLASS` for CPU scheduling priority.
+Within each stage, phases execute in parallel via Python's `concurrent.futures.ThreadPoolExecutor`. The pattern is consistent throughout the pipeline:
 
 ```python
-# Integration in unified_pipeline.py (runs before pipeline_start timestamp)
-from scripts.memory_guardian import ensure_memory
-mem = ensure_memory(min_free_gb=3.0, log_fn=log)
-# Returns: {"free_before_gb", "free_after_gb", "killed": [(pid, rss_mb, name)], "priority_elevated"}
+with ThreadPoolExecutor(max_workers=10) as pool:
+ futures = {
+ pool.submit(phase_1a_tws_health): "TWS Health",
+ pool.submit(phase_1b_fxssi): "FXSSI Sentiment",
+ pool.submit(phase_1c_scrapers): "7 Scrapers",
+ pool.submit(phase_1g_macro): "Macro Data (25 series)",
+ # ... Additional phases
+ }
+ for future in as_completed(futures):
+ name = futures[future]
+ try:
+ result = future.result(timeout=120)
+ except Exception as e:
+ discord_notify("ERROR", f"{name} FAILED", str(e))
 ```
 
-**Discord notification**: When processes are terminated, a summary is sent (`Freed RAM: 0.70→3.21 GB, Freed 8 excessive process(es)`). If RAM remains below 2 GB after cleanup, a critical `@here` alert is dispatched.
+Inter-stage gates are enforced by sequential stage execution: Stage 2 does not begin until Stage 1 completes. Within a stage, phases are independent and execute concurrently. This design maximizes throughput while respecting data dependencies.
 
-### 1.5 Non-Critical Failure Handling
+The pipeline is **fault-tolerant by design**. Individual phase failures within a stage do not abort the pipeline. Instead, downstream consumers check for data freshness and gracefully degrade. If the FXSSI scraper fails, the ML ensemble trains on the remaining 18 sources, with a slightly reduced feature set, but still functional. The only hard failures are: TWS connectivity (no broker = no trading), and the meta-signal resolver itself (no signals = no CSV).
 
-The system explicitly tolerates failures in non-critical components:
+The graph is drawn. Now the 19 data scrapers fan out across the internet, racing a clock that does not pause for HTTP 429 errors.
+
+---
+
+## Chapter 2: Data Collection: The Oracle Network
+
+At 14:55:01 UTC on a Tuesday in March, the GDELT news scraper returned HTTP 429 for the third consecutive attempt. The pipeline did not stop. It noted the gap, reduced the ML feature count by 4, and shrank position sizes by 6% across the board. Nobody intervened. Nobody needed to.
+
+![Oracle Network](images/oracle-network-v3.svg)
+
+### 2.1 The 19 Sources
+
+The pipeline consumes data from 19 independent sources, scraped in parallel across 10 threads. Each source provides a different perspective on the FX market, sentiment, positioning, fundamentals, implied volatility, macroeconomic conditions, and prediction market probabilities:
+
+| # | Source | Type | Data | Frequency | Tables |
+|---|--------|------|------|-----------|--------|
+| 1 | **IG.com** | Retail Sentiment | % long/short per pair | Hourly | sentiment_hourly |
+| 2 | **Dukascopy** | Retail Sentiment | % long/short + currency strength | Hourly | sentiment_hourly, dukascopy_pair_scores |
+| 3 | **MyFXBook** | Retail Sentiment | Community positioning | Hourly | sentiment_hourly |
+| 4 | **FXSSI** | Retail Sentiment | Order book depth | Hourly | sentiment_hourly |
+| 5 | **MarketBulls** | Seasonal | Monthly seasonal tendency | Daily | seasonal_tendency |
+| 6 | **CFTC/COT** | Institutional | Commitment of Traders (net, commercial, OI) | Weekly | cot_data |
+| 7 | **ForexFactory** | Calendar | Economic events, impact ratings | Daily | calendar_events |
+| 8 | **CME Options** | IV Surface | FX ETF options (FXE, FXY, FXB, FXF, FXA, FXC) | Hourly | iv_data |
+| 9 | **FinBERT** | News NLP | Sentiment scores from financial news (GDELT) | Hourly | news_article_counts |
+| 10 | **Kalshi** | Prediction Mkt | Event probabilities (Fed, CPI, NFP) | Hourly | prediction_market_data |
+| 11 | **Polymarket** | Prediction Mkt | Geopolitical + macro event probabilities | Hourly | prediction_market_data |
+| 12 | **IBKR TWS** | Broker | Account metrics, positions, equity | Hourly | ibkr_positions, ibkr_account_metrics |
+| 13 | **Yahoo Finance** | Macro Equities | VIX, Nikkei 225, Eurostoxx 50, FTSE 100, BHP, TLT | Hourly | macro_data |
+| 14 | **Yahoo Finance** | Macro Commodities | Crude Oil (CL), Gold (GC), Copper (HG), OVX | Hourly | macro_data |
+| 15 | **FRED** | Macro Yields | US 2Y/10Y, UK 10Y, AU 10Y, DE 10Y, IT 10Y | Daily | macro_data |
+| 16 | **FRED** | Macro Economic | ISM Manufacturing, recession probability | Monthly | macro_data |
+| 17 | **Currency Strength** | Derived | Relative performance scores per currency | Hourly | dukascopy_pair_scores |
+| 18 | **Prediction Derived** | Derived | Per-pair PM signals (hawkish, momentum, divergence) | Hourly | prediction_market_derived |
+| 19 | **ATR Computation** | Derived | Average True Range from H4 OHLC bars | Hourly | atr_data |
+
+Sources 13-16 represent the **macro data scraper**, a dedicated Phase 1g component that pulls 25 time series from Yahoo Finance and FRED. Each series is stored with a 55-day moving average and a 1-year rolling z-score, providing both level and relative positioning within historical context.
+
+### 2.2 The Macro Data Scraper
+
+The macro data scraper (`scrapers/macro/scraper_macro_data.py`) is the newest addition to the oracle network. It pulls 25 series across four asset classes:
+
+```
+EQUITIES: VIX, Eurostoxx 50, Nikkei 225, FTSE 100, BHP
+FIXED INCOME: TLT (US long bond ETF), US 2Y, US 10Y, UK 10Y, AU 10Y, DE 10Y, IT 10Y
+COMMODITIES: Crude Oil (CL=F), Gold (GC=F), Copper (HG=F), OVX (oil volatility)
+MACRO: ISM Manufacturing, Recession Probability (FRED)
+```
+
+Each series is stored with three derived fields:
+- **Raw value**: The latest observation
+- **55-day MA**: Smoothed trend (approximately 1 quarter of trading days)
+- **1-year z-score**: `(value - 252d_mean) / 252d_stdev`, positioning within the last year's distribution
+
+The z-score is the critical field. A VIX z-score of +2.0 means volatility is 2 standard deviations above its 1-year average, a rare event that triggers the cross-asset vol kill switch. A copper z-score of -1.5 signals industrial demand weakness, which the macro composite model uses to adjust FX pair signals for commodity-linked currencies (AUD, CAD).
+
+### 2.3 Scraper Fault Tolerance
+
+Every scraper runs inside a try/except wrapper with exponential backoff. The GDELT news scraper, which powers FinBERT sentiment analysis, is particularly fragile, it returns HTTP 429 (rate limit) errors approximately once per 20 cycles. The mitigation is a 3-retry loop with 6-second exponential backoff:
 
 ```python
-NON_CRITICAL = (
-    "FXSSI", "CALENDAR", "ECONOMIC", "DISCORD", "GV_HEALTH",
-    "GV TELEMETRY", "GV CROSS-VALIDATION", "EXHAUSTIVE REPORT",
-    "DATA INTEGRITY", "PREDICTION MARKETS", "NEWS SENTIMENT"
-)
+for attempt in range(3):
+ try:
+ response = requests.get(gdelt_url, timeout=30)
+ if response.status_code == 200:
+ break
+ except requests.RequestException:
+ time.sleep(6 * (2 ** attempt)) # 6s, 12s, 24s
 ```
 
-If a non-critical phase fails, the pipeline continues and sends a Discord alert. If a **critical** phase fails (ML Ensemble, IBKR Positions, Position Sizing), the pipeline halts immediately.
+Scraper status is recorded in the `scraper_status` table after every cycle. The Data Truth Watchdog (Stage 8f) reads this table and flags any source that has not updated within its expected cadence, hourly for most sources, daily for calendar events, weekly for COT data.
+
+A failed scraper never aborts the pipeline. But it does reduce the ML ensemble's feature count, which reduces classification confidence, which reduces position sizes through the sizing cascade. The system degrades gracefully: fewer data sources mean smaller, more cautious trades, exactly the right behavior when information is incomplete.
+
+Nineteen streams of raw data, some stale, some contradictory, all noisy. What turns them into something a model can reason about is 134 carefully constructed dimensions per pair.
 
 ---
 
-## Chapter 2 — Data Collection: The Oracle Network
+## Chapter 3: Feature Engineering: From Raw Data to 134 Dimensions
 
-<p align="center">
-  <img src="images/arch-data-collection-v2.svg" alt="Data Collection Network" width="850">
-</p>
+A retail sentiment reading of 73% long on EURUSD means nothing by itself. Paired with a COT report showing commercials net short, a VIX z-score at +1.8, and a carry differential inverting for the first time in six weeks, it starts to mean something very specific.
 
-### 2.1 The 15-Source Architecture
+### 3.1 The Feature Space
 
-The system aggregates data from **15 distinct sources** across 9 parallel threads. Each source provides a unique perspective on market conditions:
+Each of the 8 currency pairs is described by **134 features** (1,072 total across all pairs), organized into 7 clusters:
 
-**Retail Sentiment (4 sources)**
+| Cluster | Features | Sources | Examples |
+|---------|----------|---------|----------|
+| **Sentiment** | 22 | IG, Dukascopy, MFXBook, FXSSI | Long/short ratios, sentiment divergence, contrarian signals |
+| **Institutional** | 18 | CFTC/COT, Currency Strength | Net position, commercial positioning, OI change % |
+| **Fundamental** | 16 | Calendar, Prediction Markets | Event impact proximity, hawkish/dovish probabilities |
+| **Technical** | 28 | OHLC bars, ATR | Price returns (1/4/12/24 bars), ATR ratios, regime persistence |
+| **Theory Scores** | 30 | 30 financial theories per pair | Carry trade, momentum, mean reversion, PPP, risk-on/off |
+| **IV/Volatility** | 12 | CME Options, VIX, OVX | IV-RV spread, VRP, z-score, term structure slope |
+| **Macro** | 8 | Yahoo Finance, FRED | Yield differentials, equity risk appetite, commodity signals |
 
-| Source | Method | Coverage | Output |
-|---|---|---|---|
-| FXSSI | Playwright browser automation | 16 pairs | Long%/Short% ratio |
-| IG.com | HTTP scraping | 8 pairs | Client sentiment |
-| Dukascopy | HTTP scraping | 8 pairs | Currency strength scores |
-| MyFxBook | HTTP scraping | 8 pairs | Retail trader positioning |
+### 3.2 Theory Engine: 30 Theories x 8 Pairs
 
-**Institutional Data (2 sources)**
+![Theory Engine](images/theory-engine-v3.svg)
 
-| Source | Method | Coverage | Output |
-|---|---|---|---|
-| CFTC COT (InsiderWeek) | Jina API | 8 currencies | Net positioning, commercials, open interest |
-| Finviz | HTTP scraping | 8 currencies | Relative currency performance vs basket |
+The theory engine calculates 30 financial theories for each pair, organized into 6 clusters. Each theory produces a directional score between -1.0 (strong short) and +1.0 (strong long):
 
-**Calendar & Events (1 source)**
+| Cluster | Theories | Examples |
+|---------|----------|---------|
+| **Carry & Flow** | 6 | Interest rate differential, carry trade momentum, flow-adjusted carry, COT positioning, speculative sentiment, commercial hedging |
+| **Momentum** | 5 | Price momentum (4H/1D/1W), RSI regime, MACD divergence |
+| **Mean Reversion** | 5 | Bollinger band deviation, z-score reversion, ATR-normalized mean reversion, overextension |
+| **Macro Fundamental** | 5 | PPP deviation, terms of trade, relative GDP growth, CPI differential, employment divergence |
+| **Volatility** | 5 | IV-RV spread, volatility regime, VRP trend, skew signal, term structure |
+| **Composite** | 4 | Multi-factor weighted signals, regime-conditional composites |
 
-| Source | Method | Coverage | Output |
-|---|---|---|---|
-| ForexFactory | HTTP / JSON feed | All currencies | Event impact, proximity, country |
+Theory scores are used as **features** (inputs to the ML ensemble), never as labels. This is a critical architectural distinction: theories inform the model's reasoning, but realized price returns determine what counts as a correct prediction. This prevents the dangerous circularity of a model learning to predict its own inputs.
 
-**Volatility Data (1 source)**
+### 3.3 Feature Normalization
 
-| Source | Method | Coverage | Output |
-|---|---|---|---|
-| CME FX Options | IBKR TWS API (CurrencyShares ETF IV) | 6 direct + 2 cross | IV percentile, term structure, VRP |
+All features are normalized using a rolling 252-bar (approximately 63-day) window:
 
-**Prediction Markets (2 sources)**
+```python
+z_score = (value - rolling_mean_252) / max(rolling_std_252, epsilon)
+```
 
-| Source | Method | Coverage | Output |
-|---|---|---|---|
-| Kalshi | API | Interest rate probabilities | Hawkish score, momentum |
-| Polymarket | API | FX-adjacent markets | Divergence, consensus |
+The epsilon floor (`1e-8`) prevents division-by-zero in low-volatility regimes. Features with fewer than 30 valid observations in the lookback window are imputed with 0.0 (neutral) rather than forward-filled, which slightly reduces model confidence on recently-added features but avoids look-ahead bias.
 
-**News Sentiment (3 sources)**
+These 134 features feed into the pipeline's four signal sources, starting with the ML ensemble (50% of final signal weight).
 
-| Source | Method | Coverage | Output |
-|---|---|---|---|
-| GDELT Project | API (broad query) | Global headlines | VADER sentiment [-100, +100] |
-| Google News RSS | Feed parsing | Per-pair keywords | Pair-specific sentiment |
-| Finnhub | API (8 calls) | Market + ETF news | Financial sentiment score |
-
-### 2.2 Parallel Execution Model
-
-All 9 data collection phases launch simultaneously via `ThreadPoolExecutor`. The wall-clock time is determined by the slowest scraper (typically the ForexScraper runner at ~61 seconds), not the sum of all scrapers.
-
-**Thread safety** is guaranteed by SQLite's WAL (Write-Ahead Logging) mode, which allows concurrent reads from multiple threads while serializing writes. Each scraper writes to its own set of tables, preventing write conflicts.
-
-**Error handling** follows a graceful degradation pattern:
-- HTTP timeouts: Finnhub 8s, GDELT 12s, GNews 8s
-- Stale data fallback: If a scraper fails, the previous cycle's data remains valid (freshness tracked in `scraper_status`)
-- Deduplication: MD5 hash of `(pair, source, sentiment_value, hour)` prevents duplicate records
-
-### 2.3 Implied Volatility Pipeline
-
-The IV pipeline bridges equity options markets with spot FX:
-
-1. **CurrencyShares ETFs** (FXE, FXB, FXY, FXF, FXA, FXC) serve as IV proxies for their respective currencies
-2. **IBKR TWS API** provides historical IV bars for these ETFs (122+ bars per ETF)
-3. **Cross-pair IV** is synthesized mathematically:
-   - `IV(EURJPY) = sqrt(σ²_EUR + σ²_JPY + 2ρ·σ_EUR·σ_JPY)`
-   - `IV(AUDJPY) = sqrt(σ²_AUD + σ²_JPY + 2ρ·σ_AUD·σ_JPY)`
-4. **Derived features** include IV percentile rank (30-day rolling), Volatility Risk Premium (IV − RV via Garman-Klass), term structure ratio (30d/10d), and vol-of-vol
+The features are assembled. Five models will now compete to interpret them, and only one prediction per pair will survive.
 
 ---
 
-## Chapter 3 — Feature Engineering: From Raw Data to 134 Dimensions
+## Chapter 4: The ML Ensemble: 5-Model Mixture of Experts
 
-<p align="center">
-  <img src="images/arch-feature-engineering-v2.svg" alt="Feature Engineering Pipeline" width="850">
-</p>
+Four specialists trained on different market regimes. One arbiter. On any given hour, AdaBoost and CatBoost might flatly disagree on GBPUSD. The meta-classifier does not average them. It picks a winner.
 
-### 3.1 The ComprehensiveFeatureLoader
+![MoE Ensemble](images/moe-ensemble-v3.svg)
 
-All raw data is transformed into a unified feature vector by the `ComprehensiveFeatureLoader` class, which calls **23 specialized data loaders** (labeled A through U). Each loader extracts features from a specific database table or computed source. The feature vector for each currency pair contains **70–134 features** depending on data availability.
+### 4.1 Architecture
 
-### 3.2 Feature Taxonomy
+The ML ensemble is a **5-Model Mixture of Experts (MoE)** with competitive selection. Unlike traditional MoE architectures that use a gating network to route inputs, this system runs all models on every input and selects the best prediction through a meta-classifier:
 
-**A. Price Microstructure (12 features)**
+| Model | Algorithm | Role | Strength |
+|-------|-----------|------|----------|
+| **Specialist 1** | AdaBoost | Trend-Following Long | Sequential error correction, excels at trending markets |
+| **Specialist 2** | XGBoost | Trend-Following Short | Gradient boosting with regularization, handles non-linear interactions |
+| **Specialist 3** | LightGBM | Mean-Reversion Long | Histogram-based, fast training, excels at categorical features |
+| **Specialist 4** | CatBoost | Mean-Reversion Short | Native categorical handling, ordered boosting (reduced overfitting) |
+| **Meta-Classifier** | Random Forest | Arbiter | Selects the best specialist for each input through competition |
 
-These features describe the statistical properties of recent price action and serve as the primary **regime discriminators**:
+### 4.2 Training Protocol
 
-| Feature | Description | Regime Signal |
-|---|---|---|
-| `hurst` | Hurst exponent via R/S analysis (90 H4 bars) | H > 0.5 = trending, H < 0.5 = mean-reverting |
-| `half_life` | Mean-reversion half-life (Ornstein-Uhlenbeck log regression) | Short = fast reversion, Long = persistent trend |
-| `var_ratio` | Lo-MacKinlay variance ratio test | VR > 1.05 = trending, VR < 0.95 = mean-reverting |
-| `acf_1`, `acf_5`, `acf_avg` | Autocorrelation at lag 1, 5, and average | Positive = trending, Negative = reverting |
-| `adx` | Average Directional Index (14-bar Wilder) | High = strong trend regardless of direction |
-| `mom_5d`, `mom_10d`, `mom_20d` | Log returns at 5, 10, 20-day horizons | Direction + magnitude of price movement |
-| `vol_10d`, `vov` | 10-day volatility and volatility-of-volatility | Vol stability; high vov = regime instability |
+Each specialist is trained on a **pair-specific, strategy-direction-specific** subset of the feature space:
 
-**Why these matter**: The Hurst exponent and variance ratio are the core regime indicators. A Hurst value above 0.5 with VR > 1.05 strongly suggests a trending environment. Conversely, H < 0.4 with VR < 0.95 indicates mean-reversion conditions. The Meta-Classifier uses these to compute a symmetric structural bonus (see Chapter 4, §4.5).
+1. **Label generation**: 4-bar forward returns are computed from OHLC data. A return above the ATR-normalized threshold is labeled `+1` (continuation), below as `-1` (reversal), within as `0` (neutral, excluded from training).
 
-**B. Currency Strength (6 features)**
+2. **Walk-forward validation**: A 2-bar gap is enforced between the last training bar and the first test bar to prevent temporal leakage. The `_validate_no_lookahead()` guard explicitly checks this constraint.
 
-| Feature | Description |
-|---|---|
-| `ccy_base`, `ccy_quote` | Individual currency strength scores (Dukascopy) |
-| `ccy_diff` | Base − Quote differential (primary anchor signal) |
-| `finviz_base`, `finviz_quote` | Relative performance vs currency basket (Finviz) |
-| `finviz_diff` | Finviz differential |
+3. **Prior blending**: When a specialist has fewer than 100 training samples (cold-start), its predictions are blended with a prior distribution derived from theory scores. The blending weight decays exponentially as sample count grows: `alpha = max(0, 1 - n_samples / 100)`.
 
-**C. Sentiment (8 features)**
+4. **Ridge regularization**: A Ridge regression layer sits between the specialists and the meta-classifier, providing L2 regularization that penalizes overconfident predictions.
 
-| Feature | Description |
-|---|---|
-| `sent_mean` | Average sentiment across all retail sources |
-| `sent_std` | Sentiment dispersion (disagreement between brokers) |
-| `sent_extreme` | Binary flag: > 85th percentile bullish or bearish |
-| `sent_consensus` | Agreement level across sources |
-| `sent_momentum` | Sentiment change over 24 hours |
-| `sent_range` | Max − Min sentiment (volatility of opinion) |
-| `sent_contrarian` | Inverted mean (contrarian signal: −sent_mean) |
-| `sent_cot_align` | Retail × Institutional alignment (sent_mean × cot_net) |
+### 4.3 The Meta-Classifier: Competitive Selection
 
-**D. COT Positioning (6 features)**
+The meta-classifier is a **Random Forest** trained on specialist predictions, feature importances, and recent specialist accuracy:
 
-| Feature | Description |
-|---|---|
-| `cot_net` | Net commercial positioning |
-| `cot_chg` | Week-over-week change |
-| `cot_orient` | Orientation (net long/short/neutral) |
-| `cot_accel` | Rate of change in positioning (acceleration) |
-| `cot_extreme` | Extreme positioning flag (> 2σ from mean) |
-| `cot_oi_chg` | Open interest change (new money entering) |
+```
+Input to meta-classifier (per pair):
+ - 4 specialist predictions (direction + confidence)
+ - 4 specialist rolling accuracy (30-bar window)
+ - Top-10 feature importances from each specialist
+ - Current regime classification
+ - Theory cluster agreement scores
 
-**E. Calendar & Events (4 features)**
+Output: final direction + confidence
+```
 
-| Feature | Description |
-|---|---|
-| `cal_impact` | Weighted impact of upcoming events |
-| `cal_proximity` | Inverse time to nearest high-impact event |
-| `cal_density` | Number of events in next 48 hours |
-| `cal_asymmetry` | Ratio of bullish to bearish event surprises |
+The meta-classifier does not average the specialists. It **selects** the most reliable one for the current market condition. In trending markets, it gravitates toward AdaBoost and XGBoost. In range-bound markets, LightGBM and CatBoost take precedence. This dynamic routing is what makes MoE superior to static model averaging.
 
-**F–U: Additional Feature Groups (52+ features)**
+### 4.4 Non-Circular Architecture
 
-The remaining groups include: Seasonal tendencies (MarketBulls decomposition), Theory scores (25 pre-computed from `calculate_theories.py`), Volatility features (IV percentile, VRP z-score, term structure ratio, vol ratio), Prediction market signals (hawkish, momentum, divergence, Kalshi-Polymarket divergence), RL performance feedback (average reward, trend), Forecast signals (direction, confidence, regime), Position data (active/inactive, direction, size, P&L), Account equity, Realized P&L history, PnL snapshots, and Derived composites (trend/reversion evidence scores, regime balance).
+The ML ensemble reads from all three databases but writes only to `ml_classifications` and `strategy_assignments`. The labels are derived exclusively from **realized price returns**, never from other model outputs, theory scores, or meta-signals. This strict write authority prevents the dangerous circularity that can emerge when a model learns to predict its own predictions.
 
-### 3.3 The Theory Engine: 30 Hypotheses per Pair
+```
+Reads: forex_sentiment.db → sentiment, theories, prediction markets, macro data
+ forex_regime.db → OHLC bars (for labels), historical regimes
+ risk_management.db → ATR, account metrics, PnL data
+Writes: forex_regime.db → ml_classifications, strategy_assignments
+```
 
-The Theory Engine (`calculate_theories.py`) computes 30 independent financial hypotheses for each of the 8 currency pairs. These theories encode quantitative finance principles organized into categories:
+The ML ensemble contributes 50% of the final signal weight. Its confidence outputs are calibrated by the Bayesian optimizer before reaching the meta-signal resolver.
 
-**Momentum Theories (#1-10)**: COT momentum (net position change week-over-week), relative strength (pair vs currency basket), sentiment momentum (source change in signal), multi-factor trend (COT + strength + retail convergence), base/quote currency momentum (individual components), momentum differential (TF vs MR divergence).
-
-**Sentiment Confirmations (#11-15)**: Strength-sentiment confirmation (do they agree?), sentiment-COT agreement (retail vs institutional alignment), COT acceleration (rate of position change), seasonal bias (MarketBulls seasonal decomposition), retail bias (IG.com + Dukascopy consensus).
-
-**Extremes & Calendar (#16-22)**: Extreme sentiment (retail panic: >85th %ile), sentiment range, sentiment volatility, retail-institutional divergence, weighted sentiment (source-weighted aggregate), upcoming events (ForexFactory: impact × proximity), calendar density, event asymmetry, COT positioning.
-
-**Prediction Markets (#23-25)**: Hawkish lean (Kalshi interest rate prob vs forward guidance), momentum (prediction market trend: is prob_up trending?), divergence (PM signal vs retail sentiment).
-
-Each theory outputs a normalized score in **[-1, +1]** and is stored in the `theory_scores` table. These are used as **features** for the ML ensemble, never as labels — the ensemble learns which theories are predictive in which market conditions.
-
-### 3.4 Normalization and Temporal Alignment
-
-- **Sentiment/theory features**: Normalized to `[-1, +1]` using 7-day P95 auto-calibration
-- **Price features**: Standardized per 90-bar lookback window
-- **Temporal alignment**: All features aligned to H4 bar close timestamp
-- **Forward-fill**: Features with different sampling frequencies (e.g., weekly COT) are forward-filled to ensure no lookahead bias
-- **Anti-lookahead validation**: `_validate_no_lookahead()` explicitly verifies `min(test_idx) > max(train_idx) + gap_bars`
+Raw model confidence is notoriously miscalibrated. The Bayesian optimizer exists to answer a harder question: given what actually happened the last 14 days, how much should this confidence number be trusted?
 
 ---
 
-## Chapter 4 — The ML Ensemble: 5-Model Mixture of Experts
+## Chapter 5: Bayesian Optimization: MCMC Weight Calibration
 
-<p align="center">
-  <img src="images/arch-moe-v2.svg" alt="5-Model Mixture of Experts Architecture" width="850">
-</p>
+The ML ensemble says 0.82 confidence on EURUSD LONG. Two weeks ago, 0.82-confidence calls had a 54% hit rate. The optimizer draws 1,000 samples from the posterior to find out what 0.82 really means right now.
 
-### 4.1 Architecture Overview
-
-The ML ensemble uses a **competitive Mixture of Experts** (MoE) design with **4 Strategy Specialists** and **1 Meta-Classifier**. Unlike gating-network MoEs (where a learned router assigns inputs to experts), this is a **direct competition** model: all four specialists score every input, and the Meta-Classifier selects the winner based on composite scores.
-
-**Key design decision**: Linear Ridge Regression was chosen over neural networks or gradient boosted trees for three reasons:
-
-1. **Interpretability** — Every weight has a clear economic meaning (e.g., "how much does COT momentum contribute to the trend-following long decision?")
-2. **Robustness** — Ridge regression with strong priors prevents catastrophic overfitting on limited samples (forex training windows are typically 90 bars ≈ 15 days)
-3. **Speed** — Closed-form solution trains in milliseconds: `w = (X'X + λI)⁻¹X'y`
-
-### 4.2 The Four Strategy Specialists
-
-Each specialist is a `StrategySpecialist` class implementing Ridge regression (L2 regularization) with **prior knowledge blending**:
-
-| Specialist | Thesis | Key Positive Priors | Key Negative Priors |
-|---|---|---|---|
-| **L_TF** (Long Trend Following) | "Trend will continue upward" | hurst=1.5, ccy_diff=2.5, pm_direction=1.8, mom_5d=1.0 | sent_extreme=−0.5 |
-| **S_TF** (Short Trend Following) | "Trend will continue downward" | hurst=1.5, ccy_diff=−2.5, pm_direction=−1.8 | sent_extreme=−0.5 |
-| **L_MR** (Long Mean-Reversion) | "Oversold, expect bounce" | sent_extreme=1.5, half_life=1.2, vov=1.0 | hurst=−1.0 |
-| **S_MR** (Short Mean-Reversion) | "Overbought, expect pullback" | sent_extreme=1.5, half_life=1.2, vov=1.0 | hurst=−1.0 |
-
-All 4 specialists share the **same feature space** (63 prior weights); only the weight values differ according to their directional and regime thesis. The prior weights encode domain knowledge that never changes.
-
-### 4.3 Prior + Learned Weight Blending
-
-This is the most important design element of the ML system. Each specialist maintains two sets of weights:
-
-1. **Prior weights** (63 features × 4 strategies = 252 fixed weights): Domain knowledge encoded by the system designer. These are **immutable**.
-2. **Learned weights** (price features only, ~20 features in the `price_keys` set): Trained via Ridge regression on realized returns. These adapt every cycle.
-
-The blending formula controls how much the model trusts learned weights versus prior knowledge:
-
-```
-α = min(n / 200, 0.50)
-
-score = α × learned_score(price_features) + (1 − α) × prior_score(all_features)
-```
-
-| Training Samples (n) | Blend Factor (α) | Interpretation |
-|---|---|---|
-| 0 (cold start) | 0.00 | 100% prior knowledge |
-| 30 (minimum) | 0.15 | 85% prior, 15% learned |
-| 100 | 0.50 | 50% prior, 50% learned |
-| 200+ | 0.50 (capped) | 50% prior, 50% learned — **never fully learned** |
-
-**Why cap at 50%?** In low-sample regimes (which forex always is), pure data-driven models overfit catastrophically. The prior acts as a regularizer with **economic meaning**, preventing the learned weights from driving the model into unstable territory.
-
-### 4.4 Training Pipeline
-
-1. **Label generation**: For each pair, extract 500 H4 bars. The `LabelGenerator` classifies 6-bar forward returns using the agreement between prior 20-bar trend and forward movement:
-   - If forward return **continues** the prior trend → `L_TF` or `S_TF`
-   - If forward return **reverses** the prior trend → `L_MR` or `S_MR`
-
-2. **Subsampling**: Select 160 distributed points to avoid temporal clustering (prevents memorizing a single trending period)
-
-3. **Cross-pair pooling**: Labels from **ALL 8 pairs** are pooled into a single training set. This gives each specialist 100+ training samples instead of ~20 per pair.
-
-4. **Soft labeling**: Specialists receive positive labels for matching thesis and negative (penalty) labels for opposite thesis:
-   - An `L_TF` label gives `+magnitude × 100` to the L_TF specialist
-   - The same label gives `−magnitude × 50` to the S_MR specialist
-
-5. **Ridge training**: `w = solve(X'X + I, X'y)` — closed-form, no iterative optimization
-
-6. **Walk-forward validation**: 80/20 split with a **2-bar gap** between training and test sets (the gap prevents information leakage from autocorrelated price series)
-
-### 4.5 The Meta-Classifier: 4-Way Direct Competition
-
-The Meta-Classifier performs a **pure 4-way competition** — no cascade, no fallback, no regime pre-selection bias:
-
-**Step 1 — Collect specialist scores**: All 4 specialists score the current feature vector simultaneously.
-
-**Step 2 — Compute structural regime environment** (symmetric, no directional bias):
-```
-tf_env = f(hurst, var_ratio, acf, adx, pm_consensus)
-mr_env = f(hurst, half_life, vol_of_vol, cal_risk, pm_divergence)
-```
-
-**Step 3 — Add structural bonus** (capped at 30% of specialist spread):
-```
-specialist_range = max(scores) − min(scores)
-tf_bonus = (tf_env / max(tf_env, mr_env)) × specialist_range × 0.30
-mr_bonus = (mr_env / max(tf_env, mr_env)) × specialist_range × 0.30
-```
-
-**Step 4 — Winner-takes-all**: `winner = argmax(specialist_score + structural_bonus)`
-
-**Step 5 — Confidence from margin** (margin between 1st and 2nd place):
-```
-confidence = 0.5 + 0.3 × (1st_place − 2nd_place) / (1st_place − 4th_place)
-confidence = clip(confidence, 0.30, 0.95)
-```
-
-**Step 6 — Track record adjustment** (mild ±5%): If the winning strategy has recent wins, confidence += 5%. Recent losses, confidence −= 5%.
-
-**Design rationale**: The structural bonus ensures that even if all specialists score similarly, the regime environment (trending vs mean-reverting) breaks the tie. But the bonus is capped at 30% of the specialist spread — it **cannot override** a strong specialist signal.
-
-### 4.6 Hysteresis and Persistence
-
-To prevent rapid regime switching (whipsaw), the classifier enforces three anti-churn mechanisms:
-
-- **Minimum hold time**: 1 hour before any regime change is permitted
-- **Hysteresis margin**: 4% base margin + 2% extra to exit current state (6% total to switch)
-- **EMA smoothing**: α = 0.90 (90% current score, 10% history)
-
-These mechanisms ensure that momentary feature noise does not cause regime oscillation. In production, average regime persistence is **0.94** (94% probability the current regime continues to the next bar).
-
----
-
-## Chapter 5 — Bayesian Optimization: MCMC Weight Calibration
-
-<p align="center">
-  <img src="images/arch-bayesian-v2.svg" alt="Bayesian MCMC Optimization" width="850">
-</p>
+![Bayesian Calibrator](images/bayesian-calibrator.svg)
 
 ### 5.1 Purpose
 
-The Bayesian Optimizer tunes **prior feature weights** for the TF and MR strategies simultaneously. While the Ridge specialists learn price feature weights from data, the Bayesian optimizer adjusts the **external feature weights** (sentiment, COT, prediction markets) based on realized trade outcomes.
-
-### 5.2 MCMC Algorithm: Metropolis-Hastings
-
-The optimizer uses **Markov Chain Monte Carlo** with Metropolis-Hastings sampling:
+The Bayesian MCMC optimizer calibrates the confidence weights assigned to ML classifications. Rather than using raw model confidence (which ML models notoriously miscalibrate), the optimizer samples from a posterior distribution that accounts for historical accuracy conditional on agreement patterns:
 
 ```
-For chain_id in range(4):              # 4 parallel chains
-  For iteration in range(5000):         # 5000 samples per chain
-    proposed_w = current_w + N(0, σ=0.12)      # Gaussian proposal
-    proposed_w = clip(proposed_w, 0.1, 4.0)     # Weight bounds
-
-    # Metropolis-Hastings acceptance
-    likelihood_ratio = L(proposed | outcomes) / L(current | outcomes)
-    acceptance = min(1, likelihood_ratio × prior_ratio)
-
-    if random() < acceptance:
-      current_w = proposed_w                    # Accept proposal
-
-    # Adaptive temperature (simulated annealing)
-    if accept_ratio > 0.234:                    # Target acceptance rate
-      temperature *= 1.02
-    else:
-      temperature *= 0.98
+P(direction_correct | ML_conf, agreement_level, regime)
 ```
 
-The target acceptance rate of **0.234** is the theoretically optimal rate for high-dimensional Metropolis-Hastings (Roberts et al., 1997). The adaptive temperature ensures the chains explore the posterior efficiently.
+### 5.2 Sampling Method
 
-### 5.3 Gelman-Rubin Convergence Diagnostic
+The optimizer uses **Metropolis-Hastings sampling** with 500 burn-in steps and 1,000 retained samples per pair. The proposal distribution is a truncated normal centered on the current weight vector, with step size adapted to maintain a 23-44% acceptance rate (optimal for random-walk Metropolis).
 
-**Why 4 chains?** Multiple chains enable the **Gelman-Rubin R-hat statistic**:
+The likelihood function evaluates each proposed weight vector against the last 14 days of realized outcomes. Weights that would have produced more accurate signals receive higher likelihood; weights that would have amplified losing signals are penalized.
 
-```
-R-hat = sqrt(var_pooled / W)
+### 5.3 Output
 
-Where:
-  B = Between-chain variance (chain disagreement)
-  W = Within-chain variance (individual chain exploration)
-  var_pooled = ((n−1)/n) × W + (1/n) × B
-```
+The optimizer writes calibrated confidence multipliers to `optimizer_weights` and raw MCMC samples to `optimizer_samples` (for diagnostic analysis). These calibrated confidences feed into the meta-signal resolver, where they moderate the ML signal's 50% contribution.
 
-| R-hat Value | Interpretation | Action |
-|---|---|---|
-| < 1.05 | Excellent convergence | Use optimized weights |
-| < 1.10 | Good convergence | Use optimized weights |
-| ≥ 1.10 | Chains disagree | **Revert to prior weights** |
+The optimizer does not predict direction; it calibrates certainty. Its output moderates the ML signal's contribution to the meta-signal resolver.
 
-If R-hat ≥ 1.10, the chains have not converged to the same posterior distribution. Rather than risk a poorly converged solution, the system reverts to prior weights.
+Three intelligence sources are now loaded and calibrated. The fourth, with only 6,832 experiences to its name, learns differently from all of them.
 
-### 5.4 Safety Guard
+---
+
+## Chapter 6: The Reinforcement Learning Agent
+
+The ML ensemble learns from history. The RL agent learns from consequence. It placed a SHORT on USDJPY during a BOJ surprise, took the loss, and updated a single cell in a Q-table. Next time the state space aligns, it will remember.
+
+![RL Agent](images/rl-agent-v3.svg)
+
+### 6.1 Architecture
+
+The RL agent is a **Q-learning agent** with prioritized experience replay, maintaining a Q-table over a discrete state-action space:
+
+| Parameter | Value |
+|-----------|-------|
+| **State space** | (pair, regime, ML_direction, agreement_level, vol_bucket) |
+| **Action space** | {LONG, SHORT, FLAT} |
+| **Learning rate (alpha)** | 0.1 |
+| **Discount factor (gamma)** | 0.95 |
+| **Epsilon (exploration)** | 0.15 (epsilon-greedy) |
+| **Experience count** | 6,832 (growing every cycle) |
+| **Min samples for weight** | 200 (RL weight capped until threshold met) |
+
+### 6.2 Reward Function
+
+The reward is the **realized PnL percentage** of the action taken, clipped to [-5%, +5%] to prevent outlier contamination. A long position that gains 1.2% returns a reward of +0.012; a short position that loses 0.8% returns a reward of -0.008.
+
+### 6.3 Training Protocol
+
+The RL agent trains on two timescales:
+
+1. **In-cycle (Stage 5a)**: The agent updates Q-values using the latest batch of closed positions. This is the "fast" learning loop, immediate feedback from recent trades.
+
+2. **Post-CSV (Stage 8b)**: The agent performs a full replay of prioritized experiences, sampling proportionally to temporal difference (TD) error. High-error experiences are replayed more frequently, accelerating convergence on surprising market behaviors.
+
+### 6.4 Progressive Trust
+
+The RL agent currently contributes **12%** of the meta-signal weight, the lowest of the four sources. This reflects its relative immaturity (6,832 experiences vs. Millions of historical data points for the ML ensemble). As experience count grows and realized accuracy improves, the weight learning system in the meta-signal resolver will gradually increase its contribution.
+
+The RL agent learns from its own actions and consequences rather than historical patterns, making it more robust to regime shifts but noisier in novel conditions.
+
+Four signal sources now exist, each with a fundamentally different view of what drives currency markets. One layer remains before arbitration: the macro eye, which looks beyond FX entirely.
+
+---
+
+## Chapter 7: The Macro Intelligence Layer
+
+Copper fell 1.5 standard deviations below its one-year mean on a Thursday. The FX models saw nothing unusual in AUDUSD. The macro layer did: it cut the Australian dollar's sizing multiplier before the pair dropped 80 pips on Friday's Asian open.
+
+![Macro Oracle](images/macro-oracle.svg)
+
+### 7.1 Architecture Overview
+
+The macro intelligence layer is a three-component system that translates cross-asset data into FX trading signals and risk overlays:
+
+1. **Macro Composite Signal**, 8 pair-specific factor models generating directional signals
+2. **Cross-Asset Vol Kill Switch**, Market-wide volatility monitor with automatic position scaling
+3. **Macro Regime Classifier**, Business cycle identification with regime-specific sizing
+
+These three components execute sequentially in Stage 6 (Phases 6a0, 6a1, 6a2) before the meta-signal resolver fires.
+
+### 7.2 Macro Composite Signal: 8 Factor Models
+
+The macro composite signal (`macro_composite.py`) builds a **pair-specific cross-asset factor model** for each of the 8 currency pairs. Each model uses exactly 4 factors, selected based on the economic relationship between the pair's constituent currencies and the macro variables:
+
+| Pair | Factor 1 | Factor 2 | Factor 3 | Factor 4 |
+|------|----------|----------|----------|----------|
+| **EURUSD** | DE-US yield spread | Eurostoxx 50 | Gold | VIX (inverted) |
+| **USDJPY** | US-JP yield spread | Nikkei 225 | TLT (inverted) | VIX |
+| **GBPUSD** | UK-US yield spread | FTSE 100 | Copper | VIX (inverted) |
+| **USDCHF** | US-DE yield spread | Gold (inverted) | VIX | Eurostoxx (inverted) |
+| **AUDUSD** | AU-US yield spread | BHP (iron ore proxy) | Copper | VIX (inverted) |
+| **USDCAD** | US 2Y-10Y slope | Crude Oil (inverted) | Gold (inverted) | VIX |
+| **EURJPY** | DE-JP yield spread | Eurostoxx 50 | Nikkei (inverted) | TLT (inverted) |
+| **AUDJPY** | AU-JP yield spread | BHP | Nikkei 225 | Copper |
+
+Each factor contributes a z-score signal (the 1-year z-score from the macro data scraper). The composite score is the equal-weighted average of the 4 factor z-scores, mapped to a direction (LONG if positive, SHORT if negative) with confidence proportional to the absolute composite score.
+
+### 7.3 Cross-Asset Vol Kill Switch
+
+The vol kill switch (`scripts/cross_asset_vol.py`) monitors four volatility measures simultaneously:
+
+| Measure | Source | What It Captures |
+|---------|--------|-----------------|
+| **VIX z-score** | Yahoo Finance | Equity market fear |
+| **FX IV z-score** | CME Options | Currency-specific implied volatility |
+| **OVX z-score** | Yahoo Finance | Oil market volatility (commodity contagion) |
+| **TLT vol z-score** | Yahoo Finance | Bond market stress (TLT 20-day realized vol) |
+
+The **maximum z-score** across all four measures determines the regime:
+
+| Max Z-Score | Regime | Sizing Scale | Interpretation |
+|-------------|--------|-------------|----------------|
+| z < 2.0 | **NORMAL** | 100% | No abnormal stress detected |
+| 2.0 < z < 4.0 | **ELEVATED** | 50% | Cross-asset stress, reduce exposure |
+| z > 4.0 | **CRISIS** | 0% | Market-wide panic, halt all new positions |
+
+The vol kill switch writes to the `cross_asset_vol` table and feeds directly into the 8-layer position sizing cascade (Layer 5). It is a **market-wide circuit breaker**, when multiple asset classes signal distress simultaneously, the system assumes contagion risk and scales down or halts entirely.
+
+### 7.4 Macro Regime Classifier
+
+The macro regime classifier (`scripts/macro_regime_classifier.py`) identifies the current phase of the business cycle using ISM Manufacturing data and recession probability:
+
+| Regime | ISM Condition | Recession Prob | Sizing Multiplier |
+|--------|--------------|----------------|-------------------|
+| **EXPANSION** | ISM > 50 & rising | < 20% | 100% |
+| **LATE_EXPANSION** | ISM > 50 & falling | < 30% | 90% |
+| **EARLY_RECESSION** | ISM < 50 & falling | > 30% | 60% |
+| **LATE_RECESSION** | ISM < 50 & rising | > 20% | 85% |
+| **RECOVERY** | ISM > 50 & accelerating | < 15% | 110% |
+
+The regime classifier operates on a much slower timescale than the other components, business cycles evolve over months, not hours. Its sizing multiplier is a **structural overlay** that adjusts the system's overall risk appetite based on the macroeconomic environment. In early recession (ISM falling below 50, recession probability rising), positions are cut to 60% of normal size, a proactive defense against the systematic directional risk that characterizes economic contractions.
+
+The macro layer provides the broadest perspective in the system. The meta-signal resolver reconciles all four signal sources into a single directional decision per pair.
+
+All four intelligences have spoken. They do not agree. Somewhere in their weighted disagreement lies the final direction for each pair.
+
+---
+
+## Chapter 8: Meta-Signal Resolution: Arbitrating Four Intelligences
+
+ML says LONG. The forecast says SHORT. The RL agent says FLAT. The macro composite says LONG with low confidence. The resolver has to produce a single number from this mess, and it has to be right more often than not, or the account equity curves start tilting the wrong way.
+
+![Meta-Resolver](images/meta-resolver-v3.svg)
+
+### 8.1 The Four Sources
+
+The meta-signal resolver (`meta_signal_resolver.py`) arbitrates four directional signal sources:
+
+| Source | Weight | Signal Type | Confidence Range |
+|--------|--------|------------|-----------------|
+| **ML Classifier** | 50% | Direction + strategy + confidence | 0.0 - 1.0 |
+| **4-Day Forecast** | 28% | Direction + transition probability | 0.0 - 1.0 |
+| **RL Agent** | 12% | Direction + Q-value | 0.0 - 1.0 (normalized) |
+| **Macro Composite** | 10% | Direction + composite z-score | 0.0 - 1.0 (normalized) |
+
+Paper consensus signals from the 32 MCPT strategies are recorded but **firewalled from arbitration**, they cannot influence the meta-signal. This anti-circularity firewall prevents a feedback loop where live strategy behavior influences the signals that authorize those same strategies.
+
+### 8.2 Resolution Algorithm
+
+For each pair, the resolver computes a weighted directional vote:
 
 ```python
-def _bayesian_guard(n_samples, performance, weights_path):
-    if n_samples < 15:         # Not enough data
-        revert_to_prior()
-        return False
-    if performance < 0:         # Optimization made things worse
-        revert_to_prior()
-        return False
-    return True
+# Weighted vote
+score = (ml_dir * ml_conf * w_ml +
+ fc_dir * fc_conf * w_fc +
+ rl_dir * rl_conf * w_rl +
+ macro_dir * macro_conf * w_macro)
+
+# Agreement analysis
+agreement_level = count_matching_directions() / 4
+
+# Confidence adjustments
+if agreement_level == 1.0: # All 4 agree
+ confidence *= (1.0 + AGREE_BONUS) # +10%
+elif agreement_level < 0.5: # Majority disagree
+ confidence *= (1.0 - DISAGREE_PEN) # -30%
+
+# Minimum confidence gate
+if confidence < MIN_CONF (0.45):
+ direction = "FLAT" # No signal — insufficient conviction
 ```
 
-**Rationale**: In forex with limited data, a Bayesian optimizer can easily overfit to noise. The guard ensures optimization only proceeds with sufficient evidence and positive expected value. The 15-sample threshold accounts for both hard outcomes (weight 1.0) and soft outcomes (fractional weight).
+### 8.3 Pair Track Record
 
----
-
-## Chapter 6 — The Reinforcement Learning Agent
-
-<p align="center">
-  <img src="images/arch-rl-v2.svg" alt="Reinforcement Learning Agent Architecture" width="850">
-</p>
-
-### 6.1 Agent Design
-
-The RL agent uses **tabular Q-Learning** — a model-free, off-policy temporal difference method. The choice of tabular Q-Learning over Deep RL (DQN, PPO) is deliberate:
-
-- **Stability**: Tabular methods have guaranteed convergence under mild conditions. Deep RL can diverge catastrophically in non-stationary environments.
-- **Interpretability**: Each Q-value is a scalar that can be inspected directly.
-- **Sample efficiency**: With only 96 possible states, tabular methods need far fewer samples than function approximators.
-
-### 6.2 State Space (96 States)
-
-```
-State = (pair, regime, direction_signal, confidence_bucket)
-
-  pair:               8 forex pairs (EURUSD, USDJPY, GBPUSD, USDCHF, AUDUSD, USDCAD, EURJPY, AUDJPY)
-  regime:             'trend_following' or 'mean_reversion'
-  direction_signal:   'P' (positive tf_score) or 'N' (negative)
-  confidence_bucket:  'lo' (<55%), 'md' (55-70%), 'hi' (>70%)
-
-  Total: 8 × 2 × 2 × 3 = 96 states
-```
-
-**Why discretize?** Continuous state spaces require function approximation, which is prone to instability in non-stationary environments. 96 states provides enough granularity for meaningful patterns while remaining tractable with small sample sizes.
-
-### 6.3 Action Space (4 Actions)
-
-```
-Actions = [
-  ('trend_following', 'L'),    # Follow trend LONG
-  ('trend_following', 'S'),    # Follow trend SHORT
-  ('mean_reversion', 'L'),     # Reversal LONG
-  ('mean_reversion', 'S')      # Reversal SHORT
-]
-```
-
-### 6.4 Reward Function: Differential Sortino
-
-The reward is based on the **Differential Sortino Ratio** (Moody & Saffell, NeurIPS 1998):
-
-```
-dSortino_t = (D_{t-1} × δA_t − 0.5 × A_{t-1} × δD_t) / D_{t-1}^{3/2}
-
-Where:
-  A_t = EMA of returns
-  D_t = EMA of min(return, 0)²     (downside semi-variance only)
-  δA_t = η × (R_t − A_{t-1})       (return update)
-  δD_t = η × (min(R_t, 0)² − D_{t-1})  (downside update)
-  η = 0.1 (EMA decay rate)
-```
-
-**Why Differential Sortino over Sharpe?** The Sharpe ratio penalizes all volatility equally. In forex, a profitable trend-following trade can exhibit high upside variance — Sharpe would penalize this "good" volatility. The Sortino ratio only penalizes losses, making it the correct reward signal for directional trading.
-
-### 6.5 Q-Learning Update
-
-```
-Q(s, a) ← Q(s, a) + α × [r + γ × max_{a'} Q(s', a') − Q(s, a)]
-
-  α = 0.10    (learning rate — conservative for non-stationary FX)
-  γ = 0.95    (discount factor — high future-orientation; FX regimes persist)
-  ε = 0.15    (base exploration rate, adaptive: max(0.15, 0.50 − n_explored × 0.10))
-```
-
-### 6.6 Soft Outcomes: Accelerated Learning
-
-Closed trades (hard outcomes) are rare — sometimes only a few per day. To accelerate learning, the agent also consumes **soft outcomes** from open positions:
-
-| Outcome Type | Weight | Trigger | Purpose |
-|---|---|---|---|
-| **Hard** | 1.0 | Trade closed (realized P&L) | Ground truth signal |
-| **Soft** | 0.0 – 0.5 | Position held > 4 hours | Faster feedback loop |
-
-**Soft outcome weight formula:**
-```
-w = time_factor × stability × 0.50 × volatility_penalty
-
-  time_factor = min(hours_held / 48, 1.0)
-  stability = 1 − exp(−hours_held / 12)
-  volatility_penalty = max(0.5, 1 − coefficient_of_variation × 0.3)
-```
-
-A position held for 48+ hours with stable P&L receives the maximum soft weight of **0.50** (half of a hard outcome). A position held for only 4 hours with volatile P&L receives near-zero weight.
-
-### 6.7 Prioritized Experience Replay (PER)
-
-Following Schaul et al. (ICLR 2016), the agent stores all experiences and resamples them with priority-weighted sampling:
-
-- **Priority**: `|TD_error| + 0.01` (experiences with large prediction errors are replayed more frequently)
-- **Batch size**: 32 per training iteration
-- **Iterations**: 5 per training cycle
-- **Persistence**: Q-table serialized to `rl_q_table.pkl` (survives restarts)
-
-### 6.8 Observation Mode (Progressive Trust)
-
-| Effective Outcomes | RL Behavior | Weight in Meta-Resolver |
-|---|---|---|
-| < 50 | **Observation only** (no recommendations) | 0% |
-| 50 – 200 | Recommendations issued, capped | 0% → 20% (linear ramp) |
-| > 200 | Full recommendations | 20% (maximum) |
-
-The RL weight scales as: `rl_scale = min((n_effective − 50) / 150, 1.0)` — ensuring a smooth ramp from observation to full participation.
-
----
-
-## Chapter 7 — Meta-Signal Resolution: Arbitrating Four Intelligences
-
-<p align="center">
-  <img src="images/arch-meta-resolver-v2.svg" alt="Meta-Signal Resolver Flow" width="850">
-</p>
-
-### 7.1 The Four-Source Ensemble
-
-The Meta-Signal Resolver combines four independent intelligence sources into a single actionable signal:
-
-| Source | Default Weight | Strength | Weakness |
-|---|---|---|---|
-| **ML Classifier** | 40% (w_ml) | Rich 134-feature analysis, regime detection | Slow adaptation to regime shifts |
-| **4-Day Forecast** | 30% (w_fcst) | Forward-looking, transition probabilities | Extrapolates from historical persistence |
-| **RL Agent** | 21% (w_rl) | Adapts to recent P&L outcomes | Requires 50+ outcomes to activate |
-| **Paper Consensus** | 9% (w_paper) | 32 live MCPT strategies, real-market validation | Requires MIN_POSITIONS = 2 per pair |
-
-**Paper Consensus** (added March 2026): The 32 MultiCharts (MCPT) strategies continuously produce paper signals and unrealized P&L. `paper_consensus.py` aggregates these into a PnL-weighted majority vote per pair, with confidence derived from agreement (40%), P&L performance (40%), and CSI quality (20%). The paper weight is capped at PAPER_WEIGHT_CAP = 0.25 to prevent over-reliance on a single source family.
-
-Source weights are stored in the `source_weights` table (4 rows: `ml_classifier`, `forecast`, `rl_agent`, `paper_consensus`) and are learnable — the resolver adjusts them hourly based on PnL attribution.
-
-### 7.2 Weighted Consensus Algorithm
+The resolver maintains a **rolling 14-day performance track record** per pair, with exponential recency weighting (half-life = 7 days). Pairs with a win rate below 35% over the lookback window receive a confidence penalty, reducing their position sizes without fully blocking them:
 
 ```python
-for source_name, signal in [ml, forecast, rl, paper]:
-    weight = W[source_name] × signal['confidence']
-    direction_votes[signal['direction']] += weight
-    strategy_votes[signal['strategy'] + '_' + signal['direction']] += weight
-
-best_direction = argmax(direction_votes)
-best_strategy = argmax(strategy_votes)
+pair_factor = max(0.50, weighted_win_rate) # Floor at 50%
+confidence *= pair_factor
+sizing_multiplier *= max(SM_FLOOR, pair_factor) # Floor at 15%
 ```
 
-### 7.3 Conflict Arbitration
+This soft-reject mechanism (v2) replaced the earlier hard-reject system that blocked pairs entirely when their track record was poor. The insight: a bad track record may reflect recent market conditions (trend-following strategies underperform in range-bound markets), not a permanent failure of the signal quality. Soft rejection reduces exposure without eliminating optionality.
 
-| Agreement Level | Condition | Confidence Multiplier |
-|---|---|---|
-| **UNANIMOUS** | 4/4 sources agree | ×1.20 |
-| **STRONG** | 3/4 sources agree | ×1.00 (no adjustment) |
-| **MAJORITY** | 2/4 sources agree | ×0.75 |
-| **SPLIT** | No majority | ×0.50 |
+### 8.4 Weight Learning
 
-**Track Penalty**: A rolling 30-day pair-level win rate is tracked. When WR drops below 35%, the sizing multiplier for that pair approaches zero — preventing the system from repeatedly losing on the same pair regardless of source agreement.
+Source weights are not static. After each cycle, the resolver performs **PnL attribution**: for each closed trade, it determines which source(s) were correct and adjusts weights by a small increment. The learning rate is slow enough to prevent overreaction to individual outcomes.
 
-### 7.4 Echo Detection
+```python
+for source in sources:
+ if source_was_correct:
+ weights[source] *= 1.01 # +1%
+ else:
+ weights[source] *= 0.99 # -1%
+weights = normalize(weights) # Sum to 1.0
+```
 
-A subtle mechanism prevents double-counting correlated sources. When a source mirrors the ML signal exactly (same regime and direction), the resolver detects this as an **echo** and applies a discount:
+Macro composite weight is capped at 25% (`PAPER_WEIGHT_CAP = 0.25`) to prevent a single source from dominating through a lucky streak. The ML classifier's structural advantage (50% starting weight, millions of training samples) means it remains the primary voice, but the system can adapt if a different source proves more reliable in the current regime.
 
-| Echo Source | Discount | Rationale |
-|---|---|---|
-| **4-Day Forecast** mirrors ML | −60% | Forecast largely derived from ML classification |
-| **Paper Consensus** mirrors ML | −40% | MCPT strategies are more independent than forecast |
+With direction and confidence determined for each pair, the next step is position sizing, an 8-layer cascade where each layer adds another risk constraint.
 
-The discount is applied multiplicatively to the echoing source's vote weight, preserving the direction vote but reducing its influence on final confidence.
-
-### 7.5 Live P&L Adjustment (LEVIER 5)
-
-Open positions receive a confidence adjustment based on current performance:
-
-- **Profitable position** (P&L > 0): `confidence × min(1.10, 1.0 + pnl_pct × 0.02)` — up to +10% boost
-- **Unprofitable position** (P&L < 0): `confidence × max(0.85, 1.0 + pnl_pct × 0.03)` — up to −15% penalty
-
-This makes the system less likely to add to losing positions while reinforcing winning ones.
-
-### 7.6 Output
-
-The resolver produces a `meta_signals` record per pair:
-
-| Field | Example (EURUSD) | Description |
-|---|---|---|
-| `final_direction` | S | Short |
-| `final_strategy` | mean_reversion | Regime type |
-| `final_confidence` | 0.79 | Blended confidence [0.30, 0.95] |
-| `ml_direction` | S | ML classifier vote |
-| `forecast_direction` | S | 4-day forecast vote |
-| `rl_direction` | S | RL agent vote (if active) |
-| `paper_direction` | S | Paper consensus vote (if available) |
-| `paper_strategy` | mean_reversion | Dominant MCPT strategy type |
-| `paper_confidence` | 0.62 | Paper consensus confidence |
-| `agreement_level` | STRONG | 3/4 sources agree |
+Direction is settled. Confidence is calibrated. The question that remains is the one that separates surviving systems from spectacular blowups: how much.
 
 ---
 
-## Chapter 8 — Position Sizing: The Kelly Criterion and Beyond
+## Chapter 9: Position Sizing: The 8-Layer Cascade
 
-<p align="center">
-  <img src="images/arch-position-sizing-v2.svg" alt="Position Sizing Cascade" width="850">
-</p>
+A position starts as a raw fraction of account equity. Eight layers of constraint will whittle it down. Not one of those layers can make the position larger than the layer above it permitted, except Layer 8, the White Swan, which bets that the options market is asleep.
 
-### 8.1 The Kelly Criterion
+![Sizing Cascade](images/sizing-cascade-v3.svg)
 
-The system uses the **Kelly Criterion** for optimal bet sizing — the formula that maximizes the logarithmic growth rate of capital:
+### 9.1 Overview
 
-```
-f* = (b × p − q) / b
+Position sizing is computed by `smart_position_sizing.py`, which implements an **8-layer cascade** where each layer can only reduce the position size, never increase it. The cascade transforms a raw equity-proportional position into a risk-adjusted, regime-aware, volatility-sensitive trade size:
 
-Where:
-  b = average_win / average_loss (from realized trades)
-  p = win_rate
-  q = 1 − p (loss rate)
-```
+| Layer | Input | Operation | Can Halt? |
+|-------|-------|-----------|-----------|
+| **1. Equity Base** | Account NLV (JPY) | `position = NLV * pair_allocation` | No |
+| **2. ATR Scaling** | 14-period ATR | Scale inversely to volatility: high ATR = smaller position | No |
+| **3. Leverage Cap** | IBKR margin | Enforce max leverage per pair and per account | Yes |
+| **4. Kelly Fraction** | Win rate + payoff ratio | Optimal position fraction: `f* = (bp - q) / b` | Yes (if kelly_conf < 0.15) |
+| **5. Vol Kill Switch** | Cross-asset vol z-scores | Scale by vol regime: NORMAL=100%, ELEVATED=50%, CRISIS=0% | Yes |
+| **6. Macro Regime** | ISM + recession prob | Scale by business cycle: EXPANSION=100% → EARLY_REC=60% | No |
+| **7. IV Regime** | CME options IV surface | Scale by IV quadrant: COMPLACENT=100%, FEARFUL=70%, SURPRISE=120% | No |
+| **8. White Swan** | IV regime SURPRISE + VRP | Boost sizing when IV < RV (market underpricing realized risk) | No |
 
-**Half-Kelly**: The raw Kelly fraction is multiplied by **0.50** to reduce variance. Full Kelly produces optimal long-run growth but with extreme short-term drawdowns. Half-Kelly sacrifices ~25% of expected growth for ~50% less variance — a trade-off well-suited to production trading with real capital.
+### 9.2 Kelly Criterion
 
-### 8.2 Position Size Calculation
-
-```
-RiskDollars = Equity × 2.0% × KellyFraction × CircuitBreakerScale
-
-StopDistancePips = ATR(14) × 2.0 × SpreadAdjustment
-    SpreadAdjustment: EURUSD=0.8, USDJPY=0.9, GBPUSD=1.2, USDCHF=1.5, ...
-
-PositionSize = RiskDollars / (StopDistancePips × PipValue × FXRate)
-```
-
-**Bounds**:
-- **Minimum**: IDEALPRO minimum order size (20K–35K native currency units)
-- **Maximum**: 8% of equity per trade (`MAX_KELLY = 0.08`)
-- **Portfolio leverage cap**: 5× maximum total exposure
-- **Safety buffer**: 95% of available margin (`SAFETY_BUFFER = 0.95`)
-
-### 8.3 The Sizing Cascade
-
-Every position passes through a cascade of **multiplicative filters**, most of which are binary:
+The Kelly fraction is the mathematically optimal bet size for a given edge:
 
 ```
-final_size = base_kelly_size
-           × IV_filter          (0.0 or 1.0 — binary accept/reject)
-           × circuit_breaker    (0.0, 0.75, or 1.0)
-           × crowding_filter    (0.0 or 1.0 — binary accept/reject)
-           × strategy_weight    (0.5 – 1.0 from IV-adjusted weighting)
-           × CSI_multiplier     (0.0 – 1.0, 6-tier graduated)
-           × pair_track_factor  (0.15 – 1.0, soft reject with floor)
+f* = (b * p - q) / b
+
+where:
+ b = average win / average loss (payoff ratio)
+ p = win probability
+ q = 1 - p (loss probability)
 ```
 
-**The White Swan Principle applied to sizing**: Most filters are binary (full size or zero), not gradual. Trade at full conviction when conditions are favorable, or don't trade at all.
+If Kelly confidence (`kelly_conf`) falls below 0.15, the pair is considered to have insufficient edge, the position is zeroed. This gate was lowered from 0.40 to 0.15 in v2 to allow more strategies through while still blocking those with negative expected value.
 
-### 8.4 IDEALPRO Compliance
+### 9.3 The CSV Output
 
-Interactive Brokers' IDEALPRO exchange enforces minimum order sizes in the base currency:
-
-| Currency | Min Native Units | Approx USD Equivalent |
-|---|---|---|
-| EUR, GBP | 20,000 | ~$22,000 |
-| USD, CHF, AUD, CAD | 25,000 | $25,000 |
-| NZD | 35,000 | ~$21,000 |
-| JPY | 2,500,000 | ~$17,000 |
-
-Orders below these minimums are **rejected entirely** (not rounded up) — the White Swan philosophy applied to order flow.
-
----
-
-## Chapter 9 — Risk Management: Circuit Breakers and White Swan Philosophy
-
-<p align="center">
-  <img src="images/arch-risk-layers-v2.svg" alt="Risk Management Layers" width="850">
-</p>
-
-### 9.1 The White Swan Philosophy — *"Le Cygne Blanc s'envole"*
-
-The system's risk management is built on a principle inspired by Nassim Taleb, refined with a directional insight: **don't trade black swans at reduced size — and when a surprise has a clear directional bias, the white swan flies opposite**.
-
-Traditional risk systems reduce position size gradually as conditions deteriorate. This creates a dangerous middle ground:
-- Positions too small to be meaningful if right
-- Positions still large enough to cause pain if wrong
-
-The White Swan approach eliminates this ambiguity with **directional accept/reject filters**:
-
-1. **SURPRISE regime detected** (low IV + high RV = market underpricing risk)
-2. **Semi-variance decomposition** separates H4 log returns into downside (`rv_down`) and upside (`rv_up`) components
-3. **Directional bias**: `rv_down / rv_up > 1.30` = BEARISH, `< 0.77` = BULLISH, else NEUTRAL
-4. **Black Swan** = trading into the surprise direction → **REJECT**
-5. **White Swan** = trading opposite the surprise direction → **AUTHORIZE at full size**
-6. **NEUTRAL** (no clear directional asymmetry) → **meta-signal direction = dangerous**, opposite authorized
-7. **Invariant**: exactly **1 authorized strategy per pair, 8 total** — the White Swan always flies
-
-### 9.2 Six Independent Circuit Breakers
-
-**Layer 1 — IV-Based Black Swan Filter (with Directional Surprise Override)**
-
-| Condition | Threshold | Action |
-|---|---|---|
-| IV percentile | > 80th %ile | **REJECT** (options market pricing extreme risk) |
-| Vol ratio (RV/IV) | < 0.50 | **REJECT** (market pricing unseen risk) |
-| VRP z-score | < −2.0 | **REJECT** (extreme variance risk premium) |
-| VRP z-score | > +3.0 | **REJECT** (IV bubble) |
-| Term structure | > 1.40 | **REJECT** (inverted term structure) |
-| SURPRISE + BEARISH | rv_down/rv_up > 1.30 | **REJECT Long** / **AUTHORIZE Short** (White Swan override) |
-| SURPRISE + BULLISH | rv_down/rv_up < 0.77 | **REJECT Short** / **AUTHORIZE Long** (White Swan override) |
-| SURPRISE + NEUTRAL | 0.77 ≤ ratio ≤ 1.30 | **Meta-signal dir = dangerous** → authorize opposite (White Swan) |
-
-**Layer 2 — Daily P&L Circuit Breaker**
-
-| Condition | Threshold | Action |
-|---|---|---|
-| Daily loss | > −3.5% | REDUCED mode (sizing × 0.75) |
-| Weekly loss | > −6.0% | HALT mode (sizing × 0.00) |
-| Consecutive losses | ≥ 7 | REDUCED mode |
-
-State machine: `NORMAL (1.0×)` → `REDUCED (0.75×)` → `HALT (0.0×)`
-
-**Layer 3 — Crowding Penalty Filter**
-
-| Condition | Threshold | Action |
-|---|---|---|
-| Strategy concentration | > 70% | **REJECT** (too many signals in same regime) |
-| A/B testing | Enabled | Track outcomes for self-calibration |
-
-**Layer 4 — Data Integrity Guard**
-
-| Condition | Threshold | Action |
-|---|---|---|
-| |pnl_pct| | > 10% | Quarantine (impossible in spot FX) |
-| position_size | < 100 units | Quarantine (data garbage) |
-| entry_price | outside [0.5, 2.0] | Quarantine (IBKR cost basis error) |
-| Duplicate trades | Same pair/direction/time | Quarantine (cross-join bug) |
-
-**Layer 5 — Correlation Risk Limits**
-
-| Condition | Threshold | Action |
-|---|---|---|
-| Total portfolio risk | > 6% | HALT new entries |
-| Correlated pair risk | > 4% | HALT correlated entries |
-| Single position risk | > 2% | Reject oversized orders |
-| Margin utilization | > 80% | CRITICAL alert |
-
-**Layer 6 — Strategy Analytics Circuit Breakers (AlgoChef-Inspired)**
-
-Where Layers 1-5 protect against market conditions and data failures, Layer 6 monitors the **strategies themselves** through four interlocking modules:
-
-| Module | Metric | Threshold | Action |
-|---|---|---|---|
-| Health Monitor | Composite health score (0-100) | DARK_RED (< 25) | CSI multiplier reduction (graduated) |
-| Health Monitor | Composite health score (0-100) | RED (25-44) | CSI multiplier reduction |
-| CSI v2 | Sizing multiplier (0-1) | CSI 10-19 → mult=0.10 | **Probation** (graduated, never hard zero) |
-| CSI v2 | Sizing multiplier (0-1) | CSI < 10 → mult=0.00 | **Shutdown** (quasi-impossible with graduated floors) |
-| Correlation Matrix | Pearson correlation (weekly) | > 0.85 | Concentration risk alert |
-| Monte Carlo | Risk of ruin (10,000 paths) | > 20% | Tail risk warning |
-
-The **Health Monitor** scores each strategy on four axes: rolling Sharpe ratio, win rate, max drawdown, and consecutive losses. These blend into a composite score (0-100) that determines a five-tier classification: GREEN (75+), CYAN (60-74), ORANGE (45-59), RED (25-44), DARK_RED (< 25).
-
-The **CSI v2 (Composite Sizing Index)** converts the health tier into a continuous multiplier using a **graduated penalty** system. Unlike the original binary zero-kill mechanism, CSI v2 uses a 6-tier multiplier with a **probation tier** at CSI 10-19 (mult=0.10) that allows strategies to trade at minimal size and recover through new trades:
-
-| CSI Range | Multiplier | State |
-|---|---|---|
-| 80+ | 1.00 | Full authorization |
-| 60-79 | 0.75 | Minor degradation |
-| 40-59 | 0.50 | Moderate degradation |
-| 20-39 | 0.25 | Significant reduction |
-| 10-19 | 0.10 | **Probation** (new in v2) |
-| < 10 | 0.00 | Shutdown (quasi-impossible) |
-
-**Graduated penalties** replace binary zero-kill: when profitability or risk sub-scores would have been zero-killed (total PnL < -2% with PF < 0.5, or extreme drawdown), CSI v2 applies a floor (`PENALTY_FLOOR = 5.0`) and a scaling factor (`PENALTY_SCALE = 0.25`) instead of forcing the score to absolute zero. This prevents permanent deadlocks where a strategy cannot generate new trades to improve its score.
-
-**Time-based recovery**: After 48 hours in penalty, the system adds +3 CSI per 24 hours (capped at CSI = 35), providing a slow but guaranteed path out of probation even without new trades.
-
-### 9.3 Shock Opportunity Detector
-
-When IV collapses and ATR expands simultaneously, the system detects a **White Swan opportunity** — a high-probability mean-reversion setup:
-
-- Detection: Sudden >2σ price move on H4 close + negative VRP
-- Action: Trade at **full position size** (not reduced)
-- Active shocks reduce Kelly defensively (e.g., 0.70× sizing for shocked pairs)
-
----
-
-## Chapter 10 — Implied Volatility Regime Classification
-
-<p align="center">
-  <img src="images/arch-iv-regime-v2.svg" alt="IV Regime Classification" width="850">
-</p>
-
-### 10.1 From Equity Options to FX Volatility
-
-Since CME FX options are thinly traded, the system uses **CurrencyShares ETF options** as IV proxies:
-
-| ETF | Currency | Method |
-|---|---|---|
-| FXE | EUR | IBKR historical IV bars |
-| FXB | GBP | IBKR historical IV bars |
-| FXY | JPY | IBKR historical IV bars |
-| FXF | CHF | IBKR historical IV bars |
-| FXA | AUD | IBKR historical IV bars |
-| FXC | CAD | IBKR historical IV bars |
-| EURJPY | Cross | `sqrt(σ²_EUR + σ²_JPY + 2ρ·σ_EUR·σ_JPY)` |
-| AUDJPY | Cross | `sqrt(σ²_AUD + σ²_JPY + 2ρ·σ_AUD·σ_JPY)` |
-
-### 10.2 Derived Volatility Features
-
-| Feature | Formula | Interpretation |
-|---|---|---|
-| **IV Percentile** | Rank of current IV in 30-day window | > 80% = expensive = REJECT |
-| **VRP** | IV − RV (Realized Vol via Garman-Klass) | < 0 = market pricing unseen risk |
-| **VRP Z-Score** | (VRP − μ) / σ | < −2 or > +3 = extreme conditions |
-| **Term Structure** | IV(30d) / IV(10d) | > 1.40 = inverted (contango risk) |
-| **Vol Ratio** | RV / IV | < 0.50 = fear exceeds realized = REJECT |
-| **Vol-of-Vol** | Std(10-day IV changes) | High = unstable volatility regime |
-
-### 10.3 Strategy Weighting by IV Regime
-
-The system maintains 8 strategy archetypes, each with IV-dependent preference:
-
-| Archetype | Favorable IV Regime | Unfavorable IV Regime |
-|---|---|---|
-| S1_CARRY | Low IV, positive carry | High IV (carry disappears) |
-| S2_MOMENTUM | Any (trend overrides vol) | Extreme VRP (trend breaks) |
-| S3_MEAN_REV | High IV (overextension likely) | Low IV (no reversion trigger) |
-| S4_BREAKOUT | Rising IV (expansion phase) | Declining IV (false breakouts) |
-| S5_RANGE | Low IV, stable term structure | Rising IV (range breaks) |
-| S6_SENTIMENT | Any (contrarian always valid) | N/A |
-| S7_FUNDAMENTAL | Any (macro overrides vol) | N/A |
-| S8_EVENT | Pre-event elevated IV | Post-event IV crush |
-
----
-
-## Chapter 11 — Continuous Learning and Self-Improvement
-
-<p align="center">
-  <img src="images/arch-continuous-learning-v2.svg" alt="Continuous Learning Loop" width="850">
-</p>
-
-### 11.1 The LEVIER System (9 Feedback Mechanisms)
-
-The system's continuous learning operates through 9 feedback mechanisms (*levier* = lever in French):
-
-| LEVIER | Mechanism | Effect |
-|---|---|---|
-| **1: Soft Outcomes** | Unrealized P&L → weighted RL signals | Faster learning without waiting for closes |
-| **2: Bayesian Optimization** | MCMC tunes prior weights every cycle | Adapts external feature importance |
-| **3: Walk-Forward ML** | Specialists retrain on latest 90-bar data | Price features adapt to current regime |
-| **4: Experience Replay** | Priority sampling of high-value experiences | Reuses rare, informative trades |
-| **5: Live P&L Adjustment** | Position performance → confidence modulation | Reinforces winners, penalizes losers |
-| **6: Differential Sortino** | Downside-risk-only RL reward | Aligns optimization with actual objective |
-| **7: Strategy Analytics** | Health + CSI → adaptive sizing multiplier | Degrades capital allocation for underperforming strategies |
-| **8: Paper Consensus** | 32 MCPT paper signals → 4th meta-signal source | Real-market validation without live capital risk |
-| **9: Pair Track Record v2** | 14-day recency-weighted win rate per pair | WR < 35% → Track Penalty (soft reject with floor) |
-
-**LEVIER 7** provides strategy-level feedback. Each pipeline cycle, the Strategy Health Monitor re-evaluates all 32 strategies on four performance axes (Sharpe, win rate, drawdown, consecutive losses). The resulting health score flows into CSI v2, which produces a continuous sizing multiplier (0-1). This multiplier directly modulates position sizing in the next cycle — creating a closed-loop feedback between strategy performance and capital allocation that adapts within hours, not days.
-
-**LEVIER 8** (added March 2026) closes the loop between the 32 live MCPT strategies and the meta-signal resolver. Paper signals and unrealized P&L from `paper_consensus.py` are aggregated into a PnL-weighted majority vote, providing a 4th intelligence source that reflects actual market behavior of production strategies without requiring live capital exposure.
-
-**LEVIER 9 v2** (updated March 2026) operates at the pair level rather than the strategy level. A **14-day recency-weighted** win rate is tracked per currency pair using exponential decay with a **7-day half-life** — recent trades weigh more than older ones. When a pair's weighted WR drops below 35%, a Track Penalty applies a **soft rejection** with confidence floored at 0.20 and sizing floored at 0.15, rather than the original hard reject to zero. This allows the pair to continue trading at minimal size and recover faster as losing trades age out of the shortened 14-day window (vs. the original 30-day window).
-
-### 11.2 Retraining Triggers
-
-The continuous learning system monitors performance and triggers retraining when degradation is detected:
-
-| Metric | Threshold | Action |
-|---|---|---|
-| Sortino Ratio (7-day rolling) | < −0.3 | Flag retraining needed |
-| Rolling 30-day Accuracy | < 55% | Marginal edge alert |
-| Maximum Drawdown | > 12% | Position sizing review |
-| Profit Factor | < 1.2 | Strategy weight reduction |
-
-**Sortino is the decisional metric**: Sharpe is logged for industry comparability but does not independently trigger retraining. This distinction matters because trend-following strategies naturally exhibit high return variance (many small losses, few large wins), making Sharpe an unreliable health indicator.
-
-### 11.3 Persistence Layer
-
-All learning state persists across restarts:
-
-| State | Storage | Purpose |
-|---|---|---|
-| ML specialist weights | RAM (per-cycle) | Retrained every pipeline execution |
-| Q-table | `rl_q_table.pkl` | 96-state × 4-action value function |
-| Bayesian weights | `optimizer_weights` table | MCMC-optimized prior weights |
-| Learning metrics | `continuous_learning_state` table | Historical Sortino, Sharpe, drawdown |
-| Model version | Auto-incremented counter | Currently v17.0 |
-
----
-
-## Chapter 12 — Database Architecture: Three-Database Normalization
-
-<p align="center">
-  <img src="images/arch-database-v2.svg" alt="Three-Database Architecture" width="850">
-</p>
-
-### 12.1 Design Principle: Non-Circular Writes
-
-The system uses **three separate SQLite databases**, each with strict write authority. This design prevents feedback loops that could amplify systematic errors — no component reads its own output as input within the same cycle.
-
-### 12.2 Database 1: forex_sentiment.db (Primary — 831 MB)
-
-**Write Authority**: Scrapers, ML outputs, RL experiences, meta-signals
-
-**Key Tables (29+):**
-
-| Category | Tables | Total Records |
-|---|---|---|
-| Sentiment | `sentiment_hourly`, `dukascopy_pair_scores` | ~550K |
-| Fundamental | `cot_data`, `calendar_events`, `finviz_relperf`, `seasonal_tendency` | ~15K |
-| Theories | `theory_scores` (30 per pair per cycle) | ~100K |
-| Prediction Markets | `prediction_market_data`, `prediction_market_derived` | ~20K |
-| ML Outputs | `ml_classifications`, `strategy_assignments`, `meta_signals` | ~50K |
-| RL Data | `rl_experiences`, `rl_recommendations` | ~7K |
-| Outcomes | `strategy_outcomes`, `trade_outcomes`, `soft_outcomes` | ~12K |
-| Bayesian | `optimizer_weights`, `optimizer_samples` | ~5K |
-| Learning | `continuous_learning_state`, `learning_metrics_history` | ~1K |
-| Crowding | `crowding_decisions`, `crowding_cohorts`, `crowding_parameters` | ~3K |
-| Regime | `market_regime`, `transition_probs` | ~10K |
-| Paper Trading | `paper_consensus`, `paper_positions_open`, `strategy_outcomes_paper` | ~2K |
-| Source Meta | `source_weights`, `scraper_status` | ~1K |
-
-### 12.3 Database 2: forexregime.db (Live State — 2 MB)
-
-**Write Authority**: IBKR API, pipeline live state
-
-| Table | Purpose |
-|---|---|
-| `ibkr_positions` | Current broker positions (account, symbol, qty, cost, market price, P&L) |
-| `ibkr_live_state` | JSON snapshots (3-second refresh from liveboard) |
-| `fx_rates_cache` | USD conversion rates for all currencies |
-| `atr_data` | ATR-14 values per pair (H4 and D1 timeframes) |
-| `fx_vol_features` | IV percentile, VRP z-score, term structure ratio, `surprise_dir` (BEARISH/BULLISH/NEUTRAL) |
-| `fx_implied_vol` | Raw IV snapshots per pair/tenor |
-| `ohlc_bars` | H4 price bars (8 pairs × 500 bars) |
-| `ensemble_classifications` | Ensemble regime outputs |
-
-### 12.4 Database 3: risk_management.db (Risk Engine)
-
-**Write Authority**: Risk management engine, P&L tracking
-
-| Table | Purpose |
-|---|---|
-| `ibkr_account_metrics` | Account health (equity, buying power, margin) |
-| `pnl_realized` | Closed trade P&L (pair, direction, size, entry/exit, realized P&L) |
-| `rl_pnl_snapshots` | P&L trajectory for RL reward computation |
-| `daily_pnl_tracking` | Daily loss limits per account |
-| `circuit_breaker_state` | Current CB mode (NORMAL / REDUCED / HALT) |
-
-### 12.5 Concurrency Model
-
-- **WAL mode** (Write-Ahead Logging) on all databases for concurrent read access
-- **Write serialization**: Only one writer per table per cycle
-- **Transaction timeout**: 30 seconds default
-- **Auto-migration**: `ALTER TABLE ADD COLUMN IF NOT EXISTS` for schema evolution
-- **Backups**: Automated snapshots pre-audit in `backups/` directory
-
----
-
-## Chapter 13 — Execution Bridge: From Signal to Live Trade
-
-<p align="center">
-  <img src="images/arch-execution-bridge-v2.svg" alt="Execution Bridge Architecture" width="850">
-</p>
-
-### 13.1 Two-Platform Architecture
-
-The system operates across two execution platforms connected by a CSV file:
-
-| Platform | Role | Technology |
-|---|---|---|
-| **Python Pipeline** | Intelligence (data, ML, RL, sizing) | Python 3.14, SQLite, IBKR API |
-| **MultiCharts (MC16)** | Execution (order routing, 32 strategies) | GlobalVariable.dll, TWS API |
-
-**Bridge**: `strategies_auth_simple.csv` — the final position sizing output consumed by MC16 every ~3 seconds.
-
-### 13.2 Account Architecture
-
-| Account | Gateway | Port | Role |
-|---|---|---|---|
-| Account 1 | DOM | 7496 | Live trading |
-| Account 2 | DOM | 7496 | Live trading |
-| Account 3 | DOM | 7496 | Live trading |
-| Account 4 | DOM | 7496 | Live trading |
-| Account 5 | VAL | 7497 | Validation / backup |
-| Account 6 | VAL | 7497 | Validation / backup |
-| Account 7 | VAL | 7497 | Validation / backup |
-| Account 8 | VAL | 7497 | Validation / backup |
-
-**Dual-gateway design**: Two IB Gateway instances provide load balancing (4 accounts each) and redundancy. Each Python script receives a unique `clientId` via `port_registry.py` to prevent IBKR connection conflicts.
-
-### 13.3 GlobalVariable.dll Interface
-
-The execution bridge uses a Windows DLL (`GlobalVariable.dll`) for inter-process shared memory between Python and MultiCharts:
-
-- **Write path**: Python → DLL → MultiCharts (authorization, sizes, regime tags)
-- **Read path**: MultiCharts → DLL → Python (heartbeats, positions, P&L)
-
-Each of the 32 strategies has named variables:
-```
-{PAIR}_{SESSION}_{STRATEGY_NAME}_{DIRECTION}_{REGIME}_AUTH   → 1.0 or 0.0
-{PAIR}_{SESSION}_{STRATEGY_NAME}_{DIRECTION}_{REGIME}_QTY    → Position size
-{PAIR}_{SESSION}_{STRATEGY_NAME}_{DIRECTION}_{REGIME}_ALIVE  → Heartbeat
-```
-
-### 13.4 CSV Authorization Protocol
-
-The final pipeline output (`strategies_auth_simple.csv`):
+The final output is `strategies_auth_simple.csv`, consumed by MultiCharts Portfolio Trader (MCPT) every hour:
 
 ```csv
-strategy_name,authorized,direction,regime,qty_base,pair,account
-EURUSD_NY_Strategy 1.2.47_S MR,1,S,MR,50000,EURUSD,Account 1
-EURJPY_NY_Strategy 3.11.191_L TF,1,L,TF,52000,EURJPY,Account 1
-AUDUSD_NY_Strategy 2.8.143_S MR,0,S,MR,0,AUDUSD,Account 5
+strategy_name,pair,direction,target_size,auth
+EURUSD_TF_L_01,EURUSD,LONG,28500,1
+EURUSD_MR_S_02,EURUSD,SHORT,14200,1
+USDJPY_TF_L_03,USDJPY,LONG,0,-1
+...
 ```
 
-Of 32 total strategies, only ~8 receive `authorized=1` per cycle (matching the meta-signal's direction per pair). The other 24 are blocked, preventing counter-signal trades.
+- `target_size`: Position size in units of base currency (computed by the 8-layer cascade)
+- `auth`: `1` = authorized to trade, `-1` = blocked, `0` = unknown (safe default: blocked)
+- **Pair format**: UNDOTTED (e.g., `EURUSD`, not `EUR.USD`), this matches the DLL lookup key format
 
-### 13.5 GV Cross-Validation
+The CSV uses UNDOTTED pairs because the MoneyProdSupervisor DLL builds lookup keys by concatenating `strategyName + "_" + pair`. A dotted pair would produce a key that never matches, silently blocking all trades.
 
-The `gv_position_xval.py` script continuously validates position integrity:
-- Every IBKR-reported position must match a MC16 position
-- **Phantom positions** (IBKR flat, MC16 long) trigger desync alerts
-- **Stale prices** (market_price unchanged > 2 hours) are flagged
-- Per-account, per-pair, per-direction matching handles hedged positions
+### 9.4 MCPT Strategy Priority Rule
+
+A critical constraint governs the relationship between CSV signals and live MCPT strategies:
+
+**A position entered by a MCPT strategy must be closed by that same strategy, not by CSV signals.** CSV signals are only active when: (1) the strategy is flat (no position), or (2) an unfilled limit/stop order exists. MCPT-managed positions are never flagged as "misaligned" with meta-signals, they are independently managed.
+
+This rule prevents the dangerous scenario where the pipeline reverses direction mid-trade and the CSV signal conflicts with the strategy's exit logic, potentially creating doubled positions or orphaned hedges.
+
+The size is computed, the CSV is written, and 32 strategies will read it within seconds. What stands between those numbers and a catastrophic loss is not the sizing cascade -- it already ran. It is nine shields that operate without knowing the others exist.
 
 ---
 
-## Chapter 14 — Monitoring, Diagnostics, and Observability
+## Chapter 10: Risk Management: Nine Shields
 
-<p align="center">
-  <img src="images/arch-monitoring-v2.svg" alt="Monitoring and Observability" width="850">
-</p>
+On March 20, 2026, a currency sweep script converted JPY residuals via round-trip market orders and lost 150,000 yen in minutes. The shields caught it. The script was disabled within the hour. The system was designed for the assumption that any component, including the risk management components themselves, can go wrong.
 
-### 14.1 Pipeline Diagnostics (13 Categories, 100+ Checks)
+![Nine Shields](images/nine-shields-v3.svg)
 
-| Category | Checks | Example |
-|---|---|---|
-| **DATA** | Scraper freshness, prediction markets, vol features | "FXSSI data > 60 min old → WARN" |
-| **ML** | Classification coverage, lookahead leakage | "ML covers 8/8 pairs → OK" |
-| **FORECAST** | 4-day forecast freshness, regime propagation | "Forecast generated 3 min ago → OK" |
-| **RL** | Q-table learning, outcome coverage (min 50) | "Effective outcomes: 127 → OK" |
-| **META** | Signal coverage, circular consensus, source weights | "Meta-signals: 8/8 pairs → OK" |
-| **POSITIONS** | IBKR ↔ GV cross-validation, phantom positions | "0 phantom positions → OK" |
-| **CIRCUIT_BREAKER** | Margin monitoring, daily/weekly loss limits | "Daily P&L: −1.2% → OK" |
-| **SIZING** | Strategy authorization rate, position validity | "32/32 strategies authorized → OK" |
-| **EDGE** | Trade volume, profitability, Sharpe/Sortino | "No realized trades yet → INFO" |
-| **EQUITY** | Account health, margin utilization, CV | "$964,242 across 8 accounts → OK" |
-| **SYSTEM** | Pipeline runtime, PnL tracker freshness, TZ check | "Pipeline: 201s → OK" |
-| **STRATEGY_HEALTH** | Health tier distribution, RED/DARK_RED count, circuit breakers | "7 RED strategies, avg_score=44.3 → WARN" |
-| **STRATEGY_CSI** | CSI coverage, avg sizing multiplier, CB active count | "22 scored, avg_mult=53%, 0 CB → OK" |
+### 10.1 Defense in Depth
 
-**Status levels**: `OK` | `WARN` | `CRIT` | `INFO`
-- **CRIT** → Auto-reduce sizing or halt pipeline
-- **WARN** → Discord alert + human review
-- **INFO** → Dashboard only
+The system employs **9 independent safety shields**, each monitoring a different dimension of risk. No shield communicates with any other shield. Each can independently reduce or halt trading. This architectural independence means that a bug in one shield cannot propagate to defeat another, the same principle that governs nuclear reactor safety systems.
 
-### 14.2 Real-Time Liveboard
+| Shield | Component | What It Guards | Action on Trigger |
+|--------|-----------|---------------|-------------------|
+| **1. IV Regime** | `iv_regime_step.py` | Market fear state (COMPLACENT/PRICED/FEARFUL/SURPRISE) | Scale position size |
+| **2. PnL Circuit Breaker** | `pnl_circuit_breaker.py` | 7-day rolling drawdown | Halt all trading if drawdown > threshold |
+| **3. Crowding Penalty** | `crowding_penalty.py` | Directional crowding across accounts | Reduce size on crowded pairs (Sortino-based A/B) |
+| **4. TWS Cross-Validation** | `tws_crossval.py` | Position reconciliation across gateways | Alert on gateway disagreement |
+| **5. Data Integrity** | `data_truth_watchdog.py` | Data freshness across 9 nodes | Grade pipeline health (A/B/C/F) |
+| **6. CSI v2** | `strategy_csi.py` | Strategy health (6-tier graduated) | Scale authorization multiplier |
+| **7. Vol Kill Switch** | `cross_asset_vol.py` | Cross-asset volatility contagion | Scale to 50% or halt (0%) |
+| **8. Macro Regime** | `macro_regime_classifier.py` | Business cycle phase | Scale position size (60%-110%) |
+| **9. RME Guard v4** | `rme_order_guard.py` | Order execution integrity (9 guards G1-G9) | Alert/halt on stuck/zombie orders |
 
-A Flask application running on port 5089 with Server-Sent Events (SSE):
+### 10.2 CSI v2: Graduated Strategy Health
 
-- **Refresh cycle**: Every 3 seconds
-- **Data source**: Direct IBKR TWS API (`reqMktData` + `reqAccountUpdates` + `reqExecutions`)
-- **Displays**: Account equity, live positions (qty, entry, market, P&L), recent executions, order rejections, market data (bid/ask for 8 pairs), GV health (32 strategies), pipeline status, **Strategy Analytics** (health tiers, CSI multipliers, merged health+CSI table)
-- **Persistence**: Writes to `ibkr_live_state` table (JSON snapshots)
-- **Published**: `moneyprod.com/live/` via IIS reverse proxy
-- **Strategy Analytics section**: Tier distribution bar (color-coded), metric cards (avg health, avg CSI, RED count), merged table with 10 columns (strategy, pair, health score, tier, Sharpe, win rate, CSI, multiplier, circuit breaker status)
+The Composite Strategy Index (CSI) replaced the earlier binary authorization system. Instead of a strategy being either fully authorized or fully blocked, CSI v2 assigns a **health score from 0 to 100** based on three dimensions:
 
-### 14.3 Exhaustive Report (21 Sections)
+- **Profitability (PROF)**: Rolling win rate and PnL performance
+- **Risk (RISK)**: Drawdown depth, Sortino ratio, tail risk
+- **Confidence (CONF)**: Number of closed trades (more data = higher confidence)
 
-Phase 10 generates a comprehensive HTML dashboard:
+The CSI score maps to a 6-tier sizing multiplier:
 
-1. Pipeline status and timing
-2. Equity summary across all accounts
-3. Position detail with unrealized P&L
-4. ML classifications (per pair: regime, direction, confidence)
-5. RL agent state and recommendations
-6. 4-day forecast signals
-7. IV metrics and regime classification
-8. Crowding analysis
-9. Theory scores evolution (30 theories × 8 pairs)
-10. Calendar events (next 7 days)
-11. News sentiment summary (109 articles/cycle)
-12. Prediction market data (10 markets)
-13. Strategy outcomes (win/loss records)
-14. Continuous learning metrics (Sortino, Sharpe, drawdown)
-15. ATR values per pair
-16. MC16 strategy health (32/32 alive, AOE status)
-17. Liveboard health
-18. Data freshness checks
-19. Risk metrics summary
-20. **Strategy Analytics (AlgoChef)** — tier distribution bar, metric cards (avg health, avg CSI, avg multiplier, RED count, CB count, diversification ratio, avg risk of ruin), per-strategy health table, per-strategy CSI table, correlation alerts, Monte Carlo alerts
-21. Diagnostics summary (0 CRIT | 6 WARN | 28 OK | 8 INFO)
+| CSI Range | Tier | Multiplier | Meaning |
+|-----------|------|-----------|---------|
+| 80+ | Full Trust | 1.00 | Unrestricted trading |
+| 60-79 | Established | 0.75 | Slight reduction |
+| 40-59 | Developing | 0.50 | Half size |
+| 20-39 | Probationary | 0.25 | Quarter size |
+| 10-19 | Probation | 0.10 | Minimal exposure |
+| < 10 | Suspended | 0.00 | Blocked |
 
-**Published** to `moneyprod.com/exhaustive_report.html` after every cycle.
+**Time recovery**: Strategies that have been penalized gain +5 CSI points per 24 hours after 12 hours in penalty, capped at 50. This prevents strategies from being permanently trapped by a single bad week, rehabilitation is automatic but gradual.
 
-### 14.4 Discord Alert System
+**Paper rescue**: Strategies with insufficient live trade data (cold-start problem) can be partially rescued by paper trading outcomes. Paper trades count as 0.65 of a real trade for confidence scoring, with a CSI cap of 65 for paper-blended strategies.
 
-Real-time notifications with **anti-spam protection** (15-minute cooldown per title hash):
+### 10.3 RME Guard v4: 9 Guards
 
-| Alert Type | Trigger | Urgency |
-|---|---|---|
-| CSV Ready | Position sizing complete | INFO |
-| Pipeline Failure | Critical stage failed | CRITICAL |
-| Drawdown Alert | Daily P&L < −5% | WARNING |
-| GV Desync | MC16 ≠ IBKR position | WARNING |
-| Liveboard Down | HTTP health check failed | CRITICAL |
-| Strategy Death | GV strategy stopped responding | WARNING |
-| Active Shock | Pair in shock mode | WARNING |
-| Strategy Degradation | ≥3 DARK_RED strategies (StrategyHealth) | CRITICAL |
-| Strategy Warning | Any RED strategies (StrategyHealth) | WARNING |
+The Risk Management Engine order guard (`rme_order_guard.py`) monitors the health of the order execution pipeline through 9 independent checks:
 
-The Discord hourly report includes a dedicated **Strategy Analytics embed** with tier distribution (color-coded emoji), RED strategy details, and CSI summary. The pipeline completion message appends a one-liner (e.g., `Health [C:1/O:12/R:7] CSI avg mult=53%`) for at-a-glance strategy health status.
+| Guard | Check | Severity | Trigger |
+|-------|-------|----------|---------|
+| **G1** | PreSubmitted order detection | CRITICAL | Order stuck > 5 minutes |
+| **G2** | Stuck order timeout | WARNING | Order stuck > 8 hours |
+| **G3** | AOE cycling | CRITICAL | All orders OFF→ON within 30 minutes |
+| **G4** | Available funds | CRITICAL / WARNING | Negative funds / < 10% of NLV |
+| **G5** | Order-position doubling | WARNING | Same-direction order on existing position |
+| **G6** | PreSubmitted recovery advice | INFO | Positive funds available for recovery |
+| **G7** | Order-CSV reconciliation | CRITICAL | Direction/size mismatch, duplicates, orphans |
+| **G8** | Zombie order detection | WARNING | Orders without matching CSV authorization |
+| **G9** | Cross-asset vol guard | WARNING | Vol kill switch active but orders pending |
+
+CRITICAL-severity guards trigger Discord notifications with @here pings. WARNING-severity guards log to the report but do not page.
+
+Nine shields, none coordinating, each capable of halting the entire operation alone. Behind them sits a subtler question: is the volatility the market is pricing actually the volatility the market is experiencing?
 
 ---
 
-## Chapter 15 — Strategy Analytics: The AlgoChef Layer
+## Chapter 11: Implied Volatility Regime Classification
 
-<p align="center">
-  <img src="images/arch-algochef-v1.svg" alt="Strategy Analytics Architecture" width="850">
-</p>
+Most systems cut exposure when realized volatility spikes. This one occasionally does the opposite. When the options market is still pricing calm while the spot market is already moving, there is a name for that gap: the White Swan.
 
-### 15.1 Design Rationale
+![IV Regime](images/iv-regime-v3.svg)
 
-Traditional portfolio management systems evaluate strategies on a fixed schedule — monthly reviews, quarterly rebalancing. In a system that executes every four hours, this cadence is too slow. A strategy can degrade significantly between reviews, accumulating losses that compound before anyone notices.
+### 11.1 The Four Quadrants
 
-The Strategy Analytics layer (internally called "AlgoChef") solves this by running **four independent evaluation modules every pipeline cycle**, producing a continuous, real-time assessment of each strategy's fitness. This assessment flows directly into position sizing — no human intervention required.
+The IV regime classifier analyzes the relationship between **Implied Volatility** (the market's forecast of future volatility) and **Realized Volatility** (what actually happened). This relationship, the **Volatility Risk Premium** (VRP = IV - RV), reveals the market's fear state:
 
-### 15.2 The Four Modules
+| Quadrant | VRP | z-score | Interpretation | Sizing Effect |
+|----------|-----|---------|----------------|---------------|
+| **COMPLACENT** | IV ~ RV | Low | Normal conditions, no excess fear | 100% (baseline) |
+| **PRICED** | IV >> RV | Low/Mod | Fear acknowledged, hedging active | 85% (slight caution) |
+| **FEARFUL** | IV >>> RV | High | Panic hedging, tail-risk pricing | 70% (reduced exposure) |
+| **SURPRISE** | IV < RV | High | Realized vol exceeds implied, *Le Cygne Blanc* | 120% (opportunity) |
 
-**Module 1: Strategy Health Monitor** (`strategy_health_monitor.py`)
+The SURPRISE quadrant occurs when the market experiences higher realized volatility than anticipated, yet implied volatility has not caught up. This is the **White Swan**, a condition where the options market is underpricing risk, creating opportunities for strategies that trade realized volatility.
 
-Scores each strategy on a composite 0-100 scale derived from four equally weighted performance axes:
+### 11.2 Data Source
 
-| Axis | Weight | Metric | Degradation Signal |
-|---|---|---|---|
-| Rolling Sharpe | 25% | 30-bar rolling Sharpe ratio | Negative or declining |
-| Win Rate | 25% | Rolling win/loss ratio | Below 40% |
-| Max Drawdown | 25% | Peak-to-trough equity drawdown | Exceeding 8% |
-| Consecutive Losses | 25% | Streak of losing trades | Exceeding 5 |
+IV data comes from CME FX ETF options: FXE (EUR/USD), FXY (USD/JPY), FXB (GBP/USD), FXF (USD/CHF), FXA (AUD/USD), FXC (USD/CAD). For cross pairs (EUR/JPY, AUD/JPY), the system uses **triangular decomposition**, deriving the cross IV from the two constituent USD-pair IVs.
 
-The composite score maps to a five-tier classification system: GREEN (75+), CYAN (60-74), ORANGE (45-59), RED (25-44), DARK_RED (< 25). Tier transitions generate alerts through the watchdog system.
+### 11.3 White Swan Philosophy
 
-**Module 2: Composite Sizing Index v2 (CSI v2)** (`strategy_csi.py`)
+The White Swan is MoneyProd's proprietary concept: a systematic approach to identifying and exploiting periods when the market's fear gauge is miscalibrated. Where most systems reduce exposure when realized volatility spikes, MoneyProd recognizes that high RV with low IV is often an *over-reaction*, the market is moving fast, but the options market hasn't noticed yet. By increasing exposure (Layer 8 of the sizing cascade), the system captures the mean-reversion back to equilibrium.
 
-The CSI v2 translates the qualitative health assessment into a quantitative sizing multiplier (0 to 1) by blending three sub-scores:
+The name inverts Taleb's Black Swan: where the Black Swan is the catastrophic event no one predicted, the White Swan is the opportunity in a market that has already moved but has not finished adjusting.
 
-| Sub-score | Weight | Source | Range |
-|---|---|---|---|
-| Profitability | 40% | Recent trade P&L, profit factor | 5-100 (graduated floor) |
-| Risk | 35% | Drawdown, consecutive losses, volatility | 5-100 (graduated floor) |
-| Confidence | 25% | ML classification confidence, Bayesian posterior | 0-100 |
+The IV regime feeds into the sizing cascade, the meta-signal resolver, and the CSI health score.
 
-The resulting CSI (0-100) maps to a **6-tier multiplier** via `_csi_to_multiplier()`:
+Signals fire, sizes are set, shields are armed. What the system does next determines whether it repeats the same mistakes or evolves past them.
 
-| CSI Range | Multiplier | State |
-|---|---|---|
-| 80+ | 1.00 | Full authorization |
-| 60-79 | 0.75 | Minor degradation |
-| 40-59 | 0.50 | Moderate degradation |
-| 20-39 | 0.25 | Significant reduction |
-| 10-19 | 0.10 | Probation (new in v2) |
-| < 10 | 0.00 | Shutdown (quasi-impossible with graduated floors) |
+---
 
-**Graduated penalties (v2)**: The original CSI used binary zero-kill — if profitability or risk sub-scores triggered the kill condition (PnL < -2% with PF < 0.5, or extreme drawdown), the score was forced to 0.0, creating a **permanent deadlock** where the strategy could never generate new trades to recover. CSI v2 replaces this with graduated penalties:
+## Chapter 12: Continuous Learning and Self-Improvement
 
-| Constant | Value | Purpose |
-|---|---|---|
-| `PENALTY_FLOOR` | 5.0 | Sub-score minimum (never absolute zero) |
-| `PENALTY_SCALE` | 0.25 | Multiplicative penalty factor |
-| `PROBATION_CSI` | 15.0 | Threshold for probation recovery mechanisms |
+Every hour, the system grades its own predictions against what the market actually did. The accuracy field in `continuous_learning_state` is a fraction between 0 and 1. When it drifts below threshold, the system does not wait for a human to notice. It triggers a full model retrain.
 
-**Time-based recovery**: After 48 hours in penalty (tracked via `penalty_since` column), the system adds +3 CSI per 24 hours, capped at CSI = 35. This provides a guaranteed recovery path for strategies trapped in low-score states.
+![Levier Loop](images/levier-loop-v3.svg)
 
-**Paper CSI Blending v2** (updated March 2026): Paper trade outcomes from the 32 MCPT strategies can now rescue **all three dimensions** (profitability, risk, and confidence), not just confidence as in the original version:
+### 12.1 The Continuous Learning State
 
-| Constant | Value | Purpose |
-|---|---|---|
-| `PAPER_DISCOUNT` | 0.50 | 1 paper trade counts as 0.5 real trades |
-| `PAPER_BLEND_CAP` | 0.40 | Maximum weight of paper outcomes in blending |
-| `PAPER_CSI_CAP` | 50.0 | CSI capped at 50 when paper-blended (multiplier ≤ 0.50) |
-| `PAPER_MIN_TRADES` | 3 | Minimum paper trades before they contribute |
-| `FULL_CONF` | 30 | Live trades needed to ignore paper entirely |
+The pipeline maintains a `continuous_learning_state` table that tracks aggregate system performance across multiple dimensions:
 
-Guard rails: Paper rescue only activates when a sub-score is at or below `PROBATION_CSI` (15.0) and the paper score exceeds the live score. When live trade count reaches FULL_CONF (30), paper outcomes are ignored entirely.
+| Metric | Format | Purpose |
+|--------|--------|---------|
+| **accuracy** | 0.0 - 1.0 (fraction) | Direction prediction accuracy (multiply x100 for %) |
+| **sharpe** | Float | Portfolio-level Sharpe ratio (rolling 30-day) |
+| **sortino** | Float | Portfolio-level Sortino ratio (rolling 30-day) |
+| **model_version** | String | Current ML model checkpoint identifier |
 
-**Module 3: Correlation Matrix** (`correlation_matrix.py`)
+### 12.2 Learning Loops
 
-Computes Pearson correlation coefficients between all strategy pairs using weekly returns. Runs on a weekly schedule (not every cycle) because correlation structure is inherently slower-moving than strategy health.
+The system has three feedback loops operating at different timescales:
 
-Key outputs:
-- Pairwise correlation matrix (N×N for N active strategies)
-- Concentration risk flag when any pair exceeds 0.85 correlation
-- Diversification ratio: `1 - avg_correlation` (higher is better)
+1. **Hourly (in-cycle)**: RL agent Q-value updates, Bayesian weight recalibration, source weight learning
+2. **Daily**: CSI v2 strategy health recalculation, pair track record update, time recovery credits
+3. **Weekly**: Full model retrain trigger (if accuracy drops below threshold), theory weight recalibration
 
-**Module 4: Monte Carlo Simulator** (`monte_carlo_simulator.py`)
+### 12.3 Anti-Overfitting Guards
 
-For each strategy, bootstraps 10,000 return paths from historical trade data and measures:
+Every learning loop includes an anti-overfitting guard:
 
-| Metric | Description | Alert Threshold |
-|---|---|---|
-| Risk of Ruin (%) | Fraction of paths hitting catastrophic drawdown | > 20% |
-| Median Terminal Equity | 50th percentile outcome | Declining trend |
-| 5th Percentile Outcome | Worst-case scenario (1-in-20) | Below initial equity |
+- **RL agent**: Epsilon-greedy exploration (15% random actions) prevents convergence on stale policies
+- **Bayesian optimizer**: MCMC sampling with 500-step burn-in prevents point-estimate overfitting
+- **Source weights**: 1% learning rate means it takes ~70 correct consecutive predictions to double a source's weight, slow enough to resist noise
+- **CSI time recovery**: Capped at 50 points, preventing fully rehabilitated strategies from gaining false confidence
 
-Runs on a weekly schedule. Provides tail risk quantification that standard deviation and Sharpe ratio cannot capture — a strategy with acceptable average returns but 25% risk of ruin is a ticking time bomb.
+The intelligence is complete: data collected, features built, models trained, signals resolved, sizes computed, shields armed, lessons recorded. Everything that remains is plumbing -- and in production systems, plumbing is where things actually break.
 
-### 15.3 Data Flow and Storage
+---
 
-All four modules write to tables in `forex_sentiment.db` (the Scraper database), following the system's non-circular write authority principle:
+## Chapter 13: Database Architecture: Three-Database Normalization
 
-| Table | Writer | Frequency | Key Columns |
-|---|---|---|---|
-| `strategy_health` | Health Monitor | Every cycle | strategy_name, pair, health_score, health_tier, rolling_sharpe, win_rate, consecutive_losses, circuit_breaker_triggered |
-| `strategy_csi` | CSI v2 Calculator | Every cycle | strategy_name, pair, composite_csi, sizing_multiplier, profitability_score, risk_score, confidence_score, circuit_breaker_active, notes, penalty_since |
-| `strategy_correlations` | Correlation Matrix | Weekly | pair1, pair2, pearson_corr, spearman_corr |
-| `strategy_monte_carlo` | Monte Carlo | Weekly | strategy_name, risk_of_ruin_pct, median_terminal_equity, p5_outcome |
+Three SQLite files. Twenty-nine tables. One rule that governs all of them: no component may read its own output as input. Violate that rule once, and a single misclassification can echo through the pipeline until it becomes a conviction.
 
-### 15.4 Five-Layer Monitoring Integration
+![Database Architecture](images/database-architecture-v3.svg)
 
-Strategy Analytics data is surfaced at every layer of the monitoring stack:
+### 13.1 The Non-Circular Write Rule
 
-| Layer | Component | What It Shows |
-|---|---|---|
-| **L1: Data Truth Watchdog** | Node 8 (STRATEGY) | Validates score bounds (0-100), tier consistency, multiplier range (0-1) |
-| **L2: Watchdog Master** | StrategyHealth check | Counts RED/DARK_RED, sends Discord alerts on degradation |
-| **L3: Pipeline Diagnostics** | STRATEGY_HEALTH + STRATEGY_CSI categories | Coverage, averages, circuit breaker counts |
-| **L4: Inline Probes** | STAGE_9 (3 checks) | health_scored ≥ 5, csi_scored ≥ 5, 0 < avg_mult ≤ 1 |
-| **L5: Real-Time Discord** | Strategy Analytics embed + completion one-liner | Tier distribution, RED details, CSI summary |
-
-Additionally:
-- **Diagnostic prompt** (Section 2b) surfaces RED strategies, CSI circuit breakers, correlation alerts, and Monte Carlo warnings in the auto-generated diagnostic when pipeline grade < A
-- **Exhaustive report** (Section 20) renders metric cards, tier distribution bar, and per-strategy tables
-- **Liveboard** (`moneyprod.com/live/`) streams health and CSI data via SSE with a merged table and tier bar
-
-### 15.5 Impact on Position Sizing
-
-The CSI multiplier integrates into the existing position sizing cascade (Chapter 8) as an additional scaling factor:
+The pipeline enforces **strict write authority**: each component writes to exactly one database and reads from multiple. This prevents circular dependencies that could amplify systematic errors:
 
 ```
-final_size = base_size × kelly_fraction × iv_adjustment × crowding_factor × CSI_multiplier
+forex_sentiment.db (C:\ForexScraper\data\)
+ Writers: Scrapers, ML ensemble (classifications), Meta-signal resolver, Macro composite
+ Key tables: sentiment_hourly, theory_scores, ml_classifications, meta_signals,
+ macro_data, macro_composite, forecast_4day, rl_experiences
+
+forex_regime.db (C:\ForexRegime\data\)
+ Writers: Pipeline orchestrator, IV regime, Cross-asset vol, Macro regime
+ Key tables: ohlc_bars, ibkr_positions, cross_asset_vol, macro_regime,
+ pipeline_diagnostics
+
+risk_management.db (C:\ForexRiskManagement\data\)
+ Writers: RME step, PnL tracker, ATR computation
+ Key tables: ibkr_account_metrics, daily_pnl_tracking, atr_data,
+ pnl_realized, rl_pnl_snapshots
 ```
 
-This means a strategy with half-Kelly = 0.50, no IV adjustment, no crowding penalty, and CSI = 0.53 would trade at: `base × 0.50 × 1.0 × 1.0 × 0.53 = base × 0.265` — approximately 26.5% of the maximum theoretical size.
+### 13.2 WAL Mode
 
-The CSI multiplier is the **last multiplicative factor** in the cascade, ensuring it cannot override other safety layers but can always further reduce sizing.
+All three databases run in **Write-Ahead Logging (WAL) mode**, enabling concurrent reads during writes. This is essential because Stage 1 scrapers may still be writing sentiment data while Stage 3's ML ensemble is already reading it.
+
+WAL lock files (`*.db-wal`, `*.db-shm`) are cleaned up at pipeline startup to prevent stale locks from previous runs that may have been interrupted by server restarts.
+
+### 13.3 Timestamp Normalization
+
+Cross-table joins require careful timestamp normalization because different components use different formats:
+
+| Source | Format | Example |
+|--------|--------|---------|
+| `ibkr_positions` | `YYYY-MM-DD HH:MM:SS` | `2026-03-06 09:41:02` |
+| `strategy_assignments` | ISO 8601 with TZ | `2026-03-06T09:40:42.123456-05:00` |
+| `meta_signals.created_at` | `YYYY-MM-DD HH:MM:SS` | `2026-03-06 09:40:42` |
+| `pnl_realized.timestamp_close` | ISO with T and TZ | `2026-03-06T09:41:00-05:00` |
+
+The normalization pattern: `REPLACE(SUBSTR(ts, 1, 19), 'T', ' ')`, extract the first 19 characters and replace `T` with a space. This produces a uniform `YYYY-MM-DD HH:MM:SS` format that SQLite can compare and sort.
+
+Data is stored. Timestamps are normalized. The signal exists as a row in a table. What turns that row into an order on a broker's matching engine is a chain of DLL calls, PowerLanguage patches, and a CSV file that must not contain a single dot in the wrong place.
+
+---
+
+## Chapter 14: Execution Bridge: From Signal to Live Trade
+
+The first version of the CSV used dotted pairs: `EUR.USD`. The DLL concatenated `strategyName + "_" + pair` to build its lookup key. Every key missed. Every strategy silently traded with zero authorization for an entire weekend before anyone noticed.
+
+### 14.1 The CSV-DLL-MCPT Pipeline
+
+The execution path from pipeline signal to live broker order traverses three layers:
+
+```
+Python Pipeline → CSV File → MoneyProdSupervisor DLL → MCPT Strategy → IB Gateway → Broker
+```
+
+1. **Python** (`smart_position_sizing.py`) writes `strategies_auth_simple.csv` with direction, target size, and authorization for each of the 32 strategies.
+
+2. **MCPT** (MultiCharts Portfolio Trader) reads the CSV through a DLL call (`MoneyProdSupervisor_v3.dll`, Ping=3). The DLL performs a lookup by `strategyName + "_" + pair` and returns the authorization flag and target size.
+
+3. **MCPT strategies** (32 patched PowerLanguage files) execute trade logic based on their internal signals, subject to CSV authorization. If authorized, they submit orders to IB Gateway via the TWS API.
+
+### 14.2 The 9 Strategy Patches
+
+Each of the 32 strategies has been patched with 9 modifications:
+
+| # | Patch | Purpose |
+|---|-------|---------|
+| 1 | CSV path update | Point to `strategies_auth_simple.csv` (not legacy file) |
+| 2 | Auth default `0` | Unknown strategy = blocked (safe fail) |
+| 3 | Size guard | `MP_tgt <= 0` blocks real-time orders |
+| 4 | Kill fallback | `NumberOfShares = 0` (no fallback to fixed lot) |
+| 5 | Micro threshold | Positions < 500 units treated as flat (test debris bypass) |
+| 6 | Signal block | DefineDLLFunc + GlobalVariable.dll for paper signal tracking |
+| 7 | Zombie kill | CancelAllOrders on first real-time bar (prevents MC reboot doubles) |
+| 8 | Unauth cancel | CancelAllOrders when flat + blocked (kills direction-flip zombies) |
+| 9 | External close detect | Reset signal state when position externally closed |
+
+### 14.3 Paper Signal Tracking
+
+Each strategy writes its current signal state to shared memory via `GlobalVariable.dll` (MultiCharts built-in IPC):
+
+- **`MP_{key}_SIG`**: Integer signal: +1 (LONG), -1 (SHORT), 0 (FLAT)
+- **`MP_{key}_SEP`**: Entry/exit price as integer (price x 100,000 for fixed-point encoding)
+
+The Python reader (`gv_reader.py`) polls these global variables via `ctypes` → `GV_GetNamedInt` and writes paper positions to `paper_positions_open` for CSI evaluation.
+
+SEP semantics: on entry, SEP = entry price. On exit (SIG transitions to 0), SEP = Close price of the exit bar, providing a valid exit price for PnL computation.
+
+Signals cross the bridge from Python to broker in under a second. Whether that bridge held, whether the order filled, whether the position matches what the pipeline intended -- answering those questions is the final job.
+
+---
+
+## Chapter 15: Monitoring, Diagnostics, and Observability
+
+When the pipeline grade drops below A, it writes its own diagnostic prompt to disk -- a structured document explaining what failed and how to fix it. A machine that wakes every hour, trades real money, and authors its own troubleshooting guide when things go wrong.
+
+![Monitoring Dashboard](images/monitoring-dashboard-v3.svg)
+
+### 15.1 Four Monitoring Systems
+
+The pipeline operates four independent monitoring systems, each providing a different lens on system health:
+
+| System | Script | Checks | Output |
+|--------|--------|--------|--------|
+| **Inline Probes** | `unified_pipeline.py` | 7 stages, 17 checks | Console log + pipeline_diagnostics table |
+| **Data Truth Watchdog** | `data_truth_watchdog.py` | 9 nodes | Grade (A/B/C/F) + pipeline_diagnostics table |
+| **Pipeline Diagnostics** | `pipeline_diagnostics.py` | 14 categories, ~50 checks | Diagnostic prompt + pipeline_diagnostics table |
+| **Watchdog Master** | `watchdog_master.py` | Process + connectivity | Process health monitoring |
+
+### 15.2 Data Truth Watchdog: 9 Nodes
+
+The Data Truth Watchdog verifies data freshness and integrity across 9 critical pipeline nodes:
+
+| Node | Checks | Failure Impact |
+|------|--------|---------------|
+| **NODE 1: Sentiment** | All 4 sources updated within 2 hours | Reduced ML feature count |
+| **NODE 2: Theories** | 30 theories computed for all 8 pairs | Missing theory features |
+| **NODE 3: ML** | Classifications exist for current hour | No ML signal for resolver |
+| **NODE 4: Meta-Signals** | Resolver output exists, confidence > 0 | No CSV generation |
+| **NODE 5: Positions** | IBKR positions synced within 1 hour | Stale position data |
+| **NODE 6: PnL** | PnL snapshots updated | CSI scores stale |
+| **NODE 7: Strategies** | CSI scores computed for all 32 strategies | Authorization scores stale |
+| **NODE 8: Risk** | RME account metrics synced | Risk limits stale |
+| **NODE 9: Macro** | Macro data, composite, vol, regime updated | Macro intelligence unavailable |
+
+### 15.3 Diagnostic Categories
+
+The pipeline diagnostics system (`pipeline_diagnostics.py`) performs ~50 checks organized into 14 categories:
+
+| # | Category | Examples |
+|---|----------|---------|
+| 1 | Data Freshness | Source timestamps, scraper status |
+| 2 | ML Quality | Feature count, confidence distribution |
+| 3 | Meta-Signal Coherence | Agreement levels, direction changes |
+| 4 | Position Reconciliation | Gateway A vs Gateway B positions |
+| 5 | PnL Integrity | Realized vs unrealized consistency |
+| 6 | Risk Limits | Leverage, exposure caps, circuit breaker state |
+| 7 | Strategy Health | CSI distribution, authorization rates |
+| 8 | Execution Quality | Order fill rates, slippage |
+| 9 | Database Integrity | WAL status, table row counts, schema |
+| 10 | Infrastructure | Memory, CPU, disk, gateway connectivity |
+| 11 | Crowding | Directional concentration, A/B test status |
+| 12 | IV Regime | Regime distribution, VRP calculation validity |
+| 13 | RL Agent | Experience count, Q-value convergence |
+| 14 | Macro Intelligence | Macro data freshness, composite signal quality, vol regime |
+
+When the pipeline grade drops below A, a **diagnostic prompt** is automatically saved to `C:\ForexRegime\logs\diagnostic_prompt_*.md`. This file contains a structured summary of all failures, organized for Claude Code analysis, a self-diagnosing system that generates its own troubleshooting instructions.
+
+### 15.4 Discord Notifications
+
+Critical events trigger Discord notifications via webhook:
+
+- **Pipeline failures** (any stage): @here ping with error details and last 600 chars of output
+- **RME Guard critical alerts**: G1 (PreSubmitted), G3 (AOE cycling), G4 (negative funds), G7 (reconciliation)
+- **Vol kill switch activation**: Regime change to ELEVATED or CRISIS
+- **Position anomalies**: Gateway disagreement, unexpected position changes
+
+Notifications include anti-spam cooldown (same title suppressed for 15 minutes) and disk-based fallback logging when the webhook fails.
+
+### 15.5 Exhaustive HTML Report
+
+After every cycle, `generate_exhaustive_report_v4.py` produces a **21-section HTML report** covering every aspect of the pipeline:
+
+| Section | Content |
+|---------|---------|
+| 1-3 | Pipeline summary, timing, grade |
+| 4-6 | Data freshness, ML quality, meta-signals |
+| 7-9 | Position reconciliation, PnL, risk |
+| 10-12 | Strategy health, CSI heatmap, authorization matrix |
+| 13-15 | Crowding analysis, IV regime quadrants, RL metrics |
+| 16-17 | Execution quality, infrastructure health |
+| 18-20 | Macro data, composite signals, vol kill switch, regime classifier |
+| 21 | Full diagnostic output |
+
+The report is served via IIS at the live dashboard URL, providing real-time visibility into every dimension of system health.
+
+Together, these monitoring systems close the loop: data collection, signal generation, trade execution, performance monitoring, and learning, repeating every hour with nine independent safety shields at each step.
+
+In 168 seconds, it will all run again. The scrapers will fan out, the models will disagree, the resolver will arbitrate, and the CSV will land. The only difference from the last cycle is what the system learned from it.
 
 ---
 
 ## Technical Appendix
 
-### A. Key Algorithms Summary
+### A.1 Configuration Constants
 
-| Algorithm | Component | Purpose | Reference |
-|---|---|---|---|
-| Ridge Regression (L2) | Strategy Specialists | Feature weight learning with regularization | Hoerl & Kennard, 1970 |
-| MCMC (Metropolis-Hastings) | Bayesian Optimizer | Posterior sampling for weight calibration | Hastings, 1970 |
-| Q-Learning | RL Agent | Tabular action-value function learning | Watkins & Dayan, 1992 |
-| Kelly Criterion (Half) | Position Sizing | Optimal bet fraction for log-growth | Kelly, 1956 |
-| Differential Sortino | RL Reward | Downside-risk-only performance metric | Moody & Saffell, 1998 |
-| Gelman-Rubin (R-hat) | MCMC Convergence | Multi-chain convergence diagnostic | Gelman & Rubin, 1992 |
-| Hurst Exponent (R/S) | Regime Detection | Long-range dependence estimation | Hurst, 1951 |
-| Garman-Klass | Realized Volatility | Efficient range-based vol estimator | Garman & Klass, 1980 |
-| Lo-MacKinlay | Variance Ratio | Random walk test for regime | Lo & MacKinlay, 1988 |
-| VADER | News Sentiment | Valence-based text scoring | Hutto & Gilbert, 2014 |
-| Prioritized Experience Replay | RL Training | Priority-weighted batch sampling | Schaul et al., 2016 |
-| Monte Carlo Bootstrap | Strategy Analytics | Risk-of-ruin estimation via path simulation | Metropolis & Ulam, 1949 |
-| Pearson Correlation | Strategy Analytics | Pairwise strategy return correlation | Pearson, 1895 |
-| Composite Scoring | Strategy Analytics | Multi-axis weighted health assessment | Portfolio analytics standard |
+| Constant | Value | Location |
+|----------|-------|----------|
+| `DEFAULT_W` (ML) | 0.50 | `meta_signal_resolver.py` |
+| `DEFAULT_W` (Forecast) | 0.28 | `meta_signal_resolver.py` |
+| `DEFAULT_W` (RL) | 0.12 | `meta_signal_resolver.py` |
+| `DEFAULT_W` (Macro) | 0.10 | `meta_signal_resolver.py` |
+| `MIN_CONF` | 0.45 | `meta_signal_resolver.py` |
+| `DISAGREE_PEN` | 0.30 | `meta_signal_resolver.py` |
+| `AGREE_BONUS` | 0.10 | `meta_signal_resolver.py` |
+| `TRACK_LOOKBACK_DAYS` | 14 | `meta_signal_resolver.py` |
+| `TRACK_HALF_LIFE` | 7.0 | `meta_signal_resolver.py` |
+| `MIN_CONF_FLOOR` | 0.20 | `meta_signal_resolver.py` |
+| `SM_FLOOR` | 0.15 | `meta_signal_resolver.py` |
+| `PENALTY_FLOOR` (CSI) | 5.0 | `strategy_csi.py` |
+| `PENALTY_SCALE` (CSI) | 0.25 | `strategy_csi.py` |
+| `PROBATION_CSI` | 15.0 | `strategy_csi.py` |
+| `PAPER_DISCOUNT` | 0.65 | `strategy_csi.py` |
+| `PAPER_BLEND_CAP` | 0.50 | `strategy_csi.py` |
+| `PAPER_CSI_CAP` | 65.0 | `strategy_csi.py` |
+| `PAPER_MIN_TRADES` | 2 | `strategy_csi.py` |
+| `KELLY_CONF_GATE` | 0.15 | `smart_position_sizing.py` |
+| `RL_MIN_SAMPLES` | 200 | `meta_signal_resolver.py` |
+| `MICRO_THRESHOLD` | 500 | Patched strategies |
 
-### B. Hyperparameter Reference
+### A.2 Database Schema Reference
 
-| Component | Parameter | Value | Rationale |
-|---|---|---|---|
-| **ML Training** | LOOKBACK_BARS | 90 | 15 days H4 data |
-| | FORWARD_BARS | 6 | 1 day forward label |
-| | MIN_TRAIN_SAMPLES | 30 | Minimum for Ridge stability |
-| | Blend α cap | 0.50 | Never fully data-driven |
-| | STRUCT_INFLUENCE | 0.30 | Structural bonus cap |
-| **RL Agent** | α (learning rate) | 0.10 | Conservative for non-stationary FX |
-| | γ (discount) | 0.95 | High future-orientation |
-| | ε (exploration) | 0.15 | Adaptive base rate |
-| | MIN_RL_OUTCOMES | 50 | Observation threshold |
-| | Batch size | 32 | Experience replay |
-| | Replay iterations | 5 | Per training cycle |
-| **Bayesian** | Chains | 4 | For R-hat diagnostic |
-| | Iterations/chain | 5,000 | Posterior sampling |
-| | R-hat target | < 1.1 | Convergence criterion |
-| | Weight bounds | [0.1, 4.0] | Prior weight range |
-| | Learning rate | 0.12 | Proposal noise std |
-| | Min samples | 15 | Guard threshold |
-| **Position Sizing** | RISK_PER_TRADE | 2.0% | Of account equity |
-| | ATR_MULTIPLIER | 2.0 | Stop distance |
-| | KELLY_FRACTION | 0.50 | Half-Kelly |
-| | MAX_KELLY | 0.08 | Per-trade ceiling |
-| | MAX_LEVERAGE | 5.0× | Portfolio cap |
-| | SAFETY_BUFFER | 0.95 | Margin safety |
-| **Circuit Breaker** | DAILY_LOSS_LIMIT | −3.5% | REDUCED trigger |
-| | WEEKLY_LOSS_LIMIT | −6.0% | HALT trigger |
-| | CONSEC_LOSSES | 7 | REDUCED trigger |
-| **IV Filter** | IV_PCT_REJECT | 80th %ile | Black swan reject |
-| | VOL_RATIO_REJECT | 0.50 | Fear reject |
-| | KILL_VRP_Z_NEG | −2.0 | Extreme negative VRP |
-| | KILL_VRP_Z_POS | +3.0 | IV bubble |
-| | KILL_TS_RATIO | 1.40 | Inverted term structure |
-| | SEMI_VARIANCE_THRESHOLD | 1.30 | Directional surprise (rv_down/rv_up) |
-| **Crowding** | THRESHOLD | 70% | Concentration reject |
-| | PENALTY | 0.0 (binary) | White Swan: reject, not reduce |
-| **Hysteresis** | Base margin | 0.04 | Regime switch margin |
-| | Exit margin | 0.02 | Extra to flip (6% total) |
-| | Min hold | 1 hour | Churn prevention |
-| | EMA α | 0.90 | Smoothing factor |
-| **Meta-Resolver** | ML weight | 40% | Primary intelligence |
-| | Forecast weight | 30% | Confirmation |
-| | RL weight | 21% | Adaptive component |
-| | Paper weight | 9% | Live strategy consensus |
-| | PAPER_WEIGHT_CAP | 25% | Max learned paper weight |
-| | UNANIMOUS multiplier | ×1.20 | 4/4 sources agree |
-| | STRONG multiplier | ×1.00 | 3/4 sources agree |
-| | MAJORITY multiplier | ×0.75 | 2/4 sources agree |
-| | SPLIT multiplier | ×0.50 | No majority |
-| | Forecast echo discount | −60% | Forecast mirrors ML |
-| | Paper echo discount | −40% | Paper mirrors ML |
-| | Track Penalty WR threshold | 35% | 14-day recency-weighted pair WR |
-| | Track Half-Life | 7 days | Exponential decay for recency weighting |
-| | Track Lookback | 14 days | Rolling window (was 30 days) |
-| | Track Pair Factor Floor | 0.50 | Minimum pair_factor (was 0.30) |
-| | Track Soft Reject Conf Floor | 0.20 | Min confidence on track penalty (was 0.0) |
-| | Track Soft Reject SM Floor | 0.15 | Min sizing mult on track penalty (was 0.0) |
-| **Confidence** | Min confidence | 0.45 | Below = NEUTRAL |
-| | Range | [0.30, 0.95] | Never 0% or 100% |
-| **Continuous Learning** | Sortino threshold | −0.3 | Retrain trigger |
-| | Accuracy threshold | 55% | Minimum edge for forex |
-| | Max drawdown | 12% | Review threshold |
-| | Profit factor | 1.2 | Minimum acceptable |
-| **Strategy Health** | GREEN threshold | 75 | Full authorization |
-| | CYAN threshold | 60 | Minor degradation |
-| | ORANGE threshold | 45 | Notable degradation |
-| | RED threshold | 25 | Significant issues |
-| | DARK_RED threshold | 0 | Graduated penalty (was circuit breaker) |
-| **CSI v2** | Profitability weight | 40% | Recent P&L and profit factor |
-| | Risk weight | 35% | Drawdown, losses, volatility |
-| | Confidence weight | 25% | ML + Bayesian posterior |
-| | PENALTY_FLOOR | 5.0 | Sub-score minimum (graduated) |
-| | PENALTY_SCALE | 0.25 | Penalty multiplicative factor |
-| | PROBATION_CSI | 15.0 | Probation recovery threshold |
-| | Probation tier (CSI 10-19) | mult=0.10 | New tier (was 0.00) |
-| | Time recovery | +3/24h after 48h | Cap at CSI=35 |
-| **Paper CSI v2** | PAPER_DISCOUNT | 0.50 | 1 paper trade = 0.5 real trades |
-| | PAPER_BLEND_CAP | 0.40 | Max weight of paper in blending |
-| | PAPER_CSI_CAP | 50.0 | CSI cap when paper-blended |
-| | PAPER_MIN_TRADES | 3 | Min paper trades to contribute |
-| | FULL_CONF | 30 | Live trades to ignore paper |
-| | Paper rescue scope | All dimensions | Was confidence-only |
-| **Correlation Matrix** | Alert threshold | 0.85 | Concentration risk flag |
-| | Calculation window | Weekly | Slower-moving than health |
-| **Monte Carlo** | Simulation paths | 10,000 | Bootstrap from historical trades |
-| | RoR alert threshold | 20% | Risk-of-ruin flag |
+For the complete database schema (29+ tables), column definitions, and timestamp formats, see `C:\ForexRegime\CLAUDE.md`.
 
-### C. Data Freshness Requirements
+### A.3 8 FX Pairs
 
-| Data Type | Max Age (WARN) | Max Age (CRIT) |
-|---|---|---|
-| Scraper data | 30 min | 60 min |
-| ML classifications | 5 min | 10 min |
-| 4-day forecast | 5 min | 10 min |
-| RL outcomes | 15 min | 30 min |
-| Meta-signals | 5 min | 10 min |
-| IBKR positions | 5 min | 15 min |
-| ATR data | 1 hour | 2 hours |
-| FX rates | 15 min | 30 min |
-| Account equity | 15 min | 30 min |
+AUDJPY, AUDUSD, EURJPY, EURUSD, GBPUSD, USDCAD, USDCHF, USDJPY
 
-### D. File Structure
+### A.4 8 IBKR Accounts (Dual Gateway)
 
-| File | Lines | Purpose |
-|---|---|---|
-| `unified_pipeline.py` | ~806 | 8-stage orchestrator |
-| `ml_strategy_ensemble.py` | ~1,321 | 5-Model MoE, feature engine, training |
-| `bayesian_optimizer.py` | ~751 | MCMC weight optimization |
-| `rl_agent.py` | ~509 | Q-learning, experience replay |
-| `continuous_learning.py` | ~526 | Sortino monitoring, retraining |
-| `meta_signal_resolver.py` | ~341 | 4-source ensemble blending (ML, forecast, RL, paper) |
-| `paper_consensus.py` | ~200 | 32 MCPT paper signal aggregation, PnL-weighted majority vote |
-| `calculate_theories.py` | ~474 | 30 theory calculations |
-| `pnl_tracker.py` | ~400 | Soft outcomes, Sortino feedback |
-| `smart_position_sizing.py` | ~650 | Kelly + IV + correlation limits |
-| `iv_position_sizer.py` | ~650 | IV-based white swan filter |
-| `crowding_penalty.py` | ~250 | A/B-tested crowding rejection |
-| `generate_exhaustive_report_v4.py` | ~2,700 | 21-section HTML dashboard |
-| `ibkr_live_board.py` | ~1,700 | Real-time Flask liveboard |
-| `pipeline_diagnostics.py` | ~500 | 13-category health checks |
-| `strategy_health_monitor.py` | ~300 | Composite health scoring (0-100), 5-tier classification |
-| `strategy_csi.py` | ~500 | CSI v2: graduated penalties, probation, time recovery, paper rescue |
-| `correlation_matrix.py` | ~200 | Weekly Pearson correlation matrix for strategy pairs |
-| `monte_carlo_simulator.py` | ~250 | 10,000-path bootstrap, risk-of-ruin estimation |
+- **DOM gateway**: Account A, Account B, Account C, Account D
+- **VAL gateway**: Account E, Account F, Account G, Account H
+
+### A.5 DLL Versions
+
+| Version | Ping | Status | Purpose |
+|---------|------|--------|---------|
+| **v3** | 3 | Active | CSV auth + trade logging (production) |
+| **v4** | 4 | Reserved | Added paper signal GV functions (not used by strategies) |
+
+Strategies use `GlobalVariable.dll` (MultiCharts built-in) for signal tracking, not the MoneyProdSupervisor DLL.
 
 ---
 
 ## References
 
-1. **Kelly, J.L.** (1956). "A New Interpretation of Information Rate." *Bell System Technical Journal*, 35(4), 917–926.
+### Machine Learning Ensembles & Mixture of Experts
+- Jacobs, R.A., Jordan, M.I., Nowlan, S.J., & Hinton, G.E. (1991). Adaptive mixtures of local experts. *Neural Computation*, 3(1), 79-87.
+- Freund, Y. & Schapire, R.E. (1997). A decision-theoretic generalization of on-line learning and an application to boosting. *Journal of Computer and System Sciences*, 55(1), 119-139.
+- Chen, T. & Guestrin, C. (2016). XGBoost: A scalable tree boosting system. *KDD 2016*, 785-794.
+- Ke, G., Meng, Q., et al. (2017). LightGBM: A highly efficient gradient boosting decision tree. *NeurIPS 2017*.
+- Prokhorenkova, L., et al. (2018). CatBoost: Unbiased boosting with categorical features. *NeurIPS 2018*.
 
-2. **Moody, J. & Saffell, M.** (1998). "Reinforcement Learning for Trading." *Advances in Neural Information Processing Systems (NeurIPS)*.
+### Reinforcement Learning
+- Sutton, R.S. & Barto, A.G. (2018). *Reinforcement Learning: An Introduction* (2nd ed.). MIT Press.
+- Moody, J. & Saffell, M. (2001). Learning to trade via direct reinforcement. *IEEE Transactions on Neural Networks*, 12(4), 875-889.
+- Schaul, T., et al. (2016). Prioritized experience replay. *ICLR 2016*.
 
-3. **Gelman, A. & Rubin, D.B.** (1992). "Inference from Iterative Simulation Using Multiple Sequences." *Statistical Science*, 7(4), 457–472.
+### Bayesian Optimization & MCMC
+- Robert, C.P. & Casella, G. (2004). *Monte Carlo Statistical Methods* (2nd ed.). Springer.
+- Metropolis, N., et al. (1953). Equation of state calculations by fast computing machines. *Journal of Chemical Physics*, 21(6), 1087-1092.
 
-4. **Lo, A.W. & MacKinlay, A.C.** (1988). "Stock Market Prices Do Not Follow Random Walks." *Review of Financial Studies*, 1(1), 41–66.
+### Position Sizing & Risk Management
+- Kelly, J.L. (1956). A new interpretation of information rate. *Bell System Technical Journal*, 35(4), 917-926.
+- Thorp, E.O. (2006). The Kelly criterion in blackjack, sports betting, and the stock market. *Handbook of Asset and Liability Management*, Vol. 1.
+- Taleb, N.N. (2007). *The Black Swan: The Impact of the Highly Improbable*. Random House.
 
-5. **Hurst, H.E.** (1951). "Long-Term Storage Capacity of Reservoirs." *Transactions of the American Society of Civil Engineers*, 116, 770–808.
+### Implied Volatility & Volatility Risk Premium
+- Carr, P. & Wu, L. (2009). Variance risk premiums. *Review of Financial Studies*, 22(3), 1311-1341.
+- Bollerslev, T., Tauchen, G., & Zhou, H. (2009). Expected stock returns and variance risk premia. *Review of Financial Studies*, 22(11), 4463-4492.
 
-6. **Garman, M.B. & Klass, M.J.** (1980). "On the Estimation of Security Price Volatilities from Historical Data." *Journal of Business*, 53(1), 67–78.
+### Market Microstructure & FX
+- King, M.R., Osler, C.L., & Rime, D. (2013). The market microstructure approach to foreign exchange. *Journal of International Money and Finance*, 31(8), 1548-1564.
+- Menkhoff, L., et al. (2012). Currency momentum strategies. *Journal of Financial Economics*, 106(3), 660-684.
+- Lustig, H., Roussanov, N., & Verdelhan, A. (2011). Common risk factors in currency markets. *Review of Financial Studies*, 24(11), 3731-3777.
 
-7. **Watkins, C.J.C.H. & Dayan, P.** (1992). "Q-Learning." *Machine Learning*, 8(3-4), 279–292.
+### Cross-Asset & Macro Factor Models
+- Ang, A. & Bekaert, G. (2002). International asset allocation with regime switching. *Review of Financial Studies*, 15(4), 1137-1187.
+- Ilmanen, A. (2011). *Expected Returns: An Investor's Guide to Harvesting Market Rewards*. Wiley.
+- Asness, C.S., Moskowitz, T.J., & Pedersen, L.H. (2013). Value and momentum everywhere. *Journal of Finance*, 68(3), 929-985.
 
-8. **Taleb, N.N.** (2007). *The Black Swan: The Impact of the Highly Improbable*. Random House.
-
-9. **Hutto, C.J. & Gilbert, E.E.** (2014). "VADER: A Parsimonious Rule-based Model for Sentiment Analysis." *AAAI Conference on Weblogs and Social Media*.
-
-10. **Schaul, T., Quan, J., Antonoglou, I. & Silver, D.** (2016). "Prioritized Experience Replay." *International Conference on Learning Representations (ICLR)*.
-
-11. **Hastings, W.K.** (1970). "Monte Carlo Sampling Methods Using Markov Chains." *Biometrika*, 57(1), 97–109.
-
-12. **Hoerl, A.E. & Kennard, R.W.** (1970). "Ridge Regression: Biased Estimation for Nonorthogonal Problems." *Technometrics*, 12(1), 55–67.
-
-13. **Roberts, G.O., Gelman, A. & Gilks, W.R.** (1997). "Weak Convergence and Optimal Scaling of Random Walk Metropolis Algorithms." *Annals of Applied Probability*, 7(1), 110–120.
-
-14. **Sortino, F.A. & van der Meer, R.** (1991). "Downside Risk." *Journal of Portfolio Management*, 17(4), 27–31.
-
-15. **Bollerslev, T., Tauchen, G. & Zhou, H.** (2009). "Expected Stock Returns and Variance Risk Premia." *Review of Financial Studies*, 22(11), 4463–4492.
+### Time Series & Forecasting
+- Hamilton, J.D. (1989). A new approach to the economic analysis of nonstationary time series and the business cycle. *Econometrica*, 57(2), 357-384.
+- Diebold, F.X. & Mariano, R.S. (1995). Comparing predictive accuracy. *Journal of Business & Economic Statistics*, 13(3), 253-263.
 
 ---
 
-<p align="center">
-  <img src="images/moneyprod-logo.svg" alt="MoneyProd" width="280">
-</p>
-
-<p align="center" style="font-size:9pt; color:#64748b;">
-  <strong>MoneyProd Architecture v1.0</strong> — February 2026<br>
-  © <a href="https://linkedin.com/in/timothy-lokotar/">Timothy Lokotar</a> · <a href="https://www.moneyprod.com/">moneyprod.com</a>
-</p>
+*All numbers, constants, and timing measurements in this document are derived from production execution data, not simulations or backtests.*

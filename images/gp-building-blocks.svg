@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 400" width="850" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="850" height="400" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="425" y="35" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20" font-weight="bold" fill="#E2E8F0" filter="url(#shadow)">Building Blocks: Strategy DNA (~200 components)</text>
+
+  <!-- Column headers -->
+  <text x="120" y="65" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#00D4FF">Indicators</text>
+  <text x="310" y="65" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#FFD54F">Operators</text>
+  <text x="500" y="65" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#4ADE80">References</text>
+  <text x="700" y="65" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#E879F9">Logic</text>
+
+  <!-- Column 1: Indicators -->
+  <rect x="40" y="78" width="160" height="28" rx="6" fill="#0F172A" stroke="#00D4FF" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="120" y="97" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#00D4FF">RSI(14)</text>
+  <rect x="40" y="114" width="160" height="28" rx="6" fill="#0F172A" stroke="#00D4FF" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="120" y="133" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#00D4FF">MACD(12,26,9)</text>
+  <rect x="40" y="150" width="160" height="28" rx="6" fill="#0F172A" stroke="#00D4FF" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="120" y="169" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#00D4FF">BB_Width(20,2)</text>
+  <rect x="40" y="186" width="160" height="28" rx="6" fill="#0F172A" stroke="#00D4FF" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="120" y="205" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#00D4FF">ATR(14)</text>
+
+  <!-- Column 2: Operators -->
+  <rect x="230" y="78" width="160" height="28" rx="6" fill="#0F172A" stroke="#FFD54F" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="310" y="97" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#FFD54F">&lt;  &gt;  ==  !=</text>
+  <rect x="230" y="114" width="160" height="28" rx="6" fill="#0F172A" stroke="#FFD54F" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="310" y="133" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#FFD54F">+  -  *  /</text>
+  <rect x="230" y="150" width="160" height="28" rx="6" fill="#0F172A" stroke="#FFD54F" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="310" y="169" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#FFD54F">CrossOver</text>
+  <rect x="230" y="186" width="160" height="28" rx="6" fill="#0F172A" stroke="#FFD54F" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="310" y="205" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#FFD54F">CrossUnder</text>
+
+  <!-- Column 3: References -->
+  <rect x="420" y="78" width="160" height="28" rx="6" fill="#0F172A" stroke="#4ADE80" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="500" y="97" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#4ADE80">Close</text>
+  <rect x="420" y="114" width="160" height="28" rx="6" fill="#0F172A" stroke="#4ADE80" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="500" y="133" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#4ADE80">High / Low</text>
+  <rect x="420" y="150" width="160" height="28" rx="6" fill="#0F172A" stroke="#4ADE80" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="500" y="169" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#4ADE80">Volume</text>
+  <rect x="420" y="186" width="160" height="28" rx="6" fill="#0F172A" stroke="#4ADE80" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="500" y="205" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#4ADE80">Constant(N)</text>
+
+  <!-- Column 4: Logic -->
+  <rect x="620" y="78" width="160" height="28" rx="6" fill="#0F172A" stroke="#E879F9" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="700" y="97" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#E879F9">AND</text>
+  <rect x="620" y="114" width="160" height="28" rx="6" fill="#0F172A" stroke="#E879F9" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="700" y="133" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#E879F9">OR</text>
+  <rect x="620" y="150" width="160" height="28" rx="6" fill="#0F172A" stroke="#E879F9" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="700" y="169" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#E879F9">NOT</text>
+  <rect x="620" y="186" width="160" height="28" rx="6" fill="#0F172A" stroke="#E879F9" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="700" y="205" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#E879F9">IF / THEN</text>
+
+  <!-- Separator line -->
+  <line x1="40" y1="240" x2="810" y2="240" stroke="#334155" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- Assembly section label -->
+  <text x="425" y="268" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#94A3B8">Assembly Example</text>
+
+  <!-- Block 1: RSI(14) -->
+  <rect x="130" y="285" width="120" height="40" rx="8" fill="#0F172A" stroke="#00D4FF" stroke-width="2" filter="url(#shadow)"/>
+  <text x="190" y="310" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#00D4FF">RSI(14)</text>
+
+  <!-- Plus sign -->
+  <text x="275" y="312" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold" fill="#94A3B8">+</text>
+
+  <!-- Block 2: < -->
+  <rect x="300" y="285" width="60" height="40" rx="8" fill="#0F172A" stroke="#FFD54F" stroke-width="2" filter="url(#shadow)"/>
+  <text x="330" y="310" text-anchor="middle" font-family="Consolas, monospace" font-size="16" fill="#FFD54F">&lt;</text>
+
+  <!-- Plus sign -->
+  <text x="385" y="312" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold" fill="#94A3B8">+</text>
+
+  <!-- Block 3: 30 -->
+  <rect x="410" y="285" width="60" height="40" rx="8" fill="#0F172A" stroke="#4ADE80" stroke-width="2" filter="url(#shadow)"/>
+  <text x="440" y="310" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#4ADE80">30</text>
+
+  <!-- Equals sign -->
+  <text x="505" y="312" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22" font-weight="bold" fill="#FFD54F">=</text>
+
+  <!-- Result block -->
+  <rect x="535" y="280" width="235" height="48" rx="8" fill="#0F172A" stroke="#E879F9" stroke-width="2" filter="url(#shadow)"/>
+  <text x="652" y="309" text-anchor="middle" font-family="Consolas, monospace" font-size="14" fill="#E2E8F0">IF RSI(14) &lt; 30</text>
+
+  <!-- Bottom note -->
+  <text x="425" y="370" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8">Blocks combine through genetic operations: crossover, mutation, reproduction</text>
+</svg>

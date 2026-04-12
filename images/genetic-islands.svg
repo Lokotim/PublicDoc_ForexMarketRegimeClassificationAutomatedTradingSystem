@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 400" width="850" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#94A3B8"/>
+    </marker>
+  </defs>
+  <rect width="850" height="400" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="425" y="35" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20" font-weight="bold" fill="#E2E8F0" filter="url(#shadow)">Multi-Island Genetic Architecture: Ring Topology</text>
+
+  <!-- Pentagon layout: 5 islands -->
+  <!-- Island 1 (top center) cx=425 cy=110 -->
+  <circle cx="425" cy="115" r="52" fill="#0F172A" stroke="#00D4FF" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="425" y="108" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#00D4FF">Island 1</text>
+  <text x="425" y="126" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">50 strats</text>
+
+  <!-- Island 2 (top right) cx=620 cy=195 -->
+  <circle cx="628" cy="195" r="52" fill="#0F172A" stroke="#4ADE80" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="628" y="188" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#4ADE80">Island 2</text>
+  <text x="628" y="206" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">50 strats</text>
+
+  <!-- Island 3 (bottom right) cx=555 cy=320 -->
+  <circle cx="560" cy="325" r="52" fill="#0F172A" stroke="#FFD54F" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="560" y="318" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#FFD54F">Island 3</text>
+  <text x="560" y="336" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">50 strats</text>
+
+  <!-- Island 4 (bottom left) cx=295 cy=320 -->
+  <circle cx="290" cy="325" r="52" fill="#0F172A" stroke="#E879F9" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="290" y="318" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#E879F9">Island 4</text>
+  <text x="290" y="336" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">50 strats</text>
+
+  <!-- Island 5 (top left) cx=230 cy=195 -->
+  <circle cx="222" cy="195" r="52" fill="#0F172A" stroke="#F87171" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="222" y="188" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#F87171">Island 5</text>
+  <text x="222" y="206" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#94A3B8">50 strats</text>
+
+  <!-- Ring arrows: 1->2 -->
+  <line x1="472" y1="135" x2="582" y2="175" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.7"/>
+  <!-- 2->3 -->
+  <line x1="618" y1="247" x2="578" y2="278" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.7"/>
+  <!-- 3->4 -->
+  <line x1="508" y1="330" x2="342" y2="330" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.7"/>
+  <!-- 4->5 -->
+  <line x1="252" y1="282" x2="232" y2="247" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.7"/>
+  <!-- 5->1 -->
+  <line x1="248" y1="150" x2="382" y2="120" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.7"/>
+
+  <!-- Center text -->
+  <rect x="350" y="195" width="150" height="55" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1" filter="url(#shadow)"/>
+  <text x="425" y="215" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#FFD54F">Migration every</text>
+  <text x="425" y="232" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#FFD54F">3 generations</text>
+  <text x="425" y="248" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#E2E8F0">Top 5 migrate</text>
+
+  <!-- Bottom annotation -->
+  <text x="425" y="390" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8">Each island evolves independently, sharing elite strategies to maintain genetic diversity</text>
+</svg>

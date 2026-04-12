@@ -1,0 +1,215 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 600" width="850" height="600">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="s3">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+    <filter id="redGlow">
+      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#F87171" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="850" height="600" fill="url(#bg3)" rx="12"/>
+
+  <!-- Title -->
+  <text x="340" y="28" text-anchor="middle" font-family="Segoe UI" font-size="16" font-weight="bold" fill="#E2E8F0">THE NINE SHIELDS -- Independent Safety Layers</text>
+
+  <!-- 3x3 Grid of shield cards -->
+  <!-- Row 1 -->
+  <!-- Shield 1: PnL Circuit Breaker (red/emergency) — lightning bolt icon -->
+  <rect x="20" y="45" width="210" height="145" rx="8" fill="#1A1520" stroke="#F87171" stroke-width="1.5" filter="url(#s3)"/>
+  <path d="M58,54 L52,70 L57,70 L50,86 L62,68 L56,68 L63,54 Z" fill="none" stroke="#F87171" stroke-width="1.5" stroke-linejoin="round"/>
+  <text x="80" y="62" font-family="Segoe UI" font-size="11" font-weight="bold" fill="#F87171">S1: PnL Circuit Breaker</text>
+  <text x="80" y="76" font-family="Segoe UI" font-size="9" fill="#94A3B8">EMERGENCY</text>
+  <line x1="30" y1="88" x2="220" y2="88" stroke="#F87171" stroke-width="0.5" opacity="0.3"/>
+  <text x="30" y="102" font-family="Consolas" font-size="9" fill="#E2E8F0">>-3%: NORMAL   100%</text>
+  <text x="30" y="116" font-family="Consolas" font-size="9" fill="#FFD54F">-3%~-5%: CAUTION 50%</text>
+  <text x="30" y="130" font-family="Consolas" font-size="9" fill="#F87171">&lt;-5%: HALT       0%</text>
+  <text x="30" y="150" font-family="Consolas" font-size="8" fill="#94A3B8">24h rolling | all accounts</text>
+  <rect x="30" y="160" width="190" height="6" rx="2" fill="#1E293B"/>
+  <rect x="30" y="160" width="95" height="6" rx="2" fill="#F87171" opacity="0.6"/>
+  <rect x="30" y="160" width="57" height="6" rx="2" fill="#FFD54F" opacity="0.6"/>
+
+  <!-- Shield 2: White Swan (amber/market) — swan icon -->
+  <rect x="240" y="45" width="210" height="145" rx="8" fill="#1A1A20" stroke="#FFD54F" stroke-width="1.5" filter="url(#s3)"/>
+  <path d="M267,84 Q267,65 275,58 Q278,62 276,68 Q282,60 285,58 Q283,66 280,70 Q286,72 288,80 Q284,78 278,78 Q274,82 267,84 Z" fill="none" stroke="#FFD54F" stroke-width="1.3" stroke-linejoin="round"/>
+  <text x="300" y="62" font-family="Segoe UI" font-size="11" font-weight="bold" fill="#FFD54F">S2: White Swan</text>
+  <text x="300" y="76" font-family="Segoe UI" font-size="9" fill="#94A3B8">MARKET-DRIVEN</text>
+  <line x1="250" y1="88" x2="440" y2="88" stroke="#FFD54F" stroke-width="0.5" opacity="0.3"/>
+  <text x="250" y="102" font-family="Consolas" font-size="9" fill="#4ADE80">RECOVERY: Kelly x1.05</text>
+  <text x="250" y="116" font-family="Consolas" font-size="9" fill="#F87171">SHOCK:    Kelly x0.70</text>
+  <text x="250" y="136" font-family="Consolas" font-size="8" fill="#94A3B8">Detects opportunity vs threat</text>
+  <text x="250" y="150" font-family="Consolas" font-size="8" fill="#94A3B8">in volatile regimes</text>
+
+  <!-- Shield 3: Crowding Penalty (amber/market) — crowd/people icon -->
+  <rect x="460" y="45" width="210" height="145" rx="8" fill="#1A1A20" stroke="#FFD54F" stroke-width="1.5" filter="url(#s3)"/>
+  <g fill="none" stroke="#FFD54F" stroke-width="1.3">
+    <circle cx="488" cy="60" r="4"/><path d="M481,75 Q481,68 488,68 Q495,68 495,75"/>
+    <circle cx="502" cy="60" r="4"/><path d="M495,75 Q495,68 502,68 Q509,68 509,75"/>
+    <line x1="498" y1="56" x2="498" y2="80" stroke-dasharray="2,2" opacity="0.5"/>
+  </g>
+  <text x="520" y="62" font-family="Segoe UI" font-size="11" font-weight="bold" fill="#FFD54F">S3: Crowding Penalty</text>
+  <text x="520" y="76" font-family="Segoe UI" font-size="9" fill="#94A3B8">A/B TESTED</text>
+  <line x1="470" y1="88" x2="660" y2="88" stroke="#FFD54F" stroke-width="0.5" opacity="0.3"/>
+  <text x="470" y="102" font-family="Consolas" font-size="9" fill="#E2E8F0">Live A/B split cohorts</text>
+  <text x="470" y="116" font-family="Consolas" font-size="9" fill="#E2E8F0">Sortino comparison</text>
+  <text x="470" y="130" font-family="Consolas" font-size="9" fill="#E2E8F0">Auto-adjusting threshold</text>
+  <text x="470" y="150" font-family="Consolas" font-size="8" fill="#94A3B8">Only shield that tests itself</text>
+
+  <!-- Row 2 -->
+  <!-- Shield 4: IBKR Cross-Validation (red/emergency) — crossed arrows icon -->
+  <rect x="20" y="200" width="210" height="145" rx="8" fill="#1A1520" stroke="#F87171" stroke-width="1.5" filter="url(#s3)"/>
+  <g fill="none" stroke="#F87171" stroke-width="1.5" stroke-linecap="round">
+    <path d="M45,215 L65,235"/><path d="M60,215 L65,215 L65,220"/>
+    <path d="M65,215 L45,235"/><path d="M45,230 L45,235 L50,235"/>
+  </g>
+  <text x="80" y="217" font-family="Segoe UI" font-size="11" font-weight="bold" fill="#F87171">S4: IBKR Cross-Val</text>
+  <text x="80" y="231" font-family="Segoe UI" font-size="9" fill="#94A3B8">EMERGENCY</text>
+  <line x1="30" y1="243" x2="220" y2="243" stroke="#F87171" stroke-width="0.5" opacity="0.3"/>
+  <text x="30" y="257" font-family="Consolas" font-size="9" fill="#E2E8F0">Broker vs pipeline state</text>
+  <text x="30" y="271" font-family="Consolas" font-size="9" fill="#E2E8F0">Per-unit reconciliation</text>
+  <text x="30" y="285" font-family="Consolas" font-size="9" fill="#F87171">Discrepancy = CRITICAL</text>
+  <text x="30" y="305" font-family="Consolas" font-size="8" fill="#94A3B8">Defers to broker state</text>
+
+  <!-- Shield 5: Data Integrity (green/strategy) — database + checkmark icon -->
+  <rect x="240" y="200" width="210" height="145" rx="8" fill="#1A2520" stroke="#4ADE80" stroke-width="1.5" filter="url(#s3)"/>
+  <g fill="none" stroke="#4ADE80" stroke-width="1.3" stroke-linecap="round">
+    <ellipse cx="275" cy="215" rx="10" ry="4"/>
+    <path d="M265,215 L265,233 Q265,237 275,237 Q285,237 285,233 L285,215"/>
+    <path d="M270,225 L274,230 L282,220" stroke-width="1.8"/>
+  </g>
+  <text x="300" y="217" font-family="Segoe UI" font-size="11" font-weight="bold" fill="#4ADE80">S5: Data Integrity</text>
+  <text x="300" y="231" font-family="Segoe UI" font-size="9" fill="#94A3B8">STRATEGY-DRIVEN</text>
+  <line x1="250" y1="243" x2="440" y2="243" stroke="#4ADE80" stroke-width="0.5" opacity="0.3"/>
+  <text x="250" y="257" font-family="Consolas" font-size="9" fill="#E2E8F0">NaN detection</text>
+  <text x="250" y="271" font-family="Consolas" font-size="9" fill="#E2E8F0">Stale timestamp reject</text>
+  <text x="250" y="285" font-family="Consolas" font-size="9" fill="#E2E8F0">Anomalous readings (>5s)</text>
+  <text x="250" y="305" font-family="Consolas" font-size="8" fill="#94A3B8">Garbage-in-garbage-out guard</text>
+
+  <!-- Shield 6: CSI (green/strategy) — heartbeat/pulse icon -->
+  <rect x="460" y="200" width="210" height="145" rx="8" fill="#1A2520" stroke="#4ADE80" stroke-width="1.5" filter="url(#s3)"/>
+  <path d="M480,228 L488,228 L491,215 L495,238 L499,220 L502,228 L510,228" fill="none" stroke="#4ADE80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="520" y="217" font-family="Segoe UI" font-size="11" font-weight="bold" fill="#4ADE80">S6: Strategy CSI</text>
+  <text x="520" y="231" font-family="Segoe UI" font-size="9" fill="#94A3B8">STRATEGY-DRIVEN</text>
+  <line x1="470" y1="243" x2="660" y2="243" stroke="#4ADE80" stroke-width="0.5" opacity="0.3"/>
+  <text x="470" y="257" font-family="Consolas" font-size="9" fill="#4ADE80">80+: GREEN  x1.00</text>
+  <text x="470" y="271" font-family="Consolas" font-size="9" fill="#00D4FF">60+: CYAN   x0.75</text>
+  <text x="470" y="285" font-family="Consolas" font-size="9" fill="#FFD54F">40+: ORANGE x0.50</text>
+  <text x="470" y="299" font-family="Consolas" font-size="9" fill="#F87171">20+: RED    x0.25</text>
+  <text x="470" y="313" font-family="Consolas" font-size="8" fill="#94A3B8">10+: PROB x0.10 | &lt;10: x0.00</text>
+
+  <!-- Row 3 -->
+  <!-- Shield 7: Kill Switch (red/emergency) — power button icon -->
+  <rect x="20" y="355" width="210" height="145" rx="8" fill="#1A1520" stroke="#F87171" stroke-width="1.5" filter="url(#s3)"/>
+  <g fill="none" stroke="#F87171" stroke-width="1.8" stroke-linecap="round">
+    <path d="M48,372 A12,12 0 1,0 62,372"/>
+    <line x1="55" y1="365" x2="55" y2="378"/>
+  </g>
+  <text x="80" y="372" font-family="Segoe UI" font-size="11" font-weight="bold" fill="#F87171">S7: Kill Switch</text>
+  <text x="80" y="386" font-family="Segoe UI" font-size="9" fill="#94A3B8">MANUAL OVERRIDE</text>
+  <line x1="30" y1="398" x2="220" y2="398" stroke="#F87171" stroke-width="0.5" opacity="0.3"/>
+  <text x="30" y="412" font-family="Consolas" font-size="9" fill="#E2E8F0">Binary halt flag</text>
+  <text x="30" y="426" font-family="Consolas" font-size="9" fill="#F87171">Zeros ALL CSV positions</text>
+  <text x="30" y="440" font-family="Consolas" font-size="9" fill="#E2E8F0">No conditions/thresholds</text>
+  <text x="30" y="460" font-family="Consolas" font-size="8" fill="#94A3B8">Used 2x in production</text>
+
+  <!-- Shield 8: Vol Kill Switch (purple/macro) — seismograph wave icon -->
+  <rect x="240" y="355" width="210" height="145" rx="8" fill="#1A1530" stroke="#E879F9" stroke-width="1.5" filter="url(#s3)"/>
+  <path d="M262,380 L268,380 L270,368 L273,390 L276,365 L279,388 L282,375 L285,380 L290,380" fill="none" stroke="#E879F9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="300" y="372" font-family="Segoe UI" font-size="11" font-weight="bold" fill="#E879F9">S8: Vol Kill Switch</text>
+  <text x="300" y="386" font-family="Segoe UI" font-size="9" fill="#94A3B8">MACRO-DRIVEN</text>
+  <line x1="250" y1="398" x2="440" y2="398" stroke="#E879F9" stroke-width="0.5" opacity="0.3"/>
+  <text x="250" y="412" font-family="Consolas" font-size="9" fill="#E2E8F0">VIX+FX_IV+OVX+TLT_VOL</text>
+  <text x="250" y="426" font-family="Consolas" font-size="9" fill="#FFD54F">z>2s: WARNING   x50%</text>
+  <text x="250" y="440" font-family="Consolas" font-size="9" fill="#F87171">z>4s: CRITICAL  x0%</text>
+  <text x="250" y="460" font-family="Consolas" font-size="8" fill="#94A3B8">Fired 3x in production</text>
+
+  <!-- Shield 9: Macro Regime (purple/macro) — globe icon -->
+  <rect x="460" y="355" width="210" height="145" rx="8" fill="#1A1530" stroke="#E879F9" stroke-width="1.5" filter="url(#s3)"/>
+  <g fill="none" stroke="#E879F9" stroke-width="1.3">
+    <circle cx="495" cy="378" r="12"/>
+    <ellipse cx="495" cy="378" rx="5" ry="12"/>
+    <line x1="483" y1="378" x2="507" y2="378"/>
+    <path d="M485,371 Q495,369 505,371" /><path d="M485,385 Q495,387 505,385"/>
+  </g>
+  <text x="520" y="372" font-family="Segoe UI" font-size="11" font-weight="bold" fill="#E879F9">S9: Macro Regime</text>
+  <text x="520" y="386" font-family="Segoe UI" font-size="9" fill="#94A3B8">MACRO-DRIVEN</text>
+  <line x1="470" y1="398" x2="660" y2="398" stroke="#E879F9" stroke-width="0.5" opacity="0.3"/>
+  <text x="470" y="412" font-family="Consolas" font-size="9" fill="#E2E8F0">ISM-based classifier</text>
+  <text x="470" y="426" font-family="Consolas" font-size="9" fill="#4ADE80">EXPANSION:  x100%</text>
+  <text x="470" y="440" font-family="Consolas" font-size="9" fill="#F87171">LATE_REC:   x40%</text>
+  <text x="470" y="454" font-family="Consolas" font-size="9" fill="#00D4FF">RECOVERY:   x110%</text>
+  <text x="470" y="470" font-family="Consolas" font-size="8" fill="#94A3B8">Slowest-moving shield</text>
+
+  <!-- RME Order Guard v4 sidebar -->
+  <rect x="690" y="45" width="145" height="455" rx="8" fill="#0F172A" stroke="#94A3B8" stroke-width="1" filter="url(#s3)"/>
+  <text x="762" y="65" text-anchor="middle" font-family="Segoe UI" font-size="10" font-weight="bold" fill="#E2E8F0">RME GUARD v4</text>
+  <text x="762" y="80" text-anchor="middle" font-family="Consolas" font-size="8" fill="#94A3B8">Order Execution Layer</text>
+  <line x1="700" y1="88" x2="825" y2="88" stroke="#94A3B8" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- G1-G9 badges -->
+  <rect x="700" y="96" width="125" height="22" rx="4" fill="#1A1520" stroke="#F87171" stroke-width="0.8"/>
+  <text x="715" y="111" font-family="Consolas" font-size="8" font-weight="bold" fill="#F87171">G1</text>
+  <text x="735" y="111" font-family="Consolas" font-size="8" fill="#E2E8F0">PreSubmit >5m</text>
+
+  <rect x="700" y="124" width="125" height="22" rx="4" fill="#1A1A20" stroke="#FFD54F" stroke-width="0.8"/>
+  <text x="715" y="139" font-family="Consolas" font-size="8" font-weight="bold" fill="#FFD54F">G2</text>
+  <text x="735" y="139" font-family="Consolas" font-size="8" fill="#E2E8F0">Stuck >8h</text>
+
+  <rect x="700" y="152" width="125" height="22" rx="4" fill="#1A1520" stroke="#F87171" stroke-width="0.8"/>
+  <text x="715" y="167" font-family="Consolas" font-size="8" font-weight="bold" fill="#F87171">G3</text>
+  <text x="735" y="167" font-family="Consolas" font-size="8" fill="#E2E8F0">AOE cycling</text>
+
+  <rect x="700" y="180" width="125" height="22" rx="4" fill="#1A1520" stroke="#F87171" stroke-width="0.8"/>
+  <text x="715" y="195" font-family="Consolas" font-size="8" font-weight="bold" fill="#F87171">G4</text>
+  <text x="735" y="195" font-family="Consolas" font-size="8" fill="#E2E8F0">Funds &lt;0</text>
+
+  <rect x="700" y="208" width="125" height="22" rx="4" fill="#1A1A20" stroke="#FFD54F" stroke-width="0.8"/>
+  <text x="715" y="223" font-family="Consolas" font-size="8" font-weight="bold" fill="#FFD54F">G5</text>
+  <text x="735" y="223" font-family="Consolas" font-size="8" fill="#E2E8F0">Order doubling</text>
+
+  <rect x="700" y="236" width="125" height="22" rx="4" fill="#1A2520" stroke="#4ADE80" stroke-width="0.8"/>
+  <text x="715" y="251" font-family="Consolas" font-size="8" font-weight="bold" fill="#4ADE80">G6</text>
+  <text x="735" y="251" font-family="Consolas" font-size="8" fill="#E2E8F0">Recovery info</text>
+
+  <rect x="700" y="264" width="125" height="22" rx="4" fill="#1A1520" stroke="#F87171" stroke-width="0.8"/>
+  <text x="715" y="279" font-family="Consolas" font-size="8" font-weight="bold" fill="#F87171">G7</text>
+  <text x="735" y="279" font-family="Consolas" font-size="8" fill="#E2E8F0">CSV mismatch</text>
+
+  <rect x="700" y="292" width="125" height="22" rx="4" fill="#1A1520" stroke="#F87171" stroke-width="0.8"/>
+  <text x="715" y="307" font-family="Consolas" font-size="8" font-weight="bold" fill="#F87171">G8</text>
+  <text x="735" y="307" font-family="Consolas" font-size="8" fill="#E2E8F0">Vol z>4</text>
+
+  <rect x="700" y="320" width="125" height="22" rx="4" fill="#1A1A20" stroke="#FFD54F" stroke-width="0.8"/>
+  <text x="715" y="335" font-family="Consolas" font-size="8" font-weight="bold" fill="#FFD54F">G9</text>
+  <text x="735" y="335" font-family="Consolas" font-size="8" fill="#E2E8F0">Margin >90%</text>
+
+  <!-- Legend at bottom of sidebar -->
+  <line x1="700" y1="355" x2="825" y2="355" stroke="#94A3B8" stroke-width="0.5" opacity="0.3"/>
+  <rect x="705" y="363" width="8" height="8" rx="2" fill="#F87171" opacity="0.6"/>
+  <text x="718" y="371" font-family="Consolas" font-size="7" fill="#94A3B8">CRITICAL</text>
+  <rect x="705" y="378" width="8" height="8" rx="2" fill="#FFD54F" opacity="0.6"/>
+  <text x="718" y="386" font-family="Consolas" font-size="7" fill="#94A3B8">WARNING</text>
+  <rect x="705" y="393" width="8" height="8" rx="2" fill="#4ADE80" opacity="0.6"/>
+  <text x="718" y="401" font-family="Consolas" font-size="7" fill="#94A3B8">INFO</text>
+
+  <!-- Bottom bar -->
+  <rect x="20" y="515" width="650" height="30" rx="6" fill="#1A1520" stroke="#F87171" stroke-width="1" filter="url(#redGlow)"/>
+  <text x="345" y="535" text-anchor="middle" font-family="Segoe UI" font-size="12" font-weight="bold" fill="#F87171">ANY SINGLE SHIELD CAN HALT ALL TRADING</text>
+
+  <!-- Color legend -->
+  <rect x="20" y="555" width="12" height="12" rx="2" fill="#F87171" opacity="0.6"/>
+  <text x="38" y="565" font-family="Consolas" font-size="9" fill="#94A3B8">Emergency</text>
+  <rect x="120" y="555" width="12" height="12" rx="2" fill="#FFD54F" opacity="0.6"/>
+  <text x="138" y="565" font-family="Consolas" font-size="9" fill="#94A3B8">Market-driven</text>
+  <rect x="240" y="555" width="12" height="12" rx="2" fill="#4ADE80" opacity="0.6"/>
+  <text x="258" y="565" font-family="Consolas" font-size="9" fill="#94A3B8">Strategy-driven</text>
+  <rect x="370" y="555" width="12" height="12" rx="2" fill="#E879F9" opacity="0.6"/>
+  <text x="388" y="565" font-family="Consolas" font-size="9" fill="#94A3B8">Macro-driven</text>
+
+  <!-- Bottom label -->
+  <text x="425" y="590" text-anchor="middle" font-family="Consolas" font-size="10" fill="#94A3B8">9 shields + 9 order guards = 18 independent safety checks per pipeline cycle</text>
+</svg>

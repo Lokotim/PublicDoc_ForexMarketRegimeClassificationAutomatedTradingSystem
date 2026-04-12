@@ -100,7 +100,7 @@
     <text x="55" y="130" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#00e5ff">IBKR</text>
     <text x="55" y="142" text-anchor="middle" font-family="monospace" font-size="8" font-weight="bold" fill="#00e5ff">CROSS-VAL</text>
 
-    <text x="55" y="165" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">GV positions</text>
+    <text x="55" y="165" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">MCPT positions</text>
     <text x="55" y="178" text-anchor="middle" font-family="monospace" font-size="7" fill="#94A3B8">vs</text>
     <text x="55" y="191" text-anchor="middle" font-family="monospace" font-size="7" fill="#E2E8F0">IBKR positions</text>
 

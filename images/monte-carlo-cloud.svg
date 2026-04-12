@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 400" width="850" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="850" height="400" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="425" y="32" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="20" font-weight="bold" fill="#E2E8F0" filter="url(#shadow)">Monte Carlo Stress Testing: 1,000 Perturbation Simulations</text>
+
+  <!-- Axes -->
+  <line x1="70" y1="55" x2="70" y2="340" stroke="#475569" stroke-width="1"/>
+  <line x1="70" y1="340" x2="810" y2="340" stroke="#475569" stroke-width="1"/>
+  <text x="60" y="68" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">+120%</text>
+  <text x="60" y="145" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">+80%</text>
+  <text x="60" y="200" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">+50%</text>
+  <text x="60" y="270" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">+20%</text>
+  <text x="60" y="340" text-anchor="end" font-family="Consolas, monospace" font-size="9" fill="#94A3B8">0%</text>
+  <text x="440" y="358" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#94A3B8">Trade Sequence</text>
+
+  <!-- Survival threshold at 60% of peak (~+72%) -->
+  <line x1="70" y1="165" x2="810" y2="165" stroke="#FFD54F" stroke-width="1.5" stroke-dasharray="8,5" opacity="0.8"/>
+  <text x="815" y="162" font-family="Consolas, monospace" font-size="9" fill="#FFD54F" text-anchor="end">Survival threshold (60%)</text>
+
+  <!-- Cloud lines: GREEN (above threshold) -->
+  <path d="M 70 335 C 200 320, 300 290, 400 240 C 500 195, 600 165, 720 120 L 800 105" stroke="#4ADE80" stroke-width="1" fill="none" opacity="0.15"/>
+  <path d="M 70 332 C 180 315, 280 280, 380 235 C 480 200, 580 175, 700 140 L 800 125" stroke="#4ADE80" stroke-width="1" fill="none" opacity="0.12"/>
+  <path d="M 70 338 C 190 325, 310 295, 410 255 C 510 210, 610 180, 710 145 L 800 130" stroke="#4ADE80" stroke-width="1" fill="none" opacity="0.15"/>
+  <path d="M 70 330 C 170 310, 270 270, 370 225 C 470 185, 570 160, 690 130 L 800 115" stroke="#4ADE80" stroke-width="1" fill="none" opacity="0.13"/>
+  <path d="M 70 336 C 210 328, 330 300, 430 260 C 530 215, 630 185, 730 155 L 800 140" stroke="#4ADE80" stroke-width="1" fill="none" opacity="0.14"/>
+  <path d="M 70 334 C 195 318, 290 285, 395 240 C 495 200, 590 170, 705 135 L 800 118" stroke="#4ADE80" stroke-width="1" fill="none" opacity="0.12"/>
+  <path d="M 70 340 C 220 330, 340 305, 440 265 C 540 225, 640 190, 740 158 L 800 148" stroke="#4ADE80" stroke-width="1" fill="none" opacity="0.15"/>
+  <path d="M 70 333 C 175 312, 275 275, 385 230 C 485 190, 585 163, 695 128 L 800 110" stroke="#4ADE80" stroke-width="1" fill="none" opacity="0.11"/>
+  <path d="M 70 337 C 205 323, 320 298, 425 252 C 525 208, 625 178, 725 148 L 800 135" stroke="#4ADE80" stroke-width="1" fill="none" opacity="0.13"/>
+  <path d="M 70 331 C 165 308, 265 268, 365 220 C 465 178, 565 155, 680 125 L 800 108" stroke="#4ADE80" stroke-width="1" fill="none" opacity="0.12"/>
+
+  <!-- Cloud lines: RED (below threshold, dying off) -->
+  <path d="M 70 338 C 200 330, 320 310, 420 290 C 520 275, 600 270, 700 265 L 800 260" stroke="#F87171" stroke-width="1" fill="none" opacity="0.15"/>
+  <path d="M 70 336 C 210 332, 340 325, 440 310 C 540 300, 630 295, 720 290 L 800 285" stroke="#F87171" stroke-width="1" fill="none" opacity="0.13"/>
+  <path d="M 70 340 C 230 335, 360 330, 450 320 C 550 312, 640 308, 730 305 L 800 300" stroke="#F87171" stroke-width="1" fill="none" opacity="0.14"/>
+  <path d="M 70 335 C 190 328, 310 315, 410 298 C 510 282, 610 275, 710 272 L 800 270" stroke="#F87171" stroke-width="1" fill="none" opacity="0.12"/>
+  <path d="M 70 339 C 215 335, 350 328, 445 318 C 545 310, 635 305, 735 302 L 800 298" stroke="#F87171" stroke-width="1" fill="none" opacity="0.15"/>
+  <path d="M 70 337 C 225 334, 355 330, 455 325 C 555 318, 645 315, 745 312 L 800 310" stroke="#F87171" stroke-width="1" fill="none" opacity="0.11"/>
+  <path d="M 70 340 C 240 338, 370 335, 460 330 C 560 325, 650 322, 750 320 L 800 318" stroke="#F87171" stroke-width="1" fill="none" opacity="0.13"/>
+  <path d="M 70 334 C 180 325, 300 308, 400 285 C 500 268, 590 258, 700 250 L 800 245" stroke="#F87171" stroke-width="1" fill="none" opacity="0.14"/>
+  <path d="M 70 338 C 200 335, 330 332, 430 328 C 530 324, 620 322, 720 320 L 800 318" stroke="#F87171" stroke-width="1" fill="none" opacity="0.12"/>
+  <path d="M 70 336 C 185 330, 305 318, 405 300 C 505 285, 600 278, 710 272 L 800 268" stroke="#F87171" stroke-width="1" fill="none" opacity="0.15"/>
+
+  <!-- Central gold equity curve -->
+  <path d="M 70 335 C 180 318, 280 280, 390 235 C 490 195, 590 168, 700 130 L 800 100" stroke="#FFD54F" stroke-width="3" fill="none" filter="url(#shadow)"/>
+
+  <!-- Legend -->
+  <rect x="560" y="55" width="240" height="78" rx="6" fill="#0F172A" stroke="#334155" stroke-width="1" opacity="0.9"/>
+  <line x1="575" y1="72" x2="605" y2="72" stroke="#FFD54F" stroke-width="3"/>
+  <text x="615" y="76" font-family="Segoe UI, sans-serif" font-size="10" fill="#E2E8F0">Original equity curve</text>
+  <line x1="575" y1="92" x2="605" y2="92" stroke="#4ADE80" stroke-width="1.5" opacity="0.5"/>
+  <text x="615" y="96" font-family="Segoe UI, sans-serif" font-size="10" fill="#4ADE80">Surviving simulations</text>
+  <line x1="575" y1="112" x2="605" y2="112" stroke="#F87171" stroke-width="1.5" opacity="0.5"/>
+  <text x="615" y="116" font-family="Segoe UI, sans-serif" font-size="10" fill="#F87171">Failed simulations</text>
+  <line x1="575" y1="127" x2="605" y2="127" stroke="#FFD54F" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="615" y="131" font-family="Segoe UI, sans-serif" font-size="10" fill="#FFD54F">Survival threshold</text>
+
+  <!-- Bottom text -->
+  <text x="425" y="385" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#94A3B8">4 layers: trade order + price noise + slippage + parameter jitter</text>
+</svg>
